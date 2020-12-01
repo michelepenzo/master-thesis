@@ -47,12 +47,6 @@ def print_on_csv(data):
 def get_cartesian_pose(data):
 	return float(data[0]), float(data[1]), float(data[2]), float(data[3]), float(data[4]), float(data[5]), float(data[6])
 
-
-# return action led 
-def get_action_led(data):
-	return data['on'], data['color'], data['blinking']
-	
-
 # return action gripper as boolean
 def get_action_gripper(data):
 	return bool( int(data) )
@@ -80,3 +74,21 @@ def create_movement(move):
 	movement.goal.cartesian_pose.poseStamped.pose.orientation.w = move[6]
 
 	return movement
+
+# wait until paying
+def wait_playing():										
+	configure_led(bool(ON), int(RED), bool(OFF))
+	rospy.sleep(2)
+	configure_led(bool(ON), int(BLUE), bool(OFF))
+	rospy.sleep(2)
+	configure_led(bool(ON), int(GREEN), bool(OFF))
+	rospy.sleep(1)
+
+
+# 'mutex'
+def check_queue(queue_m):
+	try:
+		queue_m.get(block=True,timeout=10)
+	except Queue.Empty:
+		rospy.logerr("Timeout reached, exiting...")
+		quit()

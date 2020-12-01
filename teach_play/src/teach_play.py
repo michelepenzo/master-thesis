@@ -1,76 +1,75 @@
 #!/usr/bin/env python
 
-from utils import *					# pars yaml file
+from utils import *
 
 queue = Queue.Queue()				# msgs queue 
+queue_m = Queue.Queue()				# movement queue
 actual_pose = [0] * 7				# actual pose
+action_gripper = 1					# open gripper
+
+# handler for queue
+class MyHandler(object):
+
+	def __init__(self, q):
+		self._q = q
+
+	def sub_callback(self, result):
+		self._q.put(1)
+
 
 # read MFButton topic and publish action movement
 def teach_and_play(data):
 	if data.data:
 		queue.put(' ')
 	else:
-		if queue.qsize() > 20 and queue.qsize() <= 500:			# one click (POINT)
+
+		if queue.qsize() > 20 and queue.qsize() <= 400:		# one click (POINT)
 			rospy.logwarn("Getting pose")
 			global actual_pose
 			print_on_csv(actual_pose)
 			queue.queue.clear()
 
-		elif queue.qsize() > 500 and queue.qsize() <= 1000:		# two seconds (CLOSE GRIPPER)
-			rospy.logwarn("Closing gripper")
-			print_on_csv( ('action_gripper', 0) )
+		elif queue.qsize() > 400 and queue.qsize() <= 1000:	# two seconds (INVERT GRIPPER)
+			global action_gripper
+			if action_gripper:
+				action_gripper = 0
+			else:
+				action_gripper = 1
+			
+			print_on_csv( ('action_gripper', action_gripper) )
+			rospy.logwarn("Action gripper")
+			
 			queue.queue.clear()
 
-		elif queue.qsize() > 1000 and queue.qsize() <= 1500:	# three seconds (OPEN GRIPPER)
-			print_on_csv( ('action_gripper', 1) )
-			rospy.logwarn("Opening gripper")
-			queue.queue.clear()
-
-		elif queue.qsize() > 1500:								# 5 seconds 
+		elif queue.qsize() > 1000:							# 5 seconds 
 			rospy.logwarn("Start playing")
-			queue.queue.clear()									# STOP TEACHING
+			queue.queue.clear()								# STOP TEACHING
 
-			rospy.sleep(2)										# wait
-			configure_led(bool(ON), int(RED), bool(OFF))
-			rospy.sleep(2)
-			configure_led(bool(ON), int(BLUE), bool(OFF))
-			rospy.sleep(2)
-			configure_led(bool(ON), int(GREEN), bool(OFF))
-			rospy.sleep(2)
+			wait_playing()									# wait
 
-			while not rospy.is_shutdown():
+			while not rospy.is_shutdown():					# START PLAYING
 
 				with open(filename_csv) as outfile:
 					reader = csv.reader(outfile)
 
 					for line in reader:
-
 						if line[0] == 'pose':
-							#rospy.logwarn('Move to pose')
 							pub.publish( create_movement( get_cartesian_pose(line[1:8]) ) )
-							rospy.sleep(3)
+							check_queue(queue_m)
 
 						elif line[0] == 'action_gripper':
-							#rospy.logwarn('Activate gripper')
 							configure_gripper( get_action_gripper(line[1]) )
-							rospy.sleep(2)
-
-						elif line[0] == 'action_led':
-							#rospy.logwarn('action_led')
-							configure_led( line[0], line[1], line[2] )
-							rospy.sleep(2)
 
 				#rospy.signal_shutdown('')
 
 
 
-# read cartesian pose and put into a queue with only one element 
+# read cartesian pose and save as actual_pose
 def read_cartesian_pose(data):
 	global actual_pose
 	actual_pose = [ 'pose', data.poseStamped.pose.position.x, data.poseStamped.pose.position.y, data.poseStamped.pose.position.z,
 					data.poseStamped.pose.orientation.x, data.poseStamped.pose.orientation.y,
 					data.poseStamped.pose.orientation.z, data.poseStamped.pose.orientation.w ]
-
 
 
 
@@ -81,14 +80,21 @@ if __name__ == '__main__':
 	# init instructions
 	rospy.wait_for_service('/iiwa/configuration/configureLed')	# wait led service
 	rospy.wait_for_service('/iiwa/configuration/openGripper')	# wait gripper service
-	configure_led(False, 1, False)								# turn off led on start
-	configure_gripper(1)										# open gripper on startup
-	clean_file()               									# clean file on open
 
-	# start listener and talker on nodes
+	# startup operations
+	configure_led(False, 1, False)								# turn off led
+	configure_gripper(1)										# open gripper
+	clean_file()               									# clean file 
+
+	handler = MyHandler(queue_m)
+
+	# listeners
 	rospy.init_node('tech_node', anonymous=True)
 	rospy.Subscriber("/iiwa/state/MFButtonState", Bool, teach_and_play)
 	rospy.Subscriber("/iiwa/state/CartesianPose", msg.CartesianPose, read_cartesian_pose)
 	rospy.Subscriber('/iiwa/action/move_to_cartesian_pose_lin/result',msg.MoveToCartesianPoseActionResult, handler.sub_callback)
+
+	# publisher
 	pub = rospy.Publisher('/iiwa/action/move_to_cartesian_pose_lin/goal', msg.MoveToCartesianPoseActionGoal, queue_size=10)
+
 	rospy.spin()	
