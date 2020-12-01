@@ -1,0 +1,78 @@
+\documentclass{paper}
+
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\usepackage{a4wide}			% size page
+\usepackage{hyperref}		% links
+\usepackage{graphicx}		% imgs
+\usepackage{float}			% due immagini
+\usepackage{biblatex}		% bibliografia
+
+% utils
+\graphicspath{{figures/}} 	
+\setlength\parindent{0pt}		% permanent no indent 
+
+% biblio
+\addbibresource{Bibliografia}
+
+% new commands
+\newcommand{\var}[1]{\texttt{#1}}
+
+% title
+\title{ Industrial Interface for KUKA Robot \\ 	\large{Robotica AA 2019-2020} }
+   
+% info
+\author{Michele Penzo}
+\date{\today}
+
+\begin{document}
+\maketitle 
+
+\section{Introduzione}
+	L'obiettivo del progetto è quello di lavorare, capire e trovare il miglior modo per interfacciarsi con il Robot KUKA IIWA LBR. 
+	Possiamo dividere i task del progetto in:
+	\begin{enumerate}
+		\item valutare le soluzioni proposte
+		\item creare un piccolo task pick and place in simulata
+		\item eseguire il tutto sul robot reale
+	\end{enumerate}
+	Link repository progetto: \href{https://github.com/michelepenzo/robotica}{https://github.com/michelepenzo/robotica}
+
+\section{Stack utilizzato: IFL-CAMP/iiwa\_stack}
+	\label{ifl-camp}
+	Questo tool mette a disposizione un nodo \textbf{RosJava} che viene eseguito sul robot come se fosse una Sunrise Application. Quindi fornisce topic/servizi ROS e funziona con i parametri classici di ROS.
+	Ha il supporto a a \textbf{Gazebo} e \textbf{MoveIt}, cosi è possibile usare il robot in simulazione.
+	Ha il supporto a ROS Melodic, anche se nella wiki dicono che sia possibile usarlo anche con Melodic.
+
+\section{Descrizione del gripper}	
+	Il gripper utilizzato è un \var{mplm3240}, composto da:
+	\begin{itemize}
+		\item flangia di supporto: in figura \ref{base};
+		\item tool di supporto con i $ 2 $ giunti prismatici: in figura \ref{tool};
+	\end{itemize}
+	
+	Il gripper completo è stato montato sul \textit{iiwa14} tenendo conto dell'offset:
+	\begin{itemize}
+		\item \var{x}: $ 0 $;
+		\item \var{y}: $ 0 $;
+		\item \var{z}: $ 118.7 $mm.
+	\end{itemize} 
+
+
+	\begin{figure}[H]
+		\centering
+		\begin{minipage}{.5\textwidth}
+			\centering
+			\includegraphics[width=.4\linewidth]{base.png}
+			\caption{Flangia di supporto.}
+			\label{base}
+		\end{minipage}%
+		\begin{minipage}{.5\textwidth}
+			\centering
+			\includegraphics[width=.4\linewidth]{tool.png}
+			\caption{Gripper con 2 giunti prismatici.}
+			\label{tool}
+		\end{minipage}
+	\end{figure}
+
+\end{document}
