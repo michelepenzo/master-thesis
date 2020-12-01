@@ -46,9 +46,9 @@ def teach_and_play(data):
 					for line in reader:
 
 						if line[0] == 'pose':
-							rospy.logwarn('Move to pose')
+							#rospy.logwarn('Move to pose')
 							pub.publish( create_movement( get_cartesian_pose(line[1:8]) ) )
-							rospy.sleep(2)
+							rospy.sleep(3)
 
 						elif line[0] == 'action_gripper':
 							#rospy.logwarn('Activate gripper')
@@ -82,12 +82,13 @@ if __name__ == '__main__':
 	rospy.wait_for_service('/iiwa/configuration/configureLed')	# wait led service
 	rospy.wait_for_service('/iiwa/configuration/openGripper')	# wait gripper service
 	configure_led(False, 1, False)								# turn off led on start
+	configure_gripper(1)										# open gripper on startup
 	clean_file()               									# clean file on open
 
 	# start listener and talker on nodes
 	rospy.init_node('tech_node', anonymous=True)
 	rospy.Subscriber("/iiwa/state/MFButtonState", Bool, teach_and_play)
 	rospy.Subscriber("/iiwa/state/CartesianPose", msg.CartesianPose, read_cartesian_pose)
-	#rospy.Subscriber('/iiwa/action/move_to_cartesian_pose_lin/result',msg.MoveToCartesianPoseActionResult, handler.sub_callback)
+	rospy.Subscriber('/iiwa/action/move_to_cartesian_pose_lin/result',msg.MoveToCartesianPoseActionResult, handler.sub_callback)
 	pub = rospy.Publisher('/iiwa/action/move_to_cartesian_pose_lin/goal', msg.MoveToCartesianPoseActionGoal, queue_size=10)
 	rospy.spin()	
