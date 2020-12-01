@@ -18,37 +18,24 @@ def read_button_state_teach(data):
 		if queue.qsize() > 20 and queue.qsize() <= 500:			# one click (POINT)
 			rospy.logwarn("Getting pose")
 			pose = queue_p.get()
-			'''
-			print_on_file( dict( pose = dict( pose_x = pose[0], pose_y = pose[1], pose_z = pose[2],
-											orientation_x = pose[3], orientation_y = pose[4],
-											orientation_z = pose[5], orientation_w = pose[6])) )
-			'''
-
 			print_on_csv(pose)
 			queue.queue.clear()
 
 		elif queue.qsize() > 500 and queue.qsize() <= 1000:		# two seconds (CLOSE GRIPPER)
 			rospy.logwarn("Closing gripper")
-			#print_on_file( dict( action_gripper = bool(CLOSE)) )
-			print_on_csv( ('action_gripper', CLOSE) )
+			print_on_csv( ('action_gripper', 0) )
 			queue.queue.clear()
 
 		elif queue.qsize() > 1000 and queue.qsize() <= 1500:	# three seconds (OPEN GRIPPER)
-			#print_on_file( dict( action_gripper = bool(OPEN)) )
-			print_on_csv( ('action_gripper', OPEN) )
+			print_on_csv( ('action_gripper', 1) )
 			rospy.logwarn("Opening gripper")
 			queue.queue.clear()
 
-		elif queue.qsize() > 1500 and queue.qsize() <= 3000:	# 5 seconds (STOP TEACHING) 
-			rospy.logwarn("Stopping")
-			queue.queue.clear()
-
-		elif queue.qsize() > 3000:								# 10 seconds (START PLAYING)
-			queue.queue.clear()								
+		elif queue.qsize() > 1500:								# 5 seconds 
 			rospy.logwarn("Start playing")
+			queue.queue.clear()									# STOP TEACHING
 
-			# uso i led per dire che sta per cominciare il play
-			rospy.sleep(2)	
+			rospy.sleep(2)										# and START PLAYING after 8 seconds
 			configure_led(bool(ON), int(GREEN), bool(OFF))			
 			rospy.sleep(2)									
 			configure_led(bool(ON), int(BLUE), bool(OFF))						
