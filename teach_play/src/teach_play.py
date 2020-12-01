@@ -3,18 +3,17 @@
 from utils import *					# pars yaml file
 
 queue = Queue.Queue()				# msgs queue 
-queue_p = Queue.Queue(maxsize=1)	# pose queue
-
+actual_pose = [0] * 7				# actual pose
 
 # read MFButton topic and publish action movement
 def teach_and_play(data):
 	if data.data:
-		queue.put(' ')		
+		queue.put(' ')
 	else:
 		if queue.qsize() > 20 and queue.qsize() <= 500:			# one click (POINT)
 			rospy.logwarn("Getting pose")
-			pose = queue_p.get()
-			print_on_csv(pose)
+			global actual_pose
+			print_on_csv(actual_pose)
 			queue.queue.clear()
 
 		elif queue.qsize() > 500 and queue.qsize() <= 1000:		# two seconds (CLOSE GRIPPER)
@@ -31,23 +30,47 @@ def teach_and_play(data):
 			rospy.logwarn("Start playing")
 			queue.queue.clear()									# STOP TEACHING
 
-			rospy.sleep(2)										# wait 8 seconds
-			configure_led(bool(ON), int(GREEN), bool(OFF))			
-			rospy.sleep(2)									
-			configure_led(bool(ON), int(BLUE), bool(OFF))						
-			rospy.sleep(2)									
+			rospy.sleep(2)										# wait
 			configure_led(bool(ON), int(RED), bool(OFF))
-			rospy.sleep(2)	
-			#rospy.signal_shutdown('')	
-			
-			play()												# START PLAYING 
-				
+			rospy.sleep(2)
+			configure_led(bool(ON), int(BLUE), bool(OFF))
+			rospy.sleep(2)
+			configure_led(bool(ON), int(GREEN), bool(OFF))
+			rospy.sleep(2)
+
+			while not rospy.is_shutdown():
+
+				with open(filename_csv) as outfile:
+					reader = csv.reader(outfile)
+
+					for line in reader:
+
+						if line[0] == 'pose':
+							rospy.logwarn('Move to pose')
+							pub.publish( create_movement( get_cartesian_pose(line[1:8]) ) )
+							rospy.sleep(2)
+
+						elif line[0] == 'action_gripper':
+							#rospy.logwarn('Activate gripper')
+							configure_gripper( get_action_gripper(line[1]) )
+							rospy.sleep(2)
+
+						elif line[0] == 'action_led':
+							#rospy.logwarn('action_led')
+							configure_led( line[0], line[1], line[2] )
+							rospy.sleep(2)
+
+				#rospy.signal_shutdown('')
+
+
 
 # read cartesian pose and put into a queue with only one element 
 def read_cartesian_pose(data):
-	queue_p.put([ 'pose', data.poseStamped.pose.position.x, data.poseStamped.pose.position.y, data.poseStamped.pose.position.z,
+	global actual_pose
+	actual_pose = [ 'pose', data.poseStamped.pose.position.x, data.poseStamped.pose.position.y, data.poseStamped.pose.position.z,
 					data.poseStamped.pose.orientation.x, data.poseStamped.pose.orientation.y,
-					data.poseStamped.pose.orientation.z, data.poseStamped.pose.orientation.w ])
+					data.poseStamped.pose.orientation.z, data.poseStamped.pose.orientation.w ]
+
 
 
 
@@ -65,5 +88,6 @@ if __name__ == '__main__':
 	rospy.init_node('tech_node', anonymous=True)
 	rospy.Subscriber("/iiwa/state/MFButtonState", Bool, teach_and_play)
 	rospy.Subscriber("/iiwa/state/CartesianPose", msg.CartesianPose, read_cartesian_pose)
-	rospy.Publisher('/iiwa/action/move_to_cartesian_pose_lin/goal', msg.MoveToCartesianPoseActionGoal, queue_size=10)
+	#rospy.Subscriber('/iiwa/action/move_to_cartesian_pose_lin/result',msg.MoveToCartesianPoseActionResult, handler.sub_callback)
+	pub = rospy.Publisher('/iiwa/action/move_to_cartesian_pose_lin/goal', msg.MoveToCartesianPoseActionGoal, queue_size=10)
 	rospy.spin()	
