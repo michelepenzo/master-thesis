@@ -22,8 +22,9 @@ def make_motion(position):
 	result = move_group.execute(plan, wait=True)
 	rospy.sleep(1)
 
-pick_data  = read_yaml_file('/home/ice-admin/iiwa_stack_ws/src/iiwa_stack/demo/config/pick.yaml')
-place_data = read_yaml_file('/home/ice-admin/iiwa_stack_ws/src/iiwa_stack/demo/config/place.yaml')
+
+pick_data  = read_yaml_file('/home/ice-admin/iiwa_stack_ws/src/iiwa_stack/pkgs_mp/demo/config/pick.yaml')
+place_data = read_yaml_file('/home/ice-admin/iiwa_stack_ws/src/iiwa_stack/pkgs_mp/demo/config/place.yaml')
 
 os.environ["ROS_NAMESPACE"] = "/iiwa"
 
