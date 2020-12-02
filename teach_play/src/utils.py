@@ -5,13 +5,17 @@ import rospy, csv, Queue
 # msgs pkg
 from std_msgs.msg import String, Bool
 from iiwa_msgs import msg
+#import iiwa_msgs
 from iiwa_msgs import srv
+import actionlib_msgs.msg
+import actionlib
+
 
 # macros
 ON, OFF = True, False			# turn on/off led, turn on/off blinking
 RED, GREEN, BLUE = 1, 2, 3		# rgb colors 
 
-filename_csv = '/home/ice-admin/iiwa_stack_ws/src/iiwa_stack/pkgs_mp/teach_play/csv/actions.csv'
+filename_csv = '/home/ice-admin/iiwa_stack_ws/src/iiwa_stack/pkgs_mp/teach_play/actions.csv'
 
 
 # move gripper to selected configuration
@@ -22,6 +26,7 @@ def configure_gripper(action):
 	try:
 		gripper_response = gripper(gripper_request) 
 	except rospy.service.ServiceException as e:
+		rospy.logerr('Exception {}'.format(e))
 		pass
 
 
@@ -33,6 +38,7 @@ def configure_led(on, color, blinking):
 	try:
 		led_response = led(configure_led_request)
 	except rospy.service.ServiceException as e:
+		rospy.logerr('Exception {}'.format(e))
 		pass
 
 
@@ -55,32 +61,39 @@ def get_action_gripper(data):
 # clean file
 def clean_file():
 	with open(filename_csv, 'w') as outfile:
-		outfile.write('')
+		pass
 
 
 # create movement
 def create_movement(move):
 	
-	movement=msg.MoveToCartesianPoseActionGoal()
-	movement.goal.cartesian_pose.poseStamped.header.frame_id = 'iiwa_link_0'
+	movement=msg.CartesianPose()
+	
+	movement.poseStamped.header.seq = 1 
+	movement.poseStamped.header.stamp = rospy.Time.now()
+	movement.poseStamped.header.frame_id = 'iiwa_link_0'
+	
+	movement.poseStamped.pose.position.x = move[0]
+	movement.poseStamped.pose.position.y = move[1]
+	movement.poseStamped.pose.position.z = move[2]
 
-	movement.goal.cartesian_pose.poseStamped.pose.position.x = move[0]
-	movement.goal.cartesian_pose.poseStamped.pose.position.y = move[1]
-	movement.goal.cartesian_pose.poseStamped.pose.position.z = move[2]
+	movement.poseStamped.pose.orientation.x = move[3]
+	movement.poseStamped.pose.orientation.y = move[4]
+	movement.poseStamped.pose.orientation.z = move[5]
+	movement.poseStamped.pose.orientation.w = move[6]
 
-	movement.goal.cartesian_pose.poseStamped.pose.orientation.x = move[3]
-	movement.goal.cartesian_pose.poseStamped.pose.orientation.y = move[4]
-	movement.goal.cartesian_pose.poseStamped.pose.orientation.z = move[5]
-	movement.goal.cartesian_pose.poseStamped.pose.orientation.w = move[6]
+	# TODO caricare redundancy
+	movement.redundancy.e1 = -1
+	movement.redundancy.status = -1
 
 	return movement
 
 # wait until paying
 def wait_playing():										
 	configure_led(bool(ON), int(RED), bool(OFF))
-	rospy.sleep(2)
+	rospy.sleep(1)
 	configure_led(bool(ON), int(BLUE), bool(OFF))
-	rospy.sleep(2)
+	rospy.sleep(1)
 	configure_led(bool(ON), int(GREEN), bool(OFF))
 	rospy.sleep(1)
 
@@ -90,5 +103,6 @@ def check_queue(queue_m):
 	try:
 		queue_m.get(block=True,timeout=10)
 	except Queue.Empty:
+		queue_m.queue.clear()
 		rospy.logerr("Timeout reached, exiting...")
 		quit()
