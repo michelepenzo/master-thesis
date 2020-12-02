@@ -8,20 +8,12 @@ queue_m = Queue.Queue()				# movement queue
 actual_pose = [0] * 7				# actual pose
 action_gripper = 1					# open gripper
 
-# handler for queue
-class MyHandler(object):
-
-	def __init__(self, q):
-		self._q = q
-
-	def sub_callback(self, result):
-		self._q.put(1)
-
-
 # read MFButton topic and publish action movement
 def teach_and_play(data):
+	# TODO sporco
 	global actual_pose
-	
+	global action_gripper
+
 	if data.data:
 		queue.put('')
 	else:
@@ -33,7 +25,7 @@ def teach_and_play(data):
 			queue.queue.clear()
 
 		elif queue.qsize() > 400 and queue.qsize() <= 1000:	# two seconds (INVERT GRIPPER)
-			global action_gripper
+			
 
 			if action_gripper:
 				action_gripper = 0
@@ -52,26 +44,29 @@ def teach_and_play(data):
 
 			wait_playing()									# wait
 
-			client = actionlib.SimpleActionClient('/iiwa/action/move_to_cartesian_pose', msg.MoveToCartesianPoseAction)
+			# TODO spostare TEACH tutto in una funzione
+			#client = actionlib.SimpleActionClient('/iiwa/action/move_to_cartesian_pose', msg.MoveToCartesianPoseAction)
 
 			client.wait_for_server()
 			client.cancel_all_goals()
 
-			while not rospy.is_shutdown():		# START PLAYING
+			while not rospy.is_shutdown():					# START PLAYING
 		
 				with open(filename_csv) as outfile:
 					reader = csv.reader(outfile)
 
 					for line in reader:
 						if line[0] == 'pose':
+							pose_goal = create_movement(get_cartesian_pose(line[1:8]))	# pose goal # TODO forse ()
+							goal_msg = msg.MoveToCartesianPoseGoal( pose_goal ) 			
 
-							goal = msg.MoveToCartesianPoseGoal( create_movement((get_cartesian_pose(line[1:8]))) )
-							client.send_goal_and_wait(goal)							# Sends the goal to the action server.
-							client.wait_for_result()								# Waits for the server to finish performing the action.				
-							rospy.logwarn( client.get_result() ) 					# Prints out the result of executing the action
+							client.send_goal_and_wait(goal_msg)							# send goal to action server
+							client.wait_for_result()									# wait for the result
+							rospy.logwarn( client.get_result() ) 						# print the resutl of the execution
 
 						elif line[0] == 'action_gripper':
 								configure_gripper( get_action_gripper(line[1]) )
+
 
 # read cartesian pose and save as actual_pose
 def read_cartesian_pose(data):
@@ -80,6 +75,10 @@ def read_cartesian_pose(data):
 					data.poseStamped.pose.orientation.x, data.poseStamped.pose.orientation.y,
 					data.poseStamped.pose.orientation.z, data.poseStamped.pose.orientation.w ]
 
+
+# read joint position and save actual position
+def read_joint_position(data):
+	pass
 
 # ---------------------------------------------------------------------------------------------
 
@@ -92,7 +91,7 @@ if __name__ == '__main__':
 	# startup operations
 	configure_led(False, 1, False)								# turn off led
 	configure_gripper(1)										# open gripper
-	#clean_file()               									# clean file 
+	clean_file()               									# clean file 
 
 	handler = MyHandler(queue_m)
 
@@ -100,10 +99,11 @@ if __name__ == '__main__':
 	rospy.init_node('tech_node', disable_signals=True)
 	rospy.Subscriber("/iiwa/state/MFButtonState", Bool, teach_and_play)
 	rospy.Subscriber("/iiwa/state/CartesianPose", msg.CartesianPose, read_cartesian_pose)
-	rospy.Subscriber('/iiwa/action/move_to_cartesian_pose_lin/result',msg.MoveToCartesianPoseActionResult, handler.sub_callback)
+	#rospy.Subscriber("/iiwa/state/CartesianPose", msg.JointPosition, read_cartesian_pose)		# TOOD joint pose
 	
 	# actionclient
 	client = actionlib.SimpleActionClient('/iiwa/action/move_to_cartesian_pose', msg.MoveToCartesianPoseAction)
+
 	try:
 		while not rospy.is_shutdown():
 			rospy.sleep(1)
