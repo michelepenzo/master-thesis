@@ -1,3 +1,3 @@
 # Robotica
 
-Descrizione del lavoro svolto in [report/report.pdf](./report/report.pdf).
+Esempi di lavoro funzionanti su [iiwa stack](https://github.com/IFL-CAMP/iiwa_stack/).
