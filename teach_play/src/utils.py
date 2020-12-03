@@ -1,19 +1,16 @@
  #!/usr/bin/env python
 
-import rospy, csv, Queue
+import rospy, csv, Queue, rospkg, actionlib
 
 # msgs pkg
 from std_msgs.msg import String, Bool
 from iiwa_msgs import msg, srv
 import actionlib_msgs.msg
-import actionlib
 
 # macros
 ON, OFF = True, False			# turn on/off led, turn on/off blinking
 RED, GREEN, BLUE = 1, 2, 3		# rgb colors 
-
-# TODO find package
-filename_csv = '/home/ice-admin/iiwa_stack_ws/src/iiwa_stack/pkgs_mp/teach_play/actions.csv'
+filename_csv = rospkg.RosPack().get_path('teach_play') + '/actions.csv'
 
 
 # move gripper to selected configuration

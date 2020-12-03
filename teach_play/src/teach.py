@@ -9,15 +9,14 @@ queue_m = Queue.Queue()				# movement queue
 actual_pose = [0] * 7				# actual pose
 action_gripper = 1					# open gripper
 
-sleep_running = True
+finish = False
 
 # read MFButton topic and publish action movement
 def teach_and_play(data):
 	# TODO sporco
-	# TODO rimuovere service del gripper
 	global actual_pose
 	global action_gripper
-	global sleep_running
+	global finish
 
 	if data.data:
 		queue.put('')
@@ -27,7 +26,7 @@ def teach_and_play(data):
 			
 			print_on_csv(actual_pose)
 			configure_led(True, 2, False)
-			sleep(1)
+			rospy.sleep(1)
 			configure_led(False, 2, False)
 			rospy.logwarn("Get pose")
 			queue.queue.clear()
@@ -44,15 +43,16 @@ def teach_and_play(data):
 			print_on_csv( ('action_gripper', action_gripper) )
 			
 			configure_led(True, 1, False)
-			sleep(1)
+			rospy.sleep(1)
 			configure_led(False, 1, False)
 			rospy.logwarn("Get pose and action gripper")		
 			queue.queue.clear()
 
 		elif queue.qsize() > 1000:							# 5 seconds 
-			rospy.logwarn("Stop teaching")
+			rospy.logwarn("Stop teaching ...")
 			queue.queue.clear()								# STOP TEACHING
-
+			configure_led(True, 3, False)
+			finish = True
 
 # read cartesian pose and save as actual_pose
 def read_cartesian_pose(data):
@@ -67,6 +67,7 @@ def read_cartesian_pose(data):
 if __name__ == '__main__':
 	
 	# init instructions
+	rospy.init_node('teach', disable_signals=True)
 	rospy.wait_for_service('/iiwa/configuration/configureLed')	# wait led service
 	rospy.wait_for_service('/iiwa/configuration/openGripper')	# wait gripper service
 
@@ -76,18 +77,18 @@ if __name__ == '__main__':
 	clean_file()               									# clean file 
 
 	# listeners
-	rospy.init_node('teach', disable_signals=True)
 	rospy.Subscriber("/iiwa/state/MFButtonState", Bool, teach_and_play)
 	rospy.Subscriber("/iiwa/state/CartesianPose", msg.CartesianPose, read_cartesian_pose)
 	
 	# actionclient
 	try:
 		
-		while True:
+		while not finish:
 			rospy.sleep(1)
 		
 		#play()
 
 	except KeyboardInterrupt:
 		rospy.logwarn('KeyboardInterrupt teach_and_play...')
+		configure_led(False, 1, False)
 		rospy.signal_shutdown('')

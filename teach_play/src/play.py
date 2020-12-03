@@ -4,14 +4,13 @@ from utils import *
 
 def play():
 	
-	rospy.logwarn('ACTION CLIENT: ' + str(rospy.get_name()))
+	rospy.logwarn('Start playing ...')
 	client = actionlib.SimpleActionClient('/iiwa/action/move_to_cartesian_pose', msg.MoveToCartesianPoseAction)
 
 	client.wait_for_server()		# waiting starting server
 	client.cancel_all_goals()		# clear all old goals
 	
-	#while True:
-	for _ in range(3):
+	while True:
 		with open(filename_csv) as outfile:
 			reader = csv.reader(outfile)
 
@@ -25,18 +24,24 @@ def play():
 					client.send_goal_and_wait(action_goal)					# send the action to action server and wait
 					client.wait_for_result()								# waits for the server to finish performing the action
 				
-				# TODO gestione del gripper
 				elif line[0] == 'action_gripper':
 					configure_gripper( get_action_gripper(line[1]) )
 				
 
 if __name__ == '__main__':
 	try:
+		# init instructions
 		rospy.init_node('play', disable_signals=True)
-		init_play()
+		rospy.wait_for_service('/iiwa/configuration/configureLed')	# wait led service
+		rospy.wait_for_service('/iiwa/configuration/openGripper')	# wait gripper service
+
+		# startup operations
+		configure_led(True, 1, False)
+		configure_gripper(1)
 		play()
 	
 	except KeyboardInterrupt:
 		rospy.logwarn('KeyboardInterrupt play...')
+		configure_led(False, 1, False)								# turn off led
 		rospy.signal_shutdown('')
-		quit()
+		
