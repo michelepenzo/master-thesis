@@ -5,7 +5,6 @@ import rospy, csv, Queue
 # msgs pkg
 from std_msgs.msg import String, Bool
 from iiwa_msgs import msg, srv
-#from iiwa_msgs import srv
 import actionlib_msgs.msg
 import actionlib
 
@@ -46,9 +45,9 @@ def print_on_csv(data):
 		wr.writerow(data)
 
 	
-# return an array [x, y, z, x, y, z, w] of cartesian pose
+# return an array [x, y, z, x, y, z, w, status, redundancy]
 def get_cartesian_pose(data):
-	return float(data[0]), float(data[1]), float(data[2]), float(data[3]), float(data[4]), float(data[5]), float(data[6])
+	return float(data[0]), float(data[1]), float(data[2]), float(data[3]), float(data[4]), float(data[5]), float(data[6]), int(data[7]), float(data[8])
 
 
 # return action gripper as boolean
@@ -80,22 +79,15 @@ def create_movement_cartesian_pose(move):
 	movement.poseStamped.pose.orientation.z = move[5]
 	movement.poseStamped.pose.orientation.w = move[6]
 
-	# TODO caricare redundancy da /iiwa/state/CartesianPose
-	movement.redundancy.e1 = -1		
-	movement.redundancy.status = -1	
-
+	movement.redundancy.status = move[7]	
+	movement.redundancy.e1 = move[8]
+	
 	return movement
 
-def create_movement_joint_position(move):
-	pass
-
-
 # wait until paying
-def wait_playing():										
-	rospy.sleep(2)
-	configure_led(bool(ON), int(RED), bool(OFF))
+def init_play():										
 	rospy.sleep(1)
-	configure_led(bool(ON), int(BLUE), bool(OFF))
+	configure_led(bool(ON), int(RED), bool(OFF))
 	rospy.sleep(1)
 	configure_led(bool(ON), int(GREEN), bool(OFF))
 	rospy.sleep(1)
