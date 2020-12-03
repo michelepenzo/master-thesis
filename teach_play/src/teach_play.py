@@ -8,6 +8,8 @@ queue_m = Queue.Queue()				# movement queue
 actual_pose = [0] * 7				# actual pose
 action_gripper = 1					# open gripper
 
+client = actionlib.SimpleActionClient('/iiwa/action/move_to_cartesian_pose', msg.MoveToCartesianPoseAction)
+
 # read MFButton topic and publish action movement
 def teach_and_play(data):
 	# TODO sporco
@@ -19,9 +21,9 @@ def teach_and_play(data):
 	else:
 
 		if queue.qsize() > 20 and queue.qsize() <= 400:		# one click (POINT)
-			rospy.logwarn("Getting pose")
-
+			#rospy.logwarn("Getting pose")
 			print_on_csv(actual_pose)
+			configure_led(True, 2, False)
 			queue.queue.clear()
 
 		elif queue.qsize() > 400 and queue.qsize() <= 1000:	# two seconds (INVERT GRIPPER)
@@ -35,7 +37,8 @@ def teach_and_play(data):
 			print_on_csv(actual_pose)
 			print_on_csv( ('action_gripper', action_gripper) )
 			
-			rospy.logwarn("Action gripper")		
+			configure_led(True, 1, False)
+			#rospy.logwarn("Action gripper")		
 			queue.queue.clear()
 
 		elif queue.qsize() > 1000:							# 5 seconds 
@@ -44,25 +47,25 @@ def teach_and_play(data):
 
 			wait_playing()									# wait
 
-			# TODO spostare TEACH tutto in una funzione
-			#client = actionlib.SimpleActionClient('/iiwa/action/move_to_cartesian_pose', msg.MoveToCartesianPoseAction)
-
+			# TODO spostare TEACH tutto in una funzione			
 			client.wait_for_server()
 			client.cancel_all_goals()
 
-			while not rospy.is_shutdown():					# START PLAYING
-		
+			#while True:										# START PLAYING
+			for _ in range(5):
 				with open(filename_csv) as outfile:
 					reader = csv.reader(outfile)
 
 					for line in reader:
 						if line[0] == 'pose':
-							pose_goal = create_movement(get_cartesian_pose(line[1:8]))	# pose goal # TODO forse ()
+							pose_goal = create_movement_cartesian_pose(
+													get_cartesian_pose(line[1:8]) )		# pose goal # TODO forse ()
+
 							goal_msg = msg.MoveToCartesianPoseGoal( pose_goal ) 			
 
 							client.send_goal_and_wait(goal_msg)							# send goal to action server
 							client.wait_for_result()									# wait for the result
-							rospy.logwarn( client.get_result() ) 						# print the resutl of the execution
+							client.get_result()					 					# print the resutl of the execution
 
 						elif line[0] == 'action_gripper':
 								configure_gripper( get_action_gripper(line[1]) )
@@ -93,8 +96,6 @@ if __name__ == '__main__':
 	configure_gripper(1)										# open gripper
 	clean_file()               									# clean file 
 
-	handler = MyHandler(queue_m)
-
 	# listeners
 	rospy.init_node('tech_node', disable_signals=True)
 	rospy.Subscriber("/iiwa/state/MFButtonState", Bool, teach_and_play)
@@ -102,12 +103,10 @@ if __name__ == '__main__':
 	#rospy.Subscriber("/iiwa/state/CartesianPose", msg.JointPosition, read_cartesian_pose)		# TOOD joint pose
 	
 	# actionclient
-	client = actionlib.SimpleActionClient('/iiwa/action/move_to_cartesian_pose', msg.MoveToCartesianPoseAction)
-
 	try:
 		while not rospy.is_shutdown():
 			rospy.sleep(1)
-	except:
+	except KeyboardInterrupt:
 		client.cancel_all_goals()
-		sleep(3)
-	
+		rospy.logwarn('KeyboardInterrupt ...')
+		rospy.sleep(3)

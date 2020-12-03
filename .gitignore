@@ -278,4 +278,4 @@ TSWLatexianTemp*
 # others
 *.pyc
 *.csv
-teach_play/src/test.py
+*/src/test.py
