@@ -26,7 +26,9 @@ def play():
 				
 				elif line[0] == 'action_gripper':
 					configure_gripper( get_action_gripper(line[1]) )
-				
+	
+
+# ---------------------------------------------------------------------------------------------			
 
 if __name__ == '__main__':
 	try:

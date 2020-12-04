@@ -1,0 +1,112 @@
+import rospy
+from iiwa_msgs import msg, srv
+from play import play
+
+# create service msg (STANDARD)
+def create_msg_control_mode(control_mode,																				# control mode
+							joint_stiffness, joint_damping,																# joint impedance
+							cartesian_stiffness, cartesian_damping, nullspace_stiffness, nullspace_damping,				# cartesian impedance
+							df_cartesian_dof, desired_force, desired_stiffness,											# desidered force
+							s_cartesian_dof, frequency, amplitude, stiffness,											# sine patterns
+							max_path_deviation, max_control_force, max_control_force_stop, max_cartesian_velocity ):	# limits
+	
+
+	joint_impedance = msg.JointImpedanceControlMode()
+	joint_impedance.joint_stiffness.a1 = joint_stiffness[0]
+	joint_impedance.joint_stiffness.a2 = joint_stiffness[1]
+	joint_impedance.joint_stiffness.a3 = joint_stiffness[2]
+	joint_impedance.joint_stiffness.a4 = joint_stiffness[3]
+	joint_impedance.joint_stiffness.a5 = joint_stiffness[4]
+	joint_impedance.joint_stiffness.a6 = joint_stiffness[5]
+	joint_impedance.joint_stiffness.a7 = joint_stiffness[6]
+
+	joint_impedance.joint_damping.a1 = joint_damping[0]
+	joint_impedance.joint_damping.a2 = joint_damping[1]
+	joint_impedance.joint_damping.a3 = joint_damping[2]
+	joint_impedance.joint_damping.a4 = joint_damping[3]
+	joint_impedance.joint_damping.a5 = joint_damping[4]
+	joint_impedance.joint_damping.a6 = joint_damping[5]
+	joint_impedance.joint_damping.a7 = joint_damping[6]
+
+	# --------------------------------------------------------------------------
+
+	cartesian_impedance = msg.CartesianImpedanceControlMode()
+	cartesian_impedance.cartesian_stiffness.x = cartesian_stiffness[0]
+	cartesian_impedance.cartesian_stiffness.y = cartesian_stiffness[1]
+	cartesian_impedance.cartesian_stiffness.z = cartesian_stiffness[2]
+	cartesian_impedance.cartesian_stiffness.a = cartesian_stiffness[3]
+	cartesian_impedance.cartesian_stiffness.b = cartesian_stiffness[4]
+	cartesian_impedance.cartesian_stiffness.c = cartesian_stiffness[5]
+
+	cartesian_impedance.cartesian_damping.x = cartesian_damping[0]
+	cartesian_impedance.cartesian_damping.y = cartesian_damping[1]
+	cartesian_impedance.cartesian_damping.z = cartesian_damping[2]
+	cartesian_impedance.cartesian_damping.a = cartesian_damping[3]
+	cartesian_impedance.cartesian_damping.b = cartesian_damping[4]
+	cartesian_impedance.cartesian_damping.c = cartesian_damping[5]
+
+	cartesian_impedance.nullspace_stiffness = nullspace_stiffness
+	cartesian_impedance.nullspace_damping = nullspace_damping
+
+	# --------------------------------------------------------------------------
+
+	desired_force = msg.DesiredForceControlMode()						# TESTE DI CAZZO
+	desired_force.cartesian_dof = df_cartesian_dof
+	desired_force.desired_force = desired_force
+	desired_force.desired_stiffness = desired_stiffness
+
+	# --------------------------------------------------------------------------
+
+	sine_pattern = msg.SinePatternControlMode()
+	sine_pattern.cartesian_dof = s_cartesian_dof
+	sine_pattern.frequency = frequency 
+	sine_pattern.amplitude = amplitude 
+	sine_pattern.stiffness = stiffness 
+	
+	# --------------------------------------------------------------------------
+
+	limits = msg.CartesianControlModeLimits()
+	limits.max_path_deviation = max_path_deviation
+	limits.max_control_force = max_control_force
+	limits.max_control_force_stop = max_control_force_stop
+	limits.max_cartesian_velocity = max_cartesian_velocity
+
+	#return control_mode, joint_impedance, cartesian_impedance, desired_force, sine_pattern, limits
+	return cartesian_impedance, joint_impedance
+
+# create msg for position control
+def create_msg_position_control():
+
+	# pass values to msg
+	msg = create_msg_control_mode(
+		control_mode=0,
+		joint_stiffness=[0.0]*7, joint_damping=[0.0]*7,		
+		cartesian_stiffness=[0.0]*7, cartesian_damping=[0.0]*7, nullspace_stiffness=0.0, nullspace_damping=0.0,
+		df_cartesian_dof=0, desired_force=0.0, desired_stiffness=0.0,
+		s_cartesian_dof=0, frequency=0.0, amplitude=0.0, stiffness=0.0,
+		max_path_deviation=[0.0]*6, max_control_force=[0.0]*6, max_control_force_stop=False, max_cartesian_velocity=[0.0]*6
+		)
+
+	return msg
+
+# create msg for joint impendance (fake hand guide values)
+def create_msg_position_control():
+
+	# pass values to msg
+	msg = create_msg_control_mode(
+		control_mode=0,
+		joint_stiffness=[2.0, 2.0, 2.0, 2.0, 2.0, 0.0, 0.0], joint_damping=[0.7]*7,		
+		cartesian_stiffness=[0.0]*7, cartesian_damping=[0.0]*7, nullspace_stiffness=0.0, nullspace_damping=0.0,
+		df_cartesian_dof=0, desired_force=0.0, desired_stiffness=0.0,
+		s_cartesian_dof=0, frequency=0.0, amplitude=0.0, stiffness=0.0,
+		max_path_deviation=[0.0]*6, max_control_force=[0.0]*6, max_control_force_stop=False, max_cartesian_velocity=[0.0]*6
+		)
+
+	return msg
+
+# TODO
+# create msg cartesian_impedance
+def create_msg_cartesian_impedance():
+
+	pass
+

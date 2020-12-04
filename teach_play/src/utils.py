@@ -1,9 +1,8 @@
  #!/usr/bin/env python
 
-import rospy, csv, Queue, rospkg, actionlib
+import rospy, csv, rospkg, actionlib
 
 # msgs pkg
-from std_msgs.msg import String, Bool
 from iiwa_msgs import msg, srv
 import actionlib_msgs.msg
 
