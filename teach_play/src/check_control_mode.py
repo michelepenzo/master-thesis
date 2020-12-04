@@ -6,11 +6,12 @@ from utils_check import *
 TEST_CONTROL = 1
 
 # change control mode in position control
-def change_control_mode_position_control(msg):
-	control_mode_request = srv.ConfigureControlModeRequest(msg)		
+def change_control_mode_position_control(control_mode, joint_impedance, cartesian_impedance, desired_force, sine_pattern, limits):
+	control_mode = rospy.ServiceProxy('/iiwa/configuration/ConfigureControlMode',srv.ConfigureControlMode)
+	control_mode_request = srv.ConfigureControlModeRequest(control_mode, joint_impedance, cartesian_impedance, desired_force, sine_pattern, limits)		
 	
 	try:
-		control_mode_response = gripper(control_mode_request) 
+		control_mode_response = control_mode(control_mode_request) 
 	except rospy.service.ServiceException as e:
 		rospy.logerr('Control mode service Exception' + str(control_mode_response))
 
@@ -27,12 +28,9 @@ def check_control_mode(control_mode):
 	# 	4- runno il play
 
 	# TUTTI FLOAT !
-	msg_position_control = create_msg_position_control()
-	msg_joint_impendance = create_msg_position_control()
-	#change_control_mode_position_control(msg_position_control)
-	change_control_mode_position_control(msg_joint_impendance)
 
-	pass
+	control_mode, joint_impedance, cartesian_impedance, desired_force, sine_pattern, limits = create_msg_joint_impedance()	
+	change_control_mode_position_control(control_mode, joint_impedance, cartesian_impedance, desired_force, sine_pattern, limits)
 
 
 
@@ -42,7 +40,6 @@ if __name__ == '__main__':
 
 	rospy.init_node('check_control_mode', disable_signals=True)
 	rospy.wait_for_service('/iiwa/configuration/ConfigureControlMode')
-	control_mode = rospy.ServiceProxy('/iiwa/configuration/ConfigureControlMode',srv.ConfigureControlMode)
 
 	try:
 		if TEST_CONTROL:
