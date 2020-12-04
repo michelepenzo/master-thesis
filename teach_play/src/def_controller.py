@@ -10,7 +10,6 @@ def create_msg_control_mode(control_mode,																				# control mode
 							s_cartesian_dof, frequency, amplitude, stiffness,											# sine patterns
 							max_path_deviation, max_control_force, max_control_force_stop, max_cartesian_velocity ):	# limits
 	
-
 	joint_impedance = msg.JointImpedanceControlMode()
 	joint_impedance.joint_stiffness.a1 = joint_stiffness[0]
 	joint_impedance.joint_stiffness.a2 = joint_stiffness[1]
@@ -31,6 +30,7 @@ def create_msg_control_mode(control_mode,																				# control mode
 	# --------------------------------------------------------------------------
 
 	cartesian_impedance = msg.CartesianImpedanceControlMode()
+	
 	cartesian_impedance.cartesian_stiffness.x = cartesian_stiffness[0]
 	cartesian_impedance.cartesian_stiffness.y = cartesian_stiffness[1]
 	cartesian_impedance.cartesian_stiffness.z = cartesian_stiffness[2]
@@ -47,66 +47,39 @@ def create_msg_control_mode(control_mode,																				# control mode
 
 	cartesian_impedance.nullspace_stiffness = nullspace_stiffness
 	cartesian_impedance.nullspace_damping = nullspace_damping
-
-	# --------------------------------------------------------------------------
-
-	desired_force = msg.DesiredForceControlMode()						# TESTE DI CAZZO
-	desired_force.cartesian_dof = df_cartesian_dof
-	desired_force.desired_force = desired_force
-	desired_force.desired_stiffness = desired_stiffness
-
-	# --------------------------------------------------------------------------
-
-	sine_pattern = msg.SinePatternControlMode()
-	sine_pattern.cartesian_dof = s_cartesian_dof
-	sine_pattern.frequency = frequency 
-	sine_pattern.amplitude = amplitude 
-	sine_pattern.stiffness = stiffness 
 	
 	# --------------------------------------------------------------------------
 
+	desired_force = msg.DesiredForceControlMode()						# TESTE DI CAZZO
+	sine_pattern = msg.SinePatternControlMode()
 	limits = msg.CartesianControlModeLimits()
-	limits.max_path_deviation = max_path_deviation
-	limits.max_control_force = max_control_force
-	limits.max_control_force_stop = max_control_force_stop
-	limits.max_cartesian_velocity = max_cartesian_velocity
 
 	return control_mode, joint_impedance, cartesian_impedance, desired_force, sine_pattern, limits
 	
 
 # create msg for position control
 def create_msg_position_control():
-
-	# pass values to msg
-	control_mode, joint_impedance, cartesian_impedance, desired_force, sine_pattern, limits = create_msg_control_mode(
+	return create_msg_control_mode(
 		control_mode=0,
 		joint_stiffness=[0.0]*7, joint_damping=[0.0]*7,		
 		cartesian_stiffness=[0.0]*7, cartesian_damping=[0.0]*7, nullspace_stiffness=0.0, nullspace_damping=0.0,
 		df_cartesian_dof=0, desired_force=0.0, desired_stiffness=0.0,
 		s_cartesian_dof=0, frequency=0.0, amplitude=0.0, stiffness=0.0,
-		max_path_deviation=[0.0]*6, max_control_force=[0.0]*6, max_control_force_stop=False, max_cartesian_velocity=[0.0]*6
-		)
+		max_path_deviation=[0.0]*6, max_control_force=[0.0]*6, max_control_force_stop=False, max_cartesian_velocity=[0.0]*6 )
 
-	return control_mode, joint_impedance, cartesian_impedance, desired_force, sine_pattern, limits
+
 
 # create msg for joint impendance (fake hand guide values)
 def create_msg_joint_impedance():
-
-	# pass values to msg
-	control_mode, joint_impedance, cartesian_impedance, desired_force, sine_pattern, limits = create_msg_control_mode(
-		control_mode=0,
-		joint_stiffness=[2.0, 2.0, 2.0, 2.0, 2.0, 0.0, 0.0], joint_damping=[0.7]*7,		
-		cartesian_stiffness=[0.0]*7, cartesian_damping=[0.0]*7, nullspace_stiffness=0.0, nullspace_damping=0.0,
+	return create_msg_control_mode(
+		control_mode=1,
+		joint_stiffness=[2.0, 2.0, 2.0, 2.0, 2.0, 0.0, 0.0], joint_damping=[0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7],		
+		cartesian_stiffness=[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], cartesian_damping=[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], nullspace_stiffness=0.0, nullspace_damping=0.0,
 		df_cartesian_dof=0, desired_force=0.0, desired_stiffness=0.0,
 		s_cartesian_dof=0, frequency=0.0, amplitude=0.0, stiffness=0.0,
-		max_path_deviation=[0.0]*6, max_control_force=[0.0]*6, max_control_force_stop=False, max_cartesian_velocity=[0.0]*6
-		)
-
-	return control_mode, joint_impedance, cartesian_impedance, desired_force, sine_pattern, limits
+		max_path_deviation=[0.0, 0.0, 0.0, 0.0, 0.0, 0.0], max_control_force=[0.0, 0.0, 0.0, 0.0, 0.0, 0.0], max_control_force_stop=False, max_cartesian_velocity=[0.0, 0.0, 0.0, 0.0, 0.0, 0.0] )
 
 # TODO
 # create msg cartesian_impedance
 def create_msg_cartesian_impedance():
-
 	pass
-

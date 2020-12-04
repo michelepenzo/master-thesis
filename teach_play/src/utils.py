@@ -1,10 +1,11 @@
  #!/usr/bin/env python
 
-import rospy, csv, rospkg, actionlib
+import rospy, csv, rospkg, actionlib, Queue
 
 # msgs pkg
 from iiwa_msgs import msg, srv
 import actionlib_msgs.msg
+from std_msgs.msg import String, Bool
 
 filename_csv = rospkg.RosPack().get_path('teach_play') + '/actions.csv'
 
