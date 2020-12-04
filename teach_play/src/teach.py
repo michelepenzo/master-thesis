@@ -1,11 +1,8 @@
 #!/usr/bin/env python
 
 from utils import *
-from play import *
 
 queue = Queue.Queue()				# msgs queue 
-queue_m = Queue.Queue()				# movement queue
-
 actual_pose = [0] * 7				# actual pose
 action_gripper = 1					# open gripper
 
@@ -31,14 +28,13 @@ def teach_and_play(data):
 			rospy.logwarn("Get pose")
 			queue.queue.clear()
 
-		elif queue.qsize() > 400 and queue.qsize() <= 1000:	# two seconds (INVERT GRIPPER)
-			
+		elif queue.qsize() > 400 and queue.qsize() <= 1000:	# two seconds (INVERT GRIPPER and GET POINT)
 
 			if action_gripper:
 				action_gripper = 0
 			else:
 				action_gripper = 1
-		
+			
 			print_on_csv(actual_pose)
 			print_on_csv( ('action_gripper', action_gripper) )
 			
@@ -52,7 +48,8 @@ def teach_and_play(data):
 			rospy.logwarn("Stop teaching ...")
 			queue.queue.clear()								# STOP TEACHING
 			configure_led(True, 3, False)
-			finish = True
+			finish = True									# set true to finish teaching
+
 
 # read cartesian pose and save as actual_pose
 def read_cartesian_pose(data):
@@ -80,13 +77,9 @@ if __name__ == '__main__':
 	rospy.Subscriber("/iiwa/state/MFButtonState", Bool, teach_and_play)
 	rospy.Subscriber("/iiwa/state/CartesianPose", msg.CartesianPose, read_cartesian_pose)
 	
-	# actionclient
 	try:
-		
 		while not finish:
 			rospy.sleep(1)
-		
-		#play()
 
 	except KeyboardInterrupt:
 		rospy.logwarn('KeyboardInterrupt teach_and_play...')

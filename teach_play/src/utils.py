@@ -7,9 +7,6 @@ from std_msgs.msg import String, Bool
 from iiwa_msgs import msg, srv
 import actionlib_msgs.msg
 
-# macros
-ON, OFF = True, False			# turn on/off led, turn on/off blinking
-RED, GREEN, BLUE = 1, 2, 3		# rgb colors 
 filename_csv = rospkg.RosPack().get_path('teach_play') + '/actions.csv'
 
 
@@ -81,10 +78,11 @@ def create_movement_cartesian_pose(move):
 	
 	return movement
 
+
 # wait until paying
 def init_play():										
 	rospy.sleep(1)
-	configure_led(bool(ON), int(RED), bool(OFF))
+	configure_led(True, 1, False)
 	rospy.sleep(1)
-	configure_led(bool(ON), int(GREEN), bool(OFF))
+	configure_led(True, 2, False)
 	rospy.sleep(1)
