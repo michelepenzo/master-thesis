@@ -90,7 +90,7 @@ def create_msg_position_control():
 	return msg
 
 # create msg for joint impendance (fake hand guide values)
-def create_msg_position_control():
+def create_msg_joint_impedance():
 
 	# pass values to msg
 	msg = create_msg_control_mode(
