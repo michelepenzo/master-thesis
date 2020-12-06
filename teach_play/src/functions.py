@@ -1,7 +1,7 @@
 # !/usr/bin/env python
 
 import rospy, csv, rospkg
-from teach_play.utils.services import *
+from services import *
 
 filename_csv = rospkg.RosPack().get_path('teach_play') + '/actions.csv'
 

@@ -2,11 +2,11 @@
 
 import rospy
 
-from teach_play.src.play import *
-from teach_play.src.teach import *
-from teach_play.src.control_mode import *
+from src.play import *
+from src.teach import *
+from src.control_mode import *
 
-from teach_play.src.teach import finish
+from src.teach import finish
 
 # ---------------------------------------------------------------------------------------------
 
@@ -14,6 +14,7 @@ if __name__ == '__main__':
 
 	# init instructions
 	rospy.init_node('main', disable_signals=True)
+	
 	rospy.wait_for_service('/iiwa/configuration/configureLed')  # wait led service
 	rospy.wait_for_service('/iiwa/configuration/openGripper')  # wait gripper service
 
@@ -30,10 +31,9 @@ if __name__ == '__main__':
 	# listeners
 	rospy.Subscriber("/iiwa/state/MFButtonState", Bool, teach_and_play)
 	rospy.Subscriber("/iiwa/state/CartesianPose", msg.CartesianPose, read_cartesian_pose)
-
+	
 	try:
-		pass
-		# change contrl mode to joint impedance
+		# change control mode to joint impedance
 		configure_led(True, 1, True)
 		rospy.sleep(5)
 		change_control_mode(control_mode_srv, create_msg_joint_impedance())
