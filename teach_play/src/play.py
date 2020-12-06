@@ -4,9 +4,9 @@ from std_msgs.msg import Bool
 import actionlib
 import actionlib_msgs.msg
 
-from teach_play.utils.functions import *
-from teach_play.utils.services import *
-from teach_play.utils.create_msgs import *
+from functions import *
+from services import *
+from create_msgs import *
 
 def play():
 	rospy.logwarn('Start playing ...')

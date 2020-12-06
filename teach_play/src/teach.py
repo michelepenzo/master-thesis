@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 
 import Queue
-from std_msgs import Bool
-from teach_play.utils.functions import *
-from teach_play.utils.services import *
+from std_msgs.msg import Bool
+from functions import *
+from services import *
 
 queue = Queue.Queue()  # msgs queue
 actual_pose = [0] * 7  # actual pose
@@ -13,7 +13,7 @@ finish = False
 
 
 # read MFButton topic and publish action movement
-def teach_and_play(data):
+def read_MF_button(data):
 	# TODO sporco
 	global actual_pose
 	global action_gripper
@@ -84,7 +84,7 @@ if __name__ == '__main__':
 	clean_file()
 
 	# listeners
-	rospy.Subscriber("/iiwa/state/MFButtonState", Bool, teach_and_play)
+	rospy.Subscriber("/iiwa/state/MFButtonState", Bool, read_MF_button)
 	rospy.Subscriber("/iiwa/state/CartesianPose", msg.CartesianPose, read_cartesian_pose)
 
 	try:
@@ -92,6 +92,6 @@ if __name__ == '__main__':
 			rospy.sleep(1)
 
 	except KeyboardInterrupt:
-		rospy.logwarn('KeyboardInterrupt teach_and_play...')
+		rospy.logwarn('KeyboardInterrupt teach...')
 		configure_led(False, 1, False)
 		rospy.signal_shutdown('')

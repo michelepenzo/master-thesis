@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
-from teach_play.utils.create_msgs import *
-from teach_play.utils.services import change_control_mode
+from create_msgs import *
+from services import change_control_mode
 
 # changing control mode in real time
 def check_control_mode():
