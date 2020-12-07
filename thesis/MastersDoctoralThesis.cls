@@ -342,7 +342,7 @@ KOMA-script documentation for details.}]{fancyhdr}
 \newcommand{\byname}{by}
 \newcommand{\abstractname}{Abstract}
 \providecaptionname{german,ngerman,austrian,naustrian}{\byname}{von}
-\providecaptionname{american,australian,british,canadian,english,newzealand,UKenglish,USenglish}{\byname}{by}
+\providecaptionname{american,australian,british,canadian,english,italian, newzealand,UKenglish,USenglish}{\byname}{by}
 \ifbool{consistentlayout}{
 	\DeclareDocumentEnvironment{abstract}{ O{} }{%
 		\addchap*{\abstractname}%
@@ -363,10 +363,10 @@ KOMA-script documentation for details.}]{fancyhdr}
 			\bigskip
 			{\huge\textit{\abstractname} \par}
 			\bigskip
-			{\normalsize \facname \par}% Faculty name
+%			{\normalsize \facname \par}% Faculty name
 			{\normalsize \deptname \par}% Department name
 			\bigskip
-			{\normalsize \degreename\par}% Degree name
+%			{\normalsize \degreename\par}% Degree name
 			\bigskip
 			{\normalsize\bfseries \@title \par}% Thesis title
 			\medskip

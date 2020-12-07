@@ -5,10 +5,9 @@ italian, % ngerman for German
 singlespacing, % Single line spacing, alternatives: onehalfspacing or doublespacing
 %draft, % Uncomment to enable draft mode (no pictures, no links, overfull hboxes indicated)
 %nolistspacing, % If the document is onehalfspacing or doublespacing, uncomment this to set spacing in lists to single
-%liststotoc, % Uncomment to add the list of figures/tables/etc to the table of contents
+liststotoc, % Uncomment to add the list of figures/tables/etc to the table of contents
 %toctotoc, % Uncomment to add the main table of contents to the table of contents
 %parskip, % Uncomment to add space between paragraphs
-%nohyperref, % Uncomment to not load the hyperref package
 headsepline, % Uncomment to get a line under the header
 %chapterinoneline, % Uncomment to place the chapter title next to the number on one line
 %consistentlayout, % Uncomment to change the layout of the declaration, abstract and acknowledgements pages to match the default layout
@@ -40,7 +39,7 @@ bottom=1.5cm, % Bottom margin
 \supervisor{Dr. Diego \textsc{Dall'Alba}}
 
 \degree{Dottore in Ingeneria Informatica}	% TODO
-\author{Michle \textsc{Penzo}}
+\author{Michele \textsc{Penzo}\\ VR439232}
 \keywords{}
 \university{\href{https://www.univr.it}{Università degli Studi di Verona}}
 \department{\href{https://www.di.univr.it}{Dipartimento di Informatica}}
@@ -48,9 +47,9 @@ bottom=1.5cm, % Bottom margin
 \faculty{\href{http://faculty.university.com}{Faculty Name}}
 
 \AtBeginDocument{
-\hypersetup{pdftitle=\ttitle} % Set the PDF's title to your title
-\hypersetup{pdfauthor=\authorname} % Set the PDF's author to your name
-\hypersetup{pdfkeywords=\keywordnames} % Set the PDF's keywords to your keywords
+\hypersetup{pdftitle=\ttitle}
+\hypersetup{pdfauthor=\authorname}
+\hypersetup{pdfkeywords=\keywordnames}
 }
 
 
@@ -67,11 +66,11 @@ bottom=1.5cm, % Bottom margin
 
 \vspace*{.06\textheight}
 {\scshape\LARGE \univname\par}\vspace{1.5cm} % University name
-\textsc{\Large Tesi Magistrale}\\[0.5cm] % Thesis type
+\textsc{\Large Tesi Magistrale}\\[1.5cm] % Thesis type
 
 \HRule \\[0.4cm] % Horizontal line
 {\huge \bfseries \ttitle\par}\vspace{0.4cm} % Thesis title
-\HRule \\[1.5cm] % Horizontal line
+\HRule \\[2.5cm] % Horizontal line
 
 \begin{minipage}[t]{0.4\textwidth}
 \begin{flushleft} \large
@@ -88,18 +87,22 @@ bottom=1.5cm, % Bottom margin
 
 \vfill
 
-\large \textit{Tesi presentata in adempimento dei requisiti per\\ il grado di \degreename}\\[0.3cm] 
-\textit{svolta presso}\\[0.4cm]
+%\large \textit{Tesi presentata in adempimento dei requisiti per\\ il grado di \degreename}\\[0.3cm] 
+%\textit{svolta presso}\\[0.4cm]
 \groupname\\\deptname\\[2cm] % Research group name and department name
 
 \vfill
 
 {\large \today}\\[2cm] % Date
-\includegraphics[scale=0.4]{logo-univr.png} % Logo UniVR
+%\includegraphics[scale=0.4]{logo-univr.png} % Logo UniVR
 
 \vfill
 \end{center}
 \end{titlepage}
+
+
+%	DEDICATION
+\dedicatory{Dedicato a \ldots} 
 
 
 %	ABSTRACT PAGE
@@ -109,15 +112,9 @@ Abstract\ldots
 \end{abstract}
 
 
-%	LIST OF CONTENTS/FIGURES/TABLES PAGES
+%	LIST OF CONTENTS
+% 	TODO figures/tables
 \tableofcontents 
-
-\begingroup
-\listoffigures
-\begingroup
-\let\clearpage\relax
-\listoftables
-\endgroup
 
 % TODO abbreviazioni
 %	ABBREVIATIONS
@@ -128,9 +125,6 @@ Abstract\ldots
 %
 %\end{abbreviations}
 
-
-%	DEDICATION
-\dedicatory{Dedicato a \ldots} 
 
 
 %	THESIS CONTENT - CHAPTERS
