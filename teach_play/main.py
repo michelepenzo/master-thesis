@@ -14,11 +14,12 @@ if __name__ == '__main__':
 
 	# init instructions
 	rospy.init_node('main', disable_signals=True)
-	
-	rospy.wait_for_service('/iiwa/configuration/configureLed')  # wait led service
-	rospy.wait_for_service('/iiwa/configuration/openGripper')  # wait gripper service
 
-	# service
+	# wait for services
+	rospy.wait_for_service('/iiwa/configuration/configureLed')
+	rospy.wait_for_service('/iiwa/configuration/openGripper')
+
+	# open service
 	led_srv = rospy.ServiceProxy('/iiwa/configuration/configureLed', srv.configureLed)
 	gripper_srv = rospy.ServiceProxy('/iiwa/configuration/openGripper', srv.OpenGripper)
 	control_mode_srv = rospy.ServiceProxy('/iiwa/configuration/ConfigureControlMode', srv.ConfigureControlMode)
@@ -29,9 +30,9 @@ if __name__ == '__main__':
 	clean_file()
 
 	# listeners
-	rospy.Subscriber("/iiwa/state/MFButtonState", Bool, teach_and_play)
+	rospy.Subscriber("/iiwa/state/MFButtonState", Bool, read_MF_button)
 	rospy.Subscriber("/iiwa/state/CartesianPose", msg.CartesianPose, read_cartesian_pose)
-	
+
 	try:
 		# change control mode to joint impedance
 		configure_led(True, 1, True)
@@ -46,6 +47,7 @@ if __name__ == '__main__':
 		change_control_mode(control_mode_srv, create_msg_position_control())
 
 		# start playing
+		init_play()
 		play()
 
 	except KeyboardInterrupt:

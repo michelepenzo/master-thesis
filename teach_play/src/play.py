@@ -33,7 +33,7 @@ def play():
 					configure_gripper(gripper_srv, get_action_gripper(line[1]))
 
 
-# ---------------------------------------------------------------------------------------------			
+# ---------------------------------------------------------------------------------------------
 
 if __name__ == '__main__':
 	try:
@@ -47,6 +47,7 @@ if __name__ == '__main__':
 		configure_gripper(1)
 		gripper_srv = rospy.ServiceProxy('/iiwa/configuration/openGripper', srv.OpenGripper)
 
+		init_play()
 		play()
 
 	except KeyboardInterrupt:
