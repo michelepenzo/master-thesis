@@ -18,6 +18,7 @@ headsepline, % Uncomment to get a line under the header
 \usepackage{mathpazo} % Use the Palatino font by default
 \usepackage[backend=bibtex,style=authoryear,natbib=true]{biblatex}
 \usepackage[autostyle=true]{csquotes}
+\usepackage{lipsum}  
 
 \addbibresource{example.bib}
 
@@ -25,8 +26,8 @@ headsepline, % Uncomment to get a line under the header
 
 \geometry{
 paper=a4paper, % Change to letterpaper for US letter
-inner=2.5cm, % Inner margin
-outer=3.8cm, % Outer margin
+inner=3cm, % Inner margin
+outer=3cm, % Outer margin
 bindingoffset=.5cm, % Binding offset
 top=1.5cm, % Top margin
 bottom=1.5cm, % Bottom margin
@@ -100,16 +101,18 @@ bottom=1.5cm, % Bottom margin
 \end{center}
 \end{titlepage}
 
-
-%	DEDICATION
-\dedicatory{Dedicato a \ldots} 
-
-
 %	ABSTRACT PAGE
 \begin{abstract}
 \addchaptertocentry{\abstractname} % Add the abstract to the table of contents
 Abstract\ldots
 \end{abstract}
+
+%	ACKNOWLEDGEMENTS
+\begin{acknowledgements}
+	\addchaptertocentry{\acknowledgementname} % Add the acknowledgements to the table of contents
+	Ringraziamenti \ldots
+\end{acknowledgements}
+
 
 
 %	LIST OF CONTENTS
@@ -132,17 +135,8 @@ Abstract\ldots
 \mainmatter % Begin numeric (1,2,3...) page numbering
 \pagestyle{thesis}
 
-\include{Chapters/Chapter1}
-%\include{Chapters/Chapter2} 
-%\include{Chapters/Chapter3}
-%\include{Chapters/Chapter4} 
-%\include{Chapters/Chapter5} 
+\include{chapters/introduzione}
 
-%	THESIS CONTENT - APPENDICES
-\appendix
-%\include{Appendices/AppendixA}
-%\include{Appendices/AppendixB}
-%\include{Appendices/AppendixC}
 
 
 %	BIBLIOGRAPHY
