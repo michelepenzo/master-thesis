@@ -2,6 +2,7 @@
 
 import Queue
 from std_msgs.msg import Bool
+from create_msgs import *
 from functions import *
 from services import *
 
@@ -52,6 +53,7 @@ def read_MF_button(data):
 			rospy.logwarn("Stop teaching ...")
 			queue.queue.clear()  # STOP TEACHING
 			configure_led(led_srv, True, 3, False)
+			configure_control_mode(control_mode_srv, create_msg_position_control())
 			finish = True  # set true to finish teaching
 
 
@@ -73,10 +75,12 @@ if __name__ == '__main__':
 	rospy.init_node('teach', disable_signals=True)
 	rospy.wait_for_service('/iiwa/configuration/configureLed')  # wait led service
 	rospy.wait_for_service('/iiwa/configuration/openGripper')  # wait gripper service
+	rospy.wait_for_service('/iiwa/configuration/ConfigureControlMode')
 
 	# service
-	led_srv = rospy.ServiceProxy('/iiwa/configuration/configureLed', srv.configureLed)
+	led_srv = rospy.ServiceProxy('/iiwa/configuration/configureLed', srv.ConfigureLed)
 	gripper_srv = rospy.ServiceProxy('/iiwa/configuration/openGripper', srv.OpenGripper)
+	control_mode_srv = rospy.ServiceProxy('/iiwa/configuration/ConfigureControlMode', srv.ConfigureControlMode)
 
 	# startup operations
 	configure_led(led_srv, False, 1, False)
@@ -88,6 +92,8 @@ if __name__ == '__main__':
 	rospy.Subscriber("/iiwa/state/CartesianPose", msg.CartesianPose, read_cartesian_pose)
 
 	try:
+		configure_control_mode(control_mode_srv, create_msg_joint_impedance())
+
 		while not finish:
 			rospy.sleep(1)
 

@@ -30,9 +30,9 @@ def clean_file():
 
 
 # wait until paying
-def init_play():
+def init_play(led_srv):
 	rospy.sleep(1)
-	configure_led(True, 1, False)
+	configure_led(led_srv, True, 1, False)
 	rospy.sleep(1)
-	configure_led(True, 2, False)
+	configure_led(led_srv, True, 2, False)
 	rospy.sleep(1)

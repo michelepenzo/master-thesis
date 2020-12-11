@@ -12,8 +12,9 @@ def play():
 	rospy.logwarn('Start playing ...')
 	client = actionlib.SimpleActionClient('/iiwa/action/move_to_cartesian_pose', msg.MoveToCartesianPoseAction)
 
-	client.wait_for_server()  												# waiting starting server
-	client.cancel_all_goals()  												# clear all old goals
+
+	client.cancel_all_goals()  # clear all old goals
+	client.wait_for_server()  # waiting starting server
 
 	while True:
 		with open(filename_csv) as outfile:
@@ -21,13 +22,13 @@ def play():
 
 			for line in reader:
 				if line[0] == 'pose':
+					pose = get_cartesian_pose(line[1:10])  # array
+					move_goal = create_movement_cartesian_pose(pose)  # 'movement' object
 
-					pose = get_cartesian_pose(line[1:10])					# array
-					move_goal = create_movement_cartesian_pose(pose)  		# 'movement' object
-					action_goal = msg.MoveToCartesianPoseGoal(move_goal)  	# action goal
+					action_goal = msg.MoveToCartesianPoseGoal(move_goal)  # action goal
 
-					client.send_goal_and_wait(action_goal)  				# send the action to action server and wait
-					client.wait_for_result()  								# waits for the server to finish performing the action
+					client.send_goal_and_wait(action_goal)  # send the action to action server and wait
+					client.wait_for_result()  # waits for the server to finish performing the action
 
 				elif line[0] == 'action_gripper':
 					configure_gripper(gripper_srv, get_action_gripper(line[1]))
@@ -36,21 +37,24 @@ def play():
 # ---------------------------------------------------------------------------------------------
 
 if __name__ == '__main__':
+
+	# init instructions
+	rospy.init_node('play', disable_signals=True)
+	rospy.wait_for_service('/iiwa/configuration/configureLed')  # wait led service
+	rospy.wait_for_service('/iiwa/configuration/openGripper')  # wait gripper service
+
+	# startup operations
+	led_srv = rospy.ServiceProxy('/iiwa/configuration/configureLed', srv.ConfigureLed)
+	gripper_srv = rospy.ServiceProxy('/iiwa/configuration/openGripper', srv.OpenGripper)
+
+	configure_led(led_srv, True, 1, False)
+	configure_gripper(gripper_srv, 1)
+
 	try:
-		# init instructions
-		rospy.init_node('play', disable_signals=True)
-		rospy.wait_for_service('/iiwa/configuration/configureLed')  # wait led service
-		rospy.wait_for_service('/iiwa/configuration/openGripper')  # wait gripper service
-
-		# startup operations
-		configure_led(True, 1, False)
-		configure_gripper(1)
-		gripper_srv = rospy.ServiceProxy('/iiwa/configuration/openGripper', srv.OpenGripper)
-
-		init_play()
+		init_play(led_srv)
 		play()
 
 	except KeyboardInterrupt:
-		rospy.logwarn('KeyboardInterrupt play...')
-		configure_led(False, 1, False)  # turn off led
+		configure_led(led_srv, False, 1, False)  # turn off led
 		rospy.signal_shutdown('')
+		rospy.logwarn('KeyboardInterrupt play...')

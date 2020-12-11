@@ -1,6 +1,7 @@
 import rospy
 from iiwa_msgs import msg
 
+
 def create_movement_cartesian_pose(move):
 	movement = msg.CartesianPose()
 
@@ -106,7 +107,6 @@ def create_msg_joint_impedance():
 		max_control_force_stop=False, max_cartesian_velocity=[0.0, 0.0, 0.0, 0.0, 0.0, 0.0])
 
 
-# TODO
 # create msg cartesian_impedance
 def create_msg_cartesian_impedance():
 	pass

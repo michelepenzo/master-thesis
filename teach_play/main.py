@@ -37,17 +37,28 @@ if __name__ == '__main__':
 		# change control mode to joint impedance
 		configure_led(True, 1, True)
 		rospy.sleep(5)
+<<<<<<< HEAD
+		configure_control_mode(control_mode_srv, create_msg_joint_impedance())
+=======
 		change_control_mode(control_mode_srv, create_msg_joint_impedance())
+>>>>>>> 3247ae8d06419c770416ca3aa805b6718e0d2d66
 
 		# start teaching
 		while not finish:
 			rospy.sleep(1)
 
 		# change control mode to poisition control
+<<<<<<< HEAD
+		configure_control_mode(control_mode_srv, create_msg_position_control())
+
+		# start playing
+		init_play(gripper_srv)
+=======
 		change_control_mode(control_mode_srv, create_msg_position_control())
 
 		# start playing
 		init_play()
+>>>>>>> 3247ae8d06419c770416ca3aa805b6718e0d2d66
 		play()
 
 	except KeyboardInterrupt:
