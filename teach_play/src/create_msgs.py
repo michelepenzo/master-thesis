@@ -1,6 +1,7 @@
 import rospy
 from iiwa_msgs import msg
 
+
 def create_movement_cartesian_pose(move):
 	movement = msg.CartesianPose()
 
@@ -93,7 +94,6 @@ def create_msg_position_control():
 		max_cartesian_velocity=[0.0] * 6)
 
 
-
 # create msg for joint impendance (fake hand guide values)
 def create_msg_joint_impedance():
 	return create_msg_control_mode(
@@ -110,4 +110,3 @@ def create_msg_joint_impedance():
 # create msg cartesian_impedance
 def create_msg_cartesian_impedance():
 	pass
-

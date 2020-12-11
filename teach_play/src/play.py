@@ -8,15 +8,13 @@ from functions import *
 from services import *
 from create_msgs import *
 
-
 def play():
 	rospy.logwarn('Start playing ...')
 	client = actionlib.SimpleActionClient('/iiwa/action/move_to_cartesian_pose', msg.MoveToCartesianPoseAction)
 
+
 	client.cancel_all_goals()  # clear all old goals
 	client.wait_for_server()  # waiting starting server
-
-	rospy.sleep(1)
 
 	while True:
 		with open(filename_csv) as outfile:
@@ -53,11 +51,10 @@ if __name__ == '__main__':
 	configure_gripper(gripper_srv, 1)
 
 	try:
-		# init_play(led_srv)
+		init_play(led_srv)
 		play()
 
 	except KeyboardInterrupt:
 		configure_led(led_srv, False, 1, False)  # turn off led
 		rospy.signal_shutdown('')
 		rospy.logwarn('KeyboardInterrupt play...')
-

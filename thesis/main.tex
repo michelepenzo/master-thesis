@@ -1,0 +1,146 @@
+\documentclass[
+11pt, % The default document font size, options: 10pt, 11pt, 12pt
+%oneside, % Two side (alternating margins) for binding by default, uncomment to switch to one side
+italian, % ngerman for German
+singlespacing, % Single line spacing, alternatives: onehalfspacing or doublespacing
+%draft, % Uncomment to enable draft mode (no pictures, no links, overfull hboxes indicated)
+%nolistspacing, % If the document is onehalfspacing or doublespacing, uncomment this to set spacing in lists to single
+liststotoc, % Uncomment to add the list of figures/tables/etc to the table of contents
+%toctotoc, % Uncomment to add the main table of contents to the table of contents
+%parskip, % Uncomment to add space between paragraphs
+headsepline, % Uncomment to get a line under the header
+%chapterinoneline, % Uncomment to place the chapter title next to the number on one line
+%consistentlayout, % Uncomment to change the layout of the declaration, abstract and acknowledgements pages to match the default layout
+]{MastersDoctoralThesis} % The class file specifying the document structure
+
+\usepackage[utf8]{inputenc} % Required for inputting international characters
+\usepackage[T1]{fontenc} % Output font encoding for international characters
+\usepackage{mathpazo} % Use the Palatino font by default
+\usepackage[backend=bibtex,style=authoryear,natbib=true]{biblatex}
+\usepackage[autostyle=true]{csquotes}
+\usepackage{lipsum}  
+
+\addbibresource{example.bib}
+
+%	MARGIN SETTINGS
+
+\geometry{
+paper=a4paper, % Change to letterpaper for US letter
+inner=3cm, % Inner margin
+outer=3cm, % Outer margin
+%bindingoffset=.5cm, % Binding offset
+top=1.5cm, % Top margin
+bottom=1.5cm, % Bottom margin
+%showframe, % Uncomment to show how the type block is set on the page
+}
+
+%	THESIS INFORMATION
+
+\thesistitle{Titolo $\ldots$} % TODO
+\supervisor{Dr. Diego \textsc{Dall'Alba}}
+
+\degree{Dottore in Ingeneria Informatica}	% TODO
+\author{Michele \textsc{Penzo}\\ VR439232}
+\keywords{}
+\university{\href{https://www.univr.it}{Università degli Studi di Verona}}
+\department{\href{https://www.di.univr.it}{Dipartimento di Informatica}}
+\group{{Laboratorio ICE}}
+\faculty{\href{http://faculty.university.com}{Faculty Name}}
+
+\AtBeginDocument{
+\hypersetup{pdftitle=\ttitle}
+\hypersetup{pdfauthor=\authorname}
+\hypersetup{pdfkeywords=\keywordnames}
+}
+
+
+%	BEGIN DOCUMENT
+
+\begin{document}
+
+\frontmatter % Use roman page numbering style (i, ii, iii, iv...) for the pre-content pages
+\pagestyle{plain} % Default to the plain heading style until the thesis style is called for the body content
+
+%	TITLE PAGE
+\begin{titlepage}
+\begin{center}
+
+\vspace*{.06\textheight}
+{\scshape\LARGE \univname\par}\vspace{1.5cm} % University name
+\textsc{\Large Tesi Magistrale}\\[1.5cm] % Thesis type
+
+\HRule \\[0.4cm] % Horizontal line
+{\huge \bfseries \ttitle\par}\vspace{0.4cm} % Thesis title
+\HRule \\[2.5cm] % Horizontal line
+
+\begin{minipage}[t]{0.4\textwidth}
+\begin{flushleft} \large
+\emph{Autore:}\\
+\href{mailto:michelepenzo@outlook.it}{\authorname} % Author name
+\end{flushleft}
+\end{minipage}
+\begin{minipage}[t]{0.4\textwidth}
+\begin{flushright} \large
+\emph{Relatore:} \\
+\href{https://www.di.univr.it/?ent=persona&id=6321&lang=it}{\supname} % Supervisor name
+\end{flushright}
+\end{minipage}\\[3cm]
+
+\vfill
+
+%\large \textit{Tesi presentata in adempimento dei requisiti per\\ il grado di \degreename}\\[0.3cm] 
+%\textit{svolta presso}\\[0.4cm]
+\groupname\\\deptname\\[2cm] % Research group name and department name
+
+\vfill
+
+{\large \today}\\[2cm] % Date
+%\includegraphics[scale=0.4]{logo-univr.png} % Logo UniVR
+
+\vfill
+\end{center}
+\end{titlepage}
+
+%	ABSTRACT PAGE
+\begin{abstract}
+\addchaptertocentry{\abstractname} % Add the abstract to the table of contents
+Abstract\ldots
+\end{abstract}
+
+%	ACKNOWLEDGEMENTS
+\begin{acknowledgements}
+	\addchaptertocentry{\acknowledgementname} % Add the acknowledgements to the table of contents
+	Ringraziamenti \ldots
+\end{acknowledgements}
+
+
+
+%	LIST OF CONTENTS
+% 	TODO figures/tables
+\tableofcontents 
+
+% TODO abbreviazioni
+%	ABBREVIATIONS
+%\begin{abbreviations}{ll} % Include a list of abbreviations (a table of two columns)
+%
+%\textbf{LAH} & \textbf{L}ist \textbf{A}bbreviations \textbf{H}ere\\
+%\textbf{WSF} & \textbf{W}hat (it) \textbf{S}tands \textbf{F}or\\
+%
+%\end{abbreviations}
+
+
+
+%	THESIS CONTENT - CHAPTERS
+
+\mainmatter % Begin numeric (1,2,3...) page numbering
+\pagestyle{thesis}
+
+\include{chapters/introduzione}
+
+
+
+%	BIBLIOGRAPHY
+\printbibliography[heading=bibintoc]
+
+\end{document}  
+

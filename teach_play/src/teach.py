@@ -2,10 +2,9 @@
 
 import Queue
 from std_msgs.msg import Bool
-
+from create_msgs import *
 from functions import *
 from services import *
-from create_msgs import *
 
 queue = Queue.Queue()  # msgs queue
 actual_pose = [0] * 7  # actual pose
@@ -21,8 +20,11 @@ def read_MF_button(data):
 	global action_gripper
 	global finish
 
-	if not data.data:
-		if 20 < queue.qsize() <= 400:  # one click (POINT)
+	if data.data:
+		queue.put('')
+	else:
+
+		if queue.qsize() > 20 and queue.qsize() <= 400:  # one click (POINT)
 
 			print_on_csv(actual_pose)
 			configure_led(led_srv, True, 2, False)
@@ -31,7 +33,7 @@ def read_MF_button(data):
 			rospy.logwarn("Get pose")
 			queue.queue.clear()
 
-		elif 400 < queue.qsize() <= 1000:  # two seconds (INVERT GRIPPER and GET POINT)
+		elif queue.qsize() > 400 and queue.qsize() <= 1000:  # two seconds (INVERT GRIPPER and GET POINT)
 
 			if action_gripper:
 				action_gripper = 0
@@ -51,12 +53,8 @@ def read_MF_button(data):
 			rospy.logwarn("Stop teaching ...")
 			queue.queue.clear()  # STOP TEACHING
 			configure_led(led_srv, True, 3, False)
-			finish = True  # set true to finish teaching
-
-			# set to position control
 			configure_control_mode(control_mode_srv, create_msg_position_control())
-	else:
-		queue.put('')
+			finish = True  # set true to finish teaching
 
 
 # read cartesian pose and save as actual_pose
@@ -73,10 +71,10 @@ def read_cartesian_pose(data):
 
 if __name__ == '__main__':
 
-	# init instructions, wait for services
+	# init instructions
 	rospy.init_node('teach', disable_signals=True)
-	rospy.wait_for_service('/iiwa/configuration/configureLed')
-	rospy.wait_for_service('/iiwa/configuration/openGripper')
+	rospy.wait_for_service('/iiwa/configuration/configureLed')  # wait led service
+	rospy.wait_for_service('/iiwa/configuration/openGripper')  # wait gripper service
 	rospy.wait_for_service('/iiwa/configuration/ConfigureControlMode')
 
 	# service
@@ -93,16 +91,13 @@ if __name__ == '__main__':
 	rospy.Subscriber("/iiwa/state/MFButtonState", Bool, read_MF_button)
 	rospy.Subscriber("/iiwa/state/CartesianPose", msg.CartesianPose, read_cartesian_pose)
 
-
-	# enable hand guide
-	rospy.sleep(3)
-	configure_control_mode(control_mode_srv, create_msg_joint_impedance())
-
 	try:
+		configure_control_mode(control_mode_srv, create_msg_joint_impedance())
+
 		while not finish:
 			rospy.sleep(1)
 
 	except KeyboardInterrupt:
 		rospy.logwarn('KeyboardInterrupt teach...')
-		configure_led(led_srv, False, 1, False)
+		configure_led(False, 1, False)
 		rospy.signal_shutdown('')
