@@ -1,11 +1,14 @@
 #!/usr/bin/env python
 
 import Queue
+
 from std_msgs.msg import Bool
+
 from create_msgs import *
 from functions import *
 from services import *
 
+# global variables
 queue = Queue.Queue()  # msgs queue
 actual_pose = [0] * 7  # actual pose
 action_gripper = 1  # open gripper
@@ -20,12 +23,10 @@ def read_MF_button(data):
 	global action_gripper
 	global finish
 
-	if data.data:
-		queue.put('')
-	else:
+	if not data.data:
+		if 20 < queue.qsize() <= 400:  # one click (POINT)
 
-		if queue.qsize() > 20 and queue.qsize() <= 400:  # one click (POINT)
-
+			# print on csv, turn on and off LED, print on terminal, clear queue
 			print_on_csv(actual_pose)
 			configure_led(led_srv, True, 2, False)
 			rospy.sleep(1)
@@ -33,8 +34,9 @@ def read_MF_button(data):
 			rospy.logwarn("Get pose")
 			queue.queue.clear()
 
-		elif queue.qsize() > 400 and queue.qsize() <= 1000:  # two seconds (INVERT GRIPPER and GET POINT)
+		elif 400 < queue.qsize() <= 1000:  # two seconds (INVERT GRIPPER and GET POINT)
 
+			# invert gripper values, print pose and action on csv, turn on and off led, clear queue
 			if action_gripper:
 				action_gripper = 0
 			else:
@@ -49,12 +51,17 @@ def read_MF_button(data):
 			rospy.logwarn("Get pose and action gripper")
 			queue.queue.clear()
 
-		elif queue.qsize() > 1000:  # 5 seconds
-			rospy.logwarn("Stop teaching ...")
-			queue.queue.clear()  # STOP TEACHING
+		elif queue.qsize() > 1000:  # 5 seconds (STOP TEACHING)
+
+			# clear queue, turn on led, set position control mode, set 'finish' flag true
+			rospy.logwarn("Stop teaching")
+			queue.queue.clear()
 			configure_led(led_srv, True, 3, False)
 			configure_control_mode(control_mode_srv, create_msg_position_control())
-			finish = True  # set true to finish teaching
+			finish = True
+	else:
+		# fill the queue
+		queue.put('')
 
 
 # read cartesian pose and save as actual_pose
@@ -92,6 +99,9 @@ if __name__ == '__main__':
 	rospy.Subscriber("/iiwa/state/CartesianPose", msg.CartesianPose, read_cartesian_pose)
 
 	try:
+		# move to joint impedance
+		configure_led(led_srv, True, 3, False)
+		rospy.sleep(1)
 		configure_control_mode(control_mode_srv, create_msg_joint_impedance())
 
 		while not finish:
@@ -99,5 +109,5 @@ if __name__ == '__main__':
 
 	except KeyboardInterrupt:
 		rospy.logwarn('KeyboardInterrupt teach...')
-		configure_led(False, 1, False)
+		configure_led(led_srv, False, 1, False)
 		rospy.signal_shutdown('')

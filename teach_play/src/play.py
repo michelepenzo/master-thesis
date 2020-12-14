@@ -1,17 +1,15 @@
 #!/usr/bin/env python
 
-from std_msgs.msg import Bool
 import actionlib
-import actionlib_msgs.msg
 
+from create_msgs import *
 from functions import *
 from services import *
-from create_msgs import *
+
 
 def play():
 	rospy.logwarn('Start playing ...')
 	client = actionlib.SimpleActionClient('/iiwa/action/move_to_cartesian_pose', msg.MoveToCartesianPoseAction)
-
 
 	client.cancel_all_goals()  # clear all old goals
 	client.wait_for_server()  # waiting starting server

@@ -1,9 +1,13 @@
 # !/usr/bin/env python
 
-import rospy, csv, rospkg
+import csv
+import rospkg
+import rospy
+
 from services import *
 
 filename_csv = rospkg.RosPack().get_path('teach_play') + '/actions.csv'
+
 
 # print on csv file
 def print_on_csv(data):
@@ -14,7 +18,7 @@ def print_on_csv(data):
 
 # return an array [x, y, z, x, y, z, w, status, redundancy]
 def get_cartesian_pose(data):
-	return float(data[0]), float(data[1]), float(data[2]), float(data[3]), float(data[4]),\
+	return float(data[0]), float(data[1]), float(data[2]), float(data[3]), float(data[4]), \
 		   float(data[5]), float(data[6]), int(data[7]), float(data[8])
 
 

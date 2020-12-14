@@ -7,7 +7,7 @@ from services import *
 # changing control mode in real time
 def check_control_mode():
 	rospy.logwarn('to joint impedance')
-	#configure_control_mode(control_mode_srv, create_msg_joint_impedance())
+	# configure_control_mode(control_mode_srv, create_msg_joint_impedance())
 	configure_control_mode(control_mode_srv, create_msg_cartesian_impedance())
 
 	rospy.sleep(3)

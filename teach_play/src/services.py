@@ -28,7 +28,8 @@ def configure_led(led_srv, on, color, blinking):
 def configure_control_mode(control_mode_srv, action):
 	# unpack tuple in 6 elements
 	control_mode, joint_impedance, cartesian_impedance, desired_force, sine_pattern, limits = action
-	control_mode_request = srv.ConfigureControlModeRequest(control_mode, joint_impedance, cartesian_impedance, desired_force, sine_pattern, limits)
+	control_mode_request = srv.ConfigureControlModeRequest(control_mode, joint_impedance, cartesian_impedance,
+														   desired_force, sine_pattern, limits)
 
 	try:
 		control_mode_srv(control_mode_request)
