@@ -1,0 +1,51 @@
+teleop:
+  move_axis:
+    type: topic
+    message_type: geometry_msgs/Twist
+    topic_name: /iiwa/command/CartesianVelocity
+    deadman_buttons: [4]  # TODO pulsante per muovere
+    axis_mappings:
+      -
+        axis: 0
+        target: linear.x
+        scale: 0.5
+
+      -
+        axis: 1
+        target: linear.y
+        scale: 0.5
+
+      - axis: 2
+        target: linear.z
+        scale: 0.5
+
+  stop:
+    type: topic
+    message_type: geometry_msgs/Twist
+    topic_name: /iiwa/command/CartesianVelocity
+    deadman_buttons: [ 0, 2 ] # TODO R1 e L1
+    message_value:
+      - target: linear.x
+        value: 0.0
+      - target: angular.z
+        value: 0.0
+      - target: linear.y
+        value: 0.0
+
+  open_gripper:
+    type: service
+    service_name: /iiwa/configuration/openGripper
+    service_request:
+      open: true
+    service_persistent: False
+    buttons: [ 1 ]
+
+  close_gripper:
+    type: service
+    service_name: /iiwa/configuration/openGripper
+    service_request:
+      open: false
+    service_persistent: False
+    buttons: [ 2 ]
+
+  # mappare tutti gli altri pulsanti (posa, gripper, R1 premuto per movimento, R2/R1 per aumentare diminuire velocità)
