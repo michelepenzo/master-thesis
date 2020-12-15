@@ -3,15 +3,13 @@ teleop:
     type: topic
     message_type: geometry_msgs/Twist
     topic_name: /iiwa/command/CartesianVelocity
-    deadman_buttons: [4]  # TODO pulsante per muovere
+    deadman_buttons: [4]  # TODO R1 per muovere
     axis_mappings:
-      -
-        axis: 0
+      - axis: 0
         target: linear.x
         scale: 0.5
 
-      -
-        axis: 1
+      - axis: 1
         target: linear.y
         scale: 0.5
 
@@ -47,5 +45,6 @@ teleop:
       open: false
     service_persistent: False
     buttons: [ 2 ]
+
 
   # mappare tutti gli altri pulsanti (posa, gripper, R1 premuto per movimento, R2/R1 per aumentare diminuire velocità)

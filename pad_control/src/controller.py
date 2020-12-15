@@ -6,7 +6,6 @@ from sensor_msgs.msg import Joy
 
 
 def read_joy_datas(data):
-	#rospy.logwarn(data)
 	pass
 
 
@@ -16,8 +15,8 @@ if __name__ == '__main__':
 
 	# init instructions
 	rospy.init_node('controller_node', disable_signals=True)
-	pub = rospy.Publisher("/iiwa/command/CartesianVelocity", TwistStamped, queue_size=100)
-	rospy.Subscriber("/joy", Joy, read_joy_datas)
+	#pub = rospy.Publisher("/iiwa/command/CartesianVelocity", TwistStamped, queue_size=100)
+	#rospy.Subscriber("/joy", Joy, read_joy_datas)
 
 	try:
 		while True:
