@@ -4,6 +4,8 @@ import rospy
 from iiwa_msgs import msg
 from sensor_msgs.msg import JoyFeedbackArray, JoyFeedback, Joy
 
+from teach_play.functions import print_on_csv, get_cartesian_pose
+
 # macros
 ON, OFF = 1.0, 0.0
 actual_pose = [0] * 7  # actual pose
@@ -31,21 +33,22 @@ def read_joy_buttons(data):
 	global actual_pose
 
 	if bool(data.buttons[0]):
-		# rospy.logwarn("open gripper")
-		pass		
+		rospy.logwarn("close gripper")
+		#print_on_csv(('action_gripper', 0)) # close gripper
 
 	elif bool(data.buttons[1]):
-		# rospy.logwarn("close gripper")
-		pass
+		rospy.logwarn("open gripper")
+		#print_on_csv(('action_gripper', 1)) # open gripper
 
 	elif bool(data.buttons[2]):
-		# rospy.logwarn("get pose")
-		pass
+		rospy.logwarn("get pose")
+		#print_on_csv(actual_pose)
 
 	elif bool(data.buttons[10]):
-		# rospy.logwarn("start play")
-		pass
+		rospy.logwarn("start play")
 
+	else:
+		pass
 
 # read cartesian pose and save as actual_pose
 def read_cartesian_pose(data):
