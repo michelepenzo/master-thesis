@@ -15,9 +15,6 @@
     <node pkg="joy_teleop" type="joy_teleop.py" name="joy_teleop"/>
 
     <!-- controller node -->
-
-    <group ns="kuka_controller">
-        <node pkg="pad_control" type="controller.py" name="controller"/>
-    </group>
+    <node pkg="pad_control" type="controller.py" name="controller"/>
 
 </launch>
