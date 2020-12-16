@@ -2,11 +2,11 @@
 # analogico sx oriz, analog sx ver, L2, analog dx oriz, analog dx ver, R2, frecce laterali, frecce verticali
 
 # buttons -> 0 .. 13
-# croce, cerchio, triangolo, quadrato, L1, R1, .. , .. , share, options, tasto play, analog sx, analog dx
+# croce, cerchio, triangolo, quadrato, L1, R1, L2, R2, share, options, tasto play, analog sx, analog dx
 
 teleop:
 
-  # move normale speed
+  # normal speed
   move_axis_linear:
     type: topic
     message_type: geometry_msgs/TwistStamped
@@ -61,7 +61,6 @@ teleop:
       - axis: 4
         target: twist.linear.z
         scale: 100
-
 
 
   # services
