@@ -1,5 +1,12 @@
+# axis -> 0 .. 8
+# analogico sx oriz, analog sx ver, L2, analog dx oriz, analog dx ver, R2, frecce laterali, frecce verticali
+
+# buttons -> 0 .. 13
+# croce, cerchio, triangolo, quadrato, L1, R1, .. , .. , share, options, tasto play, analog sx, analog dx
+
 teleop:
-  move_axis:
+
+  move_axis_linear:
     type: topic
     message_type: geometry_msgs/TwistStamped
     topic_name: /iiwa/command/CartesianVelocity
@@ -7,7 +14,7 @@ teleop:
     axis_mappings:
       - axis: 0
         target: twist.linear.x
-        scale: 1000
+        scale: -1000
       -
         axis: 1
         target: twist.linear.y
@@ -17,12 +24,31 @@ teleop:
         target: twist.linear.z
         scale: 1000
 
+  move_axis_angular:
+    type: topic
+    message_type: geometry_msgs/TwistStamped
+    topic_name: /iiwa/command/CartesianVelocity
+    deadman_buttons: [ 4 ]     # L1 per muovere
+    axis_mappings:
+      - axis: 0
+        target: twist.angular.x
+        scale: 10
+
+      - axis: 1
+        target: twist.angular.y
+        scale: 10
+
+      - axis: 4
+        target: twist.angular.z
+        scale: 10
+
+
   close_gripper:
     type: service
     service_name: /iiwa/configuration/openGripper
     service_request:
       open: false
-    service_persistent: False
+    service_persistent: True
     buttons: [ 0 ]
 
 
@@ -31,5 +57,5 @@ teleop:
     service_name: /iiwa/configuration/openGripper
     service_request:
       open: true
-    service_persistent: False
+    service_persistent: True
     buttons: [ 1 ]
