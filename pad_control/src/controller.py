@@ -1,12 +1,13 @@
 #!/usr/bin/env python
 
 import rospy
-from sensor_msgs.msg import JoyFeedbackArray, JoyFeedback, Joy
 from iiwa_msgs import msg
+from sensor_msgs.msg import JoyFeedbackArray, JoyFeedback, Joy
 
+# macros
 ON, OFF = 1.0, 0.0
-
 actual_pose = [0] * 7  # actual pose
+
 
 # set feedback joypad
 def set_feedback(value):
@@ -24,21 +25,27 @@ def read_cartesian_wrench(data):
 	else:
 		set_feedback(OFF)
 
+
 # read button state and make actions
 def read_joy_buttons(data):
 	global actual_pose
 
 	if bool(data.buttons[0]):
-		rospy.logwarn("open gripper")
+		# rospy.logwarn("open gripper")
+		pass		
 
 	elif bool(data.buttons[1]):
-		rospy.logwarn("close gripper")
+		# rospy.logwarn("close gripper")
+		pass
 
 	elif bool(data.buttons[2]):
-		rospy.logwarn("get pose")
+		# rospy.logwarn("get pose")
+		pass
 
 	elif bool(data.buttons[10]):
-		rospy.logwarn("start play")
+		# rospy.logwarn("start play")
+		pass
+
 
 # read cartesian pose and save as actual_pose
 def read_cartesian_pose(data):
