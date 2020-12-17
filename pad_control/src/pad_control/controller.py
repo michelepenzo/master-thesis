@@ -79,3 +79,6 @@ if __name__ == '__main__':
 
 	except KeyboardInterrupt:
 		set_feedback(OFF)
+
+
+	# TODO - per spostarsi su a2

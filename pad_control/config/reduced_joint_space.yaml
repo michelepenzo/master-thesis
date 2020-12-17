@@ -1,0 +1,61 @@
+teleop:
+
+  # move in joint space for position
+  move_joint_position:
+    type: topic
+    message_type: iiwa_msgs/JointVelocity
+    topic_name: /iiwa/command/JointVelocity
+    deadman_buttons: [ 5 ]     # R1
+    axis_mappings:
+      - axis: 0
+        target: velocity.a1   # 1' joint on x
+        scale: 0.5
+      -
+        axis: 1
+        target: velocity.a4   # 4' joint on y
+        scale: 0.5
+
+      - axis: 4
+        target: velocity.a2   # 2' joint on x
+        scale: 0.5
+
+      - axis: 3
+        target: velocity.a3   # 3' joint on x
+        scale: 0.2
+
+  # move in joint space for orientation
+  move_joint_orientation:
+    type: topic
+    message_type: iiwa_msgs/JointVelocity
+    topic_name: /iiwa/command/JointVelocity
+    deadman_buttons: [ 4 ]     # L1
+    axis_mappings:
+      - axis: 0
+        target: velocity.a5
+        scale: 0.2
+
+      - axis: 1
+        target: velocity.a6
+        scale: 0.2
+
+      - axis: 4
+        target: velocity.a7
+        scale: 0.2
+
+  # services
+  close_gripper:
+    type: service
+    service_name: /iiwa/configuration/openGripper
+    service_request:
+      open: false
+    service_persistent: True
+    buttons: [ 0 ]
+
+
+  open_gripper:
+    type: service
+    service_name: /iiwa/configuration/openGripper
+    service_request:
+      open: true
+    service_persistent: True
+    buttons: [ 1 ]
