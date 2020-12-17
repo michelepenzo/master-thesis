@@ -8,20 +8,17 @@ teleop:
     deadman_buttons: [ 5 ]     # R1
     axis_mappings:
       - axis: 0
-        target: velocity.a1   # 1' joint on x
+        target: velocity.a1
         scale: 0.5
       -
         axis: 1
-        target: velocity.a4   # 4' joint on y
+        target: velocity.a4
         scale: 0.5
 
       - axis: 4
-        target: velocity.a2   # 2' joint on x
+        target: velocity.a2
         scale: 0.5
 
-      - axis: 3
-        target: velocity.a3   # 3' joint on x
-        scale: 0.2
 
   # move in joint space for orientation
   move_joint_orientation:
@@ -32,15 +29,16 @@ teleop:
     axis_mappings:
       - axis: 0
         target: velocity.a5
-        scale: 0.2
+        scale: 0.1
 
       - axis: 1
         target: velocity.a6
-        scale: 0.2
+        scale: 0.1
 
       - axis: 4
         target: velocity.a7
-        scale: 0.2
+        scale: 0.1
+
 
   # services
   close_gripper:
