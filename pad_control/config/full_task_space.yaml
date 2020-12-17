@@ -39,23 +39,23 @@ teleop:
         scale: 2
 
   # slow
-  move_axis_linear_slow:
+  move_axis_angular_slow:
     type: topic
     message_type: geometry_msgs/TwistStamped
     topic_name: /iiwa/command/CartesianVelocity
-    deadman_buttons: [ 7 ]     # R2
+    deadman_buttons: [ 6 ]     # R1
     axis_mappings:
       - axis: 0
-        target: twist.linear.x
-        scale: -100
+        target: twist.angular.x
+        scale: 0.2
+
       - axis: 1
-        target: twist.linear.y
-        scale: 100
+        target: twist.angular.y
+        scale: 0.2
 
       - axis: 4
-        target: twist.linear.z
-        scale: 100
-
+        target: twist.angular.z
+        scale: 0.2
 
   # services
   close_gripper:
