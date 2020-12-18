@@ -38,6 +38,9 @@ if __name__ == '__main__':
 	rospy.init_node('controller', disable_signals=True)
 	rospy.wait_for_service('/iiwa/configuration/ConfigureControlMode')
 
+	# values force
+	x_force, y_force, z_force = 10, 10, 10
+
 	# topics
 	pub = rospy.Publisher('/joy/set_feedback', JoyFeedbackArray, queue_size=1)
 	rospy.Subscriber('/iiwa/state/CartesianWrench', msg.CartesianWrench, read_cartesian_wrench)
@@ -46,13 +49,12 @@ if __name__ == '__main__':
 	control_mode_srv = rospy.ServiceProxy('/iiwa/configuration/ConfigureControlMode', srv.ConfigureControlMode)
 
 	try:
+		configure_control_mode(control_mode_srv, create_msg_position_control())
+
 		# move in cartesian impedance if True, else in position control (by default)
 		if IMPEDANCE:
 			x_force, y_force, z_force = 10, 10, 5
-			configure_control_mode(control_mode_srv, create_msg_cartesian_impedance())
-		else:
-			x_force, y_force, z_force = 10, 10, 10
-			configure_control_mode(control_mode_srv, create_msg_position_control())
+			#configure_control_mode(control_mode_srv, create_msg_cartesian_impedance())
 
 		while True:
 			rospy.sleep(1)

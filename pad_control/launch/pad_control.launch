@@ -20,6 +20,7 @@
     <!-- controller node -->
     <group if="$(arg controller)">
         <node pkg="pad_control" type="controller.py" name="controller"/>
+        <node pkg="pad_control" type="teach_controller.py" name="teach_controller"/>
     </group>
 
     <!--
