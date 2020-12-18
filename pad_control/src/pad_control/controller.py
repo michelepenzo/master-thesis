@@ -2,11 +2,13 @@
 
 import rospy
 from iiwa_msgs import msg, srv
-from sensor_msgs.msg import JoyFeedbackArray, JoyFeedback
+from sensor_msgs.msg import JoyFeedbackArray, JoyFeedback, Joy
 
 from teach_play.create_msgs import create_msg_cartesian_impedance, create_msg_position_control
 from teach_play.services import configure_control_mode
 
+
+actual_pose = [0] * 7  # actual pose
 ON, OFF = 1.0, 0.0
 IMPEDANCE = True
 
@@ -30,6 +32,25 @@ def read_cartesian_wrench(data):
 		set_feedback(OFF)
 
 
+# read cartesian pose and save as actual_pose
+def read_cartesian_pose(data):
+	global actual_pose
+	actual_pose = ['pose', data.poseStamped.pose.position.x, data.poseStamped.pose.position.y,
+				   data.poseStamped.pose.position.z,
+				   data.poseStamped.pose.orientation.x, data.poseStamped.pose.orientation.y,
+				   data.poseStamped.pose.orientation.z, data.poseStamped.pose.orientation.w,
+				   data.redundancy.status, data.redundancy.e1]
+
+
+# read joy buttons and parse
+def read_joy_buttons(data):
+
+	if data.buttons[2]:
+		pass
+
+	if data.buttons[3]:
+		pass
+
 # ---------------------------------------------------------------------------------------------
 
 if __name__ == '__main__':
@@ -44,6 +65,8 @@ if __name__ == '__main__':
 	# topics
 	pub = rospy.Publisher('/joy/set_feedback', JoyFeedbackArray, queue_size=1)
 	rospy.Subscriber('/iiwa/state/CartesianWrench', msg.CartesianWrench, read_cartesian_wrench)
+	rospy.Subscriber("/joy", Joy, read_joy_buttons)
+	rospy.Subscriber("/iiwa/state/CartesianPose", msg.CartesianPose, read_cartesian_pose)
 
 	# service
 	control_mode_srv = rospy.ServiceProxy('/iiwa/configuration/ConfigureControlMode', srv.ConfigureControlMode)
