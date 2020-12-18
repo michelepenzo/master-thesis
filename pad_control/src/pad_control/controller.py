@@ -37,6 +37,7 @@ if __name__ == '__main__':
 	# init instructions
 	rospy.init_node('controller', disable_signals=True)
 	rospy.wait_for_service('/iiwa/configuration/ConfigureControlMode')
+	x_force, y_force, z_force = 10, 10, 10
 
 	# topics
 	pub = rospy.Publisher('/joy/set_feedback', JoyFeedbackArray, queue_size=1)
@@ -50,9 +51,6 @@ if __name__ == '__main__':
 		if IMPEDANCE:
 			x_force, y_force, z_force = 10, 10, 5
 			configure_control_mode(control_mode_srv, create_msg_cartesian_impedance())
-		else:
-			x_force, y_force, z_force = 10, 10, 10
-			configure_control_mode(control_mode_srv, create_msg_position_control())
 
 		while True:
 			rospy.sleep(1)
