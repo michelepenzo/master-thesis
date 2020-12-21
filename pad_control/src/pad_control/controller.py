@@ -5,11 +5,12 @@ from iiwa_msgs import msg, srv
 from sensor_msgs.msg import JoyFeedbackArray, JoyFeedback, Joy
 from teach_play.functions import print_on_csv, clean_file, init_play
 from teach_play.play import play
-from teach_play.services import configure_gripper, configure_led
+from teach_play.create_msgs import create_msg_cartesian_impedance, create_msg_position_control
+from teach_play.services import configure_gripper, configure_led, configure_control_mode
 
 # global values
 actual_pose = [0] * 7  # actual pose
-last_events = [False] * 11
+last_events = [False] * 13
 x_force, y_force, z_force = 10, 10, 10
 is_position_control = True
 action_gripper = 1
@@ -47,7 +48,7 @@ def read_cartesian_pose(data):
 # read joy buttons and parse (0 -> 1 -> 0)
 def read_joy_buttons(data):
 	check_on_click(data, 2, 1)  # read pose
-	check_on_click(data, 3, 2)  # change controller	# TODO nuovo valore del pulsante
+	check_on_click(data, 3, 2)  # change controller
 	check_on_click(data, 0, 3)  # action gripper
 	check_on_click(data, 10, 4)  # start playing
 
@@ -70,9 +71,12 @@ def check_on_click(data, pos, action):
 			if is_position_control:
 				is_position_control = 0
 				rospy.logwarn('to impedance')
+
+				configure_control_mode(control_mode_srv, create_msg_cartesian_impedance())
 			else:
 				is_position_control = 1
 				rospy.logwarn('to position control')
+				configure_control_mode(control_mode_srv, create_msg_position_control())
 
 		elif action == 3:  # action gripper CLOSE
 
@@ -122,14 +126,6 @@ if __name__ == '__main__':
 	configure_gripper(gripper_srv, 1)
 
 	try:
-		'''
-		configure_control_mode(control_mode_srv, create_msg_position_control())
-
-		# move in cartesian impedance if True, else in position control (by default)
-		if IMPEDANCE:
-			z_force = 5
-			configure_control_mode(control_mode_srv, create_msg_cartesian_impedance())
-		'''
 
 		while True:
 			rospy.sleep(1)
