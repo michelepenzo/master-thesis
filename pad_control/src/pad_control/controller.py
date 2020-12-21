@@ -6,11 +6,13 @@ from sensor_msgs.msg import JoyFeedbackArray, JoyFeedback, Joy
 
 from teach_play.create_msgs import create_msg_cartesian_impedance, create_msg_position_control
 from teach_play.services import configure_control_mode
+from teach_play.functions import print_on_csv, clean_file
 
 
+# global values
 actual_pose = [0] * 7  # actual pose
-ON, OFF = 1.0, 0.0
-IMPEDANCE = True
+# IMPEDANCE = False
+last_events = [False] * 11
 
 
 # set feedback joypad
@@ -27,9 +29,9 @@ def set_feedback(value):
 # read external force on end effector
 def read_cartesian_wrench(data):
 	if data.wrench.force.z < z_force or abs(data.wrench.force.x) > x_force or abs(data.wrench.force.y) > y_force:
-		set_feedback(ON)
+		set_feedback(1.0)
 	else:
-		set_feedback(OFF)
+		set_feedback(0.0)
 
 
 # read cartesian pose and save as actual_pose
@@ -42,14 +44,44 @@ def read_cartesian_pose(data):
 				   data.redundancy.status, data.redundancy.e1]
 
 
-# read joy buttons and parse
+# read joy buttons and parse (0 -> 1 -> 0)
 def read_joy_buttons(data):
 
-	if data.buttons[2]:
-		pass
+	check_on_click(data, 2,  1)	# read pose
+	check_on_click(data, 3,  2)	# change controller
+	check_on_click(data, 10, 3)  # start playing
+	check_on_click(data, 0, 4)  # action gripper
+	check_on_click(data, 1, 5)  # action gripper
 
-	if data.buttons[3]:
-		pass
+
+# check onClick event
+def check_on_click(data, pos, action):
+	# TODO sistemare con passaggio a funzione
+
+	if data.buttons[pos]:
+		last_events[pos] = True
+	elif last_events[pos] == True and data.buttons[pos] == False:
+
+		if action == 1:	# read pose
+			rospy.logwarn(actual_pose)
+			print_on_csv(actual_pose)
+
+		elif action == 2: #change controller
+			rospy.logwarn('change controller -> NOT DONE')
+
+		elif action == 3: #start playing
+			rospy.logwarn('start playing')
+
+		elif action == 4: # action gripper CLOSE
+			print_on_csv(actual_pose)
+			print_on_csv(('action_gripper', 0))
+
+		elif action == 5: # action gripper OPEN
+			print_on_csv(actual_pose)
+			print_on_csv(('action_gripper', 1))
+
+		last_events[pos] = False
+
 
 # ---------------------------------------------------------------------------------------------
 
@@ -58,6 +90,7 @@ if __name__ == '__main__':
 	# init instructions
 	rospy.init_node('controller', disable_signals=True)
 	rospy.wait_for_service('/iiwa/configuration/ConfigureControlMode')
+	clean_file()
 
 	# values force
 	x_force, y_force, z_force = 10, 10, 10
@@ -73,14 +106,14 @@ if __name__ == '__main__':
 
 	try:
 		configure_control_mode(control_mode_srv, create_msg_position_control())
-
+		'''
 		# move in cartesian impedance if True, else in position control (by default)
 		if IMPEDANCE:
-			x_force, y_force, z_force = 10, 10, 5
-			#configure_control_mode(control_mode_srv, create_msg_cartesian_impedance())
-
+			z_force = 5
+			configure_control_mode(control_mode_srv, create_msg_cartesian_impedance())
+		'''
 		while True:
 			rospy.sleep(1)
 
 	except KeyboardInterrupt:
-		set_feedback(OFF)
+		set_feedback(0.0)

@@ -50,6 +50,7 @@ if __name__ == '__main__':
 
 	try:
 		init_play(led_srv)
+		# TODO scrivere nel file CSV la posizione HOME all'inizio
 		play()
 
 	except KeyboardInterrupt:
