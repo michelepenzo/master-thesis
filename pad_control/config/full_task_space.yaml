@@ -56,21 +56,3 @@ teleop:
       - axis: 4
         target: twist.angular.z
         scale: 0.2
-
-  # services
-  close_gripper:
-    type: service
-    service_name: /iiwa/configuration/openGripper
-    service_request:
-      open: false
-    service_persistent: True
-    buttons: [ 0 ]
-
-
-  open_gripper:
-    type: service
-    service_name: /iiwa/configuration/openGripper
-    service_request:
-      open: true
-    service_persistent: True
-    buttons: [ 1 ]

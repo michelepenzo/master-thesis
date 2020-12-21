@@ -7,12 +7,12 @@ from teach_play.functions import print_on_csv, clean_file, init_play
 from teach_play.play import play
 from teach_play.services import configure_gripper, configure_led
 
-# IMPEDANCE = False
-
 # global values
 actual_pose = [0] * 7  # actual pose
 last_events = [False] * 11
 x_force, y_force, z_force = 10, 10, 10
+is_position_control = True
+action_gripper = 1
 
 
 # set feedback joypad
@@ -47,15 +47,15 @@ def read_cartesian_pose(data):
 # read joy buttons and parse (0 -> 1 -> 0)
 def read_joy_buttons(data):
 	check_on_click(data, 2, 1)  # read pose
-	# check_on_click(data, 3, 2)  # change controller	# TODO nuovo valore del pulsante
+	check_on_click(data, 3, 2)  # change controller	# TODO nuovo valore del pulsante
 	check_on_click(data, 0, 3)  # action gripper
-	check_on_click(data, 1, 4)  # action gripper
-	check_on_click(data, 10, 5)  # start playing
+	check_on_click(data, 10, 4)  # start playing
 
 
 # check onClick event
 def check_on_click(data, pos, action):
 	# TODO sistemare con passaggio a funzione
+	global is_position_control, action_gripper
 
 	if data.buttons[pos]:
 		last_events[pos] = True
@@ -65,24 +65,34 @@ def check_on_click(data, pos, action):
 			rospy.logwarn("Get pose")
 			print_on_csv(actual_pose)
 
-		# elif action == 2:  # change controller
-		#	rospy.logwarn('change controller -> NOT DONE')
+		elif action == 2:  # change controller
+
+			if is_position_control:
+				is_position_control = 0
+				rospy.logwarn('to impedance')
+			else:
+				is_position_control = 1
+				rospy.logwarn('to position control')
 
 		elif action == 3:  # action gripper CLOSE
+
+			if action_gripper:
+				action_gripper = 0
+			else:
+				action_gripper = 1
+
+			configure_gripper(gripper_srv, action_gripper)
+			print_on_csv(actual_pose)
+			print_on_csv(('action_gripper', action_gripper))
 			rospy.logwarn("Get pose and action gripper")
-			print_on_csv(actual_pose)
-			print_on_csv(('action_gripper', 0))
 
-		elif action == 4:  # action gripper OPEN
-			print_on_csv(actual_pose)
-			print_on_csv(('action_gripper', 1))
-
-		elif action == 5:  # start playing
+		elif action == 4:  # start playing
 			init_play(led_srv)
 			play(gripper_srv, led_srv)
 
 		else:
 			pass
+
 		last_events[pos] = False
 
 
