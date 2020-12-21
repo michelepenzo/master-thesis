@@ -3,17 +3,16 @@
 import rospy
 from iiwa_msgs import msg, srv
 from sensor_msgs.msg import JoyFeedbackArray, JoyFeedback, Joy
-
-from teach_play.create_msgs import create_msg_cartesian_impedance, create_msg_position_control
-from teach_play.services import configure_control_mode
+from teach_play.create_msgs import create_msg_position_control
 from teach_play.functions import print_on_csv, clean_file
-
+from teach_play.services import configure_control_mode
 
 # global values
 actual_pose = [0] * 7  # actual pose
 # IMPEDANCE = False
 last_events = [False] * 11
 
+import roslaunch
 
 # set feedback joypad
 def set_feedback(value):
@@ -46,12 +45,11 @@ def read_cartesian_pose(data):
 
 # read joy buttons and parse (0 -> 1 -> 0)
 def read_joy_buttons(data):
-
-	check_on_click(data, 2,  1)	# read pose
-	check_on_click(data, 3,  2)	# change controller
-	check_on_click(data, 10, 3)  # start playing
-	check_on_click(data, 0, 4)  # action gripper
-	check_on_click(data, 1, 5)  # action gripper
+	check_on_click(data, 2, 1)  # read pose
+	check_on_click(data, 3, 2)  # change controller
+	check_on_click(data, 0, 3)  # action gripper
+	check_on_click(data, 1, 4)  # action gripper
+	check_on_click(data, 10, 5)  # start playing
 
 
 # check onClick event
@@ -62,23 +60,24 @@ def check_on_click(data, pos, action):
 		last_events[pos] = True
 	elif last_events[pos] == True and data.buttons[pos] == False:
 
-		if action == 1:	# read pose
-			rospy.logwarn(actual_pose)
+		if action == 1:  # read pose
+			rospy.logwarn("Get pose")
 			print_on_csv(actual_pose)
 
-		elif action == 2: #change controller
+		elif action == 2:  # change controller
 			rospy.logwarn('change controller -> NOT DONE')
 
-		elif action == 3: #start playing
-			rospy.logwarn('start playing')
-
-		elif action == 4: # action gripper CLOSE
+		elif action == 3:  # action gripper CLOSE
+			rospy.logwarn("Get pose and action gripper")
 			print_on_csv(actual_pose)
 			print_on_csv(('action_gripper', 0))
 
-		elif action == 5: # action gripper OPEN
+		elif action == 4:  # action gripper OPEN
 			print_on_csv(actual_pose)
 			print_on_csv(('action_gripper', 1))
+
+		elif action == 5:  # start playing
+			rospy.logwarn("Stop teaching")
 
 		last_events[pos] = False
 
