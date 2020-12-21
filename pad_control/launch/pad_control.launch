@@ -29,7 +29,7 @@
     - axis -> 0 .. 8
         analogico sx oriz, analog sx ver, L2, analog dx oriz, analog dx ver, R2, frecce laterali, frecce verticali
 
-    - buttons -> 0 .. 13
+    - buttons -> 0 .. 11
         croce, cerchio, triangolo, quadrato, L1, R1, L2, R2, share, options, tasto play, analog sx, analog dx
 
     -->
