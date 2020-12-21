@@ -39,3 +39,8 @@ def init_play(led_srv):
 	rospy.sleep(0.5)
 	configure_led(led_srv, True, 2, False)
 	rospy.sleep(0.5)
+
+
+# home position
+def get_home_pose():
+	return 0.31899, -0.39, 0.5, 0.0, 1.0, 0.0, 0.0, 2, -0.944866252106

@@ -7,12 +7,19 @@ from functions import *
 from services import *
 
 
-def play():
-	rospy.logwarn('Start playing ...')
-	client = actionlib.SimpleActionClient('/iiwa/action/move_to_cartesian_pose', msg.MoveToCartesianPoseAction)
+def play(gripper_srv, led_srv):
+	configure_led(led_srv, True, 1, False)
 
+	client = actionlib.SimpleActionClient('/iiwa/action/move_to_cartesian_pose', msg.MoveToCartesianPoseAction)
 	client.cancel_all_goals()  # clear all old goals
 	client.wait_for_server()  # waiting starting server
+
+	# alway start from HOME POSE
+	pose = get_cartesian_pose(get_home_pose())  # array
+	move_goal = create_movement_cartesian_pose(pose)  # 'movement' object
+	action_goal = msg.MoveToCartesianPoseGoal(move_goal)  # action goal
+	client.send_goal_and_wait(action_goal)  # send the action to action server and wait
+	client.wait_for_result()  # waits for the server to finish performing the action
 
 	while True:
 		with open(filename_csv) as outfile:
@@ -31,6 +38,8 @@ def play():
 				elif line[0] == 'action_gripper':
 					configure_gripper(gripper_srv, get_action_gripper(line[1]))
 
+				else:
+					rospy.logwarn('Anknown action')
 
 # ---------------------------------------------------------------------------------------------
 
@@ -49,9 +58,9 @@ if __name__ == '__main__':
 	configure_gripper(gripper_srv, 1)
 
 	try:
+		print_on_csv(get_home_pose())
 		init_play(led_srv)
-		# TODO scrivere nel file CSV la posizione HOME all'inizio
-		play()
+		play(gripper_srv, led_srv)
 
 	except KeyboardInterrupt:
 		configure_led(led_srv, False, 1, False)  # turn off led
