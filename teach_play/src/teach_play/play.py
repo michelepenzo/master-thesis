@@ -22,6 +22,7 @@ def play(gripper_srv, led_srv):
 	client.wait_for_result()  # waits for the server to finish performing the action
 	rospy.logwarn('Move to home pose')
 
+	# start reading from file
 	while True:
 		with open(filename_csv) as outfile:
 			reader = csv.reader(outfile)

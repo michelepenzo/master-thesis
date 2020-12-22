@@ -11,9 +11,10 @@ from teach_play.services import configure_gripper, configure_led, configure_cont
 # global values
 actual_pose = [0] * 7  # actual pose
 last_events = [False] * 13
-x_force, y_force, z_force = 10, 10, 10
+x_force, y_force, z_force = 5, 5, 5
 is_position_control = True
 action_gripper = 1
+
 
 
 # set feedback joypad
@@ -29,7 +30,7 @@ def set_feedback(value):
 
 # read external force on end effector
 def read_cartesian_wrench(data):
-	if data.wrench.force.z < z_force or abs(data.wrench.force.x) > x_force or abs(data.wrench.force.y) > y_force:
+	if abs(data.wrench.force.z) > z_force or abs(data.wrench.force.x) > x_force or abs(data.wrench.force.y) > y_force:
 		set_feedback(1.0)
 	else:
 		set_feedback(0.0)
@@ -56,7 +57,7 @@ def read_joy_buttons(data):
 # check onClick event
 def check_on_click(data, pos, action):
 	# TODO sistemare con passaggio a funzione
-	global is_position_control, action_gripper
+	global is_position_control, action_gripper, z_force
 
 	if data.buttons[pos]:
 		last_events[pos] = True
@@ -69,12 +70,12 @@ def check_on_click(data, pos, action):
 		elif action == 2:  # change controller
 
 			if is_position_control:
-				is_position_control = 0
-				rospy.logwarn('to impedance')
+				is_position_control, x_force, y_force, z_force = 0, 10, 10, 10
+				rospy.logwarn('to impedance control')
 
 				configure_control_mode(control_mode_srv, create_msg_cartesian_impedance())
 			else:
-				is_position_control = 1
+				is_position_control, x_force, y_force, z_force = 1, 5, 5, 5
 				rospy.logwarn('to position control')
 				configure_control_mode(control_mode_srv, create_msg_position_control())
 

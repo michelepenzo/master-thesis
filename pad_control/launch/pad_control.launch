@@ -1,15 +1,15 @@
 <launch>
 
-    <!-- telep modality -->
+    <!-- telep modality, controller enabled, toolName -->
     <arg name="teleop_config" default="$(find pad_control)/config/full_task_space.yaml" />
-
-    <!-- controller.py ON/OFF -->
     <arg name="controller" default="true"/>
+    <param name="/iiwa/toolName" type="string" value="MPLM3204P" />
+
 
     <!-- joy node -->
     <node respawn="true" pkg="joy" type="joy_node" name="joy_node">
         <param name="dev" type="string" value="/dev/input/js0" />
-        <param name="autorepeat_rate" value="100" />
+        <param name="autorepeat_rate" value="500" />
         <param name="dev_ff" value="/dev/input/event24" />
     </node>
 
