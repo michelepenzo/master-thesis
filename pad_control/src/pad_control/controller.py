@@ -11,10 +11,9 @@ from teach_play.services import configure_gripper, configure_led, configure_cont
 # global values
 actual_pose = [0] * 7  # actual pose
 last_events = [False] * 13
-x_force, y_force, z_force = 5, 5, 5
+x_force, y_force, z_force = 8, 8, 5
 is_position_control = True
 action_gripper = 1
-
 
 
 # set feedback joypad
@@ -57,26 +56,26 @@ def read_joy_buttons(data):
 # check onClick event
 def check_on_click(data, pos, action):
 	# TODO sistemare con passaggio a funzione
-	global is_position_control, action_gripper, z_force
+	global is_position_control, action_gripper, x_force, y_force, z_force
 
 	if data.buttons[pos]:
 		last_events[pos] = True
-	elif last_events[pos] == True and data.buttons[pos] == False:
+	elif last_events[pos] and not data.buttons[pos]:
 
 		if action == 1:  # read pose
-			rospy.logwarn("Get pose")
+			rospy.logwarn('Get pose')
 			print_on_csv(actual_pose)
 
 		elif action == 2:  # change controller
 
 			if is_position_control:
 				is_position_control, x_force, y_force, z_force = 0, 10, 10, 10
-				rospy.logwarn('to impedance control')
+				rospy.logwarn('To impedance control')
 
 				configure_control_mode(control_mode_srv, create_msg_cartesian_impedance())
 			else:
-				is_position_control, x_force, y_force, z_force = 1, 5, 5, 5
-				rospy.logwarn('to position control')
+				is_position_control, x_force, y_force, z_force = 1, 8, 8, 5
+				rospy.logwarn('To position control')
 				configure_control_mode(control_mode_srv, create_msg_position_control())
 
 		elif action == 3:  # action gripper CLOSE
@@ -89,12 +88,12 @@ def check_on_click(data, pos, action):
 			configure_gripper(gripper_srv, action_gripper)
 			print_on_csv(actual_pose)
 			print_on_csv(('action_gripper', action_gripper))
-			rospy.logwarn("Get pose and action gripper")
-
+			rospy.logwarn('Get pose and action gripper ' + str(action_gripper))
+			'''
 		elif action == 4:  # start playing
 			init_play(led_srv)
 			play(gripper_srv, led_srv)
-
+			'''
 		else:
 			pass
 

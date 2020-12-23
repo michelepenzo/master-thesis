@@ -60,7 +60,6 @@ if __name__ == '__main__':
 	configure_gripper(gripper_srv, 1)
 
 	try:
-		print_on_csv(get_home_pose())
 		init_play(led_srv)
 		play(gripper_srv, led_srv)
 
