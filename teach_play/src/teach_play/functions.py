@@ -1,8 +1,6 @@
 # !/usr/bin/env python
 
-import csv
-import rospkg
-import rospy
+import csv, rospkg, rospy, os
 
 from services import *
 
@@ -44,3 +42,7 @@ def init_play(led_srv):
 # home position
 def get_home_pose():
 	return 0.31899, -0.39, 0.5, 0.0, 1.0, 0.0, 0.0, 2, -0.944866252106
+
+# check if file is empy
+def is_empty():
+	return os.stat(filename_csv).st_size == 0
