@@ -7,6 +7,7 @@ from std_msgs.msg import Bool
 from create_msgs import *
 from functions import *
 from services import *
+from play import play
 
 # global variables
 queue = Queue.Queue()  # msgs queue
@@ -106,6 +107,9 @@ if __name__ == '__main__':
 
 		while not finish:
 			rospy.sleep(1)
+
+		init_play(led_srv)
+		play(gripper_srv, led_srv)
 
 	except KeyboardInterrupt:
 		rospy.logwarn('KeyboardInterrupt teach...')

@@ -1,0 +1,8 @@
+<launch>
+    <!-- load gripper name -->
+    <param name="/iiwa/toolName" type="string" value="MPLM3204P" />
+
+    <!-- launch teach and play  -->
+    <node pkg="teach_play" type="teach.py" name="teach"/>
+
+</launch>

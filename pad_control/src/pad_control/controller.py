@@ -89,11 +89,12 @@ def check_on_click(data, pos, action):
 			print_on_csv(actual_pose)
 			print_on_csv(('action_gripper', action_gripper))
 			rospy.logwarn('Get pose and action gripper ' + str(action_gripper))
-			'''
+
 		elif action == 4:  # start playing
+			configure_control_mode(control_mode_srv, create_msg_position_control())
 			init_play(led_srv)
 			play(gripper_srv, led_srv)
-			'''
+
 		else:
 			pass
 
@@ -132,4 +133,5 @@ if __name__ == '__main__':
 
 	except KeyboardInterrupt:
 		configure_led(led_srv, False, 1, False)  # turn off led
+		configure_control_mode(control_mode_srv, create_msg_position_control())
 		set_feedback(0.0)
