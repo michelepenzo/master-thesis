@@ -196,7 +196,7 @@
 \RequirePackage{siunitx} % Required for \SI commands
 
 \RequirePackage{graphicx} % Required to include images
-\graphicspath{{figures/}{./}} % Specifies where to look for included images
+\graphicspath{{Figures/}{./}} % Specifies where to look for included images
 
 \RequirePackage{booktabs} % Required for better table rules
 
@@ -342,7 +342,7 @@ KOMA-script documentation for details.}]{fancyhdr}
 \newcommand{\byname}{by}
 \newcommand{\abstractname}{Abstract}
 \providecaptionname{german,ngerman,austrian,naustrian}{\byname}{von}
-\providecaptionname{american,australian,british,canadian,english,italian, newzealand,UKenglish,USenglish}{\byname}{di}
+\providecaptionname{american,australian,british,canadian,english,newzealand,UKenglish,USenglish}{\byname}{by}
 \ifbool{consistentlayout}{
 	\DeclareDocumentEnvironment{abstract}{ O{} }{%
 		\addchap*{\abstractname}%
@@ -363,10 +363,10 @@ KOMA-script documentation for details.}]{fancyhdr}
 			\bigskip
 			{\huge\textit{\abstractname} \par}
 			\bigskip
-%			{\normalsize \facname \par}% Faculty name
+			{\normalsize \facname \par}% Faculty name
 			{\normalsize \deptname \par}% Department name
 			\bigskip
-%			{\normalsize \degreename\par}% Degree name
+			{\normalsize \degreename\par}% Degree name
 			\bigskip
 			{\normalsize\bfseries \@title \par}% Thesis title
 			\medskip
@@ -410,8 +410,8 @@ KOMA-script documentation for details.}]{fancyhdr}
 
 \usepackage{xcolor}
 \colorlet{mdtRed}{red!50!black}
-\newcommand{\acknowledgementname}{Ringraziamenti}
-\providecaptionname{american,australian,british,canadian,italian,english,newzealand,UKenglish,USenglish} {\acknowledgementname}{Ringraziamenti} % Acknowledgement text for English countries
+\newcommand{\acknowledgementname}{Acknowledgements}
+\providecaptionname{american,australian,british,canadian,english,newzealand,UKenglish,USenglish} {\acknowledgementname}{Acknowledgements} % Acknowledgement text for English countries
 \providecaptionname{german,ngerman,austrian,naustrian}{\acknowledgementname}{Danksagung} % Acknowledgement text for Germanic countries
 
 \ifbool{consistentlayout}{
