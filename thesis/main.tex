@@ -54,6 +54,13 @@ headsepline, % Uncomment to get a line under the header
 }
 
 
+% Define some commands to keep the formatting separated from the content 
+\newcommand{\keyword}[1]{\textbf{#1}}
+\newcommand{\code}[1]{\texttt{#1}}
+\newcommand{\file}[1]{\texttt{\bfseries#1}}
+\newcommand{\option}[1]{\texttt{\itshape#1}}
+
+
 %	BEGIN DOCUMENT
 
 \begin{document}
@@ -116,11 +123,16 @@ headsepline, % Uncomment to get a line under the header
 	
 	
 	%	LIST OF CONTENTS
-	\tableofcontents 
-	% TODO
-%	\listoffigures % Prints the list of figures
-%	\listoftables % Prints the list of tables
+	{
+		\hypersetup{linkcolor=black}
 	
+	
+		\tableofcontents 
+		% TODO
+	%	\listoffigures % Prints the list of figures
+	%	\listoftables % Prints the list of tables
+	
+	}	
 
 	%	ABBREVIATIONS
 	\begin{abbreviations}{ll} % Include a list of abbreviations (a table of two columns)
@@ -130,7 +142,7 @@ headsepline, % Uncomment to get a line under the header
 	\textbf{DOF} & \textbf{D}egree \textbf{O}f \textbf{F}reedom\\
 	\textbf{ROS} & \textbf{R}obot \textbf{O}perating \textbf{S}ystem\\
 	\textbf{HRI} & \textbf{H}uman \textbf{R}obot \textbf{I}nteraction\\
-	\textbf{HMI} & \textbf{U}man \textbf{M}achine \textbf{I}nterface\\
+	\textbf{HMI} & \textbf{H}uman \textbf{M}achine \textbf{I}nterface\\
 		
 	\end{abbreviations}
 	
@@ -141,8 +153,12 @@ headsepline, % Uncomment to get a line under the header
 	\pagestyle{thesis}
 	
 	\include{chapters/introduction}
-	
-	
+	\include{chapters/theory}
+	\include{chapters/literature_review}	
+	\include{chapters/the_project}	
+	\include{chapters/experiments_results}	
+	\include{chapters/conclusion}		
+
 	%	BIBLIOGRAPHY
 	\printbibliography[heading=bibintoc]
 	
