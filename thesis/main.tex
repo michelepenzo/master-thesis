@@ -6,7 +6,7 @@ singlespacing, % Single line spacing, alternatives: onehalfspacing or doublespac
 %draft, % Uncomment to enable draft mode (no pictures, no links, overfull hboxes indicated)
 %nolistspacing, % If the document is onehalfspacing or doublespacing, uncomment this to set spacing in lists to single
 liststotoc, % Uncomment to add the list of figures/tables/etc to the table of contents
-%toctotoc, % Uncomment to add the main table of contents to the table of contents
+toctotoc, % Uncomment to add the main table of contents to the table of contents
 %parskip, % Uncomment to add space between paragraphs
 headsepline, % Uncomment to get a line under the header
 %chapterinoneline, % Uncomment to place the chapter title next to the number on one line
@@ -25,13 +25,13 @@ headsepline, % Uncomment to get a line under the header
 %	MARGIN SETTINGS
 
 \geometry{
-paper=a4paper, % Change to letterpaper for US letter
-inner=3cm, % Inner margin
-outer=3cm, % Outer margin
-%bindingoffset=.5cm, % Binding offset
-top=1.5cm, % Top margin
-bottom=1.5cm, % Bottom margin
-%showframe, % Uncomment to show how the type block is set on the page
+	paper=a4paper, % Change to letterpaper for US letter
+	inner=3cm, % Inner margin
+	outer=3cm, % Outer margin
+	%bindingoffset=.5cm, % Binding offset
+	top=1.5cm, % Top margin
+	bottom=1.5cm, % Bottom margin
+	%showframe, % Uncomment to show how the type block is set on the page
 }
 
 %	THESIS INFORMATION
@@ -39,108 +39,112 @@ bottom=1.5cm, % Bottom margin
 \thesistitle{Title $\ldots$} % TODO
 \supervisor{Dr. Diego \textsc{Dall'Alba}}
 
-\degree{Dottore in Ingeneria Informatica}	% TODO
+\degree{Master of Science}
 \author{Michele \textsc{Penzo}\\ VR439232}
 \keywords{}
 \university{\href{https://www.univr.it}{University of Verona}}
 \department{\href{https://www.di.univr.it}{Department of Computer Science}}
-\group{{ICE Lab}}
-\faculty{\href{http://faculty.university.com}{Faculty Name}}
+\group{\href{https://www.icelab.di.univr.it/}{ICE Lab}}
+\faculty{ }	% TODO
 
 \AtBeginDocument{
-\hypersetup{pdftitle=\ttitle}
-\hypersetup{pdfauthor=\authorname}
-\hypersetup{pdfkeywords=\keywordnames}
+	\hypersetup{pdftitle=\ttitle}
+	\hypersetup{pdfauthor=\authorname}
+	\hypersetup{pdfkeywords=\keywordnames}
 }
 
 
 %	BEGIN DOCUMENT
 
 \begin{document}
+	
+	\frontmatter % Use roman page numbering style (i, ii, iii, iv...) for the pre-content pages
+	\pagestyle{plain} % Default to the plain heading style until the thesis style is called for the body content
+	
+	%	TITLE PAGE
+	\begin{titlepage}
+		\begin{center}
+			
+			\vspace*{.06\textheight}
+			{\scshape\LARGE \univname\par}\vspace{1.5cm} % University name
+			\textsc{\Large Master Thesis}\\[1.5cm] % Thesis type
+			
+			\HRule \\[0.4cm] % Horizontal line
+			{\huge \bfseries \ttitle\par}\vspace{0.4cm} % Thesis title
+			\HRule \\[2.5cm] % Horizontal line
+			
+			\begin{minipage}[t]{0.4\textwidth}
+				\begin{flushleft} \large
+					\emph{Author:}\\
+					\href{mailto:michelepenzo@outlook.it}{\authorname} % Author name
+				\end{flushleft}
+			\end{minipage}
+			\begin{minipage}[t]{0.4\textwidth}
+				\begin{flushright} \large
+					\emph{Supervisor:} \\
+					\href{https://www.di.univr.it/?ent=persona&id=6321&lang=it}{\supname} % Supervisor name
+				\end{flushright}
+			\end{minipage}\\[3cm]
+			
+			\vfill
+			
+			%\large \textit{Tesi presentata in adempimento dei requisiti per\\ il grado di \degreename}\\[0.3cm] 
+			%\textit{svolta presso}\\[0.4cm]
+			\groupname\\\deptname\\[2cm] % Research group name and department name
+			
+			\vfill
+			
+			{\large \today}\\[2cm] % Date
+			%\includegraphics[scale=0.4]{logo-univr.png} % Logo UniVR
+			
+			\vfill
+		\end{center}
+	\end{titlepage}
+	
+	%	ABSTRACT PAGE
+	\begin{abstract}
+		\addchaptertocentry{\abstractname} % Add the abstract to the table of contents
+		Abstract\ldots
+	\end{abstract}
+	
+	%	ACKNOWLEDGEMENTS
+	\begin{acknowledgements}
+		\addchaptertocentry{\acknowledgementname} % Add the acknowledgements to the table of contents
+		acknowledgements \ldots
+	\end{acknowledgements}
+	
+	
+	
+	%	LIST OF CONTENTS
+	\tableofcontents 
+	% TODO
+%	\listoffigures % Prints the list of figures
+%	\listoftables % Prints the list of tables
+	
 
-\frontmatter % Use roman page numbering style (i, ii, iii, iv...) for the pre-content pages
-\pagestyle{plain} % Default to the plain heading style until the thesis style is called for the body content
-
-%	TITLE PAGE
-\begin{titlepage}
-\begin{center}
-
-\vspace*{.06\textheight}
-{\scshape\LARGE \univname\par}\vspace{1.5cm} % University name
-\textsc{\Large Master Thesis}\\[1.5cm] % Thesis type
-
-\HRule \\[0.4cm] % Horizontal line
-{\huge \bfseries \ttitle\par}\vspace{0.4cm} % Thesis title
-\HRule \\[2.5cm] % Horizontal line
-
-\begin{minipage}[t]{0.4\textwidth}
-\begin{flushleft} \large
-\emph{Author:}\\
-\href{mailto:michelepenzo@outlook.it}{\authorname} % Author name
-\end{flushleft}
-\end{minipage}
-\begin{minipage}[t]{0.4\textwidth}
-\begin{flushright} \large
-\emph{Supervisor:} \\
-\href{https://www.di.univr.it/?ent=persona&id=6321&lang=it}{\supname} % Supervisor name
-\end{flushright}
-\end{minipage}\\[3cm]
-
-\vfill
-
-%\large \textit{Tesi presentata in adempimento dei requisiti per\\ il grado di \degreename}\\[0.3cm] 
-%\textit{svolta presso}\\[0.4cm]
-\groupname\\\deptname\\[2cm] % Research group name and department name
-
-\vfill
-
-{\large \today}\\[2cm] % Date
-%\includegraphics[scale=0.4]{logo-univr.png} % Logo UniVR
-
-\vfill
-\end{center}
-\end{titlepage}
-
-%	ABSTRACT PAGE
-\begin{abstract}
-\addchaptertocentry{\abstractname} % Add the abstract to the table of contents
-Abstract\ldots
-\end{abstract}
-
-%	ACKNOWLEDGEMENTS
-\begin{acknowledgements}
-	\addchaptertocentry{\acknowledgementname} % Add the acknowledgements to the table of contents
-	Ringraziamenti \ldots
-\end{acknowledgements}
-
-
-
-%	LIST OF CONTENTS
-% 	TODO figures/tables
-\tableofcontents 
-
-% TODO abbreviazioni
-%	ABBREVIATIONS
-%\begin{abbreviations}{ll} % Include a list of abbreviations (a table of two columns)
-%
-%\textbf{LAH} & \textbf{L}ist \textbf{A}bbreviations \textbf{H}ere\\
-%\textbf{WSF} & \textbf{W}hat (it) \textbf{S}tands \textbf{F}or\\
-%
-%\end{abbreviations}
-
-
-
-%	THESIS CONTENT - CHAPTERS
-
-\mainmatter % Begin numeric (1,2,3...) page numbering
-\pagestyle{thesis}
-
-\include{chapters/introduzione}
-
-
-
-%	BIBLIOGRAPHY
-\printbibliography[heading=bibintoc]
-
+	%	ABBREVIATIONS
+	\begin{abbreviations}{ll} % Include a list of abbreviations (a table of two columns)
+	
+	\textbf{LBR} & \textbf{L}eicht \textbf{B}au \textbf{R}oboter\\
+	\textbf{IIWA}& \textbf{I}ntellingent \textbf{I}ndustrial \textbf{W}ork \textbf{A}ssistant\\
+	\textbf{DOF} & \textbf{D}egree \textbf{O}f \textbf{F}reedom\\
+	\textbf{ROS} & \textbf{R}obot \textbf{O}perating \textbf{S}ystem\\
+	\textbf{HRI} & \textbf{H}uman \textbf{R}obot \textbf{I}nteraction\\
+	\textbf{HMI} & \textbf{U}man \textbf{M}achine \textbf{I}nterface\\
+		
+	\end{abbreviations}
+	
+	
+	%	THESIS CONTENT - CHAPTERS
+	
+	\mainmatter % Begin numeric (1,2,3...) page numbering
+	\pagestyle{thesis}
+	
+	\include{chapters/introduction}
+	
+	
+	%	BIBLIOGRAPHY
+	\printbibliography[heading=bibintoc]
+	
 \end{document}  
 
