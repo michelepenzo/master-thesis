@@ -2,19 +2,25 @@
 
 \chapter{The project}
 \label{project}
+This chapter describes the general setup, its components and a small overview on the tools used for develop the project. Finally the project is explained.
 
 %----------------------------------------------------------------------------------------
 
-\section{Sunrise OS}
-\label{sunrise}
+\section{Setup overview}
+The KUKA IIWA LBR redundat manipulator is programmed using the KUKA's Sunrise Workbench platform and its Java API's. The usage of an open source stack \cite{reference0} compatible with ROS allows the usage of the robot in a simple way.
 
-\section{ROS}
-\label{ros}
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.6]{figures/ros_sunrise_diagra.png}
+	\caption{Robot control via ROS and Sunrise OS}
+\end{figure}
 
-\section{IIWA stack}
-\label{iiwa-stack}
+A Sunrise project, containing one or more Robotic Application can be synchronized to the robot cabinet and executed from the SmartPad. 
 
-	
+The \textit{iiwa stack} provide a Robotic Application that can be used with the robot. It establishes a connection to machines connected via Ethernet to the robot cabinet via ROS. The machine, with ROS installed, will be able to send and receive ROS messages to and from the Robotic Application. The messages used in this stack are taken from the messages available in a standard ROS distribution, but there are other custom ones inside the \texttt{iiwa\_msgs} folder. 
+
+With the stack is simple to manipulate the messages received from the robot and set new ones as command to it, using Python code or all the ROS functionalities already implemented as services, topics, actions.
+
 \section{Project implementation}
 \label{project-implementation}
 

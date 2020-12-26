@@ -6,7 +6,7 @@ singlespacing, % Single line spacing, alternatives: onehalfspacing or doublespac
 %draft, % Uncomment to enable draft mode (no pictures, no links, overfull hboxes indicated)
 %nolistspacing, % If the document is onehalfspacing or doublespacing, uncomment this to set spacing in lists to single
 liststotoc, % Uncomment to add the list of figures/tables/etc to the table of contents
-toctotoc, % Uncomment to add the main table of contents to the table of contents
+%toctotoc, % Uncomment to add the main table of contents to the table of contents
 %parskip, % Uncomment to add space between paragraphs
 headsepline, % Uncomment to get a line under the header
 %chapterinoneline, % Uncomment to place the chapter title next to the number on one line
@@ -122,11 +122,9 @@ headsepline, % Uncomment to get a line under the header
 	{
 		\hypersetup{linkcolor=black}
 	
-	
 		\tableofcontents 
-		% TODO
-	%	\listoffigures % Prints the list of figures
-	%	\listoftables % Prints the list of tables	
+		\listoffigures
+		\listoftables
 	}	
 
 	%	ABBREVIATIONS
@@ -135,9 +133,9 @@ headsepline, % Uncomment to get a line under the header
 	\textbf{LBR} & \textbf{L}eicht \textbf{B}au \textbf{R}oboter\\
 	\textbf{IIWA}& \textbf{I}ntellingent \textbf{I}ndustrial \textbf{W}ork \textbf{A}ssistant\\
 	\textbf{TCP} & \textbf{T}ool \textbf{C}enter \textbf{P}oint\\
+	\textbf{EE}  & \textbf{E}nd \textbf{E}ffector\\
 	\textbf{DOF} & \textbf{D}egree \textbf{O}f \textbf{F}reedom\\
 	\textbf{ROS} & \textbf{R}obot \textbf{O}perating \textbf{S}ystem\\
-	\textbf{HRI} & \textbf{H}uman \textbf{R}obot \textbf{I}nteraction\\
 	\textbf{HMI} & \textbf{H}uman \textbf{M}achine \textbf{I}nterface\\
 		
 	\end{abbreviations}
@@ -154,7 +152,8 @@ headsepline, % Uncomment to get a line under the header
 	\include{chapters/the_project}	
 	\include{chapters/experiments_results}	
 	\include{chapters/conclusion}		
-
+	
+	
 	%	BIBLIOGRAPHY
 	\printbibliography[heading=bibintoc]
 	

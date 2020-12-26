@@ -1,7 +1,7 @@
 % Theory chapter
 \chapter{Theory overview}
 \label{theory}
-This chapter consists in describing the basics notion about the robot, to understand better the entire work made on \textbf{KUKA LBR IIWA}. Morover a description about the kinematic chains and about the different robot control is provided.
+This chapter consists in describing the basics notion about the robot, to understand better the entire work made on \textbf{KUKA LBR IIWA}. Morover a description about the kinematic chains, the types of kinematic and about the most used notation is provided. Also an overview of different robot controls is provided.
 
 %----------------------------------------------------------------------------------------
 
@@ -40,7 +40,7 @@ Joints and links are components of the kinematic chain that allows re motion bet
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.15]{figures/revolute_joint.png}
-	\caption{A revolute joint, the same in KUKA IIWA.}
+	\caption{A revolute joint, the same in KUKA IIWA}
 	\label{fig:joint}
 \end{figure}
 
@@ -56,19 +56,47 @@ We talk about two different types of kinematic chains:
 
 
 \section{Kinematic}	
+From \cite{reference4}, there are two different types of kinematic that describe the behavior of the robot. In the next sections a little introduction about them is provided. Moreover a description on the commonly used notation for selecting references frame is provided in section~\ref{dh}.
 	
-	\subsection{Direct Kinematic}
-	\label{direct-kinematic}
+	\subsection{Forward Kinematic}
+	\label{forward-kinematic}
+	Forward kinematics describes the pose of the EE respect to the world frame, depending on the robot's geometry and based on the angles (revolute) or offset (prismatic) of the robot's joints. The EE pose can be defined by specifying the manipulator's geometry and joint displacements necessary to achive the pose. When the pose is defines in this way, the TCP is described in the joint space: every joint has a value of offset or angles. A joint motion in joint space produces a motion of the EE in the task space.
+
 
 	\subsection{Inverse Kinematic}
 	\label{inverse-kinematic}		
-		
+	When we talk about inverse kinematics we mean the opposite process. Given a TCP pose respect to the world frame, the necessary joint values to reach that pose must be found. If the TCP pose is out of the reachable joint state the inverse kinematic cannot be found.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[scale=0.35]{figures/forward_inverse_kinematic.jpg}
+		\caption{An easy way to understand FK and IK}
+		\label{fig:for-inv-kinematic}
+	\end{figure}
+	
 	
 	\subsection{Denavit–Hartenberg Convention}
 	\label{dh}
-		
+	As mentioned in the introduction, the \textit{DH} conventions is used for selecting the reference frames. This method allows to attach a reference frame to each link of the robot and it uses certain parameters to describe the position and orientation of each reference frame. In particular, in this method the relative position and orientation of two consecutive links are defined. Usually the Frame $ 0 $ is the frame attached to the robot base and doesn't move.
 	
-		
+	There are two version of the \textit{DH} convention: we use the standard one. The standard version, once the reference frame have been established provides four parameters that describe the position and the orientation of a single frame:
+	\begin{itemize}
+		\item $ a_i $: the link length is the distance from $ Z_i $ to $ Z_{i+1} $ measured along $ X_i $
+		\item $ \alpha _i $: the twist angle is the angle from $ Z_i $ to $ Z_{i+1} $ measured about $ X_i $
+		\item $ d_i $: the offset lenght is the distance from $ X_{i-1} $ to $ X_{i} $ measured along $ Z_i $
+		\item $ \theta _i $: the joint angle is the angle between $ X_{i-1} $ to $ X_{i} $ measured about $ Z_i $
+	\end{itemize}
+
+	The first two parameters depend only on the connection of link $ i $ with the consecutive one. One of the other two remaining parameters varies depending on the type of joint, in particular:
+	\begin{itemize}
+		\item if the joint $ i $ is a \textit{prismatic joint}, the joint variable is $ d_i $
+		\item if the joint $ i $ is a \textit{revolute joint}, the joint variable is $ \theta _i $
+	\end{itemize}
+
+	After that the parameters have been found for every link, it's possible to express the coordinate transformation between link $ i-1 $ and link $ i $ using translation and rotation matrices.
+
+% TODO cinematica e DH scritto meglio?
+
 \section{Theory about robot control}
 \label{robot-control}		
 
