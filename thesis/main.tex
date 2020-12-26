@@ -18,7 +18,7 @@ headsepline, % Uncomment to get a line under the header
 \usepackage{mathpazo} % Use the Palatino font by default
 \usepackage[backend=bibtex,style=authoryear,natbib=true]{biblatex}
 \usepackage[autostyle=true]{csquotes}
-\usepackage{lipsum}  
+\usepackage{float}
 
 \addbibresource{example.bib}
 
@@ -58,7 +58,6 @@ headsepline, % Uncomment to get a line under the header
 \newcommand{\keyword}[1]{\textbf{#1}}
 \newcommand{\code}[1]{\texttt{#1}}
 \newcommand{\file}[1]{\texttt{\bfseries#1}}
-\newcommand{\option}[1]{\texttt{\itshape#1}}
 
 
 %	BEGIN DOCUMENT
@@ -95,14 +94,11 @@ headsepline, % Uncomment to get a line under the header
 			
 			\vfill
 			
-			%\large \textit{Tesi presentata in adempimento dei requisiti per\\ il grado di \degreename}\\[0.3cm] 
-			%\textit{svolta presso}\\[0.4cm]
 			\groupname\\\deptname\\[2cm] % Research group name and department name
 			
 			\vfill
 			
 			{\large \today}\\[2cm] % Date
-			%\includegraphics[scale=0.4]{logo-univr.png} % Logo UniVR
 			
 			\vfill
 		\end{center}
@@ -111,13 +107,13 @@ headsepline, % Uncomment to get a line under the header
 	%	ABSTRACT PAGE
 	\begin{abstract}
 		\addchaptertocentry{\abstractname} % Add the abstract to the table of contents
-		Abstract\ldots
+		abstract \ldots % TODO
 	\end{abstract}
 	
 	%	ACKNOWLEDGEMENTS
 	\begin{acknowledgements}
 		\addchaptertocentry{\acknowledgementname} % Add the acknowledgements to the table of contents
-		acknowledgements \ldots
+		acknowledgements \ldots % TODO
 	\end{acknowledgements}
 	
 	
@@ -130,8 +126,7 @@ headsepline, % Uncomment to get a line under the header
 		\tableofcontents 
 		% TODO
 	%	\listoffigures % Prints the list of figures
-	%	\listoftables % Prints the list of tables
-	
+	%	\listoftables % Prints the list of tables	
 	}	
 
 	%	ABBREVIATIONS
@@ -139,6 +134,7 @@ headsepline, % Uncomment to get a line under the header
 	
 	\textbf{LBR} & \textbf{L}eicht \textbf{B}au \textbf{R}oboter\\
 	\textbf{IIWA}& \textbf{I}ntellingent \textbf{I}ndustrial \textbf{W}ork \textbf{A}ssistant\\
+	\textbf{TCP} & \textbf{T}ool \textbf{C}enter \textbf{P}oint\\
 	\textbf{DOF} & \textbf{D}egree \textbf{O}f \textbf{F}reedom\\
 	\textbf{ROS} & \textbf{R}obot \textbf{O}perating \textbf{S}ystem\\
 	\textbf{HRI} & \textbf{H}uman \textbf{R}obot \textbf{I}nteraction\\
