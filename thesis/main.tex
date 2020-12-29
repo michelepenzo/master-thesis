@@ -19,8 +19,10 @@ headsepline, % Uncomment to get a line under the header
 \usepackage[backend=bibtex,style=authoryear,natbib=true]{biblatex}
 \usepackage[autostyle=true]{csquotes}
 \usepackage{float}
+\usepackage{graphics}
 
 \addbibresource{example.bib}
+\graphicspath{{figures/}} 
 
 %	MARGIN SETTINGS
 
@@ -45,7 +47,7 @@ headsepline, % Uncomment to get a line under the header
 \university{\href{https://www.univr.it}{University of Verona}}
 \department{\href{https://www.di.univr.it}{Department of Computer Science}}
 \group{\href{https://www.icelab.di.univr.it/}{ICE Lab}}
-\faculty{ }	% TODO
+\faculty{ }
 
 \AtBeginDocument{
 	\hypersetup{pdftitle=\ttitle}
@@ -54,7 +56,7 @@ headsepline, % Uncomment to get a line under the header
 }
 
 % some commands
-\newcommand{\kuka}{\textit{KUKA LBR IIWA}}
+\newcommand{\kuka}{\textrm{KUKA LBR IIWA}}
 
 %	BEGIN DOCUMENT
 
@@ -101,15 +103,16 @@ headsepline, % Uncomment to get a line under the header
 	\end{titlepage}
 	
 	%	ABSTRACT PAGE
+	% TODO italiano e inglese
 	\begin{abstract}
 		\addchaptertocentry{\abstractname} % Add the abstract to the table of contents
-		abstract \ldots % TODO
+		\ldots
 	\end{abstract}
 	
 	%	ACKNOWLEDGEMENTS
 	\begin{acknowledgements}
 		\addchaptertocentry{\acknowledgementname} % Add the acknowledgements to the table of contents
-		acknowledgements \ldots % TODO
+		\ldots
 	\end{acknowledgements}
 	
 	
@@ -142,15 +145,19 @@ headsepline, % Uncomment to get a line under the header
 	\mainmatter % Begin numeric (1,2,3...) page numbering
 	\pagestyle{thesis}
 	
+	% TODO fare molto riferimento ad altri articoli
+	
 	\include{chapters/introduction}
-	\include{chapters/theory}
-	\include{chapters/literature_review}	
-	\include{chapters/the_project}	
-	\include{chapters/experiments_results}	
-	\include{chapters/conclusion}		
+	\include{chapters/literature}	
+%	\include{chapters/theory}
+	\include{chapters/materials_methods}
+	\include{chapters/project}	
+	\include{chapters/experiments}
+	\include{chapters/results}
+	\include{chapters/conclusion}
 	
 	%	BIBLIOGRAPHY
-	\printbibliography[heading=bibintoc]
+	\printbibliography[heading=bibintoc, title=References]
 	
 \end{document}  
 

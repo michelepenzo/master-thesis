@@ -7,7 +7,7 @@ This chapter describes the general setup, its components and a small overview on
 %----------------------------------------------------------------------------------------
 
 \section{Setup overview}
-The \kuka redundant manipulator is programmed using the KUKA's Sunrise Workbench platform and its Java API's. The usage of an open source stack \parencite{reference0} compatible with ROS allows the usage of the robot in a simple way. 
+The \kuka{} redundant manipulator is programmed using the KUKA's Sunrise Workbench platform and its Java API's. The usage of an open source stack \parencite{reference0} compatible with ROS allows the usage of the robot in a simple way. 
 
 A Sunrise project, containing one or more Robotic Application can be synchronized to the robot cabinet and executed from the SmartPad. 
 
@@ -17,16 +17,17 @@ With the stack is simple to manipulate the messages received from the robot and 
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.6]{figures/ros_sunrise.png}
+	\includegraphics[scale=0.6]{ros_sunrise.png}
 	\caption{Robot control via ROS and Sunrise OS}
 	\label{ros_sunire}
 \end{figure}
 
 	\subsection{KUKA Robot Controller}
-	The \kuka is controlled via the KUKA Robot Controller, also known as the KUKA Sunrise Cabinet. The KRC is responsible for the transmission control inputs as well as the reading the data of the integrated sensors. In our case, for controlling the Kuka we use the Java application providede by the stack that runs into the SmartPad.
+	The \kuka{} is controlled via the KUKA Robot Controller, also known as the KUKA Sunrise Cabinet. The KRC is responsible for the transmission control inputs as well as the reading the data of the integrated sensors. In our case, for controlling the Kuka we use the Java application providede by the stack that runs into the SmartPad.
 
 	\subsection{Sunrise.Workbench}
-	The Sunrise.Workbench is a tool used to program robot applications in Java, which are loaded into and are executed on the KRC. It offers the possibility to control the robot with the strategies described in section~\ref{robot-control}. It can also can execute the commonly motion patterns as: spline, point-to-point, linear and circular motions.
+	The Sunrise.Workbench is a tool used to program robot applications in Java, which are loaded into and are executed on the KRC. %It offers the possibility to control the robot with the strategies described in section~\ref{robot-control}.
+	It can also can execute the commonly motion patterns as: spline, point-to-point, linear and circular motions.
 	
 	Since we have a gripper mounted on media flange, there's a task always active in background that provides a method that can be called via \texttt{ros\_service} to open and close the two jaw. We also have another background task for the \textit{rgb} led present on media flange.
 
