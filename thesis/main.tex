@@ -103,10 +103,15 @@ headsepline, % Uncomment to get a line under the header
 	\end{titlepage}
 	
 	%	ABSTRACT PAGE
-	% TODO italiano e inglese
 	\begin{abstract}
 		\addchaptertocentry{\abstractname} % Add the abstract to the table of contents
-		\ldots
+		% TODO eng
+		\paragraph*{}
+		abstract \ldots %\\[3cm]
+
+		% TODO ita
+		\paragraph{}
+		sommario \ldots
 	\end{abstract}
 	
 	%	ACKNOWLEDGEMENTS
@@ -145,13 +150,14 @@ headsepline, % Uncomment to get a line under the header
 	\mainmatter % Begin numeric (1,2,3...) page numbering
 	\pagestyle{thesis}
 	
-	% TODO fare molto riferimento ad altri articoli
+	% TODO circa 40 pagine
+	% TODO fare riferimento ad altri articoli
 	
 	\include{chapters/introduction}
 	\include{chapters/literature}	
 %	\include{chapters/theory}
-	\include{chapters/materials_methods}
 	\include{chapters/project}	
+	\include{chapters/materials_methods}
 	\include{chapters/experiments}
 	\include{chapters/results}
 	\include{chapters/conclusion}
