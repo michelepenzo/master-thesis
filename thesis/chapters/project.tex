@@ -55,22 +55,44 @@ As described in the next sections, in every phase a way to save waypoints and an
 
 	\subsection{Theach by demonstration}
 	\label{teach}
-	As described in section \ref{kinestetich-teaching}, teach by demonstration or also called \textit{kinestethic teaching} is a way to move the robot in gravity compensation mode. Using the \textit{iiwa\_stack}, the gravity compensation mode was implemented using a joint impendance control mode where for every joint in robot configuration a stiffness and damping value is setted. Stiffness value must be grater than $ 0 $ and it is expressed in $ Nm/rad $, instead damping value must be between $ 0 $ and $ 1 $. After changing the control mode to joint impendance, the robot seems falls. A force contrary to the gravity must be carried out to keep it up.
+	As described in section \ref{kinestetich-teaching}, teach by demonstration or also called \textit{kinestethic teaching} is a way to move the robot in gravity compensation mode. Using the \textit{iiwa\_stack}, the gravity compensation mode was implemented using joint impendance control mode where for every joint in robot configuration a stiffness and damping value is setted. Stiffness value must be grater than $ 0 $ and it is expressed in $ Nm/rad $, instead damping value must be between $ 0 $ and $ 1 $. After changing the control mode to joint impendance, the robot seems falls. A force contrary to the gravity must be carried out to keep it up.
 	
-	On the mediaflange, the green button was dedicated for saving actions on gripper and waypoints.
-	
+	On media flange, the green button ( \circled{3} in figure \ref{media_flange} ) was dedicated for saving commands. When the button is pressed, according to the duration of the pressure an action is recorded:
+	\begin{itemize}
+		\item one click for save a waypoint;
+		\item $ 2 $ seconds pressure for save action on the gripper;
+		\item $ 5 $ seconds pressure to exit from teaching program.
+	\end{itemize}
+	When an action is taken, the led strip ( \circled{1} in figure \ref{media_flange} ) change color: green for waypoints, blue for gripper's actions. For safety, as the robot must be held up with the hands, no closing action are performed on two jays.
+	In the next figure the Media Flange mounted on \kuka.
 	
 	\begin{figure}[H]
 		\centering
-		\includegraphics[scale=0.8]{media_flange.png}
-		\caption{The Mediaflange: $ (1) $ led strip, \\$ (2) $ enabling switch, $ (3) $ application button}
-		\label{ros_sunire}
+		\includegraphics[scale=0.6]{media_flange.png}
+		\caption{\protect\circled{1} led strip, \\\protect\circled{2} enabling switch, \protect\circled{3} application button}
+		\label{media_flange}
 	\end{figure}
 
-	% no apertura gripper perchè ci sono le mani di mezzo
-	% led
-	
-	\subsection{Teleoperation}
+	\subsection{Teach with remote control}
 	\label{teleoperation-pad}
-	% full task space + joint space	
+	As described in section \ref{teleoperation}, remote control or \textit{teleoperation} indicates operation of a system or robot at a distance. In our case, teleoperation is intended as control the \kuka{} with a \textbf{PlayStation 4 pad} and it was developed in two ways:
+
+	\begin{itemize}
+		\item \textit{full task space}: in this modality the robot will move respect to the EE. A movement along $ x $, $ y $ and $ z $ is performed using linear and angular velocity. With linear velocity you will move the pose of the robot in task space, instead with angular you will move the orientation of the EE.
+		\item \textit{reduced joint space}: in this other modality not all joints are considered. Some joint have been blocked, you can move only eh $ 1°$, $ 2° $ and $ 6° $ joint. It's also possible change the orientation of the EE using angular velocity.
+	\end{itemize}
+	Both of them modalities are performed using \texttt{L1} or \texttt{R1} as deadman buttons with right or left analog.	This two modalities of teleoperation were take from \cite{comparing-teleoperation}. In both cases, the buttons used are the same:
+	\begin{itemize}
+%		\item $ \bigcirc $
+		\item $ \times $: close or open gripper, therefore save action and the actual pose;
+		\item $ \triangle $: save actual pose;
+		\item $ \square $: change to control mode from position to cartesian impedance, and vice versa.
+	\end{itemize}
+		
+	\begin{figure}[H]
+		\centering
+		\includegraphics[scale=0.35]{pad.png}
+		\caption{The scheme of ps4 pad: the model used for teleoperation}
+		\label{pad}
+	\end{figure}	
 		

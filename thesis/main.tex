@@ -20,11 +20,15 @@ headsepline, % Uncomment to get a line under the header
 \usepackage[autostyle=true]{csquotes}
 \usepackage{float}
 \usepackage{graphics}
-
-
+\usepackage{tikz}
+\usepackage{scalerel,amssymb}
 
 \addbibresource{example.bib}
 \graphicspath{{figures/}} 
+
+% some commands
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{ \node[shape=circle,draw,inner sep=1pt] (char) {#1};}}
+\newcommand{\kuka}{\textrm{KUKA LBR IIWA}}
 
 %	MARGIN SETTINGS
 
@@ -56,9 +60,6 @@ headsepline, % Uncomment to get a line under the header
 	\hypersetup{pdfauthor=\authorname}
 	\hypersetup{pdfkeywords=\keywordnames}
 }
-
-% some commands
-\newcommand{\kuka}{\textrm{KUKA LBR IIWA}}
 
 %	BEGIN DOCUMENT
 
@@ -138,9 +139,9 @@ headsepline, % Uncomment to get a line under the header
 	
 	\textbf{LBR} & \textbf{L}eicht \textbf{B}au \textbf{R}oboter\\
 	\textbf{IIWA}& \textbf{I}ntellingent \textbf{I}ndustrial \textbf{W}ork \textbf{A}ssistant\\
-	\textbf{TCP} & \textbf{T}ool \textbf{C}enter \textbf{P}oint\\
+%	\textbf{TCP} & \textbf{T}ool \textbf{C}enter \textbf{P}oint\\
 	\textbf{EE}  & \textbf{E}nd \textbf{E}ffector\\
-	\textbf{DOF} & \textbf{D}egree \textbf{O}f \textbf{F}reedom\\
+%	\textbf{DOF} & \textbf{D}egree \textbf{O}f \textbf{F}reedom\\
 	\textbf{ROS} & \textbf{R}obot \textbf{O}perating \textbf{S}ystem\\
 	\textbf{HMI} & \textbf{H}uman \textbf{M}achine \textbf{I}nterface\\
 		
