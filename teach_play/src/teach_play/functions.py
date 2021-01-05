@@ -9,8 +9,8 @@ filename_csv = rospkg.RosPack().get_path('teach_play') + '/actions.csv'
 
 # print on csv file
 def print_on_csv(data):
-	with open(filename_csv, 'ab') as myfile:
-		wr = csv.writer(myfile, quoting=csv.QUOTE_NONE)
+	with open(filename_csv, 'ab') as outfile:
+		wr = csv.writer(outfile, quoting=csv.QUOTE_NONE)
 		wr.writerow(data)
 
 
@@ -43,6 +43,7 @@ def init_play(led_srv):
 def get_home_pose():
 	return 0.31899, -0.39, 0.5, 0.0, 1.0, 0.0, 0.0, 2, -0.944866252106
 
-# check if file is empy
+
+# check if file is empty
 def is_empty():
 	return os.stat(filename_csv).st_size == 0

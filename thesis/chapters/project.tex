@@ -53,7 +53,7 @@ Staring from the goal, the work was divide into two phases:
 \end{enumerate}
 As described in the next sections, in every phase a way to save waypoints and an action on the gripper was implemented. After that the action was captured by the script and was saved in an \texttt{.csv} file. With a dedicated program and that file, all the actions saved into the file can be replicated by the robot. Then the description of the two developed modalities.
 
-	\subsection{Theach by demonstration}
+	\subsection{Teach by demonstration}
 	\label{teach}
 	As described in section \ref{kinestetich-teaching}, teach by demonstration or also called \textit{kinestethic teaching} is a way to move the robot in gravity compensation mode. Using the \textit{iiwa\_stack}, the gravity compensation mode was implemented using joint impendance control mode where for every joint in robot configuration a stiffness and damping value is setted. Stiffness value must be grater than $ 0 $ and it is expressed in $ Nm/rad $, instead damping value must be between $ 0 $ and $ 1 $. After changing the control mode to joint impendance, the robot seems falls. A force contrary to the gravity must be carried out to keep it up.
 	
@@ -69,7 +69,7 @@ As described in the next sections, in every phase a way to save waypoints and an
 	\begin{figure}[H]
 		\centering
 		\includegraphics[scale=0.6]{media_flange.png}
-		\caption{\protect\circled{1} led strip, \\\protect\circled{2} enabling switch, \protect\circled{3} application button}
+		\caption{Media flange: \protect\circled{1} led strip, \\\protect\circled{2} enabling switch, \protect\circled{3} application button}
 		\label{media_flange}
 	\end{figure}
 
@@ -88,10 +88,12 @@ As described in the next sections, in every phase a way to save waypoints and an
 		\item $ \triangle $: save actual pose;
 		\item $ \square $: change to control mode from position to cartesian impedance, and vice versa.
 	\end{itemize}
-		
+
+	Using the pad, it's possible to use the internal vibration. Therefore, when an external force grater than a preset value is detected the \textbf{pad} start vibrating. Based on the controller that the user is using, impedance or position control, the force for activation is different.
+
 	\begin{figure}[H]
 		\centering
-		\includegraphics[scale=0.35]{pad.png}
+		\includegraphics[scale=0.38]{pad.png}
 		\caption{The scheme of ps4 pad: the model used for teleoperation}
 		\label{pad}
 	\end{figure}	
