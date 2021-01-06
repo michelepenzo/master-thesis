@@ -2,37 +2,48 @@
 
 \chapter{State of the art}
 \label{state-of-the-art}
-This chapter describes all the papers and articles that are present in literature and that have been treated in this thesis. Starting from robot learning via demonstration and teleoperation to conclude with the state of the art regarding assembly task in industry and presenting the studies that are that have been done in these areas.
+This chapter describes all the papers and articles that are present in literature and that have been treated in this thesis. Starting from robot learning via demonstration and \te{} to conclude with the state of the art regarding assembly task in industry and presenting the studies that are that have been done in these areas.
 %----------------------------------------------------------------------------------------
 
 % why? intro to industry 4.0
 % perchè devono essere le fatte cose modulabili
-% prendere dalle slide di ICW
+% prendere dalle slide di ICE
 
 
-\section{Robot learning from Demonstration}
+\section{Robot learning from demonstration}
 \label{learning-from-demonstration}
 % introduction about loearning from demonstration
 % gravity compensation mode and teleoperation
-The main goal of robot learning is to create a way for program robot in simple way that are suitable to be used by everyday people. Two interactions methods are compared:\textit{\ks{}} and \textit{\te{}}. In the former, the user physically guides the robot and in the latter the use controls the robot with a pad. A similar work as mine is \cite{robot-learning}, where they use \ks{} and \te{} using a haptic device and they compare the two ways of interaction. They find that \ks{} is faster in terms of giving a single demonstration and the demonstrations are more successful. Along the lines of the previous one, \cite{know-acquisition} proposes various approaches for gaining knowledge from human demonstrations to perform assembly tasks in a industrial robotic cell. In this work \ks{} and \te{} using wireless joystick are compared for create point to point movements. Unlike the previous work an experiment is done: three tasks with different aspects have been done from users.
+The main goal of robot learning is to create a way for program robot in simple way that are suitable to be used by everyday people. Two interactions methods are compared: \textit{\ks{}} and \textit{\te{}}. In the former, the user physically guides the robot and in the latter the use controls the robot with a pad.
+
+A similar work as mine is \cite{robot-learning}, where they use \ks{} and \te{} using a haptic device and they compare the two ways of interaction. They find that \ks{} is faster in terms of giving a single demonstration and the demonstrations are more successful.
+
+Along the lines of the previous one, \cite{know-acquisition} proposes various approaches for gaining knowledge from human demonstrations to perform assembly tasks in a industrial robotic cell. In this work \ks{} and \te{} using wireless joystick are compared for create point to point movements. Unlike the previous work an experiment is done: three tasks with different aspects have been done by some users.
+
+In mine work a \te{} mode has been developed. In \cite{comparing-teleoperation} they compare a number of teleoperations mode, exploring both the number of dimensions of the control input as well as the most intuitive control spaces. This work propose four methodologies to find a way to move the robot in \te{} using a wireless pad. The modalities are based on mapping joints as full joint and reduced joint or based on task space as using full task space or reducing task space. In their case, since their use case was concrete spraying, the best way to implement \te{} was to reduce task space, but from the experiment the best way in other cases was to implement full task space as described in \ref{teleoperation-pad}.
+
+In \cite{robot-learning-industrial}, a framework for robot learning by multiple human demonstrations is introduced. Through the demonstrations, the robot learns the sequence of actions for
+an assembly task without the need of pre-programming. Additionally, the robot learns every path as
+needed for object manipulation. Moreover the proposed framework copes with changes in the position and orientation of the objects to be manipulated and also provides obstacle avoidance.
 
 
-% comparing alternate modes TODO 
-% knowdlage acquisittion throuch human demonstration DONE
 
-
-\section{Industrial tasks}
-\label{industrial-task}
+\section{Robot in assembly tasks}
+\label{robot-assembly}
 % assembling and modulable tasks
 
+In the early $ 2000 $'s, robot used to perform assembly tasks were still too few, especially the robot used to perform assembly tasks. In the age of Industry 4.0, the need to convert factories in \textit{smart} factories introduced the necessity to have modular platforms that can be changed over the time. In this case, manipulator robot as \kuka{} that can be re-programmed are very useful. In my case, after learning from demonstration, I focused on how \textit{collaborative robot} can be used within smart factories.
+
+As described in \cite{cobot-overview} \ldots
+
 % TODO
-% robot learning of industrial assmebly, qua o la?
-% suvery on human robot collaboration
 % cobot programming
+% suvery on human robot collaboration
 
 \section{User study}
 \label{user-study}
 
 % TODO
 % ks teaching a user study 
+% jhri
 % siemens example
