@@ -1,6 +1,8 @@
 <launch>
     <!-- load gripper name -->
     <param name="/iiwa/toolName" type="string" value="MPLM3204P" />
+    <param name="csv_file_name" type="string" value="michele_penzo" />
+
 
     <!-- launch teach and play  -->
     <node pkg="teach_play" type="teach.py" name="teach"/>
