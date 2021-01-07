@@ -8,12 +8,11 @@ This chapter describes all the papers and articles that are present in literatur
 % why? intro to industry 4.0
 % perchè devono essere le fatte cose modulabili
 % prendere dalle slide di ICE
-
-
-\section{Robot learning from demonstration}
-\label{learning-from-demonstration}
-% introduction about loearning from demonstration
 % gravity compensation mode and teleoperation
+
+
+\section{Robot learning}
+\label{robot-learning}
 The main goal of robot learning is to create a way for program robot in simple way that are suitable to be used by everyday people. Two interactions methods are compared: \textit{\ks{}} and \textit{\te{}}. In the former, the user physically guides the robot and in the latter the use controls the robot with a pad.
 
 A similar work as mine is \cite{robot-learning}, where they use \ks{} and \te{} using a haptic device and they compare the two ways of interaction. They find that \ks{} is faster in terms of giving a single demonstration and the demonstrations are more successful.
@@ -27,21 +26,25 @@ an assembly task without the need of pre-programming. Additionally, the robot le
 needed for object manipulation. Moreover the proposed framework copes with changes in the position and orientation of the objects to be manipulated and also provides obstacle avoidance.
 
 
-
-\section{Robot in assembly tasks}
-\label{robot-assembly}
+\section{Robot in industry}
+\label{robot-industry}
+% TODO assembly task industry
 % assembling and modulable tasks
 
-In the early $ 2000 $'s, robot used to perform assembly tasks were still too few, especially the robot used to perform assembly tasks. In the age of Industry 4.0, the need to convert factories in \textit{smart} factories introduced the necessity to have modular platforms that can be changed over the time. In this case, manipulator robot as \kuka{} that can be re-programmed are very useful. In my case, after learning from demonstration, I focused on how \textit{collaborative robot} can be used within smart factories.
+In the early $ 2000 $'s, robot used to perform assembly tasks were still too few, especially the robot used to perform assembly tasks. In the age of Industry 4.0, the need to convert factories in \textit{smart factories} introduced the necessity to have modular platforms that can be changed over the time. In this case, manipulator robot as \kuka{} that can be re-programmed are very useful. In my case, after learning from demonstration, I focused on how \textit{collaborative robot} can be used within smart factories and how they can be re-programmed to perform new tasks.
 
-As described in \cite{cobot-overview} \ldots
+As described in \cite{cobot-overview}, collaborative robots have been increasingly adopted in industries to facilitate human-robot collaboration. In this paper, an overview of collaborative industrial scenarios and programming requirements for cobots to implement effective collaboration are given. The human operator and the cobot share the same workspace to perform manufacturing processes on work pieces. Different definitions of collaborative scenarios and safety measures are given. Always from this paper, a paragraph about learning from demonstration as \ks{} and \te{} is described.
 
-% TODO
-% cobot programming
-% suvery on human robot collaboration
+The main goal for robots in industry is to combine the advantages of robots, which enjoy high levels of accuracy, speed and repeatability, with the flexibility of human workers. In \cite{human-robot-collaboration}, all these aspects are treated. The use of collaborative robots as \kuka{} in industrial processes allows that they can be managed through intuitive systems. One of main challenge is safety, it's fundamental prerequisite in the design of products. Some standards are defined and treated very well this paper.
+
 
 \section{User study}
 \label{user-study}
+
+As described in \ref{goals}, the main goal of this thesis is to compare different ways of robot learning and make a study over different typologies of users. Much research in the area of robot learning has focused on pick and place tasks while demanding assembly tasks received less attention so far.
+
+Mine user study, and the work made in \cite{user-study-ks} focuses in assembly tasks. This paper evaluate the discrepancies between \ks{} and manual assembly in the context of industrial assembly tasks. In particular they conducted this user study with $ 78 $ participants with different qualities. During the experiment was asked to complete four different tasks multiple times to evaluate 
+
 
 % TODO
 % ks teaching a user study 
