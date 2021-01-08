@@ -92,8 +92,8 @@ def check_on_click(data, pos, action):
 
 		elif action == 4:  # start playing
 			configure_control_mode(control_mode_srv, create_msg_position_control())
-			init_play(led_srv)
-			play(gripper_srv, led_srv)
+			#init_play(led_srv)
+			#play(gripper_srv, led_srv)
 
 		else:
 			pass

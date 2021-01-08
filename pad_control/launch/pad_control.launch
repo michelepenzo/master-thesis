@@ -5,7 +5,6 @@
     <arg name="controller" default="true"/>
     <param name="/iiwa/toolName" type="string" value="MPLM3204P" />
 
-
     <!-- joy node -->
     <node respawn="true" pkg="joy" type="joy_node" name="joy_node">
         <param name="dev" type="string" value="/dev/input/js0" />

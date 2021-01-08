@@ -4,7 +4,8 @@ import csv, rospkg, rospy, os
 
 from services import *
 
-filename_csv = rospkg.RosPack().get_path('teach_play') + '/actions.csv'
+#filename_csv = rospkg.RosPack().get_path('teach_play') + '/actions.csv'
+filename_csv = '/home/ice-admin/iiwa_stack_ws/src/iiwa_stack/pkgs_mp/csv_files/' + rospy.get_param('csv_file_name') + '.csv'
 
 
 # print on csv file

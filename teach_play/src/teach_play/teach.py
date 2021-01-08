@@ -108,10 +108,11 @@ if __name__ == '__main__':
 		while not finish:
 			rospy.sleep(1)
 
-		init_play(led_srv)
-		play(gripper_srv, led_srv)
+		#init_play(led_srv)
+		#play(gripper_srv, led_srv)
 
 	except KeyboardInterrupt:
 		rospy.logwarn('KeyboardInterrupt teach...')
+		configure_control_mode(control_mode_srv, create_msg_position_control())
 		configure_led(led_srv, False, 1, False)
 		rospy.signal_shutdown('')
