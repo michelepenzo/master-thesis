@@ -29,7 +29,7 @@ def play(gripper_srv, led_srv):
 
 		# start reading from file
 		while True:
-			with open(filename_csv) as outfile:
+			with open(filename_actions_csv) as outfile:
 				reader = csv.reader(outfile)
 
 				for line in reader:

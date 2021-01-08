@@ -5,12 +5,20 @@ import csv, rospkg, rospy, os
 from services import *
 
 #filename_csv = rospkg.RosPack().get_path('teach_play') + '/actions.csv'
-filename_csv = '/home/ice-admin/iiwa_stack_ws/src/iiwa_stack/pkgs_mp/csv_files/' + rospy.get_param('csv_file_name') + '.csv'
+filename_actions_csv = '/home/ice-admin/iiwa_stack_ws/src/iiwa_stack/pkgs_mp/csv_files/' + rospy.get_param('csv_file_name') + '.csv'
+filename_wrench_csv = '/home/ice-admin/iiwa_stack_ws/src/iiwa_stack/pkgs_mp/csv_files/' + rospy.get_param('csv_file_name') + '_wrench.csv'
 
 
 # print on csv file
 def print_on_csv(data):
-	with open(filename_csv, 'ab') as outfile:
+	with open(filename_actions_csv, 'ab') as outfile:
+		wr = csv.writer(outfile, quoting=csv.QUOTE_NONE)
+		wr.writerow(data)
+
+
+# print on csv file
+def print_on_csv_wrench(data):
+	with open(filename_wrench_csv, 'ab') as outfile:
 		wr = csv.writer(outfile, quoting=csv.QUOTE_NONE)
 		wr.writerow(data)
 
@@ -28,7 +36,7 @@ def get_action_gripper(data):
 
 # clean file
 def clean_file():
-	with open(filename_csv, 'w') as _:
+	with open(filename_actions_csv, 'w') as _:
 		pass
 
 
@@ -47,4 +55,4 @@ def get_home_pose():
 
 # check if file is empty
 def is_empty():
-	return os.stat(filename_csv).st_size == 0
+	return os.stat(filename_actions_csv).st_size == 0
