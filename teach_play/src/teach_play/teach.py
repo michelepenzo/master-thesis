@@ -4,9 +4,9 @@ import Queue
 
 from std_msgs.msg import Bool
 
-from create_msgs import *
-from functions import *
-from services import *
+from utils_functions.create_msgs import *
+from utils_functions.functions import *
+from utils_functions.services import *
 from play import play
 
 # global variables
@@ -19,7 +19,6 @@ finish = False
 
 # read MFButton topic and publish action movement
 def read_MF_button(data):
-	# TODO sporco
 	global actual_pose
 	global action_gripper
 	global finish
@@ -108,6 +107,7 @@ if __name__ == '__main__':
 		while not finish:
 			rospy.sleep(1)
 
+		# TODO play non attivo
 		#init_play(led_srv)
 		#play(gripper_srv, led_srv)
 

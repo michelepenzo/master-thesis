@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.0.2)
-project(pad_control)
+project(utils_functions)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
 # add_compile_options(-std=c++11)
@@ -12,8 +12,6 @@ find_package(catkin REQUIRED COMPONENTS
   iiwa_msgs
   rospy
   std_msgs
-  teach_play
-  utils_functions
 )
 
 ## System dependencies are found with CMake's conventions
@@ -73,7 +71,7 @@ catkin_python_setup()
 ## Generate added messages and services with any dependencies listed here
 # generate_messages(
 #   DEPENDENCIES
-#   iiwa_msgs#   std_msgs
+#   std_msgs  # Or other packages containing msgs
 # )
 
 ################################################
@@ -107,8 +105,8 @@ catkin_python_setup()
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
 #  INCLUDE_DIRS include
-#  LIBRARIES pad_control
-#  CATKIN_DEPENDS actionlib iiwa_msgs rospy std_msgs
+#  LIBRARIES utils_functions
+#  CATKIN_DEPENDS other_catkin_pkg
 #  DEPENDS system_lib
 )
 
@@ -120,12 +118,12 @@ catkin_package(
 ## Your package locations should be listed before other locations
 include_directories(
 # include
-  ${catkin_INCLUDE_DIRS}
+# ${catkin_INCLUDE_DIRS}
 )
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
-#   src/${PROJECT_NAME}/pad_control.cpp
+#   src/${PROJECT_NAME}/utils_functions.cpp
 # )
 
 ## Add cmake target dependencies of the library
@@ -136,7 +134,7 @@ include_directories(
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
-# add_executable(${PROJECT_NAME}_node src/pad_control_node.cpp)
+# add_executable(${PROJECT_NAME}_node src/utils_functions_node.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -200,7 +198,7 @@ include_directories(
 #############
 
 ## Add gtest based cpp test target and link libraries
-# catkin_add_gtest(${PROJECT_NAME}-test test/test_pad_control.cpp)
+# catkin_add_gtest(${PROJECT_NAME}-test test/test_utils_functions.cpp)
 # if(TARGET ${PROJECT_NAME}-test)
 #   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
 # endif()

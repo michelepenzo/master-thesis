@@ -2,9 +2,9 @@
 
 import actionlib
 
-from create_msgs import *
-from functions import *
-from services import *
+from utils_functions.create_msgs import *
+from utils_functions.functions import *
+from utils_functions.services import *
 
 
 def play(gripper_srv, led_srv):

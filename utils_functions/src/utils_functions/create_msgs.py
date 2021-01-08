@@ -33,8 +33,6 @@ def create_msg_control_mode(control_mode,
 							max_path_deviation, max_control_force, max_control_force_stop,
 							max_cartesian_velocity):  # limits
 
-	# TODO sistemare i parametri che non vengono utilizzati
-
 	joint_impedance = msg.JointImpedanceControlMode()
 	joint_impedance.joint_stiffness.a1 = joint_stiffness[0]
 	joint_impedance.joint_stiffness.a2 = joint_stiffness[1]

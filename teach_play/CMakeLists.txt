@@ -10,6 +10,7 @@ project(teach_play)
 find_package(catkin REQUIRED COMPONENTS
   iiwa_msgs
   rospy
+  #utils_functions
 )
 
 ## System dependencies are found with CMake's conventions

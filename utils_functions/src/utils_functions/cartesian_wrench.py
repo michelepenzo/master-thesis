@@ -2,8 +2,7 @@
 
 import rospy
 from iiwa_msgs import msg
-from teach_play.functions import print_on_csv
-
+from functions import print_on_csv
 
 actual_wrench = msg.CartesianWrench().wrench.force
 

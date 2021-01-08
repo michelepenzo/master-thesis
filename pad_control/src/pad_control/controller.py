@@ -3,10 +3,13 @@
 import rospy
 from iiwa_msgs import msg, srv
 from sensor_msgs.msg import JoyFeedbackArray, JoyFeedback, Joy
-from teach_play.functions import print_on_csv, clean_file, init_play
+
+from utils_functions.functions import print_on_csv, clean_file, init_play
+from utils_functions.create_msgs import create_msg_cartesian_impedance, create_msg_position_control
+from utils_functions.services import configure_gripper, configure_led, configure_control_mode
+
 from teach_play.play import play
-from teach_play.create_msgs import create_msg_cartesian_impedance, create_msg_position_control
-from teach_play.services import configure_gripper, configure_led, configure_control_mode
+
 
 # global values
 actual_pose = [0] * 7  # actual pose
@@ -55,7 +58,6 @@ def read_joy_buttons(data):
 
 # check onClick event
 def check_on_click(data, pos, action):
-	# TODO sistemare con passaggio a funzione
 	global is_position_control, action_gripper, x_force, y_force, z_force
 
 	if data.buttons[pos]:
@@ -92,8 +94,11 @@ def check_on_click(data, pos, action):
 
 		elif action == 4:  # start playing
 			configure_control_mode(control_mode_srv, create_msg_position_control())
+
+			# TODO play non attivo
 			#init_play(led_srv)
 			#play(gripper_srv, led_srv)
+
 
 		else:
 			pass
