@@ -8,6 +8,7 @@ from utils_functions.services import *
 
 
 def play(gripper_srv, led_srv):
+	is_position_control = True
 	configure_led(led_srv, True, 1, False)
 
 	client = actionlib.SimpleActionClient('/iiwa/action/move_to_cartesian_pose', msg.MoveToCartesianPoseAction)
@@ -18,6 +19,9 @@ def play(gripper_srv, led_srv):
 
 		init_play(led_srv)
 
+		# TODO partenza dalla home
+
+		'''
 		# alway start from HOME POSE
 		pose = get_cartesian_pose(get_home_pose())
 		move_goal = create_movement_cartesian_pose(pose)
@@ -25,7 +29,7 @@ def play(gripper_srv, led_srv):
 		client.send_goal_and_wait(action_goal)
 		client.wait_for_result()
 		rospy.logwarn('Move to home pose')
-
+		'''
 
 		# start reading from file
 		while True:
@@ -34,16 +38,31 @@ def play(gripper_srv, led_srv):
 
 				for line in reader:
 					if line[0] == 'pose':
+
 						pose = get_cartesian_pose(line[1:10])  # array
 						move_goal = create_movement_cartesian_pose(pose)  # 'movement' object
 
-						action_goal = msg.MoveToCartesianPoseGoal(move_goal)  # action goal
+						if is_position_control:
+							rospy.logwarn('eseguo in position')
+							action_goal = msg.MoveToCartesianPoseGoal(move_goal)  # action goal
+							client.send_goal_and_wait(action_goal)  # send the action to action server and wait
+							client.wait_for_result()  # waits for the server to finish performing the action
 
-						client.send_goal_and_wait(action_goal)  # send the action to action server and wait
-						client.wait_for_result()  # waits for the server to finish performing the action
+						else:
+							rospy.logwarn('eseguo in impedance')
+							pub.publish(move_goal)
 
 					elif line[0] == 'action_gripper':
 						configure_gripper(gripper_srv, get_action_gripper(line[1]))
+
+
+					elif line[0] == 'position_control':
+						configure_control_mode(control_mode_srv, create_msg_position_control())
+						is_position_control = True
+
+					elif line[0] == 'impedance_control':
+						configure_control_mode(control_mode_srv, create_msg_cartesian_impedance())
+						is_position_control = False
 
 					else:
 						rospy.logwarn('Anknown action')
@@ -60,15 +79,18 @@ if __name__ == '__main__':
 	rospy.init_node('play', disable_signals=True)
 	rospy.wait_for_service('/iiwa/configuration/configureLed')  # wait led service
 	rospy.wait_for_service('/iiwa/configuration/openGripper')  # wait gripper service
+	rospy.wait_for_service('/iiwa/configuration/ConfigureControlMode')
 
 	# startup operations
 	led_srv = rospy.ServiceProxy('/iiwa/configuration/configureLed', srv.ConfigureLed)
 	gripper_srv = rospy.ServiceProxy('/iiwa/configuration/openGripper', srv.OpenGripper)
+	control_mode_srv = rospy.ServiceProxy('/iiwa/configuration/ConfigureControlMode', srv.ConfigureControlMode)
 
 	configure_led(led_srv, True, 1, False)
 	configure_gripper(gripper_srv, 1)
 
 	try:
+		configure_control_mode(control_mode_srv, create_msg_position_control())
 		play(gripper_srv, led_srv)
 
 	except KeyboardInterrupt:

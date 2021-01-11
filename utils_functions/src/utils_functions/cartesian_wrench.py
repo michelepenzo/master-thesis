@@ -22,7 +22,7 @@ if __name__ == '__main__':
 	try:
 		while True:
 			print_on_csv_wrench((actual_wrench.x, actual_wrench.y, actual_wrench.z))
-			rospy.sleep(0.1)
+			rospy.sleep(0.01)
 
 	except KeyboardInterrupt:
 

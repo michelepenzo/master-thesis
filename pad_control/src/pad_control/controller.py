@@ -73,12 +73,14 @@ def check_on_click(data, pos, action):
 			if is_position_control:
 				is_position_control, x_force, y_force, z_force = 0, 10, 10, 10
 				rospy.logwarn('To impedance control')
-
 				configure_control_mode(control_mode_srv, create_msg_cartesian_impedance())
+				print_on_csv(('impedance_control',))
+
 			else:
 				is_position_control, x_force, y_force, z_force = 1, 8, 8, 5
 				rospy.logwarn('To position control')
 				configure_control_mode(control_mode_srv, create_msg_position_control())
+				print_on_csv(('position_control',))
 
 		elif action == 3:  # action gripper CLOSE
 

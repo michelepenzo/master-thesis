@@ -1,0 +1,11 @@
+<launch>
+
+    <param name="/iiwa/toolName" type="string" value="MPLM3204P" />
+
+    <!-- teach node -->
+    <node pkg="teach_play" type="teach.py" name="teach"/>
+
+    <!-- calculate wrench node -->
+    <node pkg="utils_functions" type="cartesian_wrench.py" name="cartesian_wrench"/>
+
+</launch>
