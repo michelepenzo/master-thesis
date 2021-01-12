@@ -21,7 +21,7 @@ def play(gripper_srv, led_srv):
 
 		# TODO partenza dalla home
 
-		'''
+
 		# alway start from HOME POSE
 		pose = get_cartesian_pose(get_home_pose())
 		move_goal = create_movement_cartesian_pose(pose)
@@ -29,7 +29,7 @@ def play(gripper_srv, led_srv):
 		client.send_goal_and_wait(action_goal)
 		client.wait_for_result()
 		rospy.logwarn('Move to home pose')
-		'''
+
 
 		# start reading from file
 		#while True:
