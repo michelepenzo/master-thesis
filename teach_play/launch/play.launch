@@ -4,7 +4,6 @@
 
     <!-- csv name param -->
     <param name="/sub_folder" type="string" value="kt" />
-    <param name="/task" type="string" value="task_1" />
 
     <!-- teach node -->
     <node pkg="teach_play" type="play.py" name="play"/>

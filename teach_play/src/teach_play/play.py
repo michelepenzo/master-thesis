@@ -16,9 +16,7 @@ def play(gripper_srv, led_srv):
 	client.wait_for_server()  # waiting starting server
 
 	if not is_empty():
-
 		init_play(led_srv)
-
 
 		# alway start from HOME POSE
 		pose = get_cartesian_pose(get_home_pose())
@@ -26,7 +24,6 @@ def play(gripper_srv, led_srv):
 		action_goal = msg.MoveToCartesianPoseGoal(move_goal)
 		client.send_goal_and_wait(action_goal)
 		client.wait_for_result()
-
 
 		# start reading from file
 		while True:
