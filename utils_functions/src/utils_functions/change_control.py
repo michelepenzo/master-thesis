@@ -2,12 +2,12 @@
 
 import rospy
 from iiwa_msgs import msg, srv
-from create_msgs import create_msg_joint_impedance, create_msg_position_control
+from create_msgs import *
 from services import configure_control_mode
 
 def change_control():
 
-	configure_control_mode(control_mode_srv, create_msg_joint_impedance())
+	configure_control_mode(control_mode_srv, create_msg_cartesian_impedance())
 
 	rospy.sleep(4)
 

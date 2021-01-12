@@ -140,5 +140,6 @@ if __name__ == '__main__':
 
 	except KeyboardInterrupt:
 		configure_led(led_srv, False, 1, False)  # turn off led
+		print_on_csv(('position_control',))
 		configure_control_mode(control_mode_srv, create_msg_position_control())
 		set_feedback(0.0)

@@ -32,7 +32,8 @@ def play(gripper_srv, led_srv):
 		'''
 
 		# start reading from file
-		while True:
+		#while True:
+		for _ in range(2):
 			with open(filename_actions_csv) as outfile:
 				reader = csv.reader(outfile)
 
@@ -51,10 +52,11 @@ def play(gripper_srv, led_srv):
 						else:
 							rospy.logwarn('eseguo in impedance')
 							pub.publish(move_goal)
+							rospy.sleep(1.5)
+
 
 					elif line[0] == 'action_gripper':
 						configure_gripper(gripper_srv, get_action_gripper(line[1]))
-
 
 					elif line[0] == 'position_control':
 						configure_control_mode(control_mode_srv, create_msg_position_control())
@@ -65,7 +67,7 @@ def play(gripper_srv, led_srv):
 						is_position_control = False
 
 					else:
-						rospy.logwarn('Anknown action')
+						rospy.logwarn('Unknown action')
 
 	else:
 		rospy.logwarn('Empty action file!')
@@ -85,6 +87,9 @@ if __name__ == '__main__':
 	led_srv = rospy.ServiceProxy('/iiwa/configuration/configureLed', srv.ConfigureLed)
 	gripper_srv = rospy.ServiceProxy('/iiwa/configuration/openGripper', srv.OpenGripper)
 	control_mode_srv = rospy.ServiceProxy('/iiwa/configuration/ConfigureControlMode', srv.ConfigureControlMode)
+
+	# publisher in impendance
+	pub = rospy.Publisher('/iiwa/command/CartesianPose', msg.CartesianPose, queue_size=1)
 
 	configure_led(led_srv, True, 1, False)
 	configure_gripper(gripper_srv, 1)
