@@ -14,3 +14,4 @@ s = pd.read_csv(filename_wrench_csv, squeeze=True)
 
 n_values = s.count()
 
+print
