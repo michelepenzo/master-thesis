@@ -277,7 +277,6 @@ TSWLatexianTemp*
 
 # others
 *.pyc
-*.csv
 */src/test.py
 thesis/Appendices/AppendixTemplate.tex
 thesis/Chapters/ChapterTemplate.tex
