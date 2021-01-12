@@ -5,7 +5,7 @@ import csv, rospkg, rospy, os
 from services import *
 
 #filename_csv = rospkg.RosPack().get_path('teach_play') + '/actions.csv'
-path = '/home/ice-admin/iiwa_stack_ws/src/iiwa_stack/pkgs_mp/csv_files/' + rospy.get_param('sub_folder') + '/' + rospy.get_param('csv_filename')
+path = '/home/ice-admin/iiwa_stack_ws/src/iiwa_stack/pkgs_mp/csv_files/' + rospy.get_param('sub_folder') + '/' + rospy.get_param('task') + '/' + rospy.get_param('csv_filename')
 filename_actions_csv = path + '.csv'
 filename_wrench_csv = path + '_wrench.csv'
 
@@ -51,7 +51,9 @@ def init_play(led_srv):
 
 # home position
 def get_home_pose():
-	return 0.31899, -0.39, 0.5, 0.0, 1.0, 0.0, 0.0, 2, -0.944866252106
+	#return 0.31899, -0.39, 0.5, 0.0, 1.0, 0.0, 0.0, 2, -0.944866252106
+    return 0.475230482595, 0.00725217682308, 0.639615310969, -0.0343624410389, 0.999096035957, 0.0237426253335, 0.0079124402363, 2, 0.0214605709914
+
 
 
 # check if file is empty

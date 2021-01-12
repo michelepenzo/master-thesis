@@ -28,9 +28,11 @@ def read_MF_button(data):
 
 			# print on csv, turn on and off LED, print on terminal, clear queue
 			print_on_csv(actual_pose)
+
 			configure_led(led_srv, True, 2, False)
 			rospy.sleep(1)
 			configure_led(led_srv, False, 2, False)
+
 			rospy.logwarn("Get pose")
 			queue.queue.clear()
 
@@ -44,21 +46,25 @@ def read_MF_button(data):
 
 			print_on_csv(actual_pose)
 			print_on_csv(('action_gripper', action_gripper))
+			configure_gripper(gripper_srv, action_gripper)
 
-			configure_led(led_srv, True, 1, False)
+			configure_led(led_srv, True, 3, False)
 			rospy.sleep(1)
-			configure_led(led_srv, False, 1, False)
+			configure_led(led_srv, False, 3, False)
+
 			rospy.logwarn("Get pose and action gripper")
 			queue.queue.clear()
 
 		elif queue.qsize() > 1000:  # 5 seconds (STOP TEACHING)
 
-			# clear queue, turn on led, set position control mode, set 'finish' flag true
-			rospy.logwarn("Stop teaching")
-			queue.queue.clear()
-			configure_led(led_srv, True, 3, False)
+			# clear queue, turn off led, set position control mode, set 'finish' flag true
+			configure_led(led_srv, True, 2, False)
 			configure_control_mode(control_mode_srv, create_msg_position_control())
 			finish = True
+
+			queue.queue.clear()
+			rospy.logwarn("Stop teaching")
+
 	else:
 		# fill the queue
 		queue.put('')
@@ -100,7 +106,6 @@ if __name__ == '__main__':
 
 	try:
 		# move to joint impedance
-		configure_led(led_srv, True, 3, False)
 		rospy.sleep(1)
 		configure_control_mode(control_mode_srv, create_msg_joint_impedance())
 

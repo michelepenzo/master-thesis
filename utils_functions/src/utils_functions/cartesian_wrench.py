@@ -27,4 +27,4 @@ if __name__ == '__main__':
 	except KeyboardInterrupt:
 
 		rospy.signal_shutdown('')
-		rospy.logwarn('KeyboardInterrupt play...')
+		rospy.logwarn('KeyboardInterrupt wrench...')

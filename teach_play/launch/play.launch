@@ -3,8 +3,8 @@
     <param name="/iiwa/toolName" type="string" value="MPLM3204P" />
 
     <!-- csv name param -->
-    <param name="/csv_filename" type="string" value="test" />
-    <param name="/sub_folder" type="string" value="teleop" />
+    <param name="/sub_folder" type="string" value="kt" />
+    <param name="/task" type="string" value="task_1" />
 
     <!-- teach node -->
     <node pkg="teach_play" type="play.py" name="play"/>

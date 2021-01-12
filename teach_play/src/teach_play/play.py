@@ -19,8 +19,6 @@ def play(gripper_srv, led_srv):
 
 		init_play(led_srv)
 
-		# TODO partenza dalla home
-
 
 		# alway start from HOME POSE
 		pose = get_cartesian_pose(get_home_pose())
@@ -28,12 +26,11 @@ def play(gripper_srv, led_srv):
 		action_goal = msg.MoveToCartesianPoseGoal(move_goal)
 		client.send_goal_and_wait(action_goal)
 		client.wait_for_result()
-		rospy.logwarn('Move to home pose')
 
 
 		# start reading from file
-		#while True:
-		for _ in range(2):
+		while True:
+		#for _ in range(1):
 			with open(filename_actions_csv) as outfile:
 				reader = csv.reader(outfile)
 
@@ -44,15 +41,15 @@ def play(gripper_srv, led_srv):
 						move_goal = create_movement_cartesian_pose(pose)  # 'movement' object
 
 						if is_position_control:
-							rospy.logwarn('eseguo in position')
+							#rospy.logwarn('eseguo in position')
 							action_goal = msg.MoveToCartesianPoseGoal(move_goal)  # action goal
 							client.send_goal_and_wait(action_goal)  # send the action to action server and wait
 							client.wait_for_result()  # waits for the server to finish performing the action
 
 						else:
-							rospy.logwarn('eseguo in impedance')
+							#rospy.logwarn('eseguo in impedance')
 							pub.publish(move_goal)
-							rospy.sleep(1.5)
+							rospy.sleep(2)
 
 
 					elif line[0] == 'action_gripper':
