@@ -4,10 +4,11 @@ import csv, rospkg, rospy, os
 
 from services import *
 
-#filename_csv = rospkg.RosPack().get_path('teach_play') + '/actions.csv'
+
 path = '/home/ice-admin/iiwa_stack_ws/src/iiwa_stack/pkgs_mp/csv_files/' + rospy.get_param('mode') + '/' + rospy.get_param('task') + '/' + rospy.get_param('name')
 filename_actions_csv = path + '.csv'
 filename_wrench_csv = path + '_wrench.csv'
+
 
 
 # print on csv file

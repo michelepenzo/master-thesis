@@ -18,13 +18,12 @@ if __name__ == '__main__':
 
 	# init instructions
 	rospy.init_node('cartesian_wrench', disable_signals=True)
-
 	rospy.Subscriber('/iiwa/state/CartesianWrench', msg.CartesianWrench, read_cartesian_wrench)
-
 	clean_file_wrench()
 
 	try:
 		print_on_csv_wrench(('wrench_x', 'wrench_y', 'wrench_z'))
+
 		while True:
 			rospy.sleep(sample_rate)
 			print_on_csv_wrench((actual_wrench.x, actual_wrench.y, actual_wrench.z))

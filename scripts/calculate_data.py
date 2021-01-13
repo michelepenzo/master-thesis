@@ -8,14 +8,16 @@ filename_wrench_csv = '/home/ice-admin/iiwa_stack_ws/src/iiwa_stack/pkgs_mp/csv_
 					  + '/' + rospy.get_param('task') + '/' + rospy.get_param('name') + '_wrench.csv'
 
 
-print('\n = Calculating data of {'  + rospy.get_param('name') + '} performing {' + rospy.get_param('task') + '} with {' + rospy.get_param('mode') + '}. \n')
+print('\n = Calculating data of {'  + rospy.get_param('name') + '} performing {' + rospy.get_param('task') + '} with {' + rospy.get_param('mode') + '} \n')
 
 # reading csv file
 s = pd.read_csv(filename_wrench_csv, squeeze=True)
 
 n_values = s['wrench_x'].count()
 print(' = Number of sample: ' + str(n_values))
-print(' = Task time: ' + "{:.2f}".format(n_values * sample_rate) + ' sec')
+m, s = divmod(n_values * sample_rate, 60)
+h, m = divmod(m, 60)
+print(' = Task time: ' + ('{:.0f} min {:.0f} sec'.format(m, s)))
 
 '''
 print(s[['wrench_x', 'wrench_y', 'wrench_z']].min())
