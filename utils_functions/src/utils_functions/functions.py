@@ -41,11 +41,16 @@ def clean_file():
 		pass
 
 
+# clean file
+def clean_file_wrench():
+	with open(filename_wrench_csv, 'w') as _:
+		pass
+
 # wait until paying
 def init_play(led_srv):
 	configure_led(led_srv, True, 1, False)
 	rospy.sleep(0.5)
-	configure_led(led_srv, True, 2, False)
+	#configure_led(led_srv, True, 2, False)
 	rospy.sleep(0.5)
 
 
@@ -53,7 +58,6 @@ def init_play(led_srv):
 def get_home_pose():
 	#return 0.31899, -0.39, 0.5, 0.0, 1.0, 0.0, 0.0, 2, -0.944866252106
     return 0.475230482595, 0.00725217682308, 0.639615310969, -0.0343624410389, 0.999096035957, 0.0237426253335, 0.0079124402363, 2, 0.0214605709914
-
 
 
 # check if file is empty

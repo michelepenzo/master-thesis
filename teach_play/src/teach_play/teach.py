@@ -14,14 +14,14 @@ queue = Queue.Queue()  # msgs queue
 actual_pose = [0] * 7  # actual pose
 action_gripper = 1  # open gripper
 
-finish = False
+finish_teach = False
 
 
 # read MFButton topic and publish action movement
 def read_MF_button(data):
 	global actual_pose
 	global action_gripper
-	global finish
+	global finish_teach
 
 	if not data.data:
 		if 20 < queue.qsize() <= 400:  # one click (POINT)
@@ -30,7 +30,7 @@ def read_MF_button(data):
 			print_on_csv(actual_pose)
 
 			configure_led(led_srv, True, 2, False)
-			rospy.sleep(1)
+			rospy.sleep(0.5)
 			configure_led(led_srv, False, 2, False)
 
 			rospy.logwarn("Get pose")
@@ -49,7 +49,7 @@ def read_MF_button(data):
 			configure_gripper(gripper_srv, action_gripper)
 
 			configure_led(led_srv, True, 3, False)
-			rospy.sleep(1)
+			rospy.sleep(0.5)
 			configure_led(led_srv, False, 3, False)
 
 			rospy.logwarn("Get pose and action gripper")
@@ -58,9 +58,9 @@ def read_MF_button(data):
 		elif queue.qsize() > 1000:  # 5 seconds (STOP TEACHING)
 
 			# clear queue, turn off led, set position control mode, set 'finish' flag true
-			configure_led(led_srv, True, 2, False)
+			configure_led(led_srv, True, 1, False)
 			configure_control_mode(control_mode_srv, create_msg_position_control())
-			finish = True
+			finish_teach = True
 
 			queue.queue.clear()
 			rospy.logwarn("Stop teaching")
@@ -106,10 +106,9 @@ if __name__ == '__main__':
 
 	try:
 		# move to joint impedance
-		rospy.sleep(1)
 		configure_control_mode(control_mode_srv, create_msg_joint_impedance())
 
-		while not finish:
+		while not finish_teach:
 			rospy.sleep(1)
 
 		# TODO play non attivo

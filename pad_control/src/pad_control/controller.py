@@ -10,8 +10,8 @@ from utils_functions.services import configure_gripper, configure_led, configure
 
 from teach_play.play import play
 
-
 # global values
+finish_controller = False
 actual_pose = [0] * 7  # actual pose
 last_events = [False] * 13
 x_force, y_force, z_force = 8, 8, 5
@@ -58,7 +58,7 @@ def read_joy_buttons(data):
 
 # check onClick event
 def check_on_click(data, pos, action):
-	global is_position_control, action_gripper, x_force, y_force, z_force
+	global is_position_control, action_gripper, x_force, y_force, z_force, finish_controller
 
 	if data.buttons[pos]:
 		last_events[pos] = True
@@ -96,14 +96,10 @@ def check_on_click(data, pos, action):
 
 		elif action == 4:  # start playing
 			configure_control_mode(control_mode_srv, create_msg_position_control())
-
+			finish_controller = True
 			# TODO play non attivo
-			#init_play(led_srv)
-			#play(gripper_srv, led_srv)
-
-
-		else:
-			pass
+			# init_play(led_srv)
+			# play(gripper_srv, led_srv)
 
 		last_events[pos] = False
 
@@ -136,11 +132,16 @@ if __name__ == '__main__':
 
 	try:
 
-		while True:
+		while not finish_controller:
 			rospy.sleep(1)
+		print_on_csv(('position_control',))
 
 	except KeyboardInterrupt:
 		configure_led(led_srv, False, 1, False)  # turn off led
-		print_on_csv(('position_control',))
+
+		# change to position control only if is ctrl+c
+		if not finish_controller:
+			print_on_csv(('position_control',))
+
 		configure_control_mode(control_mode_srv, create_msg_position_control())
 		set_feedback(0.0)

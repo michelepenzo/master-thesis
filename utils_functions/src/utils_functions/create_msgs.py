@@ -92,11 +92,11 @@ def create_msg_position_control():
 		max_cartesian_velocity=[0.0] * 6)
 
 
-# create msg for joint impendance (fake hand guide values)
+# create msg for joint impedance (fake hand guide values)
 def create_msg_joint_impedance():
 	return create_msg_control_mode(
 		control_mode=1,
-		joint_stiffness=[2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0], joint_damping=[0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7],
+		joint_stiffness=[2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 0.2], joint_damping=[0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7],
 		cartesian_stiffness=[0.0] * 6, cartesian_damping=[0.0] * 6, nullspace_stiffness=0.0, nullspace_damping=0.0,
 		df_cartesian_dof=0, desired_force=0.0, desired_stiffness=0.0,
 		s_cartesian_dof=0, frequency=0.0, amplitude=0.0, stiffness=0.0,
