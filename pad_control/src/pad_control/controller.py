@@ -4,7 +4,7 @@ import rospy
 from iiwa_msgs import msg, srv
 from sensor_msgs.msg import JoyFeedbackArray, JoyFeedback, Joy
 
-from utils_functions.functions import print_on_csv, clean_file, init_play
+from utils_functions.functions import print_on_csv, clean_file, init_play, blink
 from utils_functions.create_msgs import create_msg_cartesian_impedance, create_msg_position_control
 from utils_functions.services import configure_gripper, configure_led, configure_control_mode
 
@@ -67,6 +67,7 @@ def check_on_click(data, pos, action):
 		if action == 1:  # read pose
 			rospy.logwarn('Get pose')
 			print_on_csv(actual_pose)
+			blink(led_srv, 2)
 
 		elif action == 2:  # change controller
 
@@ -82,6 +83,8 @@ def check_on_click(data, pos, action):
 				configure_control_mode(control_mode_srv, create_msg_position_control())
 				print_on_csv(('position_control',))
 
+			blink(led_srv, 1)
+
 		elif action == 3:  # action gripper CLOSE
 
 			if action_gripper:
@@ -89,14 +92,16 @@ def check_on_click(data, pos, action):
 			else:
 				action_gripper = 1
 
-			configure_gripper(gripper_srv, action_gripper)
 			print_on_csv(actual_pose)
 			print_on_csv(('action_gripper', action_gripper))
+			configure_gripper(gripper_srv, action_gripper)
+			blink(led_srv, 3)
 			rospy.logwarn('Get pose and action gripper ' + str(action_gripper))
 
 		elif action == 4:  # start playing
 			configure_control_mode(control_mode_srv, create_msg_position_control())
 			finish_controller = True
+
 			# TODO play non attivo
 			# init_play(led_srv)
 			# play(gripper_srv, led_srv)

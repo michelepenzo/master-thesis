@@ -64,3 +64,10 @@ def get_home_pose():
 # check if file is empty
 def is_empty():
 	return os.stat(filename_actions_csv).st_size == 0
+
+
+# turn on and off led
+def blink(led_srv, color):
+	configure_led(led_srv, True, color, False)
+	rospy.sleep(0.6)
+	configure_led(led_srv, False, color, False)

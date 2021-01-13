@@ -67,7 +67,6 @@ def play(gripper_srv, led_srv):
 # ---------------------------------------------------------------------------------------------
 
 if __name__ == '__main__':
-	print(rospy.get_param('mode'))
 	# init instructions
 	rospy.init_node('play', disable_signals=True)
 	rospy.wait_for_service('/iiwa/configuration/configureLed')  # wait led service

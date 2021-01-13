@@ -29,9 +29,7 @@ def read_MF_button(data):
 			# print on csv, turn on and off LED, print on terminal, clear queue
 			print_on_csv(actual_pose)
 
-			configure_led(led_srv, True, 2, False)
-			rospy.sleep(0.5)
-			configure_led(led_srv, False, 2, False)
+			blink(led_srv, 2)
 
 			rospy.logwarn("Get pose")
 			queue.queue.clear()
@@ -48,9 +46,7 @@ def read_MF_button(data):
 			print_on_csv(('action_gripper', action_gripper))
 			configure_gripper(gripper_srv, action_gripper)
 
-			configure_led(led_srv, True, 3, False)
-			rospy.sleep(0.5)
-			configure_led(led_srv, False, 3, False)
+			blink(led_srv, 3)
 
 			rospy.logwarn("Get pose and action gripper")
 			queue.queue.clear()

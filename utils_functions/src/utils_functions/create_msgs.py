@@ -115,3 +115,16 @@ def create_msg_cartesian_impedance():
 		s_cartesian_dof=0, frequency=0.0, amplitude=0.0, stiffness=0.0,
 		max_path_deviation=[0.0] * 6, max_control_force=[0.0] * 6, max_control_force_stop=False,
 		max_cartesian_velocity=[0.0] * 6)
+
+
+# create msg cartesian_impedance for safety
+def create_msg_cartesian_impedance_safety():
+	return create_msg_control_mode(
+		control_mode=2,
+		joint_stiffness=[0.0] * 7, joint_damping=[0.0] * 7,
+		cartesian_stiffness=[2500, 700, 700, 100, 100, 100], cartesian_damping=[0.0] * 6, nullspace_stiffness=0.0,
+		nullspace_damping=0.0,
+		df_cartesian_dof=0, desired_force=0.0, desired_stiffness=0.0,
+		s_cartesian_dof=0, frequency=0.0, amplitude=0.0, stiffness=0.0,
+		max_path_deviation=[0.0] * 6, max_control_force=[0.0] * 6, max_control_force_stop=False,
+		max_cartesian_velocity=[0.0] * 6)

@@ -19,8 +19,9 @@ m, s = divmod(n_values * sample_rate, 60)
 h, m = divmod(m, 60)
 print(' = Task time: ' + ('{:.0f} min {:.0f} sec'.format(m, s)))
 
-'''
+
 print(s[['wrench_x', 'wrench_y', 'wrench_z']].min())
+'''
 print(s[['wrench_x', 'wrench_y', 'wrench_z']].max())
 print(s[['wrench_x', 'wrench_y', 'wrench_z']].mean())
 '''

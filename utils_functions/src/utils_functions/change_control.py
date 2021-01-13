@@ -7,7 +7,7 @@ from services import configure_control_mode
 
 def change_control():
 
-	configure_control_mode(control_mode_srv, create_msg_cartesian_impedance())
+	configure_control_mode(control_mode_srv, create_msg_cartesian_impedance_safety())
 
 	#rospy.sleep(5)
 
