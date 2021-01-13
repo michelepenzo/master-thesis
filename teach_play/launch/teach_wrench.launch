@@ -3,7 +3,7 @@
     <param name="/iiwa/toolName" type="string" value="MPLM3204P" />
 
     <!-- csv name param -->
-    <param name="/sub_folder" type="string" value="kt" />
+    <param name="/mode" type="string" value="kt" />
 
     <!-- teach node -->
     <node pkg="teach_play" type="teach.py" name="teach"/>

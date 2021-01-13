@@ -7,11 +7,11 @@ from services import configure_control_mode
 
 def change_control():
 
-	configure_control_mode(control_mode_srv, create_msg_joint_impedance())
+	configure_control_mode(control_mode_srv, create_msg_cartesian_impedance())
 
-	rospy.sleep(10)
+	#rospy.sleep(5)
 
-	configure_control_mode(control_mode_srv, create_msg_position_control())
+	#configure_control_mode(control_mode_srv, create_msg_position_control())
 
 # ---------------------------------------------------------------------------------------------
 
@@ -24,6 +24,9 @@ if __name__ == '__main__':
 
 	try:
 		change_control()
+
+		while True:
+			rospy.sleep(1)
 
 	except KeyboardInterrupt:
 		configure_control_mode(control_mode_srv, create_msg_position_control())

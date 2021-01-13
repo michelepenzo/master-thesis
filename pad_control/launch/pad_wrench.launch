@@ -5,7 +5,7 @@
     <param name="/iiwa/toolName" type="string" value="MPLM3204P" />
 
     <!-- csv name param -->
-    <param name="/sub_folder" type="string" value="teleop" />
+    <param name="/mode" type="string" value="teleop" />
 
     <!-- joy node -->
     <node respawn="true" pkg="joy" type="joy_node" name="joy_node">

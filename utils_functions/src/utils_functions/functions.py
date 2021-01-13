@@ -50,7 +50,7 @@ def clean_file_wrench():
 def init_play(led_srv):
 	configure_led(led_srv, True, 1, False)
 	rospy.sleep(0.5)
-	#configure_led(led_srv, True, 2, False)
+	configure_led(led_srv, True, 2, False)
 	rospy.sleep(0.5)
 
 

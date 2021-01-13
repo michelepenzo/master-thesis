@@ -17,11 +17,11 @@ def main(argv):
 			sys.exit()
 		elif opt in "-name":
 			rospy.set_param('/name', str(arg))
-			print('{ name } \t--> ' + arg)
+			print('{ name }\t--> ' + arg)
 
 		elif opt in "-task":
 			rospy.set_param('/task', str(arg))
-			print('{ task_x } \t--> ' + arg)
+			print('{ task }\t--> ' + arg)
 
 		elif opt in "-mode":
 			rospy.set_param('/mode', str(arg))
