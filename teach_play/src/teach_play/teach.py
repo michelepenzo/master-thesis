@@ -107,7 +107,7 @@ if __name__ == '__main__':
 		while not finish_teach:
 			rospy.sleep(1)
 
-		# TODO play non attivo
+		# TODO no play
 		#init_play(led_srv)
 		#play(gripper_srv, led_srv)
 

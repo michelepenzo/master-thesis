@@ -10,7 +10,6 @@ filename_actions_csv = path + '.csv'
 filename_wrench_csv = path + '_wrench.csv'
 
 
-
 # print on csv file
 def print_on_csv(data):
 	with open(filename_actions_csv, 'ab') as outfile:

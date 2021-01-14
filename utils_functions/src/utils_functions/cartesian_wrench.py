@@ -2,7 +2,7 @@
 
 import rospy
 from iiwa_msgs import msg
-from functions import print_on_csv_wrench, clean_file_wrench, is_empty
+from functions import print_on_csv_wrench, clean_file_wrench
 
 
 actual_wrench = msg.CartesianWrench().wrench.force
@@ -28,7 +28,6 @@ if __name__ == '__main__':
 		while True:
 			rospy.sleep(sample_rate)
 			print_on_csv_wrench((actual_wrench.x, actual_wrench.y, actual_wrench.z))
-
 
 	except KeyboardInterrupt:
 

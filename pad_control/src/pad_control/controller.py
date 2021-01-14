@@ -11,19 +11,18 @@ from utils_functions.services import configure_gripper, configure_led, configure
 from teach_play.play import play
 
 # global values
-finish_controller = False
+finish_controller, is_position_control, safety_control = False, True, False
 actual_pose = [0] * 7  # actual pose
 last_events = [False] * 13
 x_force, y_force, z_force = 8, 8, 5
-is_position_control = True
-action_gripper = 1
+action_gripper, safety_control_value = 1, 30
 
 
 # set feedback joypad
 def set_feedback(value):
 	msg_f, vib = JoyFeedbackArray(), JoyFeedback()
 
-	# id = 0, 1, 2 per la tipologia di vibrazione
+	# id = 0, 1, 2 type of vibration
 	vib.type, vib.id, vib.intensity = JoyFeedback.TYPE_RUMBLE, 0, value
 	msg_f.array = [vib]
 
@@ -32,11 +31,29 @@ def set_feedback(value):
 
 # read external force on end effector
 def read_cartesian_wrench(data):
+	global safety_control, safety_control_value
+
 	if abs(data.wrench.force.z) > z_force or abs(data.wrench.force.x) > x_force or abs(data.wrench.force.y) > y_force:
 		set_feedback(1.0)
 	else:
 		set_feedback(0.0)
+	'''
+	if abs(data.wrench.force.z) > safety_control_value and not safety_control:
+		safety_control = True
+		configure_control_mode(control_mode_srv, create_msg_cartesian_impedance())
+		rospy.logwarn('safety control')
 
+	elif abs(data.wrench.force.z) < safety_control_value and safety_control:
+		safety_control = False
+
+		if is_position_control:
+			rospy.logwarn('to position')
+			configure_control_mode(control_mode_srv, create_msg_position_control())
+
+		else:
+			rospy.logwarn('to impedance')
+			configure_control_mode(control_mode_srv, create_msg_cartesian_impedance())
+	'''
 
 # read cartesian pose and save as actual_pose
 def read_cartesian_pose(data):
@@ -102,10 +119,6 @@ def check_on_click(data, pos, action):
 			configure_control_mode(control_mode_srv, create_msg_position_control())
 			finish_controller = True
 
-			# TODO play non attivo
-			# init_play(led_srv)
-			# play(gripper_srv, led_srv)
-
 		last_events[pos] = False
 
 
@@ -139,7 +152,12 @@ if __name__ == '__main__':
 
 		while not finish_controller:
 			rospy.sleep(1)
+
 		print_on_csv(('position_control',))
+
+		# TODO no play
+		# init_play(led_srv)
+		# play(gripper_srv, led_srv)
 
 	except KeyboardInterrupt:
 		configure_led(led_srv, False, 1, False)  # turn off led
