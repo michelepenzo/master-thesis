@@ -6,7 +6,8 @@ from functions import print_on_csv_wrench, clean_file_wrench
 
 
 actual_wrench = msg.CartesianWrench().wrench.force
-sample_rate = 0.05
+sample_rate = 0.0001 #0.05
+
 
 def read_cartesian_wrench(data):
 	global actual_wrench

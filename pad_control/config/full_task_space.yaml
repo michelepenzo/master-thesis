@@ -9,7 +9,7 @@ teleop:
     axis_mappings:
       - axis: 0
         target: twist.linear.x
-        scale: -1000 # 500
+        scale: -1000 # 500 # 2500
 
       - axis: 1
         target: twist.linear.y
