@@ -24,7 +24,8 @@ def read_MF_button(data):
 	global finish_teach
 
 	if not data.data:
-		if 20 < queue.qsize() <= 400:  # one click (POINT)
+		# TODO 20 400
+		if  10 < queue.qsize() <= 200:  # one click (POINT)
 
 			# print on csv, turn on and off LED, print on terminal, clear queue
 			print_on_csv(actual_pose)
@@ -34,7 +35,8 @@ def read_MF_button(data):
 			rospy.logwarn("Get pose")
 			queue.queue.clear()
 
-		elif 400 < queue.qsize() <= 1000:  # two seconds (INVERT GRIPPER and GET POINT)
+		# TODO 1200
+		elif 200 < queue.qsize() <= 400:  # two seconds (INVERT GRIPPER and GET POINT)
 
 			# invert gripper values, print pose and action on csv, turn on and off led, clear queue
 			if action_gripper:
@@ -51,7 +53,7 @@ def read_MF_button(data):
 			rospy.logwarn("Get pose and action gripper")
 			queue.queue.clear()
 
-		elif queue.qsize() > 1000:  # 5 seconds (STOP TEACHING)
+		elif queue.qsize() > 400:  # 5 seconds (STOP TEACHING)
 
 			# clear queue, turn off led, set position control mode, set 'finish' flag true
 			configure_led(led_srv, True, 1, False)
