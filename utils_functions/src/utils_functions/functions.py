@@ -7,7 +7,7 @@ from services import *
 
 path = '/home/ice-admin/iiwa_stack_ws/src/iiwa_stack/pkgs_mp/csv_files/' + rospy.get_param('mode') + '/' + rospy.get_param('task') + '/' + rospy.get_param('name')
 filename_actions_csv = path + '.csv'
-filename_wrench_csv = path + '_wrench.csv'
+#filename_wrench_csv = path + '_wrench.csv'
 
 
 # print on csv file
@@ -18,8 +18,8 @@ def print_on_csv(data):
 
 
 # print on csv file
-def print_on_csv_wrench(data):
-	with open(filename_wrench_csv, 'ab') as outfile:
+def print_on_csv_datas(data, filenaame):
+	with open(filenaame, 'ab') as outfile:
 		wr = csv.writer(outfile, quoting=csv.QUOTE_NONE)
 		wr.writerow(data)
 
@@ -42,8 +42,8 @@ def clean_file():
 
 
 # clean file
-def clean_file_wrench():
-	with open(filename_wrench_csv, 'w') as _:
+def clean_file_datas(filename):
+	with open(filename, 'w') as _:
 		pass
 
 # wait until paying

@@ -23,6 +23,6 @@
     <node pkg="pad_control" type="controller.py" name="controller"/>
 
     <!-- calculate wrench node -->
-    <node pkg="utils_functions" type="cartesian_wrench.py" name="cartesian_wrench"/>
+    <node pkg="utils_functions" type="collection_data.py" name="collection_data"/>
 
 </launch>

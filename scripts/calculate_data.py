@@ -2,7 +2,7 @@
 
 import pandas as pd
 import rospy, os, csv
-from utils_functions.cartesian_wrench import sample_rate
+from utils_functions.collection_data import sample_rate
 
 # file to read
 path = '/home/ice-admin/iiwa_stack_ws/src/iiwa_stack/pkgs_mp/csv_files/'
@@ -75,7 +75,7 @@ if __name__ == '__main__':
 		single_file = pd.read_csv(filename_wrench_csv, squeeze=True)
 
 		calculate_intro(single_file)
-		print calculate_values(single_file)
+		#print calculate_values(single_file)
 
 	else:
 		print('\n = Calculating results for every task \n')

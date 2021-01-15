@@ -9,6 +9,6 @@
     <node pkg="teach_play" type="teach.py" name="teach"/>
 
     <!-- calculate wrench node -->
-    <node pkg="utils_functions" type="cartesian_wrench.py" name="cartesian_wrench"/>
+    <node pkg="utils_functions" type="collection_data.py" name="collection_data"/>
 
 </launch>
