@@ -15,14 +15,12 @@ The \kuka{} is a robot with collaborative features. It has a 14 kg payload and i
 	\caption{The \kuka{}}
 \end{figure}
 
-%\begin{figure}[H]
-%	\centering
-%	\includegraphics[scale=0.16]{tool.png}
-%	\caption{Tool mounted on media flange}
-%\end{figure}
 
 \section{Methods}
 \label{methods}
+% calibrazione del gripper (peso ..) + matrice di inerzia ..
+The first thing that was done was the calibration of the gripper using the application provided by \textit{Kuka} and usable from the \textit{SmartPad}. This application consists of move the sixth and seventh link with multiple movements and provide a way to calculate the weight, center of mass and inertia matrix of the tool attached on media flange. This operations was made in the most used robot configurations and more times and returns reasonable results. Finally, the name of the tool shown at the end of the application was loaded from the running application as \texttt{ros\_param}.
+
 Using \textit{ROS} and the open source stack available \cite{iiwa-stack-link}, many \texttt{topics} can be used to calculate joint position and velocity, torque on joint, cartesian pose, force on referenced frame. Before the user study some data are collected to understand how the final experiment can be evaluated.
 
 The topic called \texttt{CartesianWrench}, will show the external force measured bu the robot according to the used reference frame. In our case, the force is measured on the media flange. To understand if we could could consider the force applied on the EE, some experiments were conducted to understand the reliability and responsiveness of the values returned from this topic. This test were conducted using objects of different weight calibrated on a scale with precision to the gram and attached to both of the two jaws on the gripper. Every weighing was performed in two different configuration of the robot and for two times. In table \ref{tab:wrench} the results obtained from the experiment.
@@ -49,14 +47,29 @@ The topic called \texttt{CartesianWrench}, will show the external force measured
 	\caption{Results from experiment to evaluate force on EE}
 	\label{tab:wrench}
 \end{table}
-From the test we can understand that the values obtained are reasonable and in line with expectations, even if in the case of robots with elbow in high position (on pallet) the values are understimated.
+From the test we can understand that the values obtained are reasonable and in line with expectations, even if in the case of robots with elbow in high position (on pallet) the values are underestimated. This test was done in position and impedance control and the results are similar.
 
-% pesate, come sono stati creati i task --> tutto il background per creare l'esperimento
-% tutti i file excell che sono stati fatti --> tabelle dei file excel inviati a Diego
-% eros che ha fatto l'esperimento
+Another test that was made using the force applied on EE analyzes the maximum force that can be applied by the robot on a linear surface before that the collision avoidance feature is activated. This test also helped us to understand the reliability of the read values. It was made using position control in figure \ref{fig:wrench_position} and impedance control in \ref{fig:wrench_impedance}.
 
-% calibrazione del gripper (peso ..) + matrice di inerzia ..
+\begin{figure}[ht]
+	\centering
+	\includegraphics[scale=0.7]{position_wrench.png}
+	\caption{Force calculated on EE in position control}
+	\label{fig:wrench_position}
+\end{figure}
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[scale=0.7]{impedance_wrench.png}
+	\caption{Force calculated on EE in impedance control}
+	\label{fig:wrench_impedance}
+\end{figure}
+
+
 % test forza EE che si schianta sul tavolo --> posizione 14 kg, impedenza 7
+% pesate, come sono stati creati i task --> tutto il background per creare l'esperimento
+
+% eros che ha fatto l'esperimento
 
 %In our user study we collect all this data provided by the topics described at the beginning of this section.
 % come viene misurato il tempo di contatto, wrench o durata? ...
