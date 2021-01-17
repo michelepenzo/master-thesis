@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 
 import pandas as pd
-import csv
 import matplotlib.pyplot as plt
 
 #root_path = '/home/ice-admin/iiwa_stack_ws/src/iiwa_stack/pkgs_mp/csv_files/'
@@ -12,7 +11,7 @@ root_path = '/home/michele/Documents/robotica/csv_files/'
 filename = root_path + 'calibration_tests/test_wrench_position.csv'
 infile = pd.read_csv(filename, squeeze=True)
 plt.subplot(211)
-plt.plot(infile['wrench_z'][2500:] * -1)
+plt.plot(infile['wrench_z'][2500:]/10 * -1)
 plt.title('Position wrench on z')
 #plt.grid(True)
 
@@ -20,7 +19,7 @@ plt.title('Position wrench on z')
 filename = root_path + 'calibration_tests/test_wrench_impedance.csv'
 infile = pd.read_csv(filename, squeeze=True)
 plt.subplot(212)
-plt.plot(infile['wrench_z'][2500:] * -1)
+plt.plot(infile['wrench_z'][2500:]/10 * -1)
 plt.title('Impedance wrench on z')
 
 # show first plot
@@ -64,7 +63,7 @@ plt.title('Wrench on EE - kt')
 
 # show third plot
 plt.show()
-'''
+
 
 # waypoints michele in teleop
 scale = 100
@@ -96,5 +95,62 @@ plt.subplot(224)
 plt.scatter(infile['x'][2:]*scale, infile['y'][2:]*scale)
 plt.title('Waypoints Eros - kt')
 
-# show second plot
+# show plot 4
 plt.show()
+
+
+# plot time for completing task in teleop
+infile1 = pd.read_csv(root_path + 'teleop/test_user/eros_1_wrench.csv', squeeze=True)
+infile2 = pd.read_csv(root_path + 'teleop/test_user/eros_2_wrench.csv', squeeze=True)
+infile3 = pd.read_csv(root_path + 'teleop/test_user/eros_3_wrench.csv', squeeze=True)
+infile4 = pd.read_csv(root_path + 'teleop/test_user/eros_4_wrench.csv', squeeze=True)
+infile5 = pd.read_csv(root_path + 'teleop/test_user/eros_5_wrench.csv', squeeze=True)
+
+names = ['eros_1', 'eros_2', 'eros_3', 'eros_4', 'eros_5']
+values = [infile1['wrench_x'].count(), infile2['wrench_x'].count(), infile3['wrench_x'].count(), infile4['wrench_x'].count(), infile5['wrench_x'].count()]
+plt.subplot(221)
+plt.bar(names, values)
+plt.title('Time Eros - teleop')
+
+# plot time for completing task in kt
+infile1 = pd.read_csv(root_path + 'kt/test_user/eros_1_wrench.csv', squeeze=True)
+infile2 = pd.read_csv(root_path + 'kt/test_user/eros_2_wrench.csv', squeeze=True)
+infile3 = pd.read_csv(root_path + 'kt/test_user/eros_3_wrench.csv', squeeze=True)
+infile4 = pd.read_csv(root_path + 'kt/test_user/eros_4_wrench.csv', squeeze=True)
+infile5 = pd.read_csv(root_path + 'kt/test_user/eros_5_wrench.csv', squeeze=True)
+
+names = ['eros_1', 'eros_2', 'eros_3', 'eros_4', 'eros_5']
+values = [infile1['wrench_x'].count(), infile2['wrench_x'].count(), infile3['wrench_x'].count(), infile4['wrench_x'].count(), infile5['wrench_x'].count()]
+plt.subplot(222)
+plt.bar(names, values)
+plt.title('Time Eros - kt')
+
+# plot time for completing task in teleop
+infile1 = pd.read_csv(root_path + 'teleop/test_user/michele_penzo_1_wrench.csv', squeeze=True)
+infile2 = pd.read_csv(root_path + 'teleop/test_user/michele_penzo_2_wrench.csv', squeeze=True)
+infile3 = pd.read_csv(root_path + 'teleop/test_user/michele_penzo_3_wrench.csv', squeeze=True)
+infile4 = pd.read_csv(root_path + 'teleop/test_user/michele_penzo_4_wrench.csv', squeeze=True)
+infile5 = pd.read_csv(root_path + 'teleop/test_user/michele_penzo_5_wrench.csv', squeeze=True)
+
+names = ['michele_penzo_1', 'michele_penzo_2', 'michele_penzo_3', 'michele_penzo_4', 'michele_penzo_5']
+values = [infile1['wrench_x'].count(), infile2['wrench_x'].count(), infile3['wrench_x'].count(), infile4['wrench_x'].count(), infile5['wrench_x'].count()]
+plt.subplot(223)
+plt.bar(names, values)
+plt.title('Time Michele - teleop')
+
+# plot time for completing task in kt
+infile1 = pd.read_csv(root_path + 'kt/test_user/michele_penzo_1_wrench.csv', squeeze=True)
+infile2 = pd.read_csv(root_path + 'kt/test_user/michele_penzo_2_wrench.csv', squeeze=True)
+infile3 = pd.read_csv(root_path + 'kt/test_user/michele_penzo_3_wrench.csv', squeeze=True)
+infile4 = pd.read_csv(root_path + 'kt/test_user/michele_penzo_4_wrench.csv', squeeze=True)
+infile5 = pd.read_csv(root_path + 'kt/test_user/michele_penzo_5_wrench.csv', squeeze=True)
+
+names = ['michele_penzo_1', 'michele_penzo_2', 'michele_penzo_3', 'michele_penzo_4', 'michele_penzo_5']
+values = [infile1['wrench_x'].count(), infile2['wrench_x'].count(), infile3['wrench_x'].count(), infile4['wrench_x'].count(), infile5['wrench_x'].count()]
+plt.subplot(224)
+plt.bar(names, values)
+plt.title('Time Michele - kt')
+
+# show plot 5
+plt.show()
+'''
