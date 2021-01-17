@@ -2,19 +2,67 @@
 
 \chapter{Methods and materials}
 \label{materials-methods}
-
+This chapter describes in the first section how robot was configured, the preliminary analyzes on the robot and how the experiment is conducted. In the second section is described how I prepare the experiment and materials used for tests.
 
 %----------------------------------------------------------------------------------------
+\section{About the robot}
+\label{about-the-robot}
+The \kuka{} is a robot with collaborative features. It has a 14 kg payload and it has an action range from $ 800mm $ to $ 820 mm $. It is one of the latest robotic innovation, with the ability to work with humans. It has built in sensors and soft edges that make it safe for human collaboration and the ability to detect movement and touch all over. Moreover it has a media flange, with an internal wiring that is helpful to attach a lot of tools. When a tool is attached it's considered in the kinematic chain. In our case the tool selected is a \textit{Gimatic MPLM3240} that is a electric parallel gripper with 2 self-centering two jaw. It has a total gripping force of $ 210 N $.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics{kuka_lbr_iiwa.png}
+	\caption{The \kuka{}}
+\end{figure}
+
+%\begin{figure}[H]
+%	\centering
+%	\includegraphics[scale=0.16]{tool.png}
+%	\caption{Tool mounted on media flange}
+%\end{figure}
 
 \section{Methods}
 \label{methods}
-% robot configurazione
+Using \textit{ROS} and the open source stack available \cite{iiwa-stack-link}, many \texttt{topics} can be used to calculate joint position and velocity, torque on joint, cartesian pose, force on referenced frame. Before the user study some data are collected to understand how the final experiment can be evaluated.
+
+The topic called \texttt{CartesianWrench}, will show the external force measured bu the robot according to the used reference frame. In our case, the force is measured on the media flange. To understand if we could could consider the force applied on the EE, some experiments were conducted to understand the reliability and responsiveness of the values returned from this topic. This test were conducted using objects of different weight calibrated on a scale with precision to the gram and attached to both of the two jaws on the gripper. Every weighing was performed in two different configuration of the robot and for two times. In table \ref{tab:wrench} the results obtained from the experiment.
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{l||llllll}
+		&\textbf{400 gr}	&\textbf{700 gr}	&\textbf{1000 gr}	&\textbf{1300 gr} &\textbf{1600 gr}\\
+
+		\hline\hline
+
+		\textbf{Home pose}	&4,777		&7,566		&10,129		&13,302		&15,926\\
+		\textbf{Home pose}	&4,702		&7,531		&10,145		&13,332		&16,083\\
+		\textbf{On pallet} 	&4,475		&7,267		&9,541		&13,696		&16,253\\
+		\textbf{On pallet} 	&4,477		&7,245		&12,139		&13,641		&16,208\\
+		\textbf{On buffer} 	&2,349		&6,581		&9,626		&12,254		&15,385\\
+		\textbf{On buffer} 	&2,895		&6,615		&9,718		&12,330		&16,244 \\
+		
+		\hline \hline
+		
+		\textbf{Mean}			&3,946		&7,134		&10,216		&13,093		&16,017	\\
+		\textbf{Std deviation}	&1,046		&0,435		&0,975		&0,640		&0,333	
+	\end{tabular}
+	\caption{Results from experiment to evaluate force on EE}
+	\label{tab:wrench}
+\end{table}
+From the test we can understand that the values obtained are reasonable and in line with expectations, even if in the case of robots with elbow in high position (on pallet) the values are understimated.
+
 % pesate, come sono stati creati i task --> tutto il background per creare l'esperimento
 % tutti i file excell che sono stati fatti --> tabelle dei file excel inviati a Diego
-% come viene misurato il tempo di contatto, wrench o durata? ...
-% cosa viene registrato ...
+% eros che ha fatto l'esperimento
+
 % calibrazione del gripper (peso ..) + matrice di inerzia ..
 % test forza EE che si schianta sul tavolo --> posizione 14 kg, impedenza 7
+
+%In our user study we collect all this data provided by the topics described at the beginning of this section.
+% come viene misurato il tempo di contatto, wrench o durata? ...
+% cosa viene registrato ...
+% sample rate
+
 
 
 \section{Materials} 
