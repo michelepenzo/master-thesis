@@ -63,11 +63,54 @@ Another test that was made using the force applied on EE analyzes the maximum fo
 	\caption{Force calculated on EE in impedance control}
 	\label{fig:wrench_impedance}
 \end{figure} 
-In figure \ref{fig:wrench_position} we can observe that using position control the curve of the force applied is exponential and it stops about a $ 14 N$ that is the maximum force that the \kuka{} can impart. Instead, in figure \ref{fig:wrench_impedance} we can immediately spot the difference between impedance and position control. We can see that the maximum force that can be applied before that collision avoidance is activated is no longer $ 14N $ but $ 7N $. This is due to impedance control that is an approach to dynamic control relating force and position. A \textit{spring constant }defines the force output for a compression of the spring, instead a \textit{damping constant} defines the force output for a velocity input. Using impedance control we are controlling the force of resistance to external motions that are imposed by the environment. In fact, in figure \ref{fig:wrench_impedance} we can see the behavior of the spring: it reacts to the force applied on the surface by adapting (the first part of the curve), but when the force is too much and the damping constant too low to perform an adaptive movement it stops and the robot applies the maximum possible force. Since there is the damping constant, the maximum force will therefore be $ 7N$.
+In figure \ref{fig:wrench_position} we can observe that using position control the curve of the force applied is exponential and it stops about a $ 14 N$ that is the maximum force that the \kuka{} can impart. Instead, in figure \ref{fig:wrench_impedance} we can immediately spot the difference between impedance and position control. We can see that the maximum force that can be applied before that collision avoidance is activated is no longer $ 14N $ but $ 7N $. This is due to impedance control that is an approach to dynamic control relating force and position. A \textit{spring constant} defines the force output for a compression of the spring, instead a \textit{damping constant} defines the force output for a velocity input. Using impedance control we are controlling the force of resistance to external motions that are imposed by the environment. In fact, in figure \ref{fig:wrench_impedance} we can see the behavior of the spring: it reacts to the force applied on the surface by adapting (the first part of the curve), but when the force is too much and the damping constant too low to perform an adaptive movement it stops and the robot applies the maximum possible force. Since there is the damping constant, the maximum force will therefore be $ 7N$.
 
-Always as preliminary action $\ldots$
-% eros che ha fatto l'esperimento quindi i dati raccolti
+As preliminary action a test of the final experiment discussed in section \ref{experiment} has been done for test how the experiment can be done by the participants. Especially, during this test all the possible data were collected subscribing to \texttt{topic} as:
+\begin{itemize}
+	\item \texttt{CartesianPose}: position and orientation of EE,
+	\item \texttt{CartesianWrench}: force applied on EE,
+	\item \texttt{JointPositionVelocity}: position and velocity of all joints,
+	\item \texttt{JointExternalTorque} and \texttt{JointTorque}: torque applied on joints.
+\end{itemize}
+This phase of the test was made by an inexperienced user who had to do the same task for five times. The task consist to move four Lego blocks from a pick position to a place position. This task was repeated for both the modalities: \kt{} and \te{}. % TODO foto del pallet 
+The data collected before the final experiment provides a solid basis to be able to perform a preliminary analysis to understand how to perform the final experiment by collecting only the data necessary for the final evaluation.
 
+\begin{figure}[H]
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=1\linewidth]{kt_user.png}
+		\caption{Test in \kt}
+		\label{fig:kt_user}
+	\end{subfigure}%
+	\begin{subfigure}{.5\textwidth}%		
+		\centering
+		\includegraphics[width=1\linewidth]{kt_me.png}
+		\caption{Test in \te}
+		\label{fig:kt_me}	
+	\end{subfigure}
+	\caption{Difference between users in \kt}
+	\label{fig:diff_teleop}
+\end{figure}
+
+\begin{figure}[H]
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=1\linewidth]{teleop_user.png}
+		\caption{Test in \kt}
+		\label{fig:teleop_user}
+	\end{subfigure}%
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=1\linewidth]{teleop_me.png}
+		\caption{Test in \te}
+		\label{fig:teleop_me}
+	\end{subfigure}
+	\caption{Difference between users in \te}
+	\label{fig:diff_kt}
+\end{figure}
+% dire che c'è differenza tra utente con e senza esperienza
+% primo caso di esero
+% plottare bene i tempi
 
 %In our user study we collect all this data provided by the topics described at the beginning of this section.
 % come viene misurato il tempo di contatto, wrench o durata? ...
@@ -81,7 +124,7 @@ Always as preliminary action $\ldots$
 
 
 % come sono stati creati i task --> tutto il background per creare l'esperimento
-% descrizione del materiale utilizzato, lego e scatole per i test, cose cilindriche gripper non funziona
+% descrizione del materiale utilizzato, lego e scatole per i test, cose cilindriche gripper funziona?
 % poi è stato stampato il tutto, come sono stati creati i task ecc...
 % task di siemens?
 
