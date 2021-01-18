@@ -72,45 +72,46 @@ As preliminary action a test of the final experiment discussed in section \ref{e
 	\item \texttt{JointPositionVelocity}: position and velocity of all joints,
 	\item \texttt{JointExternalTorque} and \texttt{JointTorque}: torque applied on joints.
 \end{itemize}
-This phase of the test was made by an inexperienced user who had to do the same task for five times. The task consist to move four Lego blocks from a pick position to a place position. This task was repeated for both the modalities: \kt{} and \te{}. % TODO foto del pallet 
+This phase of the test was made by an inexperienced user who had to do the same task for $ N $ times. The value of $ N $ that was chosen was a relatively high value that will be reduced in the final experiment. The task consist to move four Lego blocks from a pick position to a place position. This task was repeated for both the modalities: \kt{} and \te{}. % TODO foto del pallet 
 The data collected before the final experiment provides a solid basis to be able to perform a preliminary analysis to understand how to perform the final experiment by collecting only the data necessary for the final evaluation.
 
-\begin{figure}[H]
+As represented in figure \ref{fig:diff_kt} we can say that the time necessary to complete the task was similar between the two users, but in the figure \ref{fig:kt_user} the first trial wasn't completed due a mistake by the user. In this case wasn't made to repeat the experiment because this is test and all the possible problems had to be understood. We can also say that with more attempts the time for complete the task is always minor.
+
+\begin{figure}[ht]
 	\begin{subfigure}{.5\textwidth}
 		\centering
 		\includegraphics[width=1\linewidth]{kt_user.png}
-		\caption{Test in \kt}
+		\caption{User inexperienced}
 		\label{fig:kt_user}
 	\end{subfigure}%
 	\begin{subfigure}{.5\textwidth}%		
 		\centering
 		\includegraphics[width=1\linewidth]{kt_me.png}
-		\caption{Test in \te}
+		\caption{User with experience}
 		\label{fig:kt_me}	
 	\end{subfigure}
 	\caption{Difference between users in \kt}
-	\label{fig:diff_teleop}
+	\label{fig:diff_kt}
 \end{figure}
 
-\begin{figure}[H]
+In figure \ref{fig:diff_teleop} we can say that the times for complete the task in \te{} are high respect to \kt{}. We can also say that user inexperienced is always slower than user with experience. Even in this case the user inexperienced made a mistake because made a collision with a Lego block but was included anyway in the results.
+
+\begin{figure}[ht]
 	\begin{subfigure}{.5\textwidth}
 		\centering
 		\includegraphics[width=1\linewidth]{teleop_user.png}
-		\caption{Test in \kt}
+		\caption{User inexperienced}
 		\label{fig:teleop_user}
 	\end{subfigure}%
 	\begin{subfigure}{.5\textwidth}
 		\centering
 		\includegraphics[width=1\linewidth]{teleop_me.png}
-		\caption{Test in \te}
+		\caption{User with experience}
 		\label{fig:teleop_me}
 	\end{subfigure}
 	\caption{Difference between users in \te}
-	\label{fig:diff_kt}
+	\label{fig:diff_teleop}
 \end{figure}
-% dire che c'è differenza tra utente con e senza esperienza
-% primo caso di esero
-% plottare bene i tempi
 
 %In our user study we collect all this data provided by the topics described at the beginning of this section.
 % come viene misurato il tempo di contatto, wrench o durata? ...
