@@ -76,11 +76,11 @@ As described in the next sections, in every phase a way to save waypoints and an
 
 	\subsection{Teach with remote control}
 	\label{teleoperation-pad}
-	As described in section \ref{teleoperation}, remote control or \textit{teleoperation} indicates operation of a system or robot at a distance. In our case, teleoperation is intended as control the \kuka{} with a \textbf{PlayStation 4 pad} and it was developed in two ways:
+	Remote control or \textit{teleoperation} indicates operation of a system or robot at a distance. In our case, teleoperation is intended as control the \kuka{} with a \textbf{PlayStation 4 pad} and it was developed in two ways:
 
 	\begin{itemize}
 		\item \textit{full task space}: in this modality the robot will move respect to the EE. A movement along $ x $, $ y $ and $ z $ is performed using linear and angular velocity. With linear velocity you will move the pose of the robot in task space, instead with angular you will move the orientation of the EE.
-		\item \textit{reduced joint space}: in this other modality not all joints are considered. Some joint have been blocked, you can move only eh $ 1°$, $ 2° $ and $ 6° $ joint. It's also possible change the orientation of the EE using angular velocity.
+		\item \textit{reduced joint space}: in this other modality not all joints are considered. Some joint have been blocked, you can move only the $ 1 $°, $ 2 $° and $ 6 $° joint. It's also possible change the orientation of the EE using angular velocity.
 	\end{itemize}
 	Both of them modalities are performed using \texttt{L1} or \texttt{R1} as deadman buttons with right or left analog.	This two modalities of teleoperation were take from \cite{comparing-teleoperation}. In both cases, the buttons used are the same:
 	\begin{itemize}
@@ -90,7 +90,7 @@ As described in the next sections, in every phase a way to save waypoints and an
 		\item $ \square $: change to control mode from position to cartesian impedance, and vice versa.
 	\end{itemize}
 
-	Using the pad, it's possible to use the internal vibration. Therefore, when an external force grater than a preset value is detected the \textbf{pad} start vibrating. Based on the controller that the user is using, impedance or position control, the force for activation is different.
+	Using the pad, it's possible to use the internal vibration. Therefore, when an external force grater than a preset value is detected the \textbf{pad} start vibrating. Based on the control mode that user is using, impedance or position control, the force for activation is different.
 
 	\begin{figure}[H]
 		\centering
