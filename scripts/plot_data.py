@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 
 import pandas as pd
+import math
 import matplotlib.pyplot as plt
 
 #root_path = '/home/ice-admin/iiwa_stack_ws/src/iiwa_stack/pkgs_mp/csv_files/'
@@ -152,5 +153,121 @@ plt.bar(names, values)
 plt.title('Time Michele - kt')
 
 # show plot 5
+plt.show()
+
+
+# calculate distance teleop
+def calculate_distance(infile):
+	x_values = infile['pose_x'][0:]
+	y_values = infile['pose_y'][0:]
+	distance = 0
+
+	for i in range(infile['pose_z'].count()-1):
+
+		x1 = x_values[i]
+		y1 = y_values[i]
+		x2 = x_values[i+1]
+		y2 = y_values[i+1]
+
+		distance = distance + abs(math.sqrt(((x1 - x2) ** 2) + ((y1 - y2) ** 2)))
+
+	return distance
+
+
+teleop_eros = list()
+teleop_michele = list()
+kt_michele = list()
+kt_eros = list()
+
+filename = root_path + 'teleop/test_user/michele_penzo_1_pose.csv'
+teleop_michele.append(calculate_distance(pd.read_csv(filename, squeeze=True)))
+
+filename = root_path + 'teleop/test_user/michele_penzo_2_pose.csv'
+teleop_michele.append(calculate_distance(pd.read_csv(filename, squeeze=True)))
+
+filename = root_path + 'teleop/test_user/michele_penzo_3_pose.csv'
+teleop_michele.append(calculate_distance(pd.read_csv(filename, squeeze=True)))
+
+filename = root_path + 'teleop/test_user/michele_penzo_4_pose.csv'
+teleop_michele.append(calculate_distance(pd.read_csv(filename, squeeze=True)))
+
+filename = root_path + 'teleop/test_user/michele_penzo_5_pose.csv'
+teleop_michele.append(calculate_distance(pd.read_csv(filename, squeeze=True)))
+
+########################
+filename = root_path + 'kt/test_user/michele_penzo_1_pose.csv'
+kt_michele.append(calculate_distance(pd.read_csv(filename, squeeze=True)))
+
+filename = root_path + 'kt/test_user/michele_penzo_2_pose.csv'
+kt_michele.append(calculate_distance(pd.read_csv(filename, squeeze=True)))
+
+filename = root_path + 'kt/test_user/michele_penzo_3_pose.csv'
+kt_michele.append(calculate_distance(pd.read_csv(filename, squeeze=True)))
+
+filename = root_path + 'kt/test_user/michele_penzo_4_pose.csv'
+kt_michele.append(calculate_distance(pd.read_csv(filename, squeeze=True)))
+
+filename = root_path + 'kt/test_user/michele_penzo_5_pose.csv'
+kt_michele.append(calculate_distance(pd.read_csv(filename, squeeze=True)))
+
+########################
+filename = root_path + 'kt/test_user/eros_1_pose.csv'
+kt_eros.append(calculate_distance(pd.read_csv(filename, squeeze=True)))
+
+filename = root_path + 'kt/test_user/eros_2_pose.csv'
+kt_eros.append(calculate_distance(pd.read_csv(filename, squeeze=True)))
+
+filename = root_path + 'kt/test_user/eros_3_pose.csv'
+kt_eros.append(calculate_distance(pd.read_csv(filename, squeeze=True)))
+
+filename = root_path + 'kt/test_user/eros_4_pose.csv'
+kt_eros.append(calculate_distance(pd.read_csv(filename, squeeze=True)))
+
+filename = root_path + 'kt/test_user/eros_5_pose.csv'
+kt_eros.append(calculate_distance(pd.read_csv(filename, squeeze=True)))
+
+########################
+filename = root_path + 'teleop/test_user/eros_1_pose.csv'
+teleop_eros.append(calculate_distance(pd.read_csv(filename, squeeze=True)))
+
+filename = root_path + 'teleop/test_user/eros_2_pose.csv'
+teleop_eros.append(calculate_distance(pd.read_csv(filename, squeeze=True)))
+
+filename = root_path + 'teleop/test_user/eros_3_pose.csv'
+teleop_eros.append(calculate_distance(pd.read_csv(filename, squeeze=True)))
+
+filename = root_path + 'teleop/test_user/eros_4_pose.csv'
+teleop_eros.append(calculate_distance(pd.read_csv(filename, squeeze=True)))
+
+filename = root_path + 'teleop/test_user/eros_5_pose.csv'
+teleop_eros.append(calculate_distance(pd.read_csv(filename, squeeze=True)))
+
+#########
+names = ['#1', '#2', '#3', '#4', '#5']
+
+plt.subplot(221)
+plt.ylim(0, 5)
+plt.ylabel('Distanza in metri')
+plt.bar(names, teleop_eros)
+plt.title('Distanza Michele - teleop')
+
+plt.subplot(222)
+plt.ylim(0, 5)
+plt.ylabel('Distanza in metri')
+plt.bar(names, teleop_michele)
+plt.title('Distanza Eros - teleop')
+
+plt.subplot(223)
+plt.ylim(0, 5)
+plt.ylabel('Distanza in metri')
+plt.bar(names, kt_michele)
+plt.title('Distanza Michele - kt')
+
+plt.subplot(224)
+plt.ylim(0, 5)
+plt.ylabel('Distanza in metri')
+plt.bar(names, kt_eros)
+plt.title('Distanza Eros - kt')
+
 plt.show()
 '''
