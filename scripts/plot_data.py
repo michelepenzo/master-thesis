@@ -1,10 +1,11 @@
 #!/usr/bin/python3
+# coding=utf-8
 
 import pandas as pd
 import math
 import matplotlib.pyplot as plt
 
-#root_path = '/home/ice-admin/iiwa_stack_ws/src/iiwa_stack/pkgs_mp/csv_files/'
+# root_path = '/home/ice-admin/iiwa_stack_ws/src/iiwa_stack/pkgs_mp/csv_files/'
 root_path = '/home/michele/Documents/robotica/csv_files/'
 
 '''
@@ -271,3 +272,72 @@ plt.title('Distanza Eros - kt')
 
 plt.show()
 '''
+
+def calculate_acceleartion(infile):
+	x_values = infile['pose_x'][0:]
+	y_values = infile['pose_y'][0:]
+	acceleration = list()
+	time = 0.1
+
+	for i in range(infile['pose_z'].count()-1):
+
+		x1 = x_values[i]
+		y1 = y_values[i]
+		x2 = x_values[i + 1]
+		y2 = y_values[i + 1]
+
+		# distance from two points
+		value = abs(math.sqrt(((x1 - x2) ** 2) + ((y1 - y2) ** 2))) / (time**2)
+		acceleration.append(value)
+
+	return acceleration
+
+
+# return acceleration
+'''
+filename = root_path + 'kt/test_user/michele_penzo_2_pose.csv'
+plt.subplot(221)
+plt.xlim(0, 1)
+plt.boxplot(calculate_acceleartion(pd.read_csv(filename, squeeze=True)), showfliers=False,  vert=False)
+plt.title('Accelerazione PTP Michele - kt')
+
+filename = root_path + 'teleop/test_user/michele_penzo_2_pose.csv'
+plt.subplot(222)
+plt.xlim(0, 1)
+plt.boxplot(calculate_acceleartion(pd.read_csv(filename, squeeze=True)), showfliers=False,  vert=False)
+plt.title('Accelerazione PTP Michele - teleop')
+
+
+filename = root_path + 'kt/test_user/eros_2_pose.csv'
+plt.subplot(223)
+plt.xlim(0, 1)
+plt.boxplot(calculate_acceleartion(pd.read_csv(filename, squeeze=True)), showfliers=False,  vert=False)
+plt.title('Accelerazione PTP Eros - kt')
+
+
+filename = root_path + 'teleop/test_user/eros_2_pose.csv'
+plt.subplot(224)
+plt.xlim(0, 1)
+plt.boxplot(calculate_acceleartion(pd.read_csv(filename, squeeze=True)), showfliers=False,  vert=False)
+plt.title('Accelerazione PTP Eros - teleop')
+
+plt.show()
+'''
+filename = root_path + 'kt/test_user/michele_penzo_2_pose.csv'
+kt_michele = calculate_acceleartion(pd.read_csv(filename, squeeze=True))
+
+filename = root_path + 'teleop/test_user/michele_penzo_2_pose.csv'
+teleop_michele = calculate_acceleartion(pd.read_csv(filename, squeeze=True))
+
+filename = root_path + 'kt/test_user/eros_2_pose.csv'
+kt_eros = calculate_acceleartion(pd.read_csv(filename, squeeze=True))
+
+filename = root_path + 'teleop/test_user/eros_2_pose.csv'
+teleop_eros = calculate_acceleartion(pd.read_csv(filename, squeeze=True))
+
+fig, ax = plt.subplots()
+_labels = ('kt michele', 'teleop michele', 'kt eros', 'teleop eros')
+plt.ylabel('accelerazione m/s^2')
+plt.xlabel('2° trial in tutte le modalita')
+ax.boxplot((kt_michele, teleop_michele, kt_eros, teleop_eros), showfliers=False, labels=_labels)
+plt.show()

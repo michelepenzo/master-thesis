@@ -25,21 +25,21 @@ With the stack is simple to manipulate the messages received from the robot and 
 
 For further information about \textit{iiwa\_stack} see \cite{iiwa-stack-link} and the related work \cite{iiwa-stack-paper}. Instead for information about Sunrise OS and Workbench see \cite{thesis}.
 
-
-	\subsection{KUKA Robot Controller}
+% TODO queste sezioni?
+%	\subsection{KUKA Robot Controller}
 	The \kuka{} is controlled via the KUKA Robot Controller, also known as the KUKA Sunrise Cabinet. The KRC is responsible for the transmission control inputs as well as the reading the data of the integrated sensors. In our case, for controlling the Kuka we use the Java application providede by the stack that runs into the SmartPad.
 
-	\subsection{Sunrise.Workbench}
+%	\subsection{Sunrise.Workbench}
 	The Sunrise.Workbench is a tool used to program robot applications in Java, which are loaded into and are executed on the KRC. It offers the possibility to control the robot with the following strategies: position control, velocity control, joint and cartesian impedance control.
 	It can also can execute the commonly motion patterns as: spline, point-to-point, linear and circular motions.
 	
 	Since we have a gripper mounted on media flange, there's a task always active in background that provides a method that can be called via \texttt{ros\_service} to open and close the two jaw. We also have another background task for the \textit{rgb} led present on media flange.
 
-	\subsection{Safety configuration}
+%	\subsection{Safety configuration}
 	A correct thing to do before start the using of the robot is to check and modify the safety configuration loaded by default. In my case:
 	\begin{itemize}
-		\item I had to set a new value for every joint in robot configuration. I restrict the value about $ 2 $ degrees.
-		\item moreover I added a protected workspace. In this case the robot never goes inside the constraint area.  
+		\item for each joint in the robot configuration the values of degrees have been restricted by $ 2 $ degrees,
+		\item moreover a protected workspace was added. In this case the robot never goes inside the constraint area.  
 	\end{itemize}
 	
 	
@@ -50,7 +50,7 @@ As described in section~\ref{goals}, the main goal of the thesis is to evaluate,
 Staring from the goal, the work was divide into two phases:
 \begin{enumerate}
 	\item create the mode relative to teach by demonstration, 
-	\item create a way to tele-operate the robot in a simple way. 
+	\item create a way to teleoperate the robot in a simple way. 
 \end{enumerate}
 As described in the next sections, in every phase a way to save waypoints and an action on the gripper was implemented. After that the action was captured by the script and was saved in an \texttt{.csv} file. With a dedicated program and that file, all the actions saved into the file can be replicated by the robot. Then the description of the two developed modalities.
 
