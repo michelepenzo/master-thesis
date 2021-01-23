@@ -2,12 +2,12 @@
 
 \chapter{Methods and materials}
 \label{materials-methods}
-This chapter describes in the first section how robot was configured, the preliminary analyzes on the robot and how the experiment is conducted. In the second section is described how I prepare the experiment and materials used for tests.
+This chapter describes in the first section how robot was configured, the preliminary analyzes on the robot and how the experiment is conducted. In the second section is described how the experiment was prepared and the materials used for tests.
 
 %----------------------------------------------------------------------------------------
 \section{About the robot}
 \label{about-the-robot}
-The \kuka{} is a robot with collaborative features. It has a 14 kg payload and it has an action range from $ 800mm $ to $ 820 mm $. It is one of the latest robotic innovation, with the ability to work with humans. It has built in sensors and soft edges that make it safe for human collaboration and the ability to detect movement and touch all over. Moreover it has a media flange, with an internal wiring that is helpful to attach a lot of tools. When a tool is attached it's considered in the kinematic chain. In our case the tool selected is a \textit{Gimatic MPLM3240} that is a electric parallel gripper with 2 self-centering two jaw. It has a total gripping force of $ 210 N $.
+The \kuka{} is a robot with collaborative features. It has a 14 kg payload and an action range from $ 800mm $ to $ 820 mm $. I's one of the latest robotic innovation, with the ability to work with humans. It has built in sensors and soft edges that make it safe for human collaboration and the ability to detect movement and touch all over. Moreover it has a media flange, with an internal wiring that is helpful to attach a lot of tools. When a tool is attached it's considered in the kinematic chain. In our case the tool selected is a \textit{Gimatic MPLM3240} that is a electric parallel gripper with 2 self-centering two jaw. It has a total gripping force of $ 210 N $.
 
 \begin{figure}[H]
 	\centering
@@ -18,11 +18,11 @@ The \kuka{} is a robot with collaborative features. It has a 14 kg payload and i
 
 \section{Methods}
 \label{methods}
-The first thing that was done was the calibration of the gripper using the application provided by \textit{Kuka} and usable from the \textit{SmartPad}. This application consists of move the sixth and seventh link with multiple movements and provide a way to calculate the weight, center of mass and inertia matrix of the tool attached on media flange. This operations was made in the most used robot configurations and more times and returns reasonable results. Finally, the name of the tool shown at the end of the application was loaded from the running application as \texttt{ros\_param}.
+The first thing that was done was the calibration of the gripper using the application provided by \textit{Kuka} and usable from the \textit{SmartPad}. This application consists of move the sixth and seventh joint with multiple movements and provide a way to calculate the weight, center of mass and inertia matrix of the tool attached on media flange. This operations was made in different configurations (in the most used for this work) for several times and all times gave reasonable values. Finally, the configured tool was loaded as \texttt{ros\_param} and recognized from the stack.
 
-Using \textit{ROS} and the open source stack available on \cite{iiwa-stack-link}, many \texttt{topics} can be used to calculate joint position and velocity, torque on joint, cartesian pose, force on referenced frame. Before the user study some data are collected to understand how the final experiment can be evaluated.
+Using \textit{ROS} and the open source stack available on \cite{iiwa-stack-link}, many \texttt{topics} can be used to calculate joint position and velocity, torque on joint, cartesian pose and force on referenced frame. Before the user study some data are collected to understand how the final experiment can be evaluated.
 
-The topic called \texttt{CartesianWrench}, will show the external force measured bu the robot according to the used reference frame. In our case, the force is measured on the media flange. To understand if we could could consider the force applied on the EE, some experiments were conducted to understand the reliability and responsiveness of the values returned from this topic. This test were conducted using objects of different weight calibrated on a scale with precision to the gram and attached to both of the two jaws on the gripper. Every weighing was performed in two different configuration of the robot and for two times. In table \ref{tab:wrench} the results obtained from the experiment.
+The topic called \texttt{CartesianWrench}, will show the external force measured by the robot according to the used reference frame. In our case, the force is measured on the media flange. To understand if we could could consider the force applied on the EE, some experiments were conducted to understand the reliability and responsiveness of the values returned from this topic. This test were conducted using objects of different weight calibrated on a scale with precision to the gram and attached to both of the two jaws on the gripper. Every weighing was performed in three different configuration of the robot and for two times. In table \ref{tab:wrench} the results obtained from the experiment.
 
 \begin{table}[H]
 	\centering
@@ -72,10 +72,10 @@ As preliminary action a test of the final experiment discussed in section \ref{e
 	\item \texttt{JointPositionVelocity}: position and velocity of all joints,
 	\item \texttt{JointExternalTorque} and \texttt{JointTorque}: torque applied on joints.
 \end{itemize}
-This phase of the test was made by an inexperienced user who had to do the same task for $ N $ times. The value of $ N $ that was chosen was a relatively high value that will be reduced in the final experiment. The task consist to move four Lego blocks from a pick position to a place position. This task was repeated for both the modalities: \kt{} and \te{}. % TODO foto del setup 
+This phase of the test was made by an inexperienced user who had to do the same task for $ N $ times. The value of $ N $ that has been chosen is $ 5 $: a relatively high value that will be reduced in the final experiment. The task consisted to move four Lego blocks from a pick position to a place position. This task was repeated for both the modalities: \kt{} and \te{}. % TODO foto del setup 
 The data collected before the final experiment provides a solid basis to be able to perform a preliminary analysis to understand how to perform the final experiment by collecting only the data necessary for the final evaluation.
 
-As represented in figure \ref{fig:diff_kt} we can say that the time necessary to complete the task was similar between the two users, but in the figure \ref{fig:kt_user} the first trial wasn't completed due a mistake by the user. In this case wasn't made to repeat the experiment because this is test and all the possible problems had to be understood. We can also say that with more attempts the time for complete the task is always minor.
+As represented in figure \ref{fig:diff_kt} we can say that the time necessary to complete the task was similar between the two users, but in the figure \ref{fig:kt_user} the first trial wasn't completed due a mistake by the user. In this case wasn't made to repeat the experiment because this was a test and all the possible problems had to be understood. We can also say that with more attempts the time for complete the task is always minor.
 
 \begin{figure}[ht]
 	\begin{subfigure}{.5\textwidth}
@@ -94,7 +94,7 @@ As represented in figure \ref{fig:diff_kt} we can say that the time necessary to
 	\label{fig:diff_kt}
 \end{figure}
 
-In figure \ref{fig:diff_teleop} we can say that the times for complete the task in \te{} are high respect to \kt{}. We can also say that user inexperienced is always slower than user with experience. Even in this case the user inexperienced made a mistake because made a collision with a Lego block but was included anyway in the results.
+In figure \ref{fig:diff_teleop} we can say that the times for complete the task in \te{} are high respect to \kt{}. We can also say that user inexperienced is always slower than user with experience. Even in this case the user inexperienced made a mistake (figure \ref{fig:teleop_user}) because made a collision with a Lego block but it was included anyway in the results.
 
 \begin{figure}[ht]
 	\begin{subfigure}{.5\textwidth}
@@ -112,15 +112,7 @@ In figure \ref{fig:diff_teleop} we can say that the times for complete the task 
 	\caption{Difference between users in \te}
 	\label{fig:diff_teleop}
 \end{figure}
-
-% cosa abbiamo notato in questi valori? che i primi tentativi falliscono in quanto non si conosce molto bene l'mbiente
-% abbiamo capito cosa possiamo misuare e cosa possiamo far svolgere come task alle persone
-
-% come viene misurato il tempo di contatto, wrench o durata? ...
-% cosa viene registrato ...
-% sample rate
-
-
+From the two failures, it's noticed that the user doesn't know very well the environment and how to use the robot. Before the final experiment an through explanations about \kt{} and \te{} is provided to the user.
 
 \section{Materials} 
 \label{materials}
