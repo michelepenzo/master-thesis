@@ -2,11 +2,13 @@
 % TODO scema repo coma AA
 \chapter{The project}
 \label{project}
+
 This chapter describes the general setup, its components and a small overview on the tools used for develop the project. Finally the project is explained.
 
 %----------------------------------------------------------------------------------------
 
 \section{Setup overview}
+
 The \kuka{} redundant manipulator is programmed using the KUKA's Sunrise Workbench platform and its Java API's. The usage of an open source stack compatible with ROS (presented in \cite{ros}) allows the usage of the robot in a simple way. 
 
 A Sunrise project, containing one or more Robotic Application can be synchronized to the robot cabinet and executed from the SmartPad. 
@@ -44,6 +46,7 @@ For further information about \textit{iiwa\_stack} see \cite{iiwa-stack-link} an
 	
 \section{Project implementation}
 \label{project-implementation}
+
 As described in section~\ref{goals}, the main goal of the thesis is to evaluate, with an user study, different modalities to easily change tasks in industry.
 
 Staring from the goal, the work was divide into two phases:
@@ -83,7 +86,6 @@ As described in the next sections, in every phase a way to save waypoints and an
 	\end{itemize}
 	Both of them modalities are performed using \texttt{L1} or \texttt{R1} as deadman buttons with right or left analog.	This two modalities of teleoperation were take from \cite{comparing-teleoperation}. In both cases, the buttons used are the same:
 	\begin{itemize}
-%		\item $ \bigcirc $
 		\item $ \times $: close or open gripper, therefore save action and the actual pose;
 		\item $ \triangle $: save actual pose;
 		\item $ \square $: change to control mode from position to cartesian impedance, and vice versa.

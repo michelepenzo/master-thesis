@@ -5,10 +5,9 @@ import csv, rospkg, rospy, os
 from services import *
 
 
-path = '/home/ice-admin/iiwa_stack_ws/src/iiwa_stack/pkgs_mp/csv_files/' + rospy.get_param('mode') + '/' + rospy.get_param('task') + '/' + rospy.get_param('name')
+dir_path = '/home/ice-admin/iiwa_stack_ws/src/iiwa_stack/pkgs_mp/csv_files/'
+path = dir_path + rospy.get_param('mode') + '/' + rospy.get_param('task') + '/' + rospy.get_param('rep') + '/' + rospy.get_param('name')
 filename_actions_csv = path + '.csv'
-#filename_wrench_csv = path + '_wrench.csv'
-
 
 # print on csv file
 def print_on_csv(data):
@@ -18,8 +17,8 @@ def print_on_csv(data):
 
 
 # print on csv file
-def print_on_csv_datas(data, filenaame):
-	with open(filenaame, 'ab') as outfile:
+def print_on_csv_datas(data, filename):
+	with open(filename, 'ab') as outfile:
 		wr = csv.writer(outfile, quoting=csv.QUOTE_NONE)
 		wr.writerow(data)
 

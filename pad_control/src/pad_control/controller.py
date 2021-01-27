@@ -37,23 +37,7 @@ def read_cartesian_wrench(data):
 		set_feedback(1.0)
 	else:
 		set_feedback(0.0)
-	'''
-	if abs(data.wrench.force.z) > safety_control_value and not safety_control:
-		safety_control = True
-		configure_control_mode(control_mode_srv, create_msg_cartesian_impedance())
-		rospy.logwarn('safety control')
 
-	elif abs(data.wrench.force.z) < safety_control_value and safety_control:
-		safety_control = False
-
-		if is_position_control:
-			rospy.logwarn('to position')
-			configure_control_mode(control_mode_srv, create_msg_position_control())
-
-		else:
-			rospy.logwarn('to impedance')
-			configure_control_mode(control_mode_srv, create_msg_cartesian_impedance())
-	'''
 
 # read cartesian pose and save as actual_pose
 def read_cartesian_pose(data):
