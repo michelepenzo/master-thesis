@@ -25,26 +25,63 @@ In this phase all the procedures necessary to conduct the experiment correctly. 
 \subsection*{Experiment phase}
 \label{experiment-phase}
 
-The experiment consists in three subtasks in ascending order of difficulty
+The experiment consists in three subtasks in ascending order of difficulty repeated for \rep{} times. We call the repetitions \textit{``trial''} and the subtasks are:
+\begin{enumerate}
+	\item pick and place of the \nobj{} objects in figure \ref{fig:objects};
+	\item move the \nobj{} objects into their interlocking position: figures \ref{fig:objects} and \ref{fig:interlocking};
+	\item perform a more complicated interlock: figure \ref{fig:complete_task} % TODO finire qui + mettere le figure corrette
+\end{enumerate}
+
+\begin{figure}[ht]
+	\begin{minipage}{.5\textwidth}
+		\centering
+		\includegraphics[scale=0.3]{siemens_complete.png}
+		\caption{Objects for pick and place}
+		\label{fig:objects}
+	\end{minipage}%
+	\begin{minipage}{.5\textwidth}%		
+		\centering
+		\includegraphics[scale=0.3]{siemens_complete.png}
+		\caption{Interlocking position}
+		\label{fig:interlocking}
+	\end{minipage}
+\end{figure}
+
+\begin{figure}[ht]
+	\begin{minipage}{.5\textwidth}
+		\centering
+		\includegraphics[scale=0.3]{siemens_complete.png}
+		\caption{The complete task}
+		\label{fig:complete_task}
+	\end{minipage}%
+	\begin{minipage}{.5\textwidth}
+		\centering
+		\includegraphics[scale=0.3]{siemens_complete.png}
+		\caption{The complete task}
+		\label{fig:other_figure}
+	\end{minipage}
+\end{figure}
 
 
+After every trial a \textit{vote} the work done (based on time, number of waypoints and action on gripper) is given to the user. A vote is given because if the time to complete the experiment is given to the user he tries to perform the next trials in the minor time because it competes with itself.
+After the \textit{first} trial of every subtask the replay phase based on the waypoints and actions on gripper is shown to the users. In this way the user understands where he can improve.
 
-Some clarifications are provided to unify all users:
+% TODO
+% La scelta della modalità iniziale viene fatta in modo casuale? Oppure facciamo scegliere all’utente?
+% Oppure esperti prima in teleop e poi kt, o viceversa?
+
+
+\noindent Some clarifications are provided to unify all users:
 \begin{itemize}
-	\item every time that a trial is repeated the \kuka were positioned over the first object that would be manipulated,
-	\item every trial is considered valid, even if a collision by the user or any other mistake that is made by the user compromises the trial,
-	\item if there is an error that does not depend by the user, the trail was repeated
+	\item every trial is considered valid, even if a collision by the user or any other mistake that is made by the user compromises the trial;
+	\item if there is an error that does not depend by the user, the trail was repeated;
+	\item every time that a trial is repeated the \kuka{} were positioned over the first object that would be manipulated.
 \end{itemize}
-
 
 
 \subsection*{Post-experiment phase}
 \label{post-experiment-phase}
-
-% metodologie per svolgere il task? quale è la modalità migliore per svolgerli?
-% cosa deve fare, come viene fatto?
-% quali task? in che cosa consistono i task? 1, 2, 3 ...
-% in questo caso possono essere inserite molto foto che mostrano come il task è stato creato
+At the end of the experimental phase an evaluation questionnaire was filled by the users. This questionnaire is divided in three parts: the first asks personal information as name, age, approximate height and weight and other questions to better understand how to divide users for the result analysis . The second part resumes some questions from the questionnaire of \textit{Nasa TLX} described in \cite{nasa-tlx}, and the last part asks general questions about the experiment.
 
 
 \section{Data collection}
