@@ -23,13 +23,14 @@ The experimental design describes the entire flow which is done by every partici
 In this phase all the procedures necessary to conduct the experiment correctly. First of all a privacy policy for data collection was signed by the users. After that a teach phase was carried out by all the users in order tu understand how they can be move the robot (\kt{} and \te) and which buttons they need to press to perform the actions. At this stage users are asked to move a Lego block from a pick position to a place one performing a $ 90 $° rotation to teach him how to use rotation feature. This simple pick and place was performed in by the users in both the modalities. If the user complete this phase an ascending unique id is assigned to him. Moreover every user perform the pre-experiment and experiment phase without seeing other users do the same.
 
 \subsection*{Experiment phase}
+% TODO rivedere tutto 
 \label{experiment-phase}
 
 The experiment consists in three sub-tasks in ascending order of difficulty repeated for \rep{} times. We call the repetitions \textit{``trial''} and the sub-tasks are:
 \begin{enumerate}
-	\item pick and place of the \nobj{} objects in figure \ref{fig:objects};
-	\item move the \nobj{} objects into their interlocking position: figures \ref{fig:objects} and \ref{fig:interlocking};
-	\item perform a more complicated interlock: figure \ref{fig:complete_task} % TODO finire qui + mettere le figure corrette
+	\item pick and place of the \nobj{} objects in figure \ref{fig:objects},
+	\item move the \nobj{} objects (fig. \ref{fig:objects}) into their interlocking position (fig. \ref{fig:interlocking}),
+	\item perform a more complicated interlock: figure \ref{fig:complete_task} 
 \end{enumerate}
 
 \begin{figure}[ht]
@@ -57,13 +58,13 @@ The experiment consists in three sub-tasks in ascending order of difficulty repe
 	\begin{minipage}{.5\textwidth}
 		\centering
 		\includegraphics[scale=0.3]{siemens_complete.png}
-		\caption{The complete task}
+		\caption{Other figure}
 		\label{fig:other_figure}
 	\end{minipage}
 \end{figure}
 
 
-After every trial a \textit{vote} the work done (based on time, number of waypoints and action on gripper) is given to the user. A vote is given because if the time to complete the experiment is given to the user he tries to perform the next trials in the minor time because it competes with itself.
+After every trial a \textit{vote} to the work done (based on time, number of waypoints and action on gripper) is given to the user. A vote is given because if the time to complete the experiment is given to the user he tries to perform the next trials in the minor time because it competes with itself and he risks to complete tasks incorrectly.
 After the \textit{first} trial of every sub-task the replay phase based on the waypoints and actions on gripper is shown to the users. In this way the user understands where he can improve.
 
 % TODO
@@ -122,7 +123,3 @@ In figure \ref{fig:collected_data} a scheme of the data collected during the exp
 	\caption{How the collected data are stored}
 	\label{fig:collected_data}
 \end{figure}
-
-% come viene misurato il tempo di contatto, wrench o durata? ...
-% cosa viene registrato...
-% sample rate
