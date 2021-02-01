@@ -9,6 +9,7 @@ In this chapter a complete description of the experiment in detail is provided. 
 
 \section{Participants}
 \label{participants}
+
 % caratteristiche di chi lo fa, quanto ne sanno di robotica, età
 % overview generale dei partecipanti
 % quello che viene tirato fuori dai questionari
@@ -26,43 +27,57 @@ In this phase all the procedures necessary to conduct the experiment correctly. 
 % TODO rivedere tutto 
 \label{experiment-phase}
 
-The experiment consists in three sub-tasks in ascending order of difficulty repeated for \rep{} times. We call the repetitions \textit{``trial''} and the sub-tasks are:
+The experiment consists in three sub-tasks in ascending order of difficulty repeated for \rep{} times. We call the repetitions \textit{``trial''} and the sub-tasks are done by the pick phase from the same position (fig. \ref{fig:shapes}) for all the sub-tasks and places in different positions. Specifically, according to the task to be performed (first, second or third) the final positions differ in positioning in:
 \begin{enumerate}
-	\item pick and place of the \nobj{} objects in figure \ref{fig:objects},
-	\item move the \nobj{} objects (fig. \ref{fig:objects}) into their interlocking position (fig. \ref{fig:interlocking}),
-	\item perform a more complicated interlock: figure \ref{fig:complete_task} 
+	\item positioning without interlocking (fig. \ref{fig:paper_interlocking}),
+	\item simple interlocking position (fig. \ref{fig:simple_interlocking}),
+	\item difficult interlocking position (fig. \ref{fig:difficult_interlocking}),
 \end{enumerate}
 
 \begin{figure}[ht]
-	\begin{minipage}{.5\textwidth}
+	\begin{subfigure}{.5\textwidth}
 		\centering
-		\includegraphics[scale=0.3]{siemens_complete.png}
-		\caption{Objects for pick and place}
-		\label{fig:objects}
-	\end{minipage}%
-	\begin{minipage}{.5\textwidth}%		
+		\includegraphics[scale=0.03]{complete_task.jpg}
+		\caption{Frontal view}
+	\end{subfigure}%
+	\begin{subfigure}{.5\textwidth}%		
 		\centering
-		\includegraphics[scale=0.3]{siemens_complete.png}
-		\caption{Interlocking position}
-		\label{fig:interlocking}
-	\end{minipage}
+		\includegraphics[scale=0.03]{complete_task.jpg}
+		\caption{View from above}
+	\end{subfigure}
+	\caption{Place without interlocking}
+	\label{fig:paper_interlocking}
 \end{figure}
 
 \begin{figure}[ht]
-	\begin{minipage}{.5\textwidth}
+	\begin{subfigure}{.5\textwidth}
 		\centering
-		\includegraphics[scale=0.3]{siemens_complete.png}
-		\caption{The complete task}
-		\label{fig:complete_task}
-	\end{minipage}%
-	\begin{minipage}{.5\textwidth}
+		\includegraphics[scale=0.03]{complete_task.jpg}
+		\caption{Frontal view}
+	\end{subfigure}%
+	\begin{subfigure}{.5\textwidth}%		
 		\centering
-		\includegraphics[scale=0.3]{siemens_complete.png}
-		\caption{Other figure}
-		\label{fig:other_figure}
-	\end{minipage}
+		\includegraphics[scale=0.03]{complete_task.jpg}
+		\caption{View from above}
+	\end{subfigure}
+	\caption{Simple interlocking}
+	\label{fig:simple_interlocking}
 \end{figure}
 
+\begin{figure}[ht]
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[scale=0.03]{complete_task.jpg}
+		\caption{Frontal view}
+	\end{subfigure}%
+	\begin{subfigure}{.5\textwidth}%		
+		\centering
+		\includegraphics[scale=0.03]{complete_task.jpg}
+		\caption{View from above}
+	\end{subfigure}
+	\caption{Difficult interlocking}
+	\label{fig:difficult_interlocking}
+\end{figure}
 
 After every trial a \textit{vote} to the work done (based on time, number of waypoints and action on gripper) is given to the user. A vote is given because if the time to complete the experiment is given to the user he tries to perform the next trials in the minor time because it competes with itself and he risks to complete tasks incorrectly.
 After the \textit{first} trial of every sub-task the replay phase based on the waypoints and actions on gripper is shown to the users. In this way the user understands where he can improve.
@@ -91,7 +106,7 @@ At the end of the experimental phase an evaluation questionnaire was filled by t
 \label{data-collection}
 
 During the experiment some data were collected with sample rate of $ 10 Hz $ from the ROS \texttt{topic} available and saved in \texttt{.csv} files. Those files are related to: actions from the user during experiment, cartesian pose and wrench, joint position and velocity and finally joint torque and external torque. Moreover from the file of the actions only the waypoints are extracted and saved on another file.
-In figure \ref{fig:collected_data} a scheme of the data collected during the experiment. Only the first sub -folder is shown.
+In figure \ref{fig:collected_data} a scheme of the data collected during the experiment. Only the first sub-folder is shown.
 
 \begin{figure}[H]
 	\centering
