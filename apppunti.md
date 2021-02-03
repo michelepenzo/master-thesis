@@ -1,3 +1,5 @@
 # user 1
 
-- prima teleop
+- prima ha fatto teleop
+- task1, rep2 ha fatto collisione
+- task2, rep
