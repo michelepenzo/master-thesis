@@ -16,7 +16,7 @@ def play(gripper_srv, led_srv):
 	client.wait_for_server()  # waiting starting server
 
 	if not is_empty():
-		#init_play(led_srv)
+		# init_play(led_srv)
 
 		# alway start from HOME POSE
 		pose = get_cartesian_pose(get_home_pose())
@@ -26,7 +26,7 @@ def play(gripper_srv, led_srv):
 		client.wait_for_result()
 
 		# start reading from file
-		#while True:
+		# while True:
 		for _ in range(1):
 			with open(filename_actions_csv) as outfile:
 				reader = csv.reader(outfile)

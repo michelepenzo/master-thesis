@@ -25,7 +25,7 @@ def read_MF_button(data):
 
 	if not data.data:
 		# TODO 20 400
-		if  10 < queue.qsize() <= 200:  # one click (POINT)
+		if  3 < queue.qsize() <= 100:  # one click (POINT)
 
 			# print on csv, turn on and off LED, print on terminal, clear queue
 			print_on_csv(actual_pose)
@@ -36,7 +36,7 @@ def read_MF_button(data):
 			queue.queue.clear()
 
 		# TODO 1200
-		elif 200 < queue.qsize() <= 400:  # two seconds (INVERT GRIPPER and GET POINT)
+		elif 100 < queue.qsize() <= 400:  # two seconds (INVERT GRIPPER and GET POINT)
 
 			# invert gripper values, print pose and action on csv, turn on and off led, clear queue
 			if action_gripper:
