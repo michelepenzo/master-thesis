@@ -8,3 +8,4 @@
 # user 2
 - prima ha fatto teleop (triangolo, quadrato, trapezio)
 - teleop, task1, rep1 ha fatto collisione
+- teleop, task2, rep1 ha fatto collisione
