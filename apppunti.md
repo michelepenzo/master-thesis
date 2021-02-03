@@ -6,3 +6,4 @@
 - teleop, task3, rep3 collisione perchè in posizione
 
 # user 2
+- prima ha fatto teleop
