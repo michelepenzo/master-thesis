@@ -13,5 +13,12 @@
 
 - kt --> ogni volta ha cambiato ordine di pick
 
+
+-----
+solo task2 e task3
+-----
+
 # user 3
-- prima kt 
+- prima kt
+- teleop, task2, rep1 non ha preso qualche punto finale
+- teleop, task3, rep1 il trapezio non è stato incastrato
