@@ -27,8 +27,11 @@ solo task2 e task3
 # user 4
 - prima teleop
 - teleop, task2, rep2, alla fine ha fatto collisione
+- teleop, task3, rep1 collisione
+- kt, ha preso tantissimi punti in rep2 e rep3
 
 
 # user 10
 - prima teleop
 - teleop, task3, rep1 ha sbagliato il cambio di controllore e ha fatto crash
+- teleop, task3, rep3 trapezio fallito
