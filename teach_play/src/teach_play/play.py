@@ -44,7 +44,7 @@ def play(gripper_srv, led_srv):
 
 						else:
 							pub.publish(move_goal)
-							rospy.sleep(3)
+							rospy.sleep(2)
 
 					elif line[0] == 'action_gripper':
 						configure_gripper(gripper_srv, get_action_gripper(line[1]))

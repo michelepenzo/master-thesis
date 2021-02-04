@@ -23,3 +23,12 @@ solo task2 e task3
 - teleop, task2, rep1 non ha preso qualche punto finale
 - teleop, task3, rep1 il trapezio non è stato incastrato
 - kt task3, rep2 ha perso il triangolo e quindi ha fatto la doppia apertura/chiusura gripper
+
+# user 4
+- prima teleop
+- teleop, task2, rep2, alla fine ha fatto collisione
+
+
+# user 10
+- prima teleop
+- teleop, task3, rep1 ha sbagliato il cambio di controllore e ha fatto crash
