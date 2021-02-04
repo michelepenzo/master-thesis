@@ -40,7 +40,7 @@
 
 # user 6 
 - prima teleop
-- 
+- molto concentrato durante il task, ci mette molto tempo
 
 # user 10
 - prima teleop
