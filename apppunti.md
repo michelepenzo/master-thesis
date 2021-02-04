@@ -15,11 +15,13 @@
 
 
 -----
-solo task2 e task3
+
+#### solo task2 e task3
+
 -----
 
 # user 3
-- prima kt (triangolo, trapezio, quadrato)
+- prima teleop (triangolo, trapezio, quadrato)
 - teleop, task2, rep1 non ha preso qualche punto finale
 - teleop, task3, rep1 il trapezio non è stato incastrato
 - kt task3, rep2 ha perso il triangolo e quindi ha fatto la doppia apertura/chiusura gripper
@@ -28,7 +30,13 @@ solo task2 e task3
 - prima teleop
 - teleop, task2, rep2, alla fine ha fatto collisione
 - teleop, task3, rep1 collisione
-- kt, ha preso tantissimi punti in rep2 e rep3
+- kt, ha preso tantissimi punti in rep2 e rep3 per entrambi i task
+
+# user 5
+- prima teleop
+- teleop, task2, rep2, trapezio messo furoi posizione e collisione in pick quadrato
+- teleop, task3, rep3 crashato dopo il trapezio
+- ho dovuto riavviare il kuka due volte
 
 
 # user 10
