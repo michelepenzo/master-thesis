@@ -38,6 +38,9 @@
 - teleop, task3, rep3 crashato dopo il trapezio
 - ho dovuto riavviare il kuka due volte
 
+# user 6 
+- prima teleop
+- 
 
 # user 10
 - prima teleop
