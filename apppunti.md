@@ -11,7 +11,7 @@
 - teleop, task2, rep1 ha fatto collisione
 - teleop, task3, rep3 ha fatto collisione
 
-- kt --> ogni volta ha cambiato ordine di pick
+- kt --> ogni volta ha cambiato ordine di pick praticamente
 
 
 -----
@@ -19,6 +19,7 @@ solo task2 e task3
 -----
 
 # user 3
-- prima kt
+- prima kt (triangolo, trapezio, quadrato)
 - teleop, task2, rep1 non ha preso qualche punto finale
 - teleop, task3, rep1 il trapezio non è stato incastrato
+- kt task3, rep2 ha perso il triangolo e quindi ha fatto la doppia apertura/chiusura gripper
