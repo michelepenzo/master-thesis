@@ -11,4 +11,7 @@
 - teleop, task2, rep1 ha fatto collisione
 - teleop, task3, rep3 ha fatto collisione
 
-- kt --> ogni volta ha cambiato ordine di presa
+- kt --> ogni volta ha cambiato ordine di pick
+
+# user 3
+- prima kt 

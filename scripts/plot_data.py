@@ -273,6 +273,7 @@ plt.title('Distanza Eros - kt')
 plt.show()
 '''
 
+'''
 def calculate_acceleartion(infile):
 	x_values = infile['pose_x'][0:]
 	y_values = infile['pose_y'][0:]
@@ -296,7 +297,7 @@ def calculate_acceleartion(infile):
 	return acceleration
 
 
-'''
+
 filename = root_path + 'kt/test_user/michele_penzo_2_pose.csv'
 plt.subplot(221)
 plt.xlim(0, 1)
@@ -324,7 +325,7 @@ plt.boxplot(calculate_acceleartion(pd.read_csv(filename, squeeze=True)), showfli
 plt.title('Accelerazione PTP Eros - teleop')
 
 plt.show()
-'''
+
 
 filename = root_path + 'kt/test_user/michele_penzo_2_pose.csv'
 kt_michele = calculate_acceleartion(pd.read_csv(filename, squeeze=True))
@@ -338,7 +339,7 @@ kt_eros = calculate_acceleartion(pd.read_csv(filename, squeeze=True))
 filename = root_path + 'teleop/test_user/eros_2_pose.csv'
 teleop_eros = calculate_acceleartion(pd.read_csv(filename, squeeze=True))
 
-'''
+
 # BOXPLOT VELOCITÀ
 fig, ax = plt.subplots()
 _labels = ('kt michele', 'teleop michele', 'kt eros', 'teleop eros')
@@ -346,7 +347,7 @@ plt.ylabel('velocita m/s')
 plt.xlabel('2° trial in tutte le modalita')
 ax.boxplot((kt_michele, teleop_michele, kt_eros, teleop_eros), showfliers=False, labels=_labels)
 plt.show()
-'''
+
 
 plt.subplot(211)
 plt.ylim(0, 0.6)
@@ -364,3 +365,4 @@ plt.xlabel('kt michele')
 plt.ylabel('velocita in m/s')
 
 plt.show()
+'''
