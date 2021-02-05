@@ -24,7 +24,7 @@
 - prima teleop (triangolo, trapezio, quadrato)
 - teleop, task2, rep1 non ha preso qualche punto finale
 - teleop, task3, rep1 il trapezio non è stato incastrato
-- kt task3, rep2 ha perso il triangolo e quindi ha fatto la doppia apertura/chiusura gripper
+- kt task3, rep2 ha perso il triangolo in fase di pick e quindi ha fatto la doppia apertura/chiusura gripper
 
 # user 4
 - prima teleop
@@ -40,8 +40,8 @@
 
 # user 6 
 - prima teleop
-- molto concentrato durante il task, ci mette molto tempo
-- kt prende sempre punto di prepick
+- molto concentrato in teleop durante il task, ci mette molto tempo
+- kt prende sempre punto di prepick (appena sopra l'incastor)
 - kt, task3, rep2 ha stoppato al posto di aprire gripper
 
 

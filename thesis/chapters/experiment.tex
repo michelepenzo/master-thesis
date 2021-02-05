@@ -9,9 +9,14 @@ In this chapter a complete description of the experiment in detail is provided. 
 
 \section{Participants}
 \label{participants}
+The total number of participants is $ 10 $. All of them are between $ 24 $ and $ 27 $ years old. They are $ 7 $ male and $ 3 $ female and all participants are university graduates or students. Half of them never used a robot as our \kuka{}.
+To obtain better and diversified results among the participants, the modality from which one starts is diversified. Half of the participants start with \te{}, the other with \kt{}.
 
+We recognize that we cannot assume that these participants describe a representative sample of the population. 
+
+% TODO
 % caratteristiche di chi lo fa, quanto ne sanno di robotica, età
-% overview generale dei partecipanti
+% altezza, peso ecc
 % quello che viene tirato fuori dai questionari
 
 \section{Experimental design}
@@ -26,63 +31,29 @@ In this phase all the procedures necessary to conduct the experiment correctly. 
 \subsection*{Experiment phase}
 \label{experiment-phase}
 
-The experiment consists in three sub-tasks in ascending order of difficulty repeated for \rep{} times. We call the repetitions \textit{``trial''} and the sub-tasks are done by the pick phase from the same position (fig. \ref{fig:shapes}) for all the sub-tasks and places in different positions. Specifically, according to the task to be performed (first, second or third) the final positions differ in positioning in:
+The experiment consists in three sub-tasks in ascending order of difficulty repeated for \rep{} times. We call the repetitions \textit{``trial''} and the sub-tasks are done by the pick phase from the same position (fig. \ref{fig:shapes}) for all the sub-tasks and places in different positions. Specifically, according to the task to be performed (first, second) the final positions differ in positioning in:
 \begin{enumerate}
-	\item positioning without interlocking (fig. \ref{fig:paper_interlocking}),
 	\item simple interlocking position (fig. \ref{fig:simple_interlocking}),
 	\item difficult interlocking position (fig. \ref{fig:difficult_interlocking}),
 \end{enumerate}
 
-\begin{figure}[ht]
-	\begin{subfigure}{.5\textwidth}
-		\centering
-		\includegraphics[scale=0.03]{complete_task.jpg}
-		\caption{Frontal view}
-	\end{subfigure}%
-	\begin{subfigure}{.5\textwidth}%		
-		\centering
-		\includegraphics[scale=0.03]{complete_task.jpg}
-		\caption{View from above}
-	\end{subfigure}
-	\caption{Place without interlocking}
-	\label{fig:paper_interlocking}
-\end{figure}
 
-\begin{figure}[ht]
-	\begin{subfigure}{.5\textwidth}
-		\centering
-		\includegraphics[scale=0.03]{complete_task.jpg}
-		\caption{Frontal view}
-	\end{subfigure}%
-	\begin{subfigure}{.5\textwidth}%		
-		\centering
-		\includegraphics[scale=0.03]{complete_task.jpg}
-		\caption{View from above}
-	\end{subfigure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.07]{task2.jpg}
 	\caption{Simple interlocking}
 	\label{fig:simple_interlocking}
 \end{figure}
 
-\begin{figure}[ht]
-	\begin{subfigure}{.5\textwidth}
-		\centering
-		\includegraphics[scale=0.03]{complete_task.jpg}
-		\caption{Frontal view}
-	\end{subfigure}%
-	\begin{subfigure}{.5\textwidth}%		
-		\centering
-		\includegraphics[scale=0.03]{complete_task.jpg}
-		\caption{View from above}
-	\end{subfigure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.07]{task3.jpg}
 	\caption{Difficult interlocking}
 	\label{fig:difficult_interlocking}
 \end{figure}
 
 After every trial a \textit{vote} to the work done (based on time, number of waypoints and action on gripper) is given to the user. A vote is given because if the time to complete the experiment is given to the user he tries to perform the next trials in the minor time because it competes with itself and he risks to complete tasks incorrectly. All votes that are given after each trial are noted.
 After the \textit{first} trial of every sub-task the replay phase based on the waypoints and actions on gripper is shown to the users. In this way the user understands where he can improve.
-% TODO
-% La scelta della modalità iniziale viene fatta in modo casuale? Oppure facciamo scegliere all’utente?
-% Oppure esperti prima in teleop e poi kt, o viceversa?
 
 Some clarifications are provided to unify all users:
 \begin{itemize}
