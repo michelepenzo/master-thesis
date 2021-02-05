@@ -44,7 +44,6 @@
 - kt prende sempre punto di prepick
 - kt, task3, rep2 ha stoppato al posto di aprire gripper
 
--- invertire task2 e task3 --
 
 # user 10
 - prima teleop
