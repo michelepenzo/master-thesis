@@ -59,7 +59,8 @@
 # user 9 
 - prima kt
 - teleop, task2, rep1 collisione sul pick del trapezio
-
+- scatti + cade gomito
+- teleop, task4, rep2
 
 
 # user 10
