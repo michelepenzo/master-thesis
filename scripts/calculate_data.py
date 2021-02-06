@@ -1,25 +1,25 @@
 #!/usr/bin/env python3
+# coding=utf-8
 
+import math, csv
+import matplotlib.pyplot as plt
 import pandas as pd
-import csv
 
 sample_rate = 0.1
 
 # LOCAL
 path = '/home/michele/Documents/robotica/csv_files/'
-users = ['user_1', 'user_2', 'user_3', 'user_4', 'user_5', 'user_6']#, 'user_7', 'user_8', 'user_9', 'user_10']
+users = ['user_1', 'user_2', 'user_3', 'user_4', 'user_5', 'user_6']  # , 'user_7', 'user_8', 'user_9', 'user_10']
 reps = ['rep_1', 'rep_2', 'rep_3']
 tasks = ['task_2', 'task_3']
 modes = ['kt', 'teleop']
 
 
-# clean file
 def clean_file(filename):
 	with open(filename, 'w') as _:
 		pass
 
 
-# print on csv file
 def print_on_csv(filename, data):
 	with open(filename, 'a+') as outfile:
 		wr = csv.writer(outfile, quoting=csv.QUOTE_NONE)
@@ -43,7 +43,6 @@ def calculate_time_single_user(s):
 
 
 def calculate_time(mode, task):
-
 	times_csv = path + 'results/times/' + mode + '_' + task + '_' + 'times.csv'
 	out = list()
 	clean_file(times_csv)
@@ -60,6 +59,7 @@ def calculate_time(mode, task):
 		print_on_csv(times_csv, out)
 		out.clear()
 
+
 # ---------------------------------------------------------------------------------------------
 
 
@@ -75,5 +75,25 @@ if __name__ == '__main__':
 	for m in range(len(modes)):
 		for t in range(len(tasks)):
 			calculate_time(mode=modes[m], task=tasks[t])
+			print('= Calculating data of {' + tasks[t] + '} with {' + modes[m] + '}')
 
-			print('\n = Calculating data of {' + tasks[t] + '} with {' + modes[m] + '} \n')
+	# ==== PLOT DI TEMPI SU TRE RIPETIZIONI ====
+
+	# task2, teleop
+	times_csv = path + 'results/times/' + modes[1] + '_' + tasks[0] + '_' + 'times.csv'
+	s = pd.read_csv(times_csv, squeeze=True)
+	plt.subplot(221)
+	plt.plot(s['user_1']); plt.plot(s['user_2']); plt.plot(s['user_3']);plt.plot(s['user_4']); plt.plot(s['user_5'])
+	plt.plot(s['user_6'])#; plt.plot(s['user_7']); plt.plot(s['user_8']);plt.plot(s['user_9']); plt.plot(s['user_10'])
+
+	# task3, teleop
+	times_csv = path + 'results/times/' + modes[1] + '_' + tasks[1] + '_' + 'times.csv'
+	s = pd.read_csv(times_csv, squeeze=True)
+	plt.subplot(222)
+	plt.plot(s['user_1']); plt.plot(s['user_2']); plt.plot(s['user_3']); plt.plot(s['user_4']); plt.plot(s['user_5'])
+	plt.plot(s['user_6'])#; plt.plot(s['user_7']); plt.plot(s['user_8']);plt.plot(s['user_9']); plt.plot(s['user_10'])
+
+
+
+
+	plt.show()

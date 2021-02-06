@@ -44,6 +44,15 @@
 - kt prende sempre punto di prepick (appena sopra l'incastor)
 - kt, task3, rep2 ha stoppato al posto di aprire gripper
 
+# user 7
+- prima kt 
+- triangolo quadrato trapezio
+- teleop, task2, rep1 collisione triangolo
+- teleop task2, rep2, punti di prepick molto alti
+
+# user 8 
+- prima kt
+- triangolo, quadrato, trapezio
 
 # user 10
 - prima teleop
