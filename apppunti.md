@@ -56,6 +56,12 @@
 - triangolo, trapezio, quadrato rep_2
 - teleop, task2, rep2, collisione
 
+# user 9 
+- prima kt
+- teleop, task2, rep1 collisione sul pick del trapezio
+
+
+
 # user 10
 - prima teleop
 - teleop, task3, rep1 ha sbagliato il cambio di controllore e ha fatto crash
