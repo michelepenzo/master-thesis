@@ -52,7 +52,9 @@
 
 # user 8 
 - prima kt
-- triangolo, quadrato, trapezio
+- triangolo, quadrato, trapezio rep_1
+- triangolo, trapezio, quadrato rep_2
+- teleop, task2, rep2, collisione
 
 # user 10
 - prima teleop
