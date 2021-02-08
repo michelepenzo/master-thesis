@@ -386,5 +386,5 @@ values = [1,4,4,1]
 
 
 plt.pie(values, labels=labels, autopct='%0.f%%')
-#plt.legend()
+plt.legend()
 plt.show()
