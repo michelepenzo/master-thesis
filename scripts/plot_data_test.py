@@ -363,7 +363,7 @@ plt.xlabel('kt michele')
 plt.ylabel('velocita in m/s')
 
 plt.show()
-'''
+
 plt.axis('equal')
 plt.rcParams.update({'font.size': 30})
 
@@ -380,11 +380,10 @@ plt.rcParams.update({'font.size': 30})
 #values = [1,3,3,2,1]
 
 # pad use
-labels = ['More than once a week', 'A few times a month', 'One a year', "I've never used it"]
-values = [1,4,4,1]
-
-
+#labels = ['More than once a week', 'A few times a month', 'One a year', "I've never used it"]
+#values = [1,4,4,1]
 
 plt.pie(values, labels=labels, autopct='%0.f%%')
 plt.legend()
 plt.show()
+'''

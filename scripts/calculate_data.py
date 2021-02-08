@@ -100,38 +100,43 @@ if __name__ == '__main__':
 
 
 	# ==== PLOT DI TEMPI SU TRE RIPETIZIONI ====
-	
+
 	# task2, teleop
 	times_csv = path + 'results/times/' + modes[1] + '_' + tasks[0] + '_' + 'times.csv'
 	s = pd.read_csv(times_csv, squeeze=True)
 	plt.subplot(221)
-
+	plt.ylim(0, 3000)
 	plt.plot(s['user_1']); plt.plot(s['user_2']); plt.plot(s['user_3']); plt.plot(s['user_4']); plt.plot(s['user_5'])
 	plt.plot(s['user_6']); plt.plot(s['user_7']); plt.plot(s['user_8']); plt.plot(s['user_9']); plt.plot(s['user_10'])
+	plt.title('task2, teleop')
 
 	# task3, teleop
 	times_csv = path + 'results/times/' + modes[1] + '_' + tasks[1] + '_' + 'times.csv'
 	s = pd.read_csv(times_csv, squeeze=True)
+
 	plt.subplot(222)
+	plt.ylim(0, 3000)
 	plt.plot(s['user_1']); plt.plot(s['user_2']); plt.plot(s['user_3']); plt.plot(s['user_4']); plt.plot(s['user_5'])
 	plt.plot(s['user_6']); plt.plot(s['user_7']); plt.plot(s['user_8']);plt.plot(s['user_9']); plt.plot(s['user_10'])
-
+	plt.title('task3, teleop')
 
 	# task2, kt
 	times_csv = path + 'results/times/' + modes[0] + '_' + tasks[0] + '_' + 'times.csv'
 	s = pd.read_csv(times_csv, squeeze=True)
 	plt.subplot(223)
-
+	plt.ylim(0, 3000)
 	plt.plot(s['user_1']); plt.plot(s['user_2']); plt.plot(s['user_3']); plt.plot(s['user_4']); plt.plot(s['user_5'])
 	plt.plot(s['user_6']); plt.plot(s['user_7']); plt.plot(s['user_8']); plt.plot(s['user_9']); plt.plot(s['user_10'])
+	plt.title('task2, kt')
 
 	# task3, kt
 	times_csv = path + 'results/times/' + modes[0] + '_' + tasks[1] + '_' + 'times.csv'
 	s = pd.read_csv(times_csv, squeeze=True)
 	plt.subplot(224)
+	plt.ylim(0, 3000)
 	plt.plot(s['user_1']); plt.plot(s['user_2']); plt.plot(s['user_3']); plt.plot(s['user_4']); plt.plot(s['user_5'])
 	plt.plot(s['user_6']); plt.plot(s['user_7']); plt.plot(s['user_8']);plt.plot(s['user_9']); plt.plot(s['user_10'])
-
+	plt.title('task3, kt')
 	plt.show()
 
 	#save_waypoints()

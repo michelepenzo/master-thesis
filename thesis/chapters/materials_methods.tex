@@ -2,7 +2,7 @@
 
 \chapter{Methods and materials}
 \label{materials-methods}
-This chapter describes in the first section how robot was configured, the preliminary analyzes on the robot and how the experiment is conducted. In the second section is described how the experiment was prepared and the materials used for tests.
+This chapter describes in the first section how robot was configured, the preliminary analysis on the robot and how the experiment is conducted. In the second section is described how the experiment was prepared and the materials used for tests.
 
 %----------------------------------------------------------------------------------------
 \section{About the robot}
@@ -22,7 +22,7 @@ The first thing that was done was the calibration of the gripper using the appli
 
 Using \textit{ROS} and the open source stack available on \cite{iiwa-stack-link}, many \texttt{topics} can be used to calculate joint position and velocity, torque on joint, cartesian pose and force on referenced frame. Before the user study some data are collected to understand how the final experiment can be evaluated.
 
-The topic called \texttt{CartesianWrench}, will show the external force measured by the robot according to the used reference frame. In our case, the force is measured on the media flange. To understand if we could could consider the force applied on the EE, some experiments were conducted to understand the reliability and responsiveness of the values returned from this topic. This test were conducted using objects of different weight calibrated on a scale with precision to the gram and attached to both of the two jaws on the gripper. Every weighing was performed in three different configuration of the robot and for two times. In table \ref{tab:wrench} the results obtained from the experiment.
+The topic called \texttt{CartesianWrench}, will show the external force measured by the robot according to the used reference frame. In our case, the force is measured on the media flange. To understand if we could consider the force applied on the EE, some experiments were conducted to understand the reliability and responsiveness of the values returned from this topic. This test were conducted using objects of different weight calibrated on a scale with precision to the gram and attached to both of the two jaws on the gripper. Every weighing was performed in three different configuration of the robot and for two times. In table \ref{tab:wrench} the results obtained from the experiment.
 
 \begin{table}[H]
 	\centering
@@ -72,7 +72,7 @@ As preliminary action a test of the final experiment discussed in section \ref{e
 	\item \texttt{JointPositionVelocity}: position and velocity of all joints,
 	\item \texttt{JointExternalTorque} and \texttt{JointTorque}: torque applied on joints.
 \end{itemize}
-This phase of the test was made by an inexperienced user who had to do the same task for $ N $ times. The value of $ N $ that has been chosen is $ 5 $: a relatively high value that will be reduced in the final experiment. The task consisted to move four Lego blocks from a pick position to a place position. This task was repeated for both the modalities: \kt{} and \te{}. % TODO foto del setup 
+This phase of the test was made by an inexperienced user who had to do the same task for $ N $ times. The value of $ N $ that has been chosen is $ 5 $: a relatively high value that will be reduced in the final experiment. The task consisted to move four Lego blocks from a pick position to a place position. This task was repeated for both the modalities: \kt{} and \te{}.
 The data collected before the final experiment provides a solid basis to be able to perform a preliminary analysis to understand how to perform the final experiment by collecting only the data necessary for the final evaluation.
 
 As represented in figure \ref{fig:diff_kt} we can say that the time necessary to complete the task was similar between the two users, but in the figure \ref{fig:kt_user} the first trial wasn't completed due a mistake by the user. In this case wasn't made to repeat the experiment because this was a test and all the possible problems had to be understood. We can also say that with more attempts the time for complete the task is always minor.
@@ -119,7 +119,7 @@ From the two failures, it's noticed that the user doesn't know very well the env
 
 From the data collected by the test experiment described in the previous section we decided to use for our experiment new objects for the final one with the users.
 At first, some Lego or boxes are used for the tests, but in the final experiment was decided to use some objects that can make the final scenario more similar to reality.
-Three objects in \ref{fig:shapes} of different shape and color were created using wood. The figures are medium in size, about $ 8x8$ $ cm $ and about $ 2 $ $ cm $ high (fig. \ref{fig:task_frontal}). Above them another little cube of $ 3x3x2 $ $ cm $ has been placed for proper grasping. With the gripper available isn't possible to use smaller objects. After that, some tests were conducted with this objects before submitting the final experiment to the sample of users. 
+Three objects in \ref{fig:shapes} of different shape were created using wood. The figures are about $ 8x8$ $ cm $ and about $ 2 $ $ cm $ high (fig. \ref{fig:task_frontal}). Above them another little cube of $ 3x3x2 $ $ cm $ has been placed for proper grasping. With the gripper available isn't possible to use smaller objects. After that, some tests were conducted with this objects before submitting the final experiment to the sample of users. 
 
 \begin{figure}[H]
 	\centering

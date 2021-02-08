@@ -3,26 +3,26 @@
 \chapter{Experiment}
 \label{experiment}
 
-In this chapter a complete description of the experiment in detail is provided. Starting from an overview about the participants: who they are and their peculiarity. In section \ref{experimental-design} the experimental design was divided into phases and described in every step. Finally was described which data were collected.
+In this chapter a complete description of the experiment in detail is provided. Starting with the experimental design that was divided into phases and described in every step. Later is' explained which data was collected . Finally an overview about the participants: who they are and their peculiarity. 
 
 %----------------------------------------------------------------------------------------
 
 \section{Experimental design}
 \label{experimental-design}
-The experimental design describes the entire flow which is done by every participants of the experiment. It has been divided into 3 stages for convenience: the first is the phase before the experiment, the second the experimental phase and the last one the final phase after the experiment.
+The experimental design describes the entire flow which is done by every participants of the experiment. It has been divided into 3 stages for convenience: the first is the phase before the experiment, the second is the experimental phase and the last one the final phase after the experiment.
 
 
 \subsection*{Pre-experiment phase}
 \label{pre-experiment-phase}
-In this phase all the procedures necessary to conduct the experiment correctly. First of all a privacy policy for data collection was signed by the users. After that a teach phase was carried out by all the users in order tu understand how they can be move the robot (\kt{} and \te) and which buttons they need to press to perform the actions. At this stage users are asked to move a Lego block from a pick position to a place one performing a $ 90 $° rotation to teach him how to use rotation feature. This simple pick and place was performed in by the users in both the modalities. If the user complete this phase an ascending unique id is assigned to him. Moreover every user perform the pre-experiment and experiment phase without seeing other users do the same.
+In this phase all the procedures necessary to conduct the experiment correctly are explained. First of all a privacy policy for data collection was signed by the users. After that a teach phase was carried out by all the users in order to understand how they can move the robot (\kt{} and \te) and which buttons they need to press to perform the actions. At this stage users are asked to move a Lego block from a pick position to a place one performing a $ 90 $° rotation to teach him how to use rotation feature. This simple pick and place was performed in by the users in both the modalities. If the user complete this phase an ascending unique id is assigned to him. Moreover every user perform the pre-experiment and experiment phase without seeing other users do the same.
 
 \subsection*{Experiment phase}
 \label{experiment-phase}
 
-The experiment consists in three sub-tasks in ascending order of difficulty repeated for \rep{} times. We call the repetitions \textit{``trial''} and the sub-tasks are done by the pick phase from the same position (fig. \ref{fig:shapes}) for all the sub-tasks and places in different positions. Specifically, according to the task to be performed (first, second) the final positions differ in positioning in:
+The experiment consists in two tasks in ascending order of difficulty repeated for \rep{} times. We call the repetitions \textit{``trial''} and the tasks are done by the pick phase from the same position (fig. \ref{fig:pick_pose}) for all the tasks and places in different positions. Specifically, according to the task to be performed (first, second) the final positions differ in positioning in:
 \begin{enumerate}
-	\item simple interlocking position (fig. \ref{fig:simple_interlocking}),
-	\item difficult interlocking position (fig. \ref{fig:difficult_interlocking}),
+	\item simple interlocking position (fig. \ref{fig:simple_interlocking});
+	\item difficult interlocking position (fig. \ref{fig:difficult_interlocking}).
 \end{enumerate}
 
 
@@ -68,7 +68,7 @@ At the end of the experimental phase an evaluation questionnaire was filled by t
 \section{Data collection}
 \label{data-collection}
 
-During the experiment some data were collected with sample rate of $ 10 Hz $ from the ROS \texttt{topic} available and saved in \texttt{.csv} files. Those files are related to: actions from the user during experiment, cartesian pose and wrench, joint position and velocity and finally joint torque and external torque. Moreover from the file of the actions only the waypoints are extracted and saved on another file.
+During the experiment some data was collected from the ROS \texttt{topic} available with sample rate of $ 10 Hz $ and saved in \texttt{.csv} files. Those files are related to: actions from the user during experiment, cartesian pose and wrench, joint position and velocity and finally joint torque and external torque. Moreover from the file of the actions only the waypoints are extracted and saved on another file.
 In figure \ref{fig:collected_data} a scheme of the data collected during the experiment. Only the first sub-folder is shown.
 
 \begin{figure}[H]
@@ -104,8 +104,7 @@ In figure \ref{fig:collected_data} a scheme of the data collected during the exp
 
 \section{Participants}
 \label{participants}
-The total number of participants is ten: seven male and three female. All of them are university graduates or students and between $ 24 $ and $ 27 $ years old and distributed as in figure \ref{fig:ages}.  Half of them never used a robot as our \kuka{}. In questionnaire data on physical characteristics as wight and height were collected to see if there are any correlations between these and the use of \kt{} teaching. In figures \ref{fig:height} and \ref{fig:weight} all the other intervals (of interval $ 10 $ $ kg/cm  $) were not included because no participant was included in them. 
-To obtain better and diversified results among the participants, the modality from which one starts with the experiment is diversified. Half of the participants start with \te{}, the other with \kt{}. We recognize that we cannot assume that these participants describe a representative sample of the population but it's a good sample of data. 
+The total number of participants is ten: seven male and three female. All of them are university graduates or students and between $ 24 $ and $ 27 $ years old and distributed as in figure \ref{fig:ages}. Half of them never used a robot as our \kuka{}. 
 
 \begin{figure}[H]
 	\centering
@@ -113,6 +112,8 @@ To obtain better and diversified results among the participants, the modality fr
 	\caption{Age distribution of participants}
 	\label{fig:ages}
 \end{figure}
+
+In questionnaire data on physical characteristics as wight and height were collected to see if there are any correlations between the use of \kt{} and the physical characteristics of each user. In figures \ref{fig:height} and \ref{fig:weight} all the other intervals ($ 10cm $ for height and $ 10kg $ for weight) were not included because no participant was included in them. 
 
 \begin{figure}[H]
 	\centering
@@ -128,6 +129,8 @@ To obtain better and diversified results among the participants, the modality fr
 	\label{fig:weight}
 \end{figure}
 
+To obtain better and diversified results among the participants, the modality from which one starts with the experiment is diversified. Half of the participants start with \te{}, the other with \kt{}. To understand if users could be divided according to their skill in using the pad they were asked at what frequency they use it: in figure \ref{fig:pad} the answers.
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.2]{plot_pad.png}
@@ -135,7 +138,4 @@ To obtain better and diversified results among the participants, the modality fr
 	\label{fig:pad}
 \end{figure}
 
-% TODO
-
-% segnalare che non ci sono persone di pesi e altezze di quel tipo
-% quello che viene tirato fuori dai questionari
+We recognize that we cannot assume that these participants describe a representative sample of the population but it's a good sample of data. 
