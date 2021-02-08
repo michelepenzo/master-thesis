@@ -271,9 +271,7 @@ plt.bar(names, kt_eros)
 plt.title('Distanza Eros - kt')
 
 plt.show()
-'''
 
-'''
 def calculate_acceleartion(infile):
 	x_values = infile['pose_x'][0:]
 	y_values = infile['pose_y'][0:]
@@ -366,3 +364,27 @@ plt.ylabel('velocita in m/s')
 
 plt.show()
 '''
+plt.axis('equal')
+plt.rcParams.update({'font.size': 30})
+
+# altezza
+#labels = ['171 - 180 cm', '181 - 190 cm']
+#values = [8,2]
+
+# peso
+#labels = ['51-60 kg','61-70 kg','71-80 kg','81-90 kg', '>90']
+#values = [2,4,2,1,1]
+
+# età
+#labels = ['23','24','25','26','27']
+#values = [1,3,3,2,1]
+
+# pad use
+labels = ['More than once a week', 'A few times a month', 'One a year', "I've never used it"]
+values = [1,4,4,1]
+
+
+
+plt.pie(values, labels=labels, autopct='%0.f%%')
+#plt.legend()
+plt.show()

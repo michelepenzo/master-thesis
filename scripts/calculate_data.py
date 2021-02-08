@@ -92,12 +92,12 @@ if __name__ == '__main__':
 	print('\n = Calculating data of {' + name + '} performing {' + task + '} at {' + rep + '} with {' + mode + '} \n')
 	calculate_time_single_user(single_file)
 	
-
+	'''
 	for m in range(len(modes)):
 		for t in range(len(tasks)):
 			calculate_time(mode=modes[m], task=tasks[t])
 			print('= Calculating data of {' + tasks[t] + '} with {' + modes[m] + '}')
-	'''
+
 
 	# ==== PLOT DI TEMPI SU TRE RIPETIZIONI ====
 	
@@ -107,7 +107,7 @@ if __name__ == '__main__':
 	plt.subplot(221)
 
 	plt.plot(s['user_1']); plt.plot(s['user_2']); plt.plot(s['user_3']); plt.plot(s['user_4']); plt.plot(s['user_5'])
-	plt.plot(s['user_6'])#; #plt.plot(s['user_7']); plt.plot(s['user_8']); plt.plot(s['user_9']); plt.plot(s['user_10'])
+	plt.plot(s['user_6']); plt.plot(s['user_7']); plt.plot(s['user_8']); plt.plot(s['user_9']); plt.plot(s['user_10'])
 
 	# task3, teleop
 	times_csv = path + 'results/times/' + modes[1] + '_' + tasks[1] + '_' + 'times.csv'
@@ -116,7 +116,22 @@ if __name__ == '__main__':
 	plt.plot(s['user_1']); plt.plot(s['user_2']); plt.plot(s['user_3']); plt.plot(s['user_4']); plt.plot(s['user_5'])
 	plt.plot(s['user_6']); plt.plot(s['user_7']); plt.plot(s['user_8']);plt.plot(s['user_9']); plt.plot(s['user_10'])
 
-	plt.show()
 
+	# task2, kt
+	times_csv = path + 'results/times/' + modes[0] + '_' + tasks[0] + '_' + 'times.csv'
+	s = pd.read_csv(times_csv, squeeze=True)
+	plt.subplot(223)
+
+	plt.plot(s['user_1']); plt.plot(s['user_2']); plt.plot(s['user_3']); plt.plot(s['user_4']); plt.plot(s['user_5'])
+	plt.plot(s['user_6']); plt.plot(s['user_7']); plt.plot(s['user_8']); plt.plot(s['user_9']); plt.plot(s['user_10'])
+
+	# task3, kt
+	times_csv = path + 'results/times/' + modes[0] + '_' + tasks[1] + '_' + 'times.csv'
+	s = pd.read_csv(times_csv, squeeze=True)
+	plt.subplot(224)
+	plt.plot(s['user_1']); plt.plot(s['user_2']); plt.plot(s['user_3']); plt.plot(s['user_4']); plt.plot(s['user_5'])
+	plt.plot(s['user_6']); plt.plot(s['user_7']); plt.plot(s['user_8']);plt.plot(s['user_9']); plt.plot(s['user_10'])
+
+	plt.show()
 
 	#save_waypoints()
