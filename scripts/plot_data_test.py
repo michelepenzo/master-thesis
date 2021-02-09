@@ -389,10 +389,15 @@ plt.show()
 '''
 
 plt.rcParams.update({'font.size': 30})
-data = [7,2,0,0,0,1,0,0,0,0]
+labels = ['t1-r1','t1-r2','t1-r3','t2-r1','t2-r2','t2-r3']
+#values = [4, 4, 0, 1, 0, 3]
+values = [2, 5, 0, 1, 1, 3]	# collision
 
-plt.bar(range(10), data, width=0.8, align='center')
-plt.xlim(-1, 10)
-plt.xticks(range(10))
-plt.yticks(range(8))
+# tutto
+
+plt.bar(labels, values, width=0.8, align='center')
+plt.xlim(-1, 6)
+plt.xticks(range(6))
+plt.yticks(range(6))
+
 plt.show()
