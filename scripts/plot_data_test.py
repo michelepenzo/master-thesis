@@ -387,3 +387,12 @@ plt.pie(values, labels=labels, autopct='%0.f%%')
 plt.legend()
 plt.show()
 '''
+
+plt.rcParams.update({'font.size': 30})
+data = [7,2,0,0,0,1,0,0,0,0]
+
+plt.bar(range(10), data, width=0.8, align='center')
+plt.xlim(-1, 10)
+plt.xticks(range(10))
+plt.yticks(range(8))
+plt.show()
