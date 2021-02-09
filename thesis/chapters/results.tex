@@ -14,14 +14,14 @@ In this chapter all the results are presented in an objective way: starting with
 \label{results-analysis}
 This section has been divided into various subsections for a better description of the results.
 
-
 \subsection{Comments about trials}
-As described in \ref{experimental-design}, for every task three trials in both the modalities were done. \\
-It's possible to report that:
+\label{comments-about-trials}
+During the experiment all the participants were set free to pick up the objects in the order they prefer. All of them use the order as $ \{ $\textit{triangle, trapezoid and circle}$ \} $, but only one decided to pick up the objects in different order for all the trials only in \kt{}. This doesn't affect the data. \\
+As described in \ref{experimental-design}, for every task three trials in both the modalities were done. From these trials some comments was taken and it's possible to report that:
 \begin{itemize}
-	\item in \textbf{\kt{}} there aren't many additional comments. Only one user, for every trial, took many waypoints even after it was shown to him how the robot replicates the sequence. Moreover sometimes some users wrong in taking the waypoint and opens or closes the gripper, but this not affect the final realization. Finally one user, the most experienced in the use of robots who knows the environment well, always takes a point just above the place position to make the interlocking without problems: this happens only for the second task. No trial had any problems, and all the replay phase shown after the first trial were done correctly by the robot.
+	\item in \textbf{\kt{}} there aren't many additional comments. Only one user, for every trial, took many waypoints even after it was shown to him how the robot replicates the sequence. Moreover sometimes some users wrong in taking the waypoint and opens or closes the gripper, but this not affect the final realization. Finally one user, the most experienced in the use of robots who knows the environment well, always takes a point just above the place position to make the interlocking without problems: this happens only for the second task. No trial had any problems therefore the success rate is $ 100\% $ and all the replay phase shown after the first trial were done correctly by the robot.
 	
-	\item in \textbf{\te{}} there were many problems in teaching phase. Almost all users, except one, made a collision but how was described in the . This happens because they aren't very sensitive with the pad and they try to do all the teaching phase using position control and not the impedance control. Another motivation is because they are used to using another reference frame when they use the pad. In figure \ref{fig:pass_fail} pass and fail during teaching phase are shown. With $ \{t1,t2\} $ is indicated the task and with $ \{r1,r2,r3\} $ which trial. We can see that the first and the second column, that are the first trails have a high number of failures. This is due to the fact that users have not become confident with the pad. In the task $ t2 $ and trial $ r1,r2 $ we can see that there was only a mistake by all the users: this is acceptable. The surprising value is the last one, in task $ t2 $ and trial $ r3 $: it would be logical that this value was zero or small as possible but it isn't. The users who made these mistakes were only those who started with \te{}: it's possible say that they were tired and wanted to pass to \kt{} phase because it is less long. It's possible to resume these percentages of pass for every trial in table \ref{tab:pass}. Regarding the replay phase shown after the first trail, if the teaching phase was passed all the replay were done correctly by the robot.
+	\item in \textbf{\te{}} there were many problems in teaching phase. Almost all users, except one, made a collision but how was described in the . This happens because they aren't very sensitive with the pad and they try to do all the teaching phase using position control and not the impedance control. Another motivation is because they are used to using another reference frame when they use the pad. In figure \ref{fig:pass_fail} pass and fail during teaching phase are shown. With $ \{t1,t2\} $ is indicated the task and with $ \{r1,r2,r3\} $ which trial. We can see that the first and the second column, that are the first trails have a high number of failures. This is due to the fact that users have not become confident with the pad. In the task $ t2 $ and trial $ r1,r2 $ we can see that there was only a mistake by all the users: this is acceptable. The surprising value is the last one (task $ t2 $ and trial $ r3 $): it would be logical that this value was zero or small as possible but it isn't. The users who made these mistakes were only those who started with \te{}: it's possible say that they were tired and wanted to pass to \kt{} phase because it is less long.
 	
 	\begin{figure}[ht]
 		\centering
@@ -30,6 +30,7 @@ It's possible to report that:
 		\label{fig:pass_fail}
 	\end{figure}
 
+	Overall the error rate during the teach phase is $ 20\% $ but it's possible to resume the success rate for each trial as evidenced in table \ref{tab:pass}. It was also noted that during the trials they forgot to save the waypoints: sometimes was remembered to the users to save them for a better replay phase. Regarding the replay phase shown after the first trail, if the teaching phase was passed all the replay were done correctly by the robot.
 	\begin{table}[ht]
 		\centering
 		\begin{tabular}{l||llllll}
@@ -37,16 +38,64 @@ It's possible to report that:
 			\hline\hline	
 			\textbf{pass}	&$ 80\% $	&$ 50\% $	&$ 100\% $	&$ 90\% $ &$ 90\% $	&$ 70\% $ \\
 		\end{tabular}
-		\caption{Percentages of pass for every trial of\\ each task in \te{} teaching}
+		\caption{Success rate for each trial of\\ each task in \te{} teaching}
 		\label{tab:pass}
 	\end{table}
 
 \end{itemize}
 
 \subsection{Questionnaire results}
+\label{questionnaire-results}
 % inserire anche i commenti aggiuntivi che sono stati scritti alla fine
+The questionnaire was divided into two phases as described in section \ref{post-experiment-phase}, the first part has already been presented in \ref{participants}. The second part instead asked mainly three questions:
+
+\begin{itemize}
+	\item How much \textbf{physical effort} was required for \te{}/\kt{}?
+	
+	\ldots
+
+	\item How much \textbf{mental effort} was required for \te{}/\kt{}?
+	
+	\ldots
+	
+	\item How \textbf{irritated/stressed} did you feel during the experiment?
+	
+	\ldots
+	
+\end{itemize}
+% trovare correlazioni tra la stazza e la difficolta per fare kt, oppure età ecc...
+
+\noindent The last part of the questionnaire asks general questions about the two modalities. In this case almost everyone the users agree on the answers.The question can were:
+\begin{itemize}
+	\item Which of the two modalities was generally easier to perform tasks?
+	
+	Eight of them answered \kt{}, the others \te{}. % correlezione se sono gamer?
+	
+	\item Which of the two modalities do you think is more enjoyable?
+	
+	\ldots
+	
+	\item Which of the two modalities would you prefer to be able to quickly change the task in industry?
+	
+	\ldots
+	
+	\item For high-precision tasks such as task 3 which of the modalities was simpler?
+	
+	\ldots
+	
+	\item Do you think you have achieved improvements by repeating the same task?
+	
+	\ldots
+	
+	
+	
+\end{itemize}
+To the first question that asked to them which is in general the simplest modality to perform task,
 
 
+\subsection{Data analysis}
+\label{data-analysis}
+% grafici sulla forza, durata, velocità e accelerazione6
 
 \section{Result discussion}
 \label{result-discussion}
