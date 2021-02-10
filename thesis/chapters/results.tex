@@ -26,7 +26,7 @@ As described in \ref{experimental-design}, for every task three trials in both t
 	\begin{figure}[ht]
 		\centering
 		\includegraphics[scale=0.2]{pass_fail_teleop.png}
-		\caption{Pass and fail in \te{} teaching}
+		\caption{Failures in \te{} teaching}
 		\label{fig:pass_fail}
 	\end{figure}
 
@@ -36,7 +36,7 @@ As described in \ref{experimental-design}, for every task three trials in both t
 		\begin{tabular}{l||llllll}
 			& \textbf{t1-r1} & \textbf{t1-r2} &\textbf{t1-r3} & \textbf{t2-r1} &\textbf{t2-r2} &\textbf{t2-r3} \\
 			\hline\hline	
-			\textbf{pass}	&$ 80\% $	&$ 50\% $	&$ 100\% $	&$ 90\% $ &$ 90\% $	&$ 70\% $ \\
+			\textbf{\checkmark}	&$ 80\% $	&$ 50\% $	&$ 100\% $	&$ 90\% $ &$ 90\% $	&$ 70\% $ \\
 		\end{tabular}
 		\caption{Success rate for each trial of\\ each task in \te{} teaching}
 		\label{tab:pass}
@@ -46,67 +46,57 @@ As described in \ref{experimental-design}, for every task three trials in both t
 
 \subsection{Questionnaire results}
 \label{questionnaire-results}
-% inserire anche i commenti aggiuntivi che sono stati scritti alla fine
-The questionnaire was divided into two phases as described in section \ref{post-experiment-phase}, the first part has already been presented in \ref{participants}. The second part instead asked mainly three questions:
+% trovare correlazioni tra la stazza e la difficolta per fare kt, oppure età, gamer ecc...
+
+The questionnaire was divided into two phases as described in section \ref{post-experiment-phase}, the first part has already been presented in \ref{participants}. The second part instead asked mainly some questions which had to be given a score between $ 1 $ and $ 10 $. The questions with the sensible results to presents are:
 
 \begin{itemize}
-	\item How much \textbf{physical effort} was required for \te{}/\kt{}?
+	\item how much \textbf{physical effort} was required for \te{}/\kt{}?
 	
-	\begin{figure}[H]
+	In figure \ref{fig:physical_effort} we can immediately spot the differences between the two modalities: in \kt{} since the task are performed moving the robot a force to move it is necessary. The medium value is $ 5 $ which tells us that it's actually not that difficult to move the robot. On the other side, the boxplot relative to \te{} indicates that there's no physical effort for moving the robot.
+	
+	\begin{figure}[ht]
 		\centering
-		\includegraphics[scale=0.2]{physical_effort.png}
+		\includegraphics[scale=0.25]{physical_effort.png}
 		\caption{Physical effort in \kt{} and \te{}}
 		\label{fig:physical_effort}
 	\end{figure}
 
-	\item How much \textbf{mental effort} was required for \te{}/\kt{}?
+	\item how much \textbf{mental effort} was required for \te{}/\kt{}?
 	
-	\begin{figure}[H]
+	In figure \ref{fig:mental_effort} it's possible to immediately spot that the two modalities requires mental effort similar among them, respect to physical effort. We can notice that the medium value for \te{} is higher that the medium one in \kt{}. Obviously in \te{} for moving the robot it's necessary to remember all the buttons and commands that have been taught in teach phase before the experiment, but this values is lowered by the users which have confidence with the pad. Moreover a greater mental effort is required because the user have to coordinate and understand the reference frame that is used on the robot compared to the one you are used to using.
+	
+	\begin{figure}[ht]
 		\centering
-		\includegraphics[scale=0.2]{mental_effort.png}
+		\includegraphics[scale=0.25]{mental_effort.png}
 		\caption{Mental effort in \kt{} and \te{}}
 		\label{fig:mental_effort}
 	\end{figure}
 	
-	\item How \textbf{irritated/stressed} did you feel during the experiment?
-	
-	\begin{figure}[H]
-		\centering
-		\includegraphics[scale=0.2]{stress_boxplot.png}
-		\caption{Stress and irritation during the experiment}
-		\label{fig:stress}
-	\end{figure}
+%	\item How \textbf{irritated/stressed} did you feel during the experiment?
+%
+%	
+%
+%	\begin{figure}[H]
+%		\centering
+%		\includegraphics[scale=0.2]{stress_boxplot.png}
+%		\caption{Stress and irritation during the experiment}
+%		\label{fig:stress}
+%	\end{figure}
 	
 \end{itemize}
-% trovare correlazioni tra la stazza e la difficolta per fare kt, oppure età ecc...
 
-\noindent The last part of the questionnaire asks general questions about the two modalities. In this case almost everyone the users agree on the answers. The question were:
+\subsection{Groups}
+From the questionnaire questions and answers is possible to create some different groups based on personal physical characteristics or from others characteristics. Many different factors were analyzed to see if there was a correlation between the various characteristics of the users and the results obtained from the experiment. Two main groups have been highlighted and later presented.
+
 \begin{itemize}
-	\item Which of the two modalities was generally easier to perform tasks?
-	
-	Eight of them answered \kt{}, the others \te{}. % correlezione se sono gamer?
-	
-	\item Which of the two modalities do you think is more enjoyable?
-	
-	\ldots
-	
-	\item Which of the two modalities would you prefer to be able to quickly change the task in industry?
-	
-	\ldots
-	
-	\item For high-precision tasks such as task 3 which of the modalities was simpler?
-	
-	\ldots
-	
-	\item Do you think you have achieved improvements by repeating the same task?
-	
-	\ldots
-	
-	
-	
+	\item The first one is based on use and confidence with the pad.
+	\item The second group is highlighted according to the starting mode defined to do the experiment.
 \end{itemize}
-To the first question that asked to them which is in general the simplest modality to perform task,
 
+
+% todo
+% inserire anche i commenti aggiuntivi che sono stati scritti alla fine
 
 \subsection{Data analysis}
 \label{data-analysis}
