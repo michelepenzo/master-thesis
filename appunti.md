@@ -32,11 +32,10 @@
 
 # user 4 --> alessia
 - prima teleop
-- teleop, task2, rep2, alla fine ha fatto collisione
+- teleop, task2, rep2, alla fine ha fatto collisione ma buono
 - teleop, task3, rep1 collisione
 - kt, ha preso tantissimi punti in rep2 e rep3 per entrambi i task
 
-- t2, rep2   
 - t3, rep1  
 
 # user 5 --> roberta

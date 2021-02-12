@@ -101,7 +101,7 @@ def calculate_distance(infile):
 
 
 if __name__ == '__main__':
-	#plt.rcParams.update({'font.size': 30})
+	plt.rcParams.update({'font.size': 30})
 	'''
 	for m in range(len(modes)):
 		for t in range(len(tasks)):
@@ -153,17 +153,21 @@ if __name__ == '__main__':
 	plt.show()
 	'''
 
+
+	# ==== PLOT TEMPI GAMER / NON GAMER ====
+	'''
 	times_gamer = list()
 	times_gamer_ = list()
 	times_non_gamer = list()
 	times_non_gamer_ = list()
-
+	
 	# times teleop, task2
-
+	
 	times_csv = path + 'results/times/' + modes[1] + '_' + tasks[0] + '_' + 'times.csv'
 	s = pd.read_csv(times_csv, squeeze=True)
 
-	times_gamer.append(s['user_10'][0]); times_gamer.append(s['user_10'][1]); times_gamer.append(s['user_10'][2])
+	#times_gamer.append(s['user_10'][0]);
+	times_gamer.append(s['user_10'][1]); times_gamer.append(s['user_10'][2])
 	times_gamer.append(s['user_3'][0]); times_gamer.append(s['user_3'][1]); times_gamer.append(s['user_3'][2])
 	times_gamer.append(s['user_5'][0]); times_gamer.append(s['user_5'][2])
 	times_gamer.append(s['user_7'][0])
@@ -172,17 +176,17 @@ if __name__ == '__main__':
 	times_non_gamer.append(s['user_1'][0]); times_non_gamer.append(s['user_1'][1]); times_non_gamer.append(s['user_1'][2])
 	times_non_gamer.append(s['user_2'][1]); times_non_gamer.append(s['user_2'][2])
 	times_non_gamer.append(s['user_6'][0]); times_non_gamer.append(s['user_6'][1]); times_non_gamer.append(s['user_6'][2])
-	times_non_gamer.append(s['user_4'][0]); times_non_gamer.append(s['user_4'][2]);
+	times_non_gamer.append(s['user_4'][0]); times_non_gamer.append(s['user_4'][1]); times_non_gamer.append(s['user_4'][2]);
 	times_non_gamer.append(s['user_8'][0]); times_non_gamer.append(s['user_8'][2])
 
 	plt.boxplot([times_gamer, times_non_gamer], labels=['Group 1', 'Group 2'])
 	plt.ylabel('Time in ms')
+	plt.ylim(750, 3000)
 	plt.show()
 
 
 	# times teleop, task3
-
-	'''
+	
 	times_csv = path + 'results/times/' + modes[1] + '_' + tasks[1] + '_' + 'times.csv'
 	s = pd.read_csv(times_csv, squeeze=True)
 
@@ -190,7 +194,8 @@ if __name__ == '__main__':
 	times_gamer.append(s['user_3'][0]); times_gamer.append(s['user_3'][1]); times_gamer.append(s['user_3'][2])
 	times_gamer.append(s['user_5'][0]); times_gamer.append(s['user_5'][1]); times_gamer.append(s['user_5'][2])
 	times_gamer.append(s['user_7'][0]); times_gamer.append(s['user_7'][1]); times_gamer.append(s['user_7'][2])
-	times_gamer.append(s['user_9'][0]); times_gamer.append(s['user_9'][2])
+	#times_gamer.append(s['user_9'][0]);
+	times_gamer.append(s['user_9'][2])
 
 	times_non_gamer.append(s['user_1'][0]); times_non_gamer.append(s['user_1'][1])
 	times_non_gamer.append(s['user_2'][0]); times_non_gamer.append(s['user_2'][1])
@@ -202,50 +207,75 @@ if __name__ == '__main__':
 
 	plt.boxplot([times_gamer, times_non_gamer], labels=['Group 1', 'Group 2'])
 	plt.ylabel('Time in ms')
+	plt.ylim(750, 3000)
 	plt.show()
-	'''
+	
 
 	print(times_gamer)
+	print(sum(times_gamer) / len(times_gamer))
 	print(times_non_gamer)
-
-	# distanza teleop, task 2 ( TODO ce tutto )
+	print(sum(times_non_gamer) / len(times_non_gamer))
 	'''
+
+	# ==== PLOT DISTANZA GAMER / NON GAMER ====
+	# TODO occhio ai valori che vengono rimossi
+	'''
+	
 	distance_gamer, distance_non_gamer = list(), list()
 	#for t in range(len(tasks)):
 
 	# solo per il task 3
 	for r in range(len(reps)):
 		for u in range(len(users)):
-			filename = path + 'teleop/' + tasks[1] + '/' + reps[r] + '/' + users[u] + '_pose.csv'
+			filename = path + 'teleop/' + tasks[0] + '/' + reps[r] + '/' + users[u] + '_pose.csv'
+			distance = calculate_distance(pd.read_csv(filename, squeeze=True))
+
+			#print(reps[r] + ' of ' + users[u] + ' : ' + str(distance))
 
 			if users[u] == 'user_10' or users[u] == 'user_3' or users[u] == 'user_5' or users[u] == 'user_7' or users[u] == 'user_9':
 				# gamer
-				distance_gamer.append(calculate_distance(pd.read_csv(filename, squeeze=True)))
-
+				distance_gamer.append(distance)
 			else:
 				# non gamer
-				distance_non_gamer.append(calculate_distance(pd.read_csv(filename, squeeze=True)))
+				distance_non_gamer.append(distance)
 
 
 	# solo i valori senza collisione
-	#distance_gamer.remove(1.9206695979210775)
-	#distance_non_gamer.remove(1.2825705398172444)
-	#distance_non_gamer.remove(3.2044796426101927)
-	#distance_non_gamer.remove(2.834090402932422)
 
-	print(distance_gamer)
-	print(distance_non_gamer)
+	#print(distance_gamer)
+	print(sum(distance_gamer) / len(distance_gamer))
+
+	#print(distance_non_gamer)
+	print(sum(distance_non_gamer) / len(distance_non_gamer))
+
+
+	# task2
+	distance_non_gamer.remove(0.6844725893251613)# rep1 user2
+	distance_gamer.remove(0.4380864179569224)# rep1 user7
+	distance_gamer.remove(1.6924190995155661)# rep2 user5
+	distance_non_gamer.remove(0.43319235494644426)# rep2 user8
+	distance_gamer.remove(1.1301061640893995)# rep1 user9
+	distance_gamer.remove(0.7426055344428442)# rep1 user7
+	
+	
+	# task3
+	distance_non_gamer.remove(0.48245662932542177)# rep3 user1
+	distance_non_gamer.remove(1.2009031824808087)#rep3 user2
+	distance_non_gamer.remove(0.7958873639893409)#rep1 user4
+	distance_gamer.remove(0.5856682170874384)# rep2 user9
+	
 
 	plt.boxplot([distance_gamer, distance_non_gamer], labels=['Group 1', 'Group 2'])
 	plt.ylabel('Distance in mt')
 	plt.show()
 	'''
 
-	# test traiettoira
 
+	# test traiettoira
+	'''
 	scale = 100
 	task = 'task_2'
-	user = users[6]
+	user = users[3]
 
 	filename = path + 'teleop/' + task + '/' + reps[0] + '/' + user + '_pose.csv'
 	infile = pd.read_csv(filename, squeeze=True)
@@ -266,4 +296,4 @@ if __name__ == '__main__':
 	plt.scatter(infile['position_x'][2:] * scale, infile['position_y'][2:] * scale)
 
 	plt.show()
-
+	'''
