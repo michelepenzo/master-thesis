@@ -112,7 +112,6 @@ if __name__ == '__main__':
 	# save_waypoints()
 
 	# ==== PLOT DI TEMPI SU TRE RIPETIZIONI ====
-
 	'''
 	# task2, teleop
 	times_csv = path + 'results/times/' + modes[1] + '_' + tasks[0] + '_' + 'times.csv'
@@ -217,17 +216,16 @@ if __name__ == '__main__':
 	print(sum(times_non_gamer) / len(times_non_gamer))
 	'''
 
+
 	# ==== PLOT DISTANZA GAMER / NON GAMER ====
-	# TODO occhio ai valori che vengono rimossi
 	'''
-	
+	# TODO occhio ai valori che vengono rimossi
 	distance_gamer, distance_non_gamer = list(), list()
-	#for t in range(len(tasks)):
 
 	# solo per il task 3
 	for r in range(len(reps)):
 		for u in range(len(users)):
-			filename = path + 'teleop/' + tasks[0] + '/' + reps[r] + '/' + users[u] + '_pose.csv'
+			filename = path + 'teleop/' + tasks[1] + '/' + reps[r] + '/' + users[u] + '_pose.csv'
 			distance = calculate_distance(pd.read_csv(filename, squeeze=True))
 
 			#print(reps[r] + ' of ' + users[u] + ' : ' + str(distance))
@@ -239,17 +237,8 @@ if __name__ == '__main__':
 				# non gamer
 				distance_non_gamer.append(distance)
 
-
-	# solo i valori senza collisione
-
-	#print(distance_gamer)
-	print(sum(distance_gamer) / len(distance_gamer))
-
-	#print(distance_non_gamer)
-	print(sum(distance_non_gamer) / len(distance_non_gamer))
-
-
 	# task2
+	
 	distance_non_gamer.remove(0.6844725893251613)# rep1 user2
 	distance_gamer.remove(0.4380864179569224)# rep1 user7
 	distance_gamer.remove(1.6924190995155661)# rep2 user5
@@ -257,16 +246,24 @@ if __name__ == '__main__':
 	distance_gamer.remove(1.1301061640893995)# rep1 user9
 	distance_gamer.remove(0.7426055344428442)# rep1 user7
 	
-	
+
 	# task3
 	distance_non_gamer.remove(0.48245662932542177)# rep3 user1
 	distance_non_gamer.remove(1.2009031824808087)#rep3 user2
 	distance_non_gamer.remove(0.7958873639893409)#rep1 user4
 	distance_gamer.remove(0.5856682170874384)# rep2 user9
-	
+
+
+
+	#print(distance_gamer)
+	print(sum(distance_gamer) / len(distance_gamer))
+
+	#print(distance_non_gamer)
+	print(sum(distance_non_gamer) / len(distance_non_gamer))
 
 	plt.boxplot([distance_gamer, distance_non_gamer], labels=['Group 1', 'Group 2'])
 	plt.ylabel('Distance in mt')
+	plt.ylim(1.4, 2.8)
 	plt.show()
 	'''
 

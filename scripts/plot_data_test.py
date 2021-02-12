@@ -390,7 +390,7 @@ plt.show()
 '''
 labels = ['t1-r1','t1-r2','t1-r3','t2-r1','t2-r2','t2-r3']
 #values = [4, 4, 0, 1, 0, 3]
-values = [3, 3, 1, 1, 1, 2]	# collision
+values = [3, 2, 1, 1, 1, 2]	# collision
 
 # tutto
 plt.bar(labels, values, width=0.8, align='center')
