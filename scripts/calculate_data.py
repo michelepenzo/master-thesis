@@ -364,7 +364,6 @@ if __name__ == '__main__':
 
 	# ==== PLOT TEMPO GRUPPO INIZIO in TELOP ====
 	'''
-	
 	times_kt = list()
 	times_tt = list()
 	
@@ -377,8 +376,7 @@ if __name__ == '__main__':
 	times_kt.append(s['user_7'][0])
 	times_kt.append(s['user_8'][0]); times_kt.append(s['user_8'][2])
 	times_kt.append(s['user_9'][1]); times_kt.append(s['user_9'][2])
-	times_kt.append(s['user_10'][0]);
-	times_kt.append(s['user_10'][1]); times_kt.append(s['user_10'][2])
+	times_kt.append(s['user_10'][0]); times_kt.append(s['user_10'][1]); times_kt.append(s['user_10'][2])
 
 	times_tt.append(s['user_3'][0]); times_tt.append(s['user_3'][1]); times_tt.append(s['user_3'][2])
 	times_tt.append(s['user_1'][0]); times_tt.append(s['user_1'][1]); times_tt.append(s['user_1'][2])
@@ -386,12 +384,12 @@ if __name__ == '__main__':
 	times_tt.append(s['user_6'][0]); times_tt.append(s['user_6'][1]); times_tt.append(s['user_6'][2])
 	times_tt.append(s['user_4'][0]); times_tt.append(s['user_4'][1]); times_tt.append(s['user_4'][2]);
 
-
+	
 	plt.boxplot([times_kt, times_tt], labels=['prima KT', 'prima TT'])
 	plt.ylabel('Time in ms')
 	plt.ylim(750, 3000)
 	plt.show()
-
+	
 	# times teleop, task3
 
 	times_csv = path + 'results/times/' + modes[1] + '_' + tasks[1] + '_' + 'times.csv'
@@ -423,7 +421,6 @@ if __name__ == '__main__':
 	print(sum(times_kt) / len(times_kt))
 	print(sum(times_tt) / len(times_tt))
 	'''
-
 
 	# ==== PLOT TEMPO GRUPPO INIZIO in KT ====
 	'''
@@ -464,22 +461,46 @@ if __name__ == '__main__':
 	# ==== PLOT FORZE ====
 	'''
 	x0, x1, y0, y1 = 0, 1400, -20, 20
-	filename = path + 'kt/task_2/rep_3/user_8_wrench.csv'
+	filename = path + 'kt/task_2/rep_3/user_10_wrench.csv'
 	infile = pd.read_csv(filename, squeeze=True)
-	plt.subplot(211)
+	#plt.subplot(211)
 	plt.plot(infile['wrench_z'][0:])
-	#print(sum(infile['wrench_z'][0:]) /  len(infile['wrench_z'][0:]) )
-	plt.axis([x0, x1, y0, y1])
-	plt.title('Amedeo')
+	print('wrench x ' + str(sum(infile['wrench_x'][0:]) / len(infile['wrench_x'][0:])))
+	print('wrench y ' + str(sum(infile['wrench_y'][0:]) / len(infile['wrench_y'][0:])))
+	print('wrench z ' + str(sum(infile['wrench_z'][0:]) / len(infile['wrench_z'][0:])))
+	#plt.axis([x0, x1, y0, y1])
+	#plt.title('Amedeo')
 
-	filename = path + 'kt/task_2/rep_3/user_4_wrench.csv'
+	filename = path + 'kt/task_2/rep_3/user_6_wrench.csv'
 	infile = pd.read_csv(filename, squeeze=True)
-	plt.subplot(212)
+	#plt.subplot(212)
 	plt.plot(infile['wrench_z'][0:])
-	#print(abs(infile['wrench_z'][0:]) / len(infile['wrench_z'][0:]))
+	print('wrench x ' + str(sum(infile['wrench_x'][0:]) / len(infile['wrench_x'][0:])))
+	print('wrench y ' + str(sum(infile['wrench_y'][0:]) / len(infile['wrench_y'][0:])))
+	print('wrench z ' + str(sum(infile['wrench_z'][0:]) / len(infile['wrench_z'][0:])))
 	plt.axis([x0, x1, y0, y1])
 	plt.title('Carlo')
 
 	# show third plot
 	plt.show()
 	'''
+
+
+	# ==== CALCOLO STD ====
+	times = list()
+	import numpy as np
+
+	# times teleop, task2
+	times_csv = path + 'results/times/' + modes[1] + '_' + tasks[0] + '_' + 'times.csv'
+	s = pd.read_csv(times_csv, squeeze=True)
+
+	id = 'user_3'
+	times.append(s[id][0])
+	times.append(s[id][1])
+	times.append(s[id][2])
+	print(np.std(times))
+
+	#plt.boxplot([times_kt, times_tt], labels=['prima KT', 'prima TT'])
+	#plt.ylabel('Time in ms')
+	#plt.ylim(750, 3000)
+	#plt.show()
