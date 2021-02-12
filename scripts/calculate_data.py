@@ -180,7 +180,7 @@ if __name__ == '__main__':
 	'''
 
 
-	# ==== PLOT TEMPI GAMER / NON GAMER in KT ====
+	# ==== PLOT TEMPO GRUPPO GIOCO in TELEOP ====
 	'''
 	times_gamer = list()
 	times_gamer_ = list()
@@ -244,7 +244,7 @@ if __name__ == '__main__':
 	'''
 
 
-	# ==== PLOT DISTANZA GAMER / NON GAMER in TELOP ====
+	# ==== PLOT DISTANZA GRUPPO GIOCO in TELOP ====
 	'''
 	# TODO occhio ai valori che vengono rimossi
 	distance_gamer, distance_non_gamer = list(), list()
@@ -294,7 +294,8 @@ if __name__ == '__main__':
 	plt.show()
 	'''
 
-	# ==== PLOT TEMPO GAMER / NON GAMER in KT ====
+
+	# ==== PLOT TEMPO GRUPPO GIOCO in KT ====
 	'''
 	times_gamer = list()
 	times_gamer_ = list()
@@ -329,7 +330,7 @@ if __name__ == '__main__':
 	'''
 
 
-	# ==== PLOT DISTANZA GAMER / NON GAMER in TELOP ====
+	# ==== PLOT DISTANZA GRUPPO GIOCO in TELOP ====
 	'''
 	distance_gamer, distance_non_gamer = list(), list()
 
@@ -361,10 +362,12 @@ if __name__ == '__main__':
 	'''
 
 
-	# ==== PLOT TEMPO  prima KT / prima TT in TELOP ====
+	# ==== PLOT TEMPO GRUPPO INIZIO in TELOP ====
 	'''
+	
 	times_kt = list()
 	times_tt = list()
+	
 	# times teleop, task2
 	times_csv = path + 'results/times/' + modes[1] + '_' + tasks[0] + '_' + 'times.csv'
 	s = pd.read_csv(times_csv, squeeze=True)
@@ -389,20 +392,19 @@ if __name__ == '__main__':
 	plt.ylim(750, 3000)
 	plt.show()
 
-	
 	# times teleop, task3
 
 	times_csv = path + 'results/times/' + modes[1] + '_' + tasks[1] + '_' + 'times.csv'
 	s = pd.read_csv(times_csv, squeeze=True)
 
+	# AMEDEO
 	times_kt.append(s['user_5'][0]); times_kt.append(s['user_5'][1]); times_kt.append(s['user_5'][2])
 	times_kt.append(s['user_7'][0]); times_kt.append(s['user_7'][1]); times_kt.append(s['user_7'][2])
 	times_kt.append(s['user_8'][0]); times_kt.append(s['user_8'][1]); times_kt.append(s['user_8'][2])
-	#times_gamer.append(s['user_9'][0]);
-	times_kt.append(s['user_9'][2])
+	times_kt.append(s['user_9'][2]); #times_kt.append(s['user_9'][0])
 	times_kt.append(s['user_10'][0]); times_kt.append(s['user_10'][1]); times_kt.append(s['user_10'][2])
 
-
+	# CARLO
 	times_tt.append(s['user_1'][0]); times_tt.append(s['user_1'][1])
 	times_tt.append(s['user_2'][0]); times_tt.append(s['user_2'][1])
 	times_tt.append(s['user_3'][0]); times_tt.append(s['user_3'][1]); times_tt.append(s['user_3'][2])
@@ -417,9 +419,67 @@ if __name__ == '__main__':
 	plt.ylim(750, 3000)
 	plt.show()
 
-
-	print(times_kt)
+	print('amedeo - carlo --> per TT')
 	print(sum(times_kt) / len(times_kt))
-	print(times_tt)
 	print(sum(times_tt) / len(times_tt))
+	'''
+
+
+	# ==== PLOT TEMPO GRUPPO INIZIO in KT ====
+	'''
+	times_tt = list()
+	times_kt = list()
+
+	# times kt, task3 e task3
+
+	times_csv = path + 'results/times/' + modes[0] + '_' + tasks[1] + '_' + 'times.csv'
+	s = pd.read_csv(times_csv, squeeze=True)
+
+	# gruppo di AMEDEO
+	times_kt.append(s['user_5'][0]); times_kt.append(s['user_5'][1]); times_kt.append(s['user_5'][2])
+	times_kt.append(s['user_7'][0]); times_kt.append(s['user_7'][1]); times_kt.append(s['user_7'][2])
+	times_kt.append(s['user_8'][0]); times_kt.append(s['user_8'][1]); times_kt.append(s['user_8'][2])
+	times_kt.append(s['user_9'][0]); times_kt.append(s['user_9'][1]); times_kt.append(s['user_9'][2])
+	times_kt.append(s['user_10'][0]); times_kt.append(s['user_10'][1]); times_kt.append(s['user_10'][2])
+
+	# gruppo di CARLO
+	times_tt.append(s['user_1'][0]); times_tt.append(s['user_1'][1]); times_tt.append(s['user_1'][2])
+	times_tt.append(s['user_2'][0]); times_tt.append(s['user_2'][1]); times_tt.append(s['user_2'][2])
+	times_tt.append(s['user_3'][0]); times_tt.append(s['user_3'][1]); times_tt.append(s['user_3'][2])
+	times_tt.append(s['user_4'][0]); times_tt.append(s['user_4'][2]); times_tt.append(s['user_4'][2])
+	times_tt.append(s['user_6'][0]); times_tt.append(s['user_6'][1]); times_tt.append(s['user_6'][2])
+
+
+	plt.boxplot([times_kt, times_tt], labels=['prima KT', 'prima TT'])
+	plt.ylabel('Time in ms')
+	#plt.ylim(300, 2000)
+	plt.show()
+
+	print('amedeo - carlo --> per KT')
+	print(sum(times_kt) / len(times_kt))
+	print(sum(times_tt) / len(times_tt))
+	'''
+
+
+	# ==== PLOT FORZE ====
+	'''
+	x0, x1, y0, y1 = 0, 1400, -20, 20
+	filename = path + 'kt/task_2/rep_3/user_8_wrench.csv'
+	infile = pd.read_csv(filename, squeeze=True)
+	plt.subplot(211)
+	plt.plot(infile['wrench_z'][0:])
+	#print(sum(infile['wrench_z'][0:]) /  len(infile['wrench_z'][0:]) )
+	plt.axis([x0, x1, y0, y1])
+	plt.title('Amedeo')
+
+	filename = path + 'kt/task_2/rep_3/user_4_wrench.csv'
+	infile = pd.read_csv(filename, squeeze=True)
+	plt.subplot(212)
+	plt.plot(infile['wrench_z'][0:])
+	#print(abs(infile['wrench_z'][0:]) / len(infile['wrench_z'][0:]))
+	plt.axis([x0, x1, y0, y1])
+	plt.title('Carlo')
+
+	# show third plot
+	plt.show()
 	'''
