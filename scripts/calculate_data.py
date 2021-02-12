@@ -60,7 +60,6 @@ def calculate_time(mode, task):
 		out.clear()
 
 
-# for every user_x.csv file save only waypoints for simplify the count
 def save_waypoints():
 	n_file = 0
 
@@ -81,26 +80,40 @@ def save_waypoints():
 
 	print(n_file)
 
+
+def calculate_distance(infile):
+	x_values = infile['position_x'][0:]
+	y_values = infile['position_y'][0:]
+	distance = 0
+
+	for i in range(infile['position_z'].count()-1):
+
+		x1 = x_values[i]
+		y1 = y_values[i]
+		x2 = x_values[i+1]
+		y2 = y_values[i+1]
+
+		distance = distance + abs(math.sqrt(((x1 - x2) ** 2) + ((y1 - y2) ** 2)))
+
+	return distance
+
 # ---------------------------------------------------------------------------------------------
 
 
 if __name__ == '__main__':
-
-	'''
-	# reading single csv_file
-	single_file = pd.read_csv(filename_wrench_csv, squeeze=True)
-	print('\n = Calculating data of {' + name + '} performing {' + task + '} at {' + rep + '} with {' + mode + '} \n')
-	calculate_time_single_user(single_file)
-	
+	#plt.rcParams.update({'font.size': 30})
 	'''
 	for m in range(len(modes)):
 		for t in range(len(tasks)):
 			calculate_time(mode=modes[m], task=tasks[t])
 			print('= Calculating data of {' + tasks[t] + '} with {' + modes[m] + '}')
-
+	'''
+	# ==== SALVATAGGIO WAYPOINTS ====
+	# save_waypoints()
 
 	# ==== PLOT DI TEMPI SU TRE RIPETIZIONI ====
 
+	'''
 	# task2, teleop
 	times_csv = path + 'results/times/' + modes[1] + '_' + tasks[0] + '_' + 'times.csv'
 	s = pd.read_csv(times_csv, squeeze=True)
@@ -138,5 +151,119 @@ if __name__ == '__main__':
 	plt.plot(s['user_6']); plt.plot(s['user_7']); plt.plot(s['user_8']);plt.plot(s['user_9']); plt.plot(s['user_10'])
 	plt.title('task3, kt')
 	plt.show()
+	'''
 
-	#save_waypoints()
+	times_gamer = list()
+	times_gamer_ = list()
+	times_non_gamer = list()
+	times_non_gamer_ = list()
+
+	# times teleop, task2
+
+	times_csv = path + 'results/times/' + modes[1] + '_' + tasks[0] + '_' + 'times.csv'
+	s = pd.read_csv(times_csv, squeeze=True)
+
+	times_gamer.append(s['user_10'][0]); times_gamer.append(s['user_10'][1]); times_gamer.append(s['user_10'][2])
+	times_gamer.append(s['user_3'][0]); times_gamer.append(s['user_3'][1]); times_gamer.append(s['user_3'][2])
+	times_gamer.append(s['user_5'][0]); times_gamer.append(s['user_5'][2])
+	times_gamer.append(s['user_7'][0])
+	times_gamer.append(s['user_9'][1]); times_gamer.append(s['user_9'][2])
+	
+	times_non_gamer.append(s['user_1'][0]); times_non_gamer.append(s['user_1'][1]); times_non_gamer.append(s['user_1'][2])
+	times_non_gamer.append(s['user_2'][1]); times_non_gamer.append(s['user_2'][2])
+	times_non_gamer.append(s['user_6'][0]); times_non_gamer.append(s['user_6'][1]); times_non_gamer.append(s['user_6'][2])
+	times_non_gamer.append(s['user_4'][0]); times_non_gamer.append(s['user_4'][2]);
+	times_non_gamer.append(s['user_8'][0]); times_non_gamer.append(s['user_8'][2])
+
+	plt.boxplot([times_gamer, times_non_gamer], labels=['Group 1', 'Group 2'])
+	plt.ylabel('Time in ms')
+	plt.show()
+
+
+	# times teleop, task3
+
+	'''
+	times_csv = path + 'results/times/' + modes[1] + '_' + tasks[1] + '_' + 'times.csv'
+	s = pd.read_csv(times_csv, squeeze=True)
+
+	times_gamer.append(s['user_10'][0]); times_gamer.append(s['user_10'][1]); times_gamer.append(s['user_10'][2])
+	times_gamer.append(s['user_3'][0]); times_gamer.append(s['user_3'][1]); times_gamer.append(s['user_3'][2])
+	times_gamer.append(s['user_5'][0]); times_gamer.append(s['user_5'][1]); times_gamer.append(s['user_5'][2])
+	times_gamer.append(s['user_7'][0]); times_gamer.append(s['user_7'][1]); times_gamer.append(s['user_7'][2])
+	times_gamer.append(s['user_9'][0]); times_gamer.append(s['user_9'][2])
+
+	times_non_gamer.append(s['user_1'][0]); times_non_gamer.append(s['user_1'][1])
+	times_non_gamer.append(s['user_2'][0]); times_non_gamer.append(s['user_2'][1])
+	times_non_gamer.append(s['user_4'][1]); times_non_gamer.append(s['user_4'][2])
+	times_non_gamer.append(s['user_6'][0]); times_non_gamer.append(s['user_6'][1]); times_non_gamer.append(s['user_6'][2])
+	times_non_gamer.append(s['user_8'][0]); times_non_gamer_.append(s['user_8'][1]); times_non_gamer.append(s['user_8'][2])
+
+	
+
+	plt.boxplot([times_gamer, times_non_gamer], labels=['Group 1', 'Group 2'])
+	plt.ylabel('Time in ms')
+	plt.show()
+	'''
+
+	print(times_gamer)
+	print(times_non_gamer)
+
+	# distanza teleop, task 2 ( TODO ce tutto )
+	'''
+	distance_gamer, distance_non_gamer = list(), list()
+	#for t in range(len(tasks)):
+
+	# solo per il task 3
+	for r in range(len(reps)):
+		for u in range(len(users)):
+			filename = path + 'teleop/' + tasks[1] + '/' + reps[r] + '/' + users[u] + '_pose.csv'
+
+			if users[u] == 'user_10' or users[u] == 'user_3' or users[u] == 'user_5' or users[u] == 'user_7' or users[u] == 'user_9':
+				# gamer
+				distance_gamer.append(calculate_distance(pd.read_csv(filename, squeeze=True)))
+
+			else:
+				# non gamer
+				distance_non_gamer.append(calculate_distance(pd.read_csv(filename, squeeze=True)))
+
+
+	# solo i valori senza collisione
+	#distance_gamer.remove(1.9206695979210775)
+	#distance_non_gamer.remove(1.2825705398172444)
+	#distance_non_gamer.remove(3.2044796426101927)
+	#distance_non_gamer.remove(2.834090402932422)
+
+	print(distance_gamer)
+	print(distance_non_gamer)
+
+	plt.boxplot([distance_gamer, distance_non_gamer], labels=['Group 1', 'Group 2'])
+	plt.ylabel('Distance in mt')
+	plt.show()
+	'''
+
+	# test traiettoira
+
+	scale = 100
+	task = 'task_2'
+	user = users[6]
+
+	filename = path + 'teleop/' + task + '/' + reps[0] + '/' + user + '_pose.csv'
+	infile = pd.read_csv(filename, squeeze=True)
+	plt.subplot(221)
+	plt.title('rep1')
+	plt.scatter(infile['position_x'][2:] * scale, infile['position_y'][2:] * scale)
+
+	filename = path + 'teleop/' + task  + '/' + reps[1] + '/' + user + '_pose.csv'
+	infile = pd.read_csv(filename, squeeze=True)
+	plt.subplot(222)
+	plt.title('rep2')
+	plt.scatter(infile['position_x'][2:] * scale, infile['position_y'][2:] * scale)
+
+	filename = path + 'teleop/' + task + '/' + reps[2] + '/' + user + '_pose.csv'
+	infile = pd.read_csv(filename, squeeze=True)
+	plt.subplot(223)
+	plt.title('rep3')
+	plt.scatter(infile['position_x'][2:] * scale, infile['position_y'][2:] * scale)
+
+	plt.show()
+

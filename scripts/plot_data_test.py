@@ -9,6 +9,50 @@ import matplotlib.pyplot as plt
 root_path = '/home/michele/Documents/robotica/csv_files/'
 plt.rcParams.update({'font.size': 30})
 
+
+# calculate distance teleop
+def calculate_distance(infile):
+	x_values = infile['pose_x'][0:]
+	y_values = infile['pose_y'][0:]
+	distance = 0
+
+	for i in range(infile['pose_z'].count()-1):
+
+		x1 = x_values[i]
+		y1 = y_values[i]
+		x2 = x_values[i+1]
+		y2 = y_values[i+1]
+
+		distance = distance + abs(math.sqrt(((x1 - x2) ** 2) + ((y1 - y2) ** 2)))
+
+	return distance
+
+
+
+def calculate_acceleartion(infile):
+	x_values = infile['pose_x'][0:]
+	y_values = infile['pose_y'][0:]
+	acceleration = list()
+	time = 0.1
+
+	for i in range(infile['pose_z'].count()-1):
+
+		x1 = x_values[i]
+		y1 = y_values[i]
+		x2 = x_values[i + 1]
+		y2 = y_values[i + 1]
+
+		if x1 == 0.0 and y1 == 0.0:
+			pass
+		else:
+			# distance from two points
+			value = abs(math.sqrt(((x1 - x2) ** 2) + ((y1 - y2) ** 2))) / (time) # TODO ora è velocità
+			acceleration.append(value)
+
+	return acceleration
+
+
+
 '''
 # plot test wrench with position control
 filename = root_path + 'calibration_tests/test_wrench_position.csv'
@@ -157,25 +201,6 @@ plt.title('Time Michele - kt')
 # show plot 5
 plt.show()
 
-
-# calculate distance teleop
-def calculate_distance(infile):
-	x_values = infile['pose_x'][0:]
-	y_values = infile['pose_y'][0:]
-	distance = 0
-
-	for i in range(infile['pose_z'].count()-1):
-
-		x1 = x_values[i]
-		y1 = y_values[i]
-		x2 = x_values[i+1]
-		y2 = y_values[i+1]
-
-		distance = distance + abs(math.sqrt(((x1 - x2) ** 2) + ((y1 - y2) ** 2)))
-
-	return distance
-
-
 teleop_eros = list()
 teleop_michele = list()
 kt_michele = list()
@@ -273,30 +298,6 @@ plt.title('Distanza Eros - kt')
 
 plt.show()
 
-def calculate_acceleartion(infile):
-	x_values = infile['pose_x'][0:]
-	y_values = infile['pose_y'][0:]
-	acceleration = list()
-	time = 0.1
-
-	for i in range(infile['pose_z'].count()-1):
-
-		x1 = x_values[i]
-		y1 = y_values[i]
-		x2 = x_values[i + 1]
-		y2 = y_values[i + 1]
-
-		if x1 == 0.0 and y1 == 0.0:
-			pass
-		else:
-			# distance from two points
-			value = abs(math.sqrt(((x1 - x2) ** 2) + ((y1 - y2) ** 2))) / (time) # TODO ora è velocità
-			acceleration.append(value)
-
-	return acceleration
-
-
-
 filename = root_path + 'kt/test_user/michele_penzo_2_pose.csv'
 plt.subplot(221)
 plt.xlim(0, 1)
@@ -386,16 +387,16 @@ plt.pie(values, labels=labels, autopct='%0.f%%')
 plt.legend()
 plt.show()
 
+'''
 labels = ['t1-r1','t1-r2','t1-r3','t2-r1','t2-r2','t2-r3']
 #values = [4, 4, 0, 1, 0, 3]
-values = [2, 5, 0, 1, 1, 3]	# collision
+values = [3, 3, 1, 1, 1, 2]	# collision
 
 # tutto
-
 plt.bar(labels, values, width=0.8, align='center')
 plt.xlim(-1, 6)
 plt.xticks(range(6))
-plt.yticks(range(6))
+plt.yticks(range(4))
 
 plt.show()
 '''
@@ -412,3 +413,4 @@ plt.boxplot([physical_kt, physical_teleop], labels=['kinesthetic', 'teleoperatio
 # plt.boxplot([1,2,3,4,4,4,5,5,6,7], labels=[''])
 plt.yticks(range(11))
 plt.show()
+'''
