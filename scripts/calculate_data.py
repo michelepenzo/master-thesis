@@ -102,14 +102,41 @@ def calculate_distance(infile):
 
 if __name__ == '__main__':
 	plt.rcParams.update({'font.size': 30})
+
 	'''
 	for m in range(len(modes)):
 		for t in range(len(tasks)):
 			calculate_time(mode=modes[m], task=tasks[t])
 			print('= Calculating data of {' + tasks[t] + '} with {' + modes[m] + '}')
 	'''
-	# ==== SALVATAGGIO WAYPOINTS ====
-	# save_waypoints()
+
+	# test traiettoira
+	'''
+	scale = 100
+	task = 'task_2'
+	user = users[3]
+
+	filename = path + 'teleop/' + task + '/' + reps[0] + '/' + user + '_pose.csv'
+	infile = pd.read_csv(filename, squeeze=True)
+	plt.subplot(221)
+	plt.title('rep1')
+	plt.scatter(infile['position_x'][2:] * scale, infile['position_y'][2:] * scale)
+
+	filename = path + 'teleop/' + task  + '/' + reps[1] + '/' + user + '_pose.csv'
+	infile = pd.read_csv(filename, squeeze=True)
+	plt.subplot(222)
+	plt.title('rep2')
+	plt.scatter(infile['position_x'][2:] * scale, infile['position_y'][2:] * scale)
+
+	filename = path + 'teleop/' + task + '/' + reps[2] + '/' + user + '_pose.csv'
+	infile = pd.read_csv(filename, squeeze=True)
+	plt.subplot(223)
+	plt.title('rep3')
+	plt.scatter(infile['position_x'][2:] * scale, infile['position_y'][2:] * scale)
+
+	plt.show()
+	'''
+
 
 	# ==== PLOT DI TEMPI SU TRE RIPETIZIONI ====
 	'''
@@ -153,7 +180,7 @@ if __name__ == '__main__':
 	'''
 
 
-	# ==== PLOT TEMPI GAMER / NON GAMER ====
+	# ==== PLOT TEMPI GAMER / NON GAMER in KT ====
 	'''
 	times_gamer = list()
 	times_gamer_ = list()
@@ -217,7 +244,7 @@ if __name__ == '__main__':
 	'''
 
 
-	# ==== PLOT DISTANZA GAMER / NON GAMER ====
+	# ==== PLOT DISTANZA GAMER / NON GAMER in TELOP ====
 	'''
 	# TODO occhio ai valori che vengono rimossi
 	distance_gamer, distance_non_gamer = list(), list()
@@ -267,30 +294,132 @@ if __name__ == '__main__':
 	plt.show()
 	'''
 
-
-	# test traiettoira
+	# ==== PLOT TEMPO GAMER / NON GAMER in KT ====
 	'''
-	scale = 100
-	task = 'task_2'
-	user = users[3]
+	times_gamer = list()
+	times_gamer_ = list()
+	times_non_gamer = list()
+	times_non_gamer_ = list()
 
-	filename = path + 'teleop/' + task + '/' + reps[0] + '/' + user + '_pose.csv'
-	infile = pd.read_csv(filename, squeeze=True)
-	plt.subplot(221)
-	plt.title('rep1')
-	plt.scatter(infile['position_x'][2:] * scale, infile['position_y'][2:] * scale)
 
-	filename = path + 'teleop/' + task  + '/' + reps[1] + '/' + user + '_pose.csv'
-	infile = pd.read_csv(filename, squeeze=True)
-	plt.subplot(222)
-	plt.title('rep2')
-	plt.scatter(infile['position_x'][2:] * scale, infile['position_y'][2:] * scale)
+	# times kt, task3 e task3
 
-	filename = path + 'teleop/' + task + '/' + reps[2] + '/' + user + '_pose.csv'
-	infile = pd.read_csv(filename, squeeze=True)
-	plt.subplot(223)
-	plt.title('rep3')
-	plt.scatter(infile['position_x'][2:] * scale, infile['position_y'][2:] * scale)
+	times_csv = path + 'results/times/' + modes[0] + '_' + tasks[0] + '_' + 'times.csv'
+	s = pd.read_csv(times_csv, squeeze=True)
 
+	times_gamer.append(s['user_10'][0]); times_gamer.append(s['user_10'][1]); times_gamer.append(s['user_10'][2])
+	times_gamer.append(s['user_3'][0]); times_gamer.append(s['user_3'][1]); times_gamer.append(s['user_3'][2])
+	times_gamer.append(s['user_5'][0]); times_gamer.append(s['user_5'][1]); times_gamer.append(s['user_5'][2])
+	times_gamer.append(s['user_7'][0]); times_gamer.append(s['user_7'][1]); times_gamer.append(s['user_7'][2])
+	times_gamer.append(s['user_9'][0]); times_gamer.append(s['user_9'][1]); times_gamer.append(s['user_9'][2])
+
+	times_non_gamer.append(s['user_1'][0]); times_non_gamer.append(s['user_1'][1]); times_non_gamer.append(s['user_1'][2])
+	times_non_gamer.append(s['user_2'][0]); times_non_gamer.append(s['user_2'][1]); times_non_gamer.append(s['user_2'][2])
+	times_non_gamer.append(s['user_4'][1]);	times_non_gamer.append(s['user_4'][2]); times_non_gamer.append(s['user_4'][2])
+	times_non_gamer.append(s['user_6'][0]); times_non_gamer.append(s['user_6'][1]);times_non_gamer.append(s['user_6'][2])
+	times_non_gamer.append(s['user_8'][0]); times_non_gamer_.append(s['user_8'][1]);times_non_gamer.append(s['user_8'][2])
+
+	plt.boxplot([times_gamer, times_non_gamer], labels=['Group 1', 'Group 2'])
+	plt.ylabel('Time in ms')
+	plt.ylim(300, 2000)
 	plt.show()
+
+	print(sum(times_gamer) / len(times_gamer))
+	print(sum(times_non_gamer) / len(times_non_gamer))
+	'''
+
+
+	# ==== PLOT DISTANZA GAMER / NON GAMER in TELOP ====
+	'''
+	distance_gamer, distance_non_gamer = list(), list()
+
+	# solo per il task 3
+	for r in range(len(reps)):
+		for u in range(len(users)):
+			filename = path + 'kt/' + tasks[0] + '/' + reps[r] + '/' + users[u] + '_pose.csv'
+			distance = calculate_distance(pd.read_csv(filename, squeeze=True))
+
+			#print(reps[r] + ' of ' + users[u] + ' : ' + str(distance))
+
+			if users[u] == 'user_10' or users[u] == 'user_3' or users[u] == 'user_5' or users[u] == 'user_7' or users[u] == 'user_9':
+				# gamer
+				distance_gamer.append(distance)
+			else:
+				# non gamer
+				distance_non_gamer.append(distance)
+
+
+	print(sum(distance_gamer) / len(distance_gamer))
+	print(distance_gamer)
+	print(sum(distance_non_gamer) / len(distance_non_gamer))
+	print(distance_non_gamer)
+
+	plt.boxplot([distance_gamer, distance_non_gamer], labels=['Group 1', 'Group 2'])
+	plt.ylabel('Distance in mt')
+	plt.ylim(1, 4)
+	plt.show()
+	'''
+
+
+	# ==== PLOT TEMPO  prima KT / prima TT in TELOP ====
+	'''
+	times_kt = list()
+	times_tt = list()
+	# times teleop, task2
+	times_csv = path + 'results/times/' + modes[1] + '_' + tasks[0] + '_' + 'times.csv'
+	s = pd.read_csv(times_csv, squeeze=True)
+
+
+	times_kt.append(s['user_5'][0]); times_kt.append(s['user_5'][2])
+	times_kt.append(s['user_7'][0])
+	times_kt.append(s['user_8'][0]); times_kt.append(s['user_8'][2])
+	times_kt.append(s['user_9'][1]); times_kt.append(s['user_9'][2])
+	times_kt.append(s['user_10'][0]);
+	times_kt.append(s['user_10'][1]); times_kt.append(s['user_10'][2])
+
+	times_tt.append(s['user_3'][0]); times_tt.append(s['user_3'][1]); times_tt.append(s['user_3'][2])
+	times_tt.append(s['user_1'][0]); times_tt.append(s['user_1'][1]); times_tt.append(s['user_1'][2])
+	times_tt.append(s['user_2'][1]); times_tt.append(s['user_2'][2])
+	times_tt.append(s['user_6'][0]); times_tt.append(s['user_6'][1]); times_tt.append(s['user_6'][2])
+	times_tt.append(s['user_4'][0]); times_tt.append(s['user_4'][1]); times_tt.append(s['user_4'][2]);
+
+
+	plt.boxplot([times_kt, times_tt], labels=['prima KT', 'prima TT'])
+	plt.ylabel('Time in ms')
+	plt.ylim(750, 3000)
+	plt.show()
+
+	
+	# times teleop, task3
+
+	times_csv = path + 'results/times/' + modes[1] + '_' + tasks[1] + '_' + 'times.csv'
+	s = pd.read_csv(times_csv, squeeze=True)
+
+	times_kt.append(s['user_5'][0]); times_kt.append(s['user_5'][1]); times_kt.append(s['user_5'][2])
+	times_kt.append(s['user_7'][0]); times_kt.append(s['user_7'][1]); times_kt.append(s['user_7'][2])
+	times_kt.append(s['user_8'][0]); times_kt.append(s['user_8'][1]); times_kt.append(s['user_8'][2])
+	#times_gamer.append(s['user_9'][0]);
+	times_kt.append(s['user_9'][2])
+	times_kt.append(s['user_10'][0]); times_kt.append(s['user_10'][1]); times_kt.append(s['user_10'][2])
+
+
+	times_tt.append(s['user_1'][0]); times_tt.append(s['user_1'][1])
+	times_tt.append(s['user_2'][0]); times_tt.append(s['user_2'][1])
+	times_tt.append(s['user_3'][0]); times_tt.append(s['user_3'][1]); times_tt.append(s['user_3'][2])
+	times_tt.append(s['user_4'][1]); times_tt.append(s['user_4'][2])
+	times_tt.append(s['user_6'][0]); times_tt.append(s['user_6'][1]); times_tt.append(s['user_6'][2])
+
+
+
+
+	plt.boxplot([times_kt, times_tt], labels=['prima KT', 'prima TT'])
+	plt.ylabel('Time in ms')
+	plt.ylim(750, 3000)
+	plt.show()
+
+
+	print(times_kt)
+	print(sum(times_kt) / len(times_kt))
+	print(times_tt)
+	print(sum(times_tt) / len(times_tt))
 	'''

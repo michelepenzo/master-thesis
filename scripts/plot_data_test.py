@@ -401,11 +401,11 @@ plt.yticks(range(4))
 plt.show()
 '''
 
-mental_kt =     [2,6,3,4,8,1,3,3,2,1] #[1,1,2,3,3,4,6,8,8,9]
-mental_teleop = [9,7,8,5,6,8,5,7,8,2] #[1,2,2,5,5,6,7,7,8,9]
+mental_kt =     [2,6,3,4,8,1,3,3,2,1] 
+mental_teleop = [9,7,8,5,6,8,5,7,8,2] 
 
-physical_kt =     [6,6,3,6,5,3,5,2,7,7] #[1,2,3,3,5,5,6,6,7,7]
-physical_teleop = [1,1,1,2,1,1,1,1,1,2] #[1,1,1,1,1,1,1,2,2,6]
+physical_kt =     [6,6,3,6,5,3,5,2,7,7]
+physical_teleop = [1,1,1,2,1,1,1,1,1,2]
 
 
 plt.boxplot([physical_kt, physical_teleop], labels=['kinesthetic', 'teleoperation'])
