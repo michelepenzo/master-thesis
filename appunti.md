@@ -50,7 +50,9 @@
 - prima teleop
 - molto concentrato in teleop durante il task, ci mette molto tempo
 - kt prende sempre punto di prepick (appena sopra l'incastro)
-- kt, task3, rep2 ha stoppato al posto di aprire gripper
+
+- kt, task2, rep2 ha stoppato al posto di aprire gripper
+
 
 
 # user 7 --> federico

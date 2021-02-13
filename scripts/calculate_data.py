@@ -110,7 +110,7 @@ if __name__ == '__main__':
 			print('= Calculating data of {' + tasks[t] + '} with {' + modes[m] + '}')
 	'''
 
-	# test traiettoira
+	# test traiettoria
 	'''
 	scale = 100
 	task = 'task_2'
@@ -361,12 +361,11 @@ if __name__ == '__main__':
 	plt.show()
 	'''
 
+	times_kt = list()
+	times_tt = list()
 
 	# ==== PLOT TEMPO GRUPPO INIZIO in TELOP ====
 	'''
-	times_kt = list()
-	times_tt = list()
-	
 	# times teleop, task2
 	times_csv = path + 'results/times/' + modes[1] + '_' + tasks[0] + '_' + 'times.csv'
 	s = pd.read_csv(times_csv, squeeze=True)
@@ -398,38 +397,30 @@ if __name__ == '__main__':
 	# AMEDEO
 	times_kt.append(s['user_5'][0]); times_kt.append(s['user_5'][1]); times_kt.append(s['user_5'][2])
 	times_kt.append(s['user_7'][0]); times_kt.append(s['user_7'][1]); times_kt.append(s['user_7'][2])
-	times_kt.append(s['user_8'][0]); times_kt.append(s['user_8'][1]); times_kt.append(s['user_8'][2])
+	#times_kt.append(s['user_8'][0]); times_kt.append(s['user_8'][1]); times_kt.append(s['user_8'][2])
 	times_kt.append(s['user_9'][2]); #times_kt.append(s['user_9'][0])
 	times_kt.append(s['user_10'][0]); times_kt.append(s['user_10'][1]); times_kt.append(s['user_10'][2])
 
 	# CARLO
 	times_tt.append(s['user_1'][0]); times_tt.append(s['user_1'][1])
-	times_tt.append(s['user_2'][0]); times_tt.append(s['user_2'][1])
+	#times_tt.append(s['user_2'][0]); times_tt.append(s['user_2'][1])
 	times_tt.append(s['user_3'][0]); times_tt.append(s['user_3'][1]); times_tt.append(s['user_3'][2])
 	times_tt.append(s['user_4'][1]); times_tt.append(s['user_4'][2])
 	times_tt.append(s['user_6'][0]); times_tt.append(s['user_6'][1]); times_tt.append(s['user_6'][2])
-
-
-
 
 	plt.boxplot([times_kt, times_tt], labels=['prima KT', 'prima TT'])
 	plt.ylabel('Time in ms')
 	plt.ylim(750, 3000)
 	plt.show()
-
-	print('amedeo - carlo --> per TT')
-	print(sum(times_kt) / len(times_kt))
-	print(sum(times_tt) / len(times_tt))
 	'''
+
+
 
 	# ==== PLOT TEMPO GRUPPO INIZIO in KT ====
 	'''
-	times_tt = list()
-	times_kt = list()
-
 	# times kt, task3 e task3
 
-	times_csv = path + 'results/times/' + modes[0] + '_' + tasks[1] + '_' + 'times.csv'
+	times_csv = path + 'results/times/' + modes[0] + '_' + tasks[0] + '_' + 'times.csv'
 	s = pd.read_csv(times_csv, squeeze=True)
 
 	# gruppo di AMEDEO
@@ -444,7 +435,8 @@ if __name__ == '__main__':
 	times_tt.append(s['user_2'][0]); times_tt.append(s['user_2'][1]); times_tt.append(s['user_2'][2])
 	times_tt.append(s['user_3'][0]); times_tt.append(s['user_3'][1]); times_tt.append(s['user_3'][2])
 	times_tt.append(s['user_4'][0]); times_tt.append(s['user_4'][2]); times_tt.append(s['user_4'][2])
-	times_tt.append(s['user_6'][0]); times_tt.append(s['user_6'][1]); times_tt.append(s['user_6'][2])
+	times_tt.append(s['user_6'][0]); times_tt.append(s['user_6'][2]) 
+	#times_tt.append(s['user_6'][1]) # TODO sbagliata la seconda rip
 
 
 	plt.boxplot([times_kt, times_tt], labels=['prima KT', 'prima TT'])
@@ -452,11 +444,14 @@ if __name__ == '__main__':
 	#plt.ylim(300, 2000)
 	plt.show()
 
-	print('amedeo - carlo --> per KT')
-	print(sum(times_kt) / len(times_kt))
-	print(sum(times_tt) / len(times_tt))
 	'''
 
+	try:
+		print('amedeo - carlo')
+		print(sum(times_kt) / len(times_kt))
+		print(sum(times_tt) / len(times_tt))
+	except ZeroDivisionError:
+		pass
 
 	# ==== PLOT FORZE ====
 	'''
@@ -487,20 +482,17 @@ if __name__ == '__main__':
 
 
 	# ==== CALCOLO STD ====
+	'''
 	times = list()
 	import numpy as np
 
 	# times teleop, task2
-	times_csv = path + 'results/times/' + modes[1] + '_' + tasks[0] + '_' + 'times.csv'
+	times_csv = path + 'results/times/' + modes[0] + '_' + tasks[1] + '_' + 'times.csv'
 	s = pd.read_csv(times_csv, squeeze=True)
 
-	id = 'user_3'
+	id = 'user_10'
 	times.append(s[id][0])
 	times.append(s[id][1])
 	times.append(s[id][2])
 	print(np.std(times))
-
-	#plt.boxplot([times_kt, times_tt], labels=['prima KT', 'prima TT'])
-	#plt.ylabel('Time in ms')
-	#plt.ylim(750, 3000)
-	#plt.show()
+	'''
