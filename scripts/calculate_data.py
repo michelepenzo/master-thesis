@@ -365,67 +365,68 @@ if __name__ == '__main__':
 	times_tt = list()
 
 	# ==== PLOT TEMPO GRUPPO INIZIO in TELOP ====
-	'''
+
 	# times teleop, task2
 	times_csv = path + 'results/times/' + modes[1] + '_' + tasks[0] + '_' + 'times.csv'
 	s = pd.read_csv(times_csv, squeeze=True)
 
 
 	times_kt.append(s['user_5'][0]); times_kt.append(s['user_5'][2])
-	times_kt.append(s['user_7'][0])
-	times_kt.append(s['user_8'][0]); times_kt.append(s['user_8'][2])
+	times_kt.append(s['user_3'][0]); times_kt.append(s['user_3'][1]); times_kt.append(s['user_3'][2])
+	#times_kt.append(s['user_8'][0]); times_kt.append(s['user_8'][2])
 	times_kt.append(s['user_9'][1]); times_kt.append(s['user_9'][2])
-	times_kt.append(s['user_10'][0]); times_kt.append(s['user_10'][1]); times_kt.append(s['user_10'][2])
+	times_kt.append(s['user_10'][1]); times_kt.append(s['user_10'][2]) # manca rep0
 
-	times_tt.append(s['user_3'][0]); times_tt.append(s['user_3'][1]); times_tt.append(s['user_3'][2])
+	times_tt.append(s['user_7'][0])
 	times_tt.append(s['user_1'][0]); times_tt.append(s['user_1'][1]); times_tt.append(s['user_1'][2])
 	times_tt.append(s['user_2'][1]); times_tt.append(s['user_2'][2])
 	times_tt.append(s['user_6'][0]); times_tt.append(s['user_6'][1]); times_tt.append(s['user_6'][2])
-	times_tt.append(s['user_4'][0]); times_tt.append(s['user_4'][1]); times_tt.append(s['user_4'][2]);
+	#times_tt.append(s['user_4'][0]); times_tt.append(s['user_4'][1]); times_tt.append(s['user_4'][2]);
 
 	
-	plt.boxplot([times_kt, times_tt], labels=['prima KT', 'prima TT'])
+	plt.boxplot([times_kt, times_tt], labels=['Group 1', 'Group 2'])
+
 	plt.ylabel('Time in ms')
 	plt.ylim(750, 3000)
 	plt.show()
-	
-	# times teleop, task3
 
+	'''
+	# times teleop, task3
+	
 	times_csv = path + 'results/times/' + modes[1] + '_' + tasks[1] + '_' + 'times.csv'
 	s = pd.read_csv(times_csv, squeeze=True)
 
 	# AMEDEO
 	times_kt.append(s['user_5'][0]); times_kt.append(s['user_5'][1]); times_kt.append(s['user_5'][2])
-	times_kt.append(s['user_7'][0]); times_kt.append(s['user_7'][1]); times_kt.append(s['user_7'][2])
-	#times_kt.append(s['user_8'][0]); times_kt.append(s['user_8'][1]); times_kt.append(s['user_8'][2])
-	times_kt.append(s['user_9'][2]); #times_kt.append(s['user_9'][0])
+	times_kt.append(s['user_3'][0]); times_kt.append(s['user_3'][1]); times_kt.append(s['user_3'][2])
+	times_kt.append(s['user_8'][0]); times_kt.append(s['user_8'][1]); times_kt.append(s['user_8'][2])
+	#times_kt.append(s['user_9'][2]); times_kt.append(s['user_9'][0])
 	times_kt.append(s['user_10'][0]); times_kt.append(s['user_10'][1]); times_kt.append(s['user_10'][2])
 
 	# CARLO
 	times_tt.append(s['user_1'][0]); times_tt.append(s['user_1'][1])
-	#times_tt.append(s['user_2'][0]); times_tt.append(s['user_2'][1])
-	times_tt.append(s['user_3'][0]); times_tt.append(s['user_3'][1]); times_tt.append(s['user_3'][2])
+	times_tt.append(s['user_2'][0]); times_tt.append(s['user_2'][1])
+	times_tt.append(s['user_7'][0]); times_tt.append(s['user_7'][1]); times_tt.append(s['user_7'][2])
 	times_tt.append(s['user_4'][1]); times_tt.append(s['user_4'][2])
-	times_tt.append(s['user_6'][0]); times_tt.append(s['user_6'][1]); times_tt.append(s['user_6'][2])
+	#times_tt.append(s['user_6'][0]); times_tt.append(s['user_6'][1]); times_tt.append(s['user_6'][2])
 
-	plt.boxplot([times_kt, times_tt], labels=['prima KT', 'prima TT'])
+	plt.boxplot([times_kt, times_tt], labels=['Group 1', 'Group 2'])
 	plt.ylabel('Time in ms')
 	plt.ylim(750, 3000)
 	plt.show()
 	'''
 
 
-
-	# ==== PLOT TEMPO GRUPPO INIZIO in KT ====
+	# ==== PLOT TEMPO GRUPPO STAZZA in KT ====
 	'''
 	# times kt, task3 e task3
-
+	
 	times_csv = path + 'results/times/' + modes[0] + '_' + tasks[0] + '_' + 'times.csv'
 	s = pd.read_csv(times_csv, squeeze=True)
 
 	# gruppo di AMEDEO
 	times_kt.append(s['user_5'][0]); times_kt.append(s['user_5'][1]); times_kt.append(s['user_5'][2])
-	times_kt.append(s['user_7'][0]); times_kt.append(s['user_7'][1]); times_kt.append(s['user_7'][2])
+	times_kt.append(s['user_3'][0]); times_kt.append(s['user_3'][1]); times_kt.append(s['user_3'][2])
 	times_kt.append(s['user_8'][0]); times_kt.append(s['user_8'][1]); times_kt.append(s['user_8'][2])
 	times_kt.append(s['user_9'][0]); times_kt.append(s['user_9'][1]); times_kt.append(s['user_9'][2])
 	times_kt.append(s['user_10'][0]); times_kt.append(s['user_10'][1]); times_kt.append(s['user_10'][2])
@@ -433,23 +434,25 @@ if __name__ == '__main__':
 	# gruppo di CARLO
 	times_tt.append(s['user_1'][0]); times_tt.append(s['user_1'][1]); times_tt.append(s['user_1'][2])
 	times_tt.append(s['user_2'][0]); times_tt.append(s['user_2'][1]); times_tt.append(s['user_2'][2])
-	times_tt.append(s['user_3'][0]); times_tt.append(s['user_3'][1]); times_tt.append(s['user_3'][2])
+	times_tt.append(s['user_7'][0]); times_tt.append(s['user_7'][1]); times_tt.append(s['user_7'][2])
 	times_tt.append(s['user_4'][0]); times_tt.append(s['user_4'][2]); times_tt.append(s['user_4'][2])
 	times_tt.append(s['user_6'][0]); times_tt.append(s['user_6'][2]) 
-	#times_tt.append(s['user_6'][1]) # TODO sbagliata la seconda rip
+	times_tt.append(s['user_6'][1]) # TODO sbagliata la seconda rip
 
 
-	plt.boxplot([times_kt, times_tt], labels=['prima KT', 'prima TT'])
+	plt.boxplot([times_kt, times_tt], labels=['Group 1', 'Group 2'])
 	plt.ylabel('Time in ms')
 	#plt.ylim(300, 2000)
 	plt.show()
-
 	'''
 
+
 	try:
-		print('amedeo - carlo')
-		print(sum(times_kt) / len(times_kt))
-		print(sum(times_tt) / len(times_tt))
+		print('piccoli - grandi')
+		print(times_kt)
+		print(times_tt)
+		#print(sum(times_kt) / len(times_kt))
+		#print(sum(times_tt) / len(times_tt))
 	except ZeroDivisionError:
 		pass
 
