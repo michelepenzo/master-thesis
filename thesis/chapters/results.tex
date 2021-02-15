@@ -16,10 +16,11 @@ This section has been divided into various subsections for a better description 
 
 \subsection{Comments about trials}
 \label{comments-about-trials}
+
 During the experiment all the participants were set free to pick up the objects in the order they prefer. All of them use the order as $ \{ $\textit{triangle, trapezoid and circle}$ \} $, but only one decided to pick up the objects in different order for all the trials only in \kt{}. This doesn't affect the data. \\
 As described in \ref{experimental-design}, for every task three trials in both the modalities were done. From these trials some comments was taken and it's possible to report that:
 \begin{itemize}
-	\item in \textbf{\kt{}} there aren't many additional comments. Only one user, for every trial, took many waypoints even after it was shown to him how the robot replicates the sequence. Moreover sometimes some users wrong in taking the waypoint and opens or closes the gripper, but this not affect the final realization. Finally one user, the most experienced in the use of robots who knows the environment well, always takes a point just above the place position to make the interlocking without problems: this happens only for the second task. No trial had any problems therefore the success rate is $ 100\% $ and all the replay phase shown after the first trial were done correctly by the robot.
+	\item in \textbf{\kt{}} there aren't many additional comments. Only one user, for every trial, took many waypoints even after it was shown to him how the robot replicates the sequence. Moreover sometimes some users wrong in taking the waypoint and opens or closes the gripper, but this not affect the final realization. Finally one user, the most experienced in the use of robots who knows the environment well, always takes a point just above the place position to make the interlocking without problems: this happens only for the second task.% No trial had any problems therefore the success rate is $ 100\% $ and all the replay phase shown after the first trial were done correctly by the robot.
 	
 	\item in \textbf{\te{}} there were many problems in teaching phase.Out of ten users, seven of them made a collision. This happens because they aren't very sensitive with the pad and they try to do all the teaching phase using position control and they don't change in impedance control in the critical phases. Another motivation reported by the users is because they are used to using another reference frame when they use the pad for other purposes. In figure \ref{fig:pass_fail} pass and fail during teaching phase are shown. With $ \{t1,t2\} $ is indicated the task and with $ \{r1,r2,r3\} $ the trial. We can see that the first and the second column, that are the first trails have a high number of failures. This is due to the fact that users have not become confident with the pad. In the task $ t2 $ and trial $ r1,r2 $ and task $ t3 $ and trial $ r1 $ we can see that there was only a mistake by all the users: this is acceptable. The surprising value is the last one (task $ t2 $ and trial $ r3 $): it would be logical that this value was zero or small because it's the latest trial and the users should have become very familiar with the pad. The users who made these mistakes were only those who started with \te{}: it's possible say that they were tired and wanted to pass to \kt{} phase because it's faster.
 	
@@ -30,7 +31,7 @@ As described in \ref{experimental-design}, for every task three trials in both t
 		\label{fig:pass_fail}
 	\end{figure}
 
-	Overall the error rate during the teach phase is $ 16.6\% $: for a better report it's possible to resume the success rate for each trial of all users as evidenced in table \ref{tab:pass}. It was also noted that during the trials sometimes they forgot to save the waypoints and it was remembered to the users to save them for a better replay phase. Regarding the replay phase shown after the first trail, if the teaching phase was passed all the replay were done correctly by the robot.
+	Overall the error rate during the teach phase is $ 16.6\% $: for a better report it's possible to resume the success rate for each trial of all users as evidenced in table \ref{tab:pass}. It was also noted that during the trials sometimes they forgot to save the waypoints and it was remembered to the users to save them for a better replay phase.% Regarding the replay phase shown after the first trail, if the teaching phase was passed all the replay were done correctly by the robot.
 	\begin{table}[ht]
 		\centering
 		\begin{tabular}{l||llllll}
@@ -72,37 +73,26 @@ The questionnaire was divided into two phases as described in section \ref{post-
 		\caption{Mental effort in \kt{} and \te{}}
 		\label{fig:mental_effort}
 	\end{figure}
-	
-%	\item How \textbf{irritated/stressed} did you feel during the experiment?
-%
-%	
-%
-%	\begin{figure}[H]
-%		\centering
-%		\includegraphics[scale=0.2]{stress_boxplot.png}
-%		\caption{Stress and irritation during the experiment}
-%		\label{fig:stress}
-%	\end{figure}
-	
+
 \end{itemize}
+\noindent As final comments not obligatory for the purposes of the questionnaire, the users said that the \te{} is very interesting and they propose to map a new button on pad to move faster for long movements and another one to be better precise. Instead they propose to add an audio feedback after getting the pose or changing the control mode. Moreover an user propose to let him choose the reference frame that is used to move the robot.
 
 \subsection{Groups}
-From the questionnaire questions and answers is possible to create some different groups based on personal physical characteristics. Many different factors were analyzed to see if there was a correlation between the various characteristics of the users and the results obtained from the experiment. Two main groups have been highlighted and later presented.
+\label{groups}
+% spiegare le categorie che vengono evidenziate durante l'analisi
+
+From the questionnaire questions and answers is possible to create some different groups based on personal physical characteristics. Many different factors were analyzed to see if there was a correlation between the various characteristics of the users and the results obtained from the experiment. From the data is possible to determine two possible groups based on:
 
 \begin{itemize}
-	\item 
-	\item 
+	\item \textbf{physical characteristics}:
+	\item \textbf{confidence with the pad}:
 \end{itemize}
 
-
-% todo
-% inserire anche i commenti aggiuntivi che sono stati scritti alla fine
-
-\subsection{Data analysis}
-\label{data-analysis}
-% grafici sulla forza, durata, velocità e accelerazione6
+\noindent In the next section the results obtained starting from the two classifications described above and from the questionnaire are explained.
 
 \section{Result discussion}
 \label{result-discussion}
 
+% discussione in base ai gruppi
+% grafici sulla forza, durata, velocità ecc..
 % cosa ho ottenuto, cosa confermano e cosa non confermano (gamer utilizzando meglio il pad, ecc..)

@@ -364,8 +364,8 @@ if __name__ == '__main__':
 	times_kt = list()
 	times_tt = list()
 
-	# ==== PLOT TEMPO GRUPPO INIZIO in TELOP ====
-
+	# ==== PLOT TEMPO GRUPPO STAZZA in TELOP ====
+	'''
 	# times teleop, task2
 	times_csv = path + 'results/times/' + modes[1] + '_' + tasks[0] + '_' + 'times.csv'
 	s = pd.read_csv(times_csv, squeeze=True)
@@ -390,7 +390,7 @@ if __name__ == '__main__':
 	plt.ylim(750, 3000)
 	plt.show()
 
-	'''
+	
 	# times teleop, task3
 	
 	times_csv = path + 'results/times/' + modes[1] + '_' + tasks[1] + '_' + 'times.csv'
@@ -421,7 +421,7 @@ if __name__ == '__main__':
 	'''
 	# times kt, task3 e task3
 	
-	times_csv = path + 'results/times/' + modes[0] + '_' + tasks[0] + '_' + 'times.csv'
+	times_csv = path + 'results/times/' + modes[0] + '_' + tasks[1] + '_' + 'times.csv'
 	s = pd.read_csv(times_csv, squeeze=True)
 
 	# gruppo di AMEDEO
@@ -442,7 +442,7 @@ if __name__ == '__main__':
 
 	plt.boxplot([times_kt, times_tt], labels=['Group 1', 'Group 2'])
 	plt.ylabel('Time in ms')
-	#plt.ylim(300, 2000)
+	plt.ylim(300, 1500)
 	plt.show()
 	'''
 
@@ -457,31 +457,22 @@ if __name__ == '__main__':
 		pass
 
 	# ==== PLOT FORZE ====
-	'''
-	x0, x1, y0, y1 = 0, 1400, -20, 20
-	filename = path + 'kt/task_2/rep_3/user_10_wrench.csv'
-	infile = pd.read_csv(filename, squeeze=True)
-	#plt.subplot(211)
-	plt.plot(infile['wrench_z'][0:])
-	print('wrench x ' + str(sum(infile['wrench_x'][0:]) / len(infile['wrench_x'][0:])))
-	print('wrench y ' + str(sum(infile['wrench_y'][0:]) / len(infile['wrench_y'][0:])))
-	print('wrench z ' + str(sum(infile['wrench_z'][0:]) / len(infile['wrench_z'][0:])))
-	#plt.axis([x0, x1, y0, y1])
-	#plt.title('Amedeo')
 
-	filename = path + 'kt/task_2/rep_3/user_6_wrench.csv'
+	x0, x1, y0, y1 = 0, 1400, -20, 20
+	filename = path + 'kt/task_2/rep_3/user_5_wrench.csv'
 	infile = pd.read_csv(filename, squeeze=True)
-	#plt.subplot(212)
-	plt.plot(infile['wrench_z'][0:])
-	print('wrench x ' + str(sum(infile['wrench_x'][0:]) / len(infile['wrench_x'][0:])))
-	print('wrench y ' + str(sum(infile['wrench_y'][0:]) / len(infile['wrench_y'][0:])))
-	print('wrench z ' + str(sum(infile['wrench_z'][0:]) / len(infile['wrench_z'][0:])))
-	plt.axis([x0, x1, y0, y1])
-	plt.title('Carlo')
+	p = infile['wrench_z'][0:]
+
+	filename = path + 'kt/task_2/rep_3/user_2_wrench.csv'
+	infile = pd.read_csv(filename, squeeze=True)
+	g = infile['wrench_z'][0:]
+	plt.boxplot([p,g], labels=['piccoli', 'grandi'], showfliers=False, vert=False)
 
 	# show third plot
 	plt.show()
-	'''
+
+
+
 
 
 	# ==== CALCOLO STD ====

@@ -404,7 +404,7 @@ plt.show()
 #mental_kt =     [9,4,3,8,2,6,1,3,3,1]
 #mental_teleop = [2,5,6,8,7,7,2,5,8,8]
 
-physical_kt =     [6,6,3,5,7,6,3,2,5,7]
+physical_kt =     [6,6,3,5,7,6,3,2,5,2]
 physical_teleop = [1,1,1,2,1,1,1,1,1,2]
 
 
