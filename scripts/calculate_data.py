@@ -103,12 +103,11 @@ def calculate_distance(infile):
 if __name__ == '__main__':
 	plt.rcParams.update({'font.size': 30})
 
-	'''
+
 	for m in range(len(modes)):
 		for t in range(len(tasks)):
 			calculate_time(mode=modes[m], task=tasks[t])
 			print('= Calculating data of {' + tasks[t] + '} with {' + modes[m] + '}')
-	'''
 
 	# test traiettoria
 	'''
@@ -244,57 +243,6 @@ if __name__ == '__main__':
 	'''
 
 
-	# ==== PLOT DISTANZA GRUPPO GIOCO in TELOP ====
-	'''
-	# TODO occhio ai valori che vengono rimossi
-	distance_gamer, distance_non_gamer = list(), list()
-
-	# solo per il task 3
-	for r in range(len(reps)):
-		for u in range(len(users)):
-			filename = path + 'teleop/' + tasks[1] + '/' + reps[r] + '/' + users[u] + '_pose.csv'
-			distance = calculate_distance(pd.read_csv(filename, squeeze=True))
-
-			#print(reps[r] + ' of ' + users[u] + ' : ' + str(distance))
-
-			if users[u] == 'user_10' or users[u] == 'user_3' or users[u] == 'user_5' or users[u] == 'user_7' or users[u] == 'user_9':
-				# gamer
-				distance_gamer.append(distance)
-			else:
-				# non gamer
-				distance_non_gamer.append(distance)
-
-	# task2
-	
-	distance_non_gamer.remove(0.6844725893251613)# rep1 user2
-	distance_gamer.remove(0.4380864179569224)# rep1 user7
-	distance_gamer.remove(1.6924190995155661)# rep2 user5
-	distance_non_gamer.remove(0.43319235494644426)# rep2 user8
-	distance_gamer.remove(1.1301061640893995)# rep1 user9
-	distance_gamer.remove(0.7426055344428442)# rep1 user7
-	
-
-	# task3
-	distance_non_gamer.remove(0.48245662932542177)# rep3 user1
-	distance_non_gamer.remove(1.2009031824808087)#rep3 user2
-	distance_non_gamer.remove(0.7958873639893409)#rep1 user4
-	distance_gamer.remove(0.5856682170874384)# rep2 user9
-
-
-
-	#print(distance_gamer)
-	print(sum(distance_gamer) / len(distance_gamer))
-
-	#print(distance_non_gamer)
-	print(sum(distance_non_gamer) / len(distance_non_gamer))
-
-	plt.boxplot([distance_gamer, distance_non_gamer], labels=['Group 1', 'Group 2'])
-	plt.ylabel('Distance in mt')
-	plt.ylim(1.4, 2.8)
-	plt.show()
-	'''
-
-
 	# ==== PLOT TEMPO GRUPPO GIOCO in KT ====
 	'''
 	times_gamer = list()
@@ -330,39 +278,7 @@ if __name__ == '__main__':
 	'''
 
 
-	# ==== PLOT DISTANZA GRUPPO GIOCO in TELOP ====
-	'''
-	distance_gamer, distance_non_gamer = list(), list()
-
-	# solo per il task 3
-	for r in range(len(reps)):
-		for u in range(len(users)):
-			filename = path + 'kt/' + tasks[0] + '/' + reps[r] + '/' + users[u] + '_pose.csv'
-			distance = calculate_distance(pd.read_csv(filename, squeeze=True))
-
-			#print(reps[r] + ' of ' + users[u] + ' : ' + str(distance))
-
-			if users[u] == 'user_10' or users[u] == 'user_3' or users[u] == 'user_5' or users[u] == 'user_7' or users[u] == 'user_9':
-				# gamer
-				distance_gamer.append(distance)
-			else:
-				# non gamer
-				distance_non_gamer.append(distance)
-
-
-	print(sum(distance_gamer) / len(distance_gamer))
-	print(distance_gamer)
-	print(sum(distance_non_gamer) / len(distance_non_gamer))
-	print(distance_non_gamer)
-
-	plt.boxplot([distance_gamer, distance_non_gamer], labels=['Group 1', 'Group 2'])
-	plt.ylabel('Distance in mt')
-	plt.ylim(1, 4)
-	plt.show()
-	'''
-
-	times_kt = list()
-	times_tt = list()
+	times_kt, times_tt = list(), list()
 
 	# ==== PLOT TEMPO GRUPPO STAZZA in TELOP ====
 	'''
@@ -447,17 +363,92 @@ if __name__ == '__main__':
 	'''
 
 
+	# ==== PLOT DISTANZA GRUPPO STAZZA in TELOP ====
+
+	distance_small, distance_big = list(), list()
+
+	'''
+
+	# solo per il task 3
+	for r in range(len(reps)):
+		for u in range(len(users)):
+			filename = path + 'teleop/' + tasks[1] + '/' + reps[r] + '/' + users[u] + '_pose.csv'
+			distance = calculate_distance(pd.read_csv(filename, squeeze=True))
+
+			#print(reps[r] + ' of ' + users[u] + ' : ' + str(distance))
+
+			if users[u] == 'user_10' or users[u] == 'user_3' or users[u] == 'user_5' or users[u] == 'user_8' or users[u] == 'user_9':
+				# gamer
+				distance_small.append(distance)
+			else:
+				# non gamer
+				distance_big.append(distance)
+
+	# task2
+
+	distance_big.remove(0.6844725893251613)# rep1 user2
+	distance_big.remove(0.4380864179569224)# rep1 user7
+	distance_big.remove(0.7426055344428442)  # rep1 user7
+
+	distance_small.remove(1.6924190995155661)# rep2 user5
+	distance_small.remove(0.43319235494644426)# rep2 user8
+	distance_small.remove(1.1301061640893995)# rep1 user9
+
+
+	# task3
+	distance_big.remove(0.48245662932542177)# rep3 user1
+	distance_big.remove(1.2009031824808087)#rep3 user2
+	distance_big.remove(0.7958873639893409)#rep1 user4
+
+	distance_small.remove(0.5856682170874384)# rep2 user9
+
+	plt.boxplot([distance_small, distance_big], labels=['piccoli', 'grandi'])
+	plt.ylabel('Distance in mt')
+	plt.ylim(1.4, 2.8)
+	plt.show()
+	'''
+
+	# ==== PLOT DISTANZA GRUPPO STAZZA in KT ====
+
+
+	# solo per il task 2
+	for r in range(len(reps)):
+		for u in range(len(users)):
+			filename = path + 'kt/' + tasks[0] + '/' + reps[r] + '/' + users[u] + '_pose.csv'
+			distance = calculate_distance(pd.read_csv(filename, squeeze=True))
+
+			print(reps[r] + ' of ' + users[u] + ' : ' + str(distance))
+
+			if users[u] == 'user_10' or users[u] == 'user_3' or users[u] == 'user_5' or users[u] == 'user_8' or users[u] == 'user_9':
+				# gamer
+				distance_small.append(distance)
+			else:
+				# non gamer
+				distance_big.append(distance)
+
+	# task3
+	# distance_big.remove(1.1786437920471824)# user6, rep2
+
+	plt.boxplot([distance_small, distance_big], labels=['piccoli', 'grandi'])
+	plt.ylabel('Distance in mt')
+	plt.ylim(1, 4)
+	plt.show()
+
+
 	try:
 		print('piccoli - grandi')
-		print(times_kt)
-		print(times_tt)
-		#print(sum(times_kt) / len(times_kt))
-		#print(sum(times_tt) / len(times_tt))
+
+		print(sum(distance_small) / len(distance_small))
+		print(sum(distance_big) / len(distance_big))
+
+		print(distance_small)
+		print(distance_big)
+
 	except ZeroDivisionError:
 		pass
 
 	# ==== PLOT FORZE ====
-
+	'''
 	x0, x1, y0, y1 = 0, 1400, -20, 20
 	filename = path + 'kt/task_2/rep_3/user_5_wrench.csv'
 	infile = pd.read_csv(filename, squeeze=True)
@@ -470,9 +461,7 @@ if __name__ == '__main__':
 
 	# show third plot
 	plt.show()
-
-
-
+	'''
 
 
 	# ==== CALCOLO STD ====
