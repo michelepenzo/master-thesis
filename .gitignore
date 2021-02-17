@@ -277,6 +277,5 @@ TSWLatexianTemp*
 
 # others
 *.pyc
-*/src/test.py
-thesis/Appendices/AppendixTemplate.tex
-thesis/Chapters/ChapterTemplate.tex
+scripts/calculate_data.py
+scripts/plot_data_test.py
