@@ -5,8 +5,6 @@
 
 In this chapter all the results are presented in an objective way: starting with a complete analysis of the data, and concluding with the result discussion. In these sections some graphs, figures and tables are provided for a better description of the results obtained.
 
-% oggettivo, tabelle, grafici, boxplot, spiego a chi sta leggendo cosa ne è venuto fuori --> devo aiutare chi sta leggendo i risultati a capire cosa fare
-
 %----------------------------------------------------------------------------------------
 
 
@@ -22,7 +20,10 @@ As described in \ref{experimental-design}, for every task three trials in both t
 \begin{itemize}
 	\item in \textbf{\kt{}} there aren't many additional comments. Only one user, for every trial, took many waypoints even after it was shown to him how the robot replicates the sequence. Moreover sometimes some users wrong in taking the waypoint and opens or closes the gripper, but this not affect the final realization. Finally one user, the most experienced in the use of robots who knows the environment well, always takes a point just above the place position to make the interlocking without problems: this happens only for the second task.% No trial had any problems therefore the success rate is $ 100\% $ and all the replay phase shown after the first trial were done correctly by the robot.
 	
-	\item in \textbf{\te{}} there were many problems in teaching phase. Out of ten users, seven of them made a collision. This happens because they aren't very sensitive with the pad and they try to do all the teaching phase using position control and they don't change in impedance control in the critical phases. Another motivation reported by the users is because they are used to using another reference frame when they use the pad for other purposes. In figure \ref{fig:pass_fail} pass and fail during teaching phase are shown. With $ \{t1,t2\} $ is indicated the task and with $ \{r1,r2,r3\} $ the trial. We can see that the first and the second column, that are the first trails have a high number of failures. This is due to the fact that users have not become confident with the pad. In the task $ t2 $ and trial $ r1,r2 $ and task $ t3 $ and trial $ r1 $ we can see that there was only a mistake by all the users: this is acceptable. The surprising value is the last one (task $ t2 $ and trial $ r3 $): it would be logical that this value was zero or small because it's the latest trial and the users should have become very familiar with the pad. The users who made these mistakes were only those who started with \te{}: it's possible say that they were tired and wanted to pass to \kt{} phase because it's faster.
+	\item in \textbf{\te{}} there were many problems in teaching phase. Out of ten users, seven of them made a collision.%This happens because they aren't very sensitive with the pad and they try to do all the teaching phase using position control and they don't change in impedance control in the critical phases. Another motivation reported by the users is because they are used to using another reference frame when they use the pad for other purposes.
+	In figure \ref{fig:pass_fail} pass and fail during teaching phase are shown. With $ \{t1,t2\} $ is indicated the task and with $ \{r1,r2,r3\} $ the trial. We can see that the first and the second column, that are the first trails have a high number of failures.% This is due to the fact that users have not become confident with the pad.
+	In task $ t2 $ and trial $ r1,r2 $ and task $ t3 $ and trial $ r1 $ we can see that there was only a mistake by all the users: this is acceptable. The surprising value is the last one (task $ t2 $ and trial $ r3 $): it would be logical that this value was zero or small because it's the latest trial and the users should have become very familiar with the pad. The users who made these mistakes were only those who started with \te{}.
+	%: it's possible say that they were tired and wanted to pass to \kt{} phase because it's faster.
 	
 	\begin{figure}[ht]
 		\centering
@@ -34,7 +35,7 @@ As described in \ref{experimental-design}, for every task three trials in both t
 	Overall the error rate during the teach phase is $ 16.6\% $: for a better report it's possible to resume the success rate for each trial of all users as evidenced in table \ref{tab:pass}. It was also noted that during the trials sometimes they forgot to save the waypoints and it was remembered to the users to save them for a better replay phase.% Regarding the replay phase shown after the first trail, if the teaching phase was passed all the replay were done correctly by the robot.
 	\begin{table}[ht]
 		\centering
-		\begin{tabular}{l||llllll}
+		\begin{tabular}{c||cccccc}
 			& \textbf{t1-r1} & \textbf{t1-r2} &\textbf{t1-r3} & \textbf{t2-r1} &\textbf{t2-r2} &\textbf{t2-r3} \\
 			\hline\hline	
 			\textbf{\checkmark}	&$ 70\% $	&$ 80\% $	&$ 90\% $	&$ 90\% $ &$ 90\% $	&$ 80\% $ \\
@@ -79,17 +80,58 @@ The questionnaire was divided into two phases as described in section \ref{post-
 
 \subsection{Groups}
 \label{groups}
-% spiegare le categorie che vengono evidenziate durante l'analisi
 
 From the questionnaire questions and answers is possible to create some different groups based on personal physical characteristics. Many different factors were analyzed to see if there was a correlation between the various characteristics of the users and the results obtained from the experiment. From the data is possible to determine two possible classifications based on:
 
 \begin{itemize}
-	\item \textbf{physical characteristics}: in questionnaire was asked the weight and height keeping a range between $ 10cm $ and $ 10kg $. From the answers is possible to classify two macro groups, both of them composed by five users. The first group is composed by the users which height is less or equal than $ 70kg $ and which height it's also in this case less or equal than $ 180cm $. This group is  conveniently identified and ... in the next sections with \textbf{small users}. The other group, identified with \textbf{big users} is composed by users with weight grater that $ 70kg $ and height grater than $ 170cm $. There are also two users in this group that are taller than $ 180cm $.	
+	% TODO BMI non va bene
+	\item \textbf{physical characteristics}: %in questionnaire was asked the weight and height keeping a range between $ 10cm $ and $ 10kg $. From the answers is possible to classify two macro groups, both of them composed by five users. This group were classified using \textit{Body Mass Index} (BMI) to have a comparison metric weight and height. A threshold value was found and it's $ 21.5 $ $ kg/m^{2} $.
+	%The first group is composed by the users which BMI is less or equal than the threshold. This group is  conveniently identified and named in the next sections with \smallusers which stands for low body users. The other group, identified with \bigusers is composed by users with weight grater that $ 70kg $ and height grater than $ 170cm $. There are also two users in this group that are taller than $ 180cm $.	
 	 
-	\item \textbf{confidence with the pad}: the same reasoning can be applied to this classification. In the questionnaire was asked the level of confidence with the pad, that is with how frequency the pad is used and from the answers two macro groups both of them composed by 5 people. The users who replied more than once a week and at least once a month were classified as regular players and grouped together into \textbf{gamer} group. The users who replied that they use the pad once a year or they never used it were classified as casual players and are grouped into \textbf{non gamer} group. Also in this group there are all the users who have used the pad in the past.
+	\item \textbf{confidence with the pad}: the same reasoning can be applied to this classification. In the questionnaire was asked the level of confidence with the pad, that is with how frequency the pad is used and from the answers two macro groups both of them composed by 5 people. The users who replied more than once a week and at least once a month were classified as regular players and grouped together into \textbf{RP} group. The users who replied that they use the pad once a year or they never used it were classified as casual players and are grouped into \textbf{CP} group. Also in this group there are all the users who have used the pad in the past.
 \end{itemize}
 
 \noindent Moreover, during the experiment phase five users were made to start with the phase related to \kt{} and the other five with \te{} to better divide users into groups for a possible analysis of these factors as well. In the next section the results obtained starting from the two classifications described above and from the questionnaire are explained.
+
+\subsection{Data analysis}
+\label{data-analysis}
+
+To have groups with better data on user for each group with elevate standard deviation calculated for each task over the three trials have been removed. In following tables the time and distance for complete each task in both the modalities are represented as difference between the two groups that were created based on physical characteristics. 
+In table \ref{tab:time} the values are described in terms of seconds, instead in table \ref{tab:distance} the values presented are in meters. For both tables the first two columns indicates the groups, in the third one the difference between the \smallusers{} group and the \bigusers{} group is provided. In the last column the gain between the performances of the two groups is expresses as percentage. The positive and negative symbol was kept to indicate which of the two groups resulted faster or which one made less distance.
+\begin{table}[H]
+	\centering
+	\begin{tabular}{l||cccccc}
+		& \smallusers & \bigusers & \textbf{Difference} & \textbf{Gain} &\\
+		\hline \hline \\
+		\textbf{TT - Task2} & $ 147 $ & $ 154 $ & $ -7 $  & $ -4,5\% $\\
+		\textbf{TT - Task3} & $ 175 $ & $ 192 $ & $ -17 $ & $ -8,9\% $\\
+		\textbf{KT - Task2} & $ 70 $  & $ 64 $  & $ +6 $ & $ 9,4\% $\\
+		\textbf{KT - Task3} & $ 70 $  & $ 62 $  & $ +8 $  & $ 12,3\% $
+	\end{tabular}
+	\caption{Time difference in seconds between the two groups}
+	\label{tab:time}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{l||cccccc}
+		& \smallusers & \bigusers & \textbf{Difference} & \textbf{Gain} &\\
+		\hline \hline \\
+		\textbf{TT - Task2} & $ 2,10 $ & $ 2,23 $ & $ -0,13 $ & $ -5,8\% $\\
+		\textbf{TT - Task3} & $ 1,97 $ & $ 2,34 $ & $ -0,37 $ & $ -15,8\% $\\
+		\textbf{KT - Task2} & $ 2,54 $ & $ 2,39 $ & $ +0,15 $ & $ 6,3\% $\\
+		\textbf{KT - Task3} & $ 2,54 $ & $ 2,29 $ & $ +0,25 $ & $ 10,9\% $
+	\end{tabular}
+	\caption{Distance difference in meters between the two groups}
+	\label{tab:distance}
+\end{table}
+
+\noindent For a better understanding of the data presented in tables it's possible to group everything using boxplots. 
+% TODO quanti boxplot ?
+
+For the questionnaire, based on user responses was possible to collect the data relative to physical and mental effort by the two groups, always divided by personal characteristics.
+
+
 
 \section{Result discussion}
 \label{result-discussion}
