@@ -131,15 +131,16 @@ In table \ref{tab:time} the values are described in terms of seconds, instead in
 In figure \ref{fig:time_and_distance_group_t2} the two figures indicates the same values of previous tables. The figure \ref{fig:time_groups_t2} represents graphically the table \ref{tab:time} and the values on $ x $ axis are in seconds. Instead in figure \ref{fig:distance_groups_t2.png} there are the data represented in table \ref{tab:distance} and the values on $ x $ axis are in meters. From these figures is possible to quickly understand the differences between the two groups and the different modalities. Moreover it's possible to understand the correlation between time and distance. Only times and distances for the task $ t1 $ are represented in the these figures: the figures for task $ t2 $ are similar but with the values described in the relevant table.
 
 \begin{figure}[H]
-	\begin{subfigure}{.5\textwidth}
+	\begin{subfigure}{1\textwidth}
 		\centering
-		\includegraphics[width=1\linewidth]{time_groups_t2.png}
+		\includegraphics[scale=0.2]{time_groups_t2.png}
 		\caption{Time in seconds for completing task $ t1 $}
 		\label{fig:time_groups_t2}
 	\end{subfigure}%
-	\begin{subfigure}{.5\textwidth}
+	\\
+	\begin{subfigure}{1\textwidth}
 		\centering
-		\includegraphics[width=1\linewidth]{distance_groups_t2.png}
+		\includegraphics[scale=0.2]{distance_groups_t2.png}
 		\caption{Distance in meters for completing task $ t1 $}
 		\label{fig:distance_groups_t2.png}
 	\end{subfigure}
@@ -168,16 +169,17 @@ From the questionnaire was possible to collect data relative to physical and men
 As described in the previous chapters many data were collected during the experiment. One of these is the \texttt{cartesian\_wrench}: it's composed of a vector that represent the force along three directions $ \{ x,y,z \} $. In figure \ref{fig:plot_wrench} is possible to see the differences between the force applied on EE during the experiment, in \te{} the interaction forces are limited instead in \kt{} the forces are high.  In both figures on $ y $ axis there's the force applied on $ z $ and along $ x $ axis there is the time in seconds to complete the trial. In these figures only one trial of the same user is represented. The same graphs, that are similar, can be calculated on forces applied on $ x $ and $ y $. 
 
 \begin{figure}[H]
-	\begin{subfigure}{.5\textwidth}
+	\begin{subfigure}{1\textwidth}
 		\centering
-		\includegraphics[width=1\linewidth]{wrench_tt.png}
-		\caption{\Te{}}
+		\includegraphics[scale=0.2]{wrench_tt.png}
+		\caption{\Te{} teaching}
 		\label{fig:wrench_tt}
 	\end{subfigure}%
-	\begin{subfigure}{.5\textwidth}
+	\\
+	\begin{subfigure}{1\textwidth}
 		\centering
-		\includegraphics[width=1\linewidth]{wrench_kt.png}
-		\caption{\Kt{}}
+		\includegraphics[scale=0.2]{wrench_kt.png}
+		\caption{\Kt{} teaching}
 		\label{fig:wrenck_kt}
 	\end{subfigure}
 	\caption{Difference between wrench on Z \\in \te{} and \kt{}}
@@ -191,16 +193,17 @@ On $ x $ axis the force applied on EE is represented in $ N $.
 
 \begin{figure}[H]
 	\centering
-	\begin{subfigure}{.5\textwidth}
+	\begin{subfigure}{1\textwidth}
 		\centering
-		\includegraphics[width=1\linewidth]{wrench_all_kt.png}
-		\caption{\Te{}}
+		\includegraphics[scale=0.2]{wrench_all_kt.png}
+		\caption{\Te{} teaching}
 		\label{fig:wrench_all_kt}
 	\end{subfigure}%
-	\begin{subfigure}{.5\textwidth}
+	\\
+	\begin{subfigure}{1\textwidth}
 		\centering
-		\includegraphics[width=1\linewidth]{wrench_all_tt.png}
-		\caption{\Kt{}}
+		\includegraphics[scale=0.2]{wrench_all_tt.png}
+		\caption{\Kt{} teaching}
 		\label{fig:wrench_all_tt}
 	\end{subfigure}
 	\caption{Wrench on $ x,y,z $ of users grouped by physical \\characteristics in \te{} and \kt{}}
@@ -228,45 +231,27 @@ The minimum number of waypoints to have a task that can be replayed correctly by
 	\label{tab:ratio}
 \end{table}
 
-% todo precision waypoints
-%\noindent
-%
-%\begin{figure}[H]
-%	\centering
-%	\begin{subfigure}{.5\textwidth}
-%		\centering
-%		\includegraphics[width=1\linewidth]{waypoints_kt_t1.png}
-%		\caption{Task 1}
-%		\label{fig:waypoints_kt_t1}
-%	\end{subfigure}%
-%	\begin{subfigure}{.5\textwidth}
-%		\centering
-%		\includegraphics[width=1\linewidth]{waypoints_kt_t2.png}
-%		\caption{Task 2}
-%		\label{fig:waypoints_kt_t2}
-%	\end{subfigure}
-%	\caption{Waypoints precision in \kt{} teaching}
-%	\label{fig:waypoints_kt}
-%\end{figure}
-%
-%\begin{figure}[H]
-%	\centering
-%	\begin{subfigure}{.5\textwidth}
-%		\centering
-%		\includegraphics[width=1\linewidth]{waypoints_tt_t1.png}
-%		\caption{Task 1}
-%		\label{fig:waypoints_tt_t1}
-%	\end{subfigure}%
-%	\begin{subfigure}{.5\textwidth}
-%		\centering
-%		\includegraphics[width=1\linewidth]{waypoints_tt_t2.png}
-%		\caption{Task 2}
-%		\label{fig:waypoints_tt_t2}
-%	\end{subfigure}
-%	\caption{Waypoints precision in \te{} teaching}
-%	\label{fig:waypoints_tt}
-%\end{figure}
+\noindent
+In figure \ref{fig:waypoints} are shown the waypoints taken during the execution of the task $ t1 $. The red points are referred to \smallusers{} group, instead the blue ones are for \bigusers{} group. On $ x $ and $ y $ axis there is the locations of the points within the space. Each patch of color indicates the position of the shapes, while the $ \square $ mark indicates the position of the cube above each object to facilitate grasping. All waypoints aren't in the center of the object because the opening of the gripper is bigger than the shapes to manipulate.
 
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}{1\textwidth}
+		\centering
+		\includegraphics[scale=0.2]{waypoints_kt_t1.png}
+		\caption{\Kt{} teaching}
+		\label{fig:waypoints_kt_t1}
+	\end{subfigure}%
+	\\
+	\begin{subfigure}{1\textwidth}
+		\centering
+		\includegraphics[scale=0.2]{waypoints_tt_t1.png}
+		\caption{\Te{} teaching}
+		\label{fig:waypoints_tt_t1}
+	\end{subfigure}
+	\caption{Waypoints precision in \te{} and \kt{} teaching}
+	\label{fig:waypoints}
+\end{figure}
 
 \section{Results discussion}
 \label{results-discussion}
