@@ -18,12 +18,10 @@ This section has been divided into various subsections for a better description 
 During the experiment all the participants were set free to pick up the objects in the order they prefer. All of them use the order as $ \{ $\textit{triangle, trapezoid and circle}$ \} $, but only one decided to pick up the objects in different order for all the trials only in \kt{}. This doesn't affect the data. \\
 As described in \ref{experimental-design}, for every task three trials in both the modalities were done. From these trials some comments was taken and it's possible to report that:
 \begin{itemize}
-	\item in \textbf{\kt{}} there aren't many additional comments. Only one user, for every trial, took many waypoints even after it was shown to him how the robot replicates the sequence. Moreover sometimes some users wrong in taking the waypoint and opens or closes the gripper, but this not affect the final realization. Finally one user, the most experienced in the use of robots who knows the environment well, always takes a point just above the place position to make the interlocking without problems: this happens only for the second task.% No trial had any problems therefore the success rate is $ 100\% $ and all the replay phase shown after the first trial were done correctly by the robot.
+	\item in \textbf{\kt{}} there aren't many additional comments. Only one user, for every trial, took many waypoints even after it was shown to him how the robot replicates the sequence. Moreover sometimes some users wrong in taking the waypoint and opens or closes the gripper, but this not affect the final realization. Finally one user, the most experienced in the use of robots who knows the environment well, always takes a point just above the place position to make the interlocking without problems: this happens only for the second task.
 	
-	\item in \textbf{\te{}} there were many problems in teaching phase. Out of ten users, seven of them made a collision.%This happens because they aren't very sensitive with the pad and they try to do all the teaching phase using position control and they don't change in impedance control in the critical phases. Another motivation reported by the users is because they are used to using another reference frame when they use the pad for other purposes.
-	In figure \ref{fig:pass_fail} pass and fail during teaching phase are shown. With $ \{t1,t2\} $ is indicated the task and with $ \{r1,r2,r3\} $ the trial. We can see that the first and the second column, that are the first trails have a high number of failures.% This is due to the fact that users have not become confident with the pad.
+	\item in \textbf{\te{}} there were many problems in teaching phase. Out of ten users, seven of them made a collision. In figure \ref{fig:pass_fail} successes and failures during teaching phase are shown. With $ \{t1,t2\} $ is indicated the task and with $ \{r1,r2,r3\} $ the trial. We can see that the first and the second column, that are the first trails have a high number of failures.
 	In task $ t1 $ and trial $ r1,r2 $ and task $ t2 $ and trial $ r1 $ we can see that there was only a mistake by all the users: this is acceptable. The surprising value is the last one (task $ t2 $ and trial $ r3 $): it would be logical that this value was zero or small because it's the latest trial and the users should have become very familiar with the pad. The users who made these mistakes were only those who started with \te{}.
-	%: it's possible say that they were tired and wanted to pass to \kt{} phase because it's faster.
 	
 	\begin{figure}[ht]
 		\centering
@@ -91,7 +89,7 @@ From the questionnaire questions and answers is possible to create some differen
 	%This group were classified using \textit{Body Mass Index} (BMI) to have a comparison metric weight and height. A threshold value was found and it's $ 21.5 $ $ kg/m^{2} $.
 	%The first group is composed by the users which BMI is less or equal than the threshold. This group is  conveniently identified and named in the next sections with \smallusers which stands for low body users. The other group, identified with \bigusers is composed by users with weight grater that $ 70kg $ and height grater than $ 170cm $. There are also two users in this group that are taller than $ 180cm $.	
 	 
-	\item \textbf{confidence with the pad}: the same reasoning can be applied to this classification. In the questionnaire was asked the level of confidence with the pad, that is with how frequency the pad is used and from the answers two macro groups both of them composed by 5 people. The users who replied more than once a week and at least once a month were classified as regular players and grouped together into \textbf{RP} group. The users who replied that they use the pad once a year or they never used it were classified as casual players and are grouped into \textbf{CP} group. Also in this group there are all the users who have used the pad in the past.
+	\item \textbf{confidence with the pad}: the same reasoning can be applied to this classification. In the questionnaire was asked the level of confidence with the pad, that is with how frequency the pad is used and from the answers two macro groups both of them composed by 5 people. The users who replied more than once a week and at least once a month were classified as regular players and these users are called \textbf{RP}. The users who replied that they use the pad once a year or they never used it were classified as casual players and they are called \textbf{CP}. Also all the users who have used the pad in the past are casual players.
 \end{itemize}
 
 \noindent Moreover, during the experiment phase five users were made to start with the phase related to \kt{} and the other five with \te{} to better divide users into groups for a possible analysis of these factors as well. In section \ref{results-discussion} the results obtained starting from the two classifications described above and from the questionnaire are explained.
@@ -230,10 +228,81 @@ The minimum number of waypoints to have a task that can be replayed correctly by
 	\label{tab:ratio}
 \end{table}
 
-\noindent
+% todo precision waypoints
+%\noindent
+%
+%\begin{figure}[H]
+%	\centering
+%	\begin{subfigure}{.5\textwidth}
+%		\centering
+%		\includegraphics[width=1\linewidth]{waypoints_kt_t1.png}
+%		\caption{Task 1}
+%		\label{fig:waypoints_kt_t1}
+%	\end{subfigure}%
+%	\begin{subfigure}{.5\textwidth}
+%		\centering
+%		\includegraphics[width=1\linewidth]{waypoints_kt_t2.png}
+%		\caption{Task 2}
+%		\label{fig:waypoints_kt_t2}
+%	\end{subfigure}
+%	\caption{Waypoints precision in \kt{} teaching}
+%	\label{fig:waypoints_kt}
+%\end{figure}
+%
+%\begin{figure}[H]
+%	\centering
+%	\begin{subfigure}{.5\textwidth}
+%		\centering
+%		\includegraphics[width=1\linewidth]{waypoints_tt_t1.png}
+%		\caption{Task 1}
+%		\label{fig:waypoints_tt_t1}
+%	\end{subfigure}%
+%	\begin{subfigure}{.5\textwidth}
+%		\centering
+%		\includegraphics[width=1\linewidth]{waypoints_tt_t2.png}
+%		\caption{Task 2}
+%		\label{fig:waypoints_tt_t2}
+%	\end{subfigure}
+%	\caption{Waypoints precision in \te{} teaching}
+%	\label{fig:waypoints_tt}
+%\end{figure}
 
-% todo 
+
 \section{Results discussion}
 \label{results-discussion}
 
-% quello che ho scritto di la
+The result discussion is done based on groups divided by physical characteristics. These groups allows us to evaluate the difference between \te{} and \kt{}, and moreover allows us to respond to the section relative to goals. It's necessary to make an initial clarification: the \smallusers{} group is composed by four users which are definite as regular players. This bias was noticed only after the analysis that was made on users by physical characteristics, and will allow us to make important observations as regards the \te{} mode. Moreover, it was also noted in the analysis phase as four users from the \smallusers{} group never used a robot before this experiment.\\ %This section begins with some clarifications about the two phases: in \kt{} teaching only one trial failed, instead in \te{} teaching many trails failed as described in figure \ref{fig:pass_fail}. This happens because the users aren't very sensitive with the pad and in the critical phases they try to do all the teaching phase using position control and they don't change in impedance control.
+
+\noindent
+Starting from the data relative to the distance and time to complete the tasks in both the modalities is possible to affirm that the phase relative to \te{} teaching is slower than the phase relative to \kt{} teaching. This aspect is independent of the division into groups. Also, as we can see in figure \ref{fig:time_and_distance_group_t2} starting from the division in group we can notice some differences between the \smallusers{} and the \bigusers{} group. The \smallusers{} group is faster than the other one in \te{}, and the concept of time to complete the task is related to the distance to complete the same task. This concept is related to the fact that four users in \smallusers{} group are \regular{}. So, if an user travel less distance than the same user he is faster. Instead, regarding the \kt{} phase it's possible to notice a substantial difference with respect to the \te{}: controlling the robot in gravity compensation is absolutely faster than using remote control. But in this case, unlike the \te{} the users of the group \bigusers{} are actually faster than the users of the other group. This is due to the physical characteristics of each user. We can therefore say with certainty that the \te{} unifies the differences about physical characteristics and if the confidence with the pas was the same among all the users, event the times could be unified among all. \\
+
+\noindent
+From table \ref{tab:effort} is possible to see the differences between the two groups. For a better explanation the various efforts in the two modalities are divided into four points:
+\begin{itemize}
+	\item \textbf{Mental effort in \te{}}. This point is the one that needs the least explanation. In fact, the difference between the mental effort ($ 5,6 $ for \smallusers{} and $ 6 $ for \bigusers) of the groups are not high. We can say that the \smallusers{} group has a lower value, that implies that the users of this group are more relaxed. This is mainly due to the fact that these users have confidence with the pad, although this values should be higher because four users never seen a robot before this experiment. From these values it's possible to affirm that \te{} isn't mentally tiring.
+	
+	\item \textbf{Mental effort in \kt{}}. As shown in the relative table the differences between the two groups are substantial: $ 5,2 $ for \smallusers{} and $ 2,8 $ for \bigusers. Four users of \smallusers{} group started with \kt{} teaching so they had to be more mentally relaxed, but this didn't happen. This concept is related to the fact that more than half ot this group never use a robot before this experiment.
+	
+	% cosa proponiamo per sistemare?
+	
+	\item \textbf{Physical effort in \te{}}.
+	
+	\item \textbf{Physical effort in \kt{}}.
+	
+\end{itemize}
+
+% resoconto differenze tra sforzi mentali delle due modalità
+
+
+%From figure \ref{fig:plot_wrench} it's possible to notice the difference between the force applied on EE during the experiment. In \te{}, there is not interaction with the robot and the user control the robot without being in contact. This especially affects the effort of the users who are not used to using robots.
+
+
+% risposte dei questionari
+% quello che è scritto sopra ma commentato
+% quello che ho nel pdf analisi stazza
+
+
+
+
+
+
