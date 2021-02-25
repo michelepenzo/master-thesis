@@ -11,7 +11,17 @@
 \usepgfplotslibrary{dateplot}
 
 \usepackage{xspace}
-\newcommand{\themename}{\textbf{\textsc{metropolis}}\xspace}
+
+\newcommand{\kt}{kinesthetic}
+\newcommand{\te}{teleoperation}
+\newcommand{\Kt}{Kinesthetic}
+\newcommand{\Te}{Teleoperation}
+
+\newcommand{\smallusers}{\textbf{LBU}}
+\newcommand{\bigusers}{\textbf{TBU}}
+\newcommand{\regular}{\textbf{RP}}
+\newcommand{\casual}{\textbf{RP}}
+
 
 
 \title{Towards an optimal method for teaching industrial assembly tasks using collaborative robots: teleoperation vs kinesthetic}
@@ -48,11 +58,17 @@
 	
 	\begin{frame}{Table of contents}
 		\setbeamertemplate{section in toc}[sections numbered]
-		\tableofcontents%[hideallsubsections]
+		\tableofcontents[hideallsubsections]
 	\end{frame}
 	
-	\section[Intro]{Introduction}
-	
+	\include{sections/introduction}
+	\include{sections/project}	
+%	\include{sections/materials_methods}
+%	\include{sections/experiment}
+%	\include{sections/results_analysis}
+%	\include{sections/results_discussion}
+%	\include{sections/conclusion}
+
 
 	
 \end{document} 
