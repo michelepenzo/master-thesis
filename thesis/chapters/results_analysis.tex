@@ -69,7 +69,8 @@ As described in section \ref{post-experiment-phase}, the questionnaire was divid
 	\end{figure}
 
 \end{itemize}
-\noindent From the final comments not obligatory for the purposes of the questionnaire, the users said that the \te{} is very interesting and they propose to map a new button on pad to move faster on long movements and another one to be better precise with the rotation of the EE. Instead they propose to add an audio feedback (not only the \textit{rgb} led) after getting the pose or changing the control mode. Moreover an user propose to let him choose the reference frame that is used to move the robot.
+
+From the final comments not obligatory for the purposes of the questionnaire, the users said that the \te{} is very interesting and they propose to map a new button on pad to move faster on long movements and another one to be better precise with the rotation of the EE. Instead they propose to add an audio feedback (not only the \textit{rgb} led) after getting the pose or changing the control mode. Moreover an user propose to let him choose the reference frame that is used to move the robot.
 
 \section{Groups}
 \label{groups}
@@ -77,14 +78,13 @@ As described in section \ref{post-experiment-phase}, the questionnaire was divid
 From the questionnaire questions and answers is possible to create some different groups based on personal characteristics. Many different factors were analyzed to see if there was a correlation between the various characteristics of the users and the results obtained from the experiment. From the data is possible to determine two possible classifications based on:
 
 \begin{itemize}
-	% TODO trovare qualcosa di meglio per dividere i gruppi
 	\item \textbf{physical characteristics}: in questionnaire was asked the weight and height keeping a range between $ 10cm $ and $ 10kg $. From the answers is possible to classify two macro groups, both of them composed by five users.
 	The first group is composed by the users which height is less or equal than $ 70kg $ and which height it's less or equal than $ 180cm $. This group is  conveniently identified and referenced in the next sections with \smallusers{} that stands for low body users. The other group, identified with \bigusers{} that stands for tall body users, is composed by users with weight grater that $ 70kg $ and height grater than $ 170cm $. There are also two users in this group that are taller than $ 180cm $.	
 
 	\item \textbf{confidence with the pad}: the same reasoning can be applied to this classification. In the questionnaire was asked the level of confidence with the pad, that is with how frequency the pad is used and from the answers two macro groups both of them composed by 5 people have been identified. The users who replied more than once a week and at least once a month were classified as regular players and these users are called \textbf{RP}. The users who replied that they use the pad once a year or they never used it were classified as casual players and they are called \textbf{CP}. Also all the users who have used the pad in the past are casual players.
 \end{itemize}
 
-\noindent Moreover, during the experiment phase five users were made to start with the phase related to \kt{} teaching and the other five with \te{} teaching to better divide users into groups for a possible analysis of these factors as well. In chapter \ref{results-discussion} the results obtained starting from the two classifications described above and from the questionnaire are explained.
+Moreover, during the experiment phase five users were made to start with the phase related to \kt{} teaching and the other five with \te{} teaching to better divide users into groups for a possible analysis of these factors as well. In chapter \ref{results-discussion} the results obtained starting from the two classifications described above and from the questionnaire are explained.
 
 \section{Data analysis}
 \label{data-analysis}
@@ -120,7 +120,6 @@ In table \ref{tab:time} the values are described in terms of seconds, instead in
 	\label{tab:distance}
 \end{table}
 
-\noindent
 The two figures in \ref{fig:time_and_distance_group_t2} indicates the same values of the previous tables. The figure \ref{fig:time_groups_t2} represents graphically the table \ref{tab:time} and the values on $ x $ axis are in seconds. Instead in figure \ref{fig:distance_groups_t2.png} there are the data represented in table \ref{tab:distance} and the values on $ x $ axis are in meters. From these figures is possible to quickly understand the differences between the two groups and the different modalities. Moreover it's possible to understand the correlation between time and distance. Only times and distances for the task $ t1 $ are represented in the these figures because the figures for task $ t2 $ are similar but with the values described in the relevant table.
 
 \begin{figure}[H]
@@ -141,7 +140,6 @@ The two figures in \ref{fig:time_and_distance_group_t2} indicates the same value
 	\label{fig:time_and_distance_group_t2}
 \end{figure}
 
-\noindent
 From the questionnaire have been collected the data relative to physical and mental effort. These data have been manipulated with division into groups based on physical characteristics. In table \ref{tab:effort} there is the average of the values indicated by the users in questionnaire. The value that was to be indicated were in scale from $ 1 $ to $ 10 $. As the previous tables, on the first and second column there are the two groups. Instead, on the rows there are the efforts for each modality. The first two rows are relative to mental effort, the first one in \te{} and the second one in \kt{}. The third row is relative to physical effort in \te{} and the last one refers to \kt{}. The overall values without the divisions into groups can be seen in figure \ref{fig:mental_effort} for mental effort and in figure \ref{fig:physical_effort} for physical effort.
 
 \begin{table}[H]
@@ -158,7 +156,6 @@ From the questionnaire have been collected the data relative to physical and men
 	\label{tab:effort}
 \end{table}
 
-\noindent
 As described in the previous chapters many data were collected during the experiment. One of these is the \texttt{cartesian\_wrench}: it's composed of a vector that represent the force along the three spatial directions $ \{ x,y,z \} $. In figure \ref{fig:plot_wrench} is possible to see the differences between the force applied on EE during the experiment, in \te{} the interaction forces are limited instead in \kt{} the forces are high.  In both figures on $ y $ axis there's the force applied on $ z $ and along $ x $ axis there is the time in seconds to complete the trial. In these figures only one trial of the same user is represented. The same graphs, that are similar, can be calculated on forces applied on $ x $ and $ y $. 
 
 \begin{figure}[H]
@@ -179,7 +176,6 @@ As described in the previous chapters many data were collected during the experi
 	\label{fig:plot_wrench}
 \end{figure}
 
-\noindent
 In figure \ref{fig:wrench_all} there is another representation of \texttt{cartesian\_wrench} calculated on $ x,y,z $. These figures represent the difference between \kt{} and \te{} teaching between the two groups always divided by physical characteristics. All the boxplots shown in both the figures are divided in three groups (a group for each value of the wrench $\{ x,y,z \}$) and every group has two boxplots: the first one for \smallusers{} group and the second one for \bigusers{} group.
 Each boxplot represent the sum of the forces applied on a certain axes of the EE, by all users divided per groups performing all the trials $\{ r1,r2,r3\} $ of each task $\{ t1,t2 \}$.
 On $ x $ axis the force applied on EE is represented in $ N $.
@@ -203,7 +199,6 @@ On $ x $ axis the force applied on EE is represented in $ N $.
 	\label{fig:wrench_all}
 \end{figure}
 
-\noindent
 The table represented in figure \ref{tab:ratio} represent the total number of waypoints taken by all users grouped by physical characteristics during all trials for each task in different modalities. It's possible to notice that there are two macro columns for the two groups where each of them contains other three columns. For each macro column, the first column contains the number of trials completed by all users of the group. The second column contains the number of waypoints taken by all users during all the trials and the third column is the ratio between the two first columns. Instead the rows represent the modality and the task that is performed.
 The minimum number of waypoints to have a task that can be replayed correctly by the \kuka{} is $ 16 $: three points for every objects except only two points for the first and last object. Instead the optimal number is $ 18 $: three points for every object to pick and place.
 
@@ -224,7 +219,6 @@ The minimum number of waypoints to have a task that can be replayed correctly by
 	\label{tab:ratio}
 \end{table}
 
-\noindent
 In figure \ref{fig:waypoints} are shown the waypoints taken during the execution of the task $ t1 $. The red points are referred to \smallusers{} group, instead the blue ones are for \bigusers{} group. On $ x $ and $ y $ axis there is the locations of the points within the space. Each patch of color indicates the position of the shapes, while the $ \square $ mark indicates the position of the cube above each object to facilitate grasping. All waypoints aren't in the center of the object because the position save is the one relative to the center of the media flange mounted on6 the robot.
 
 \begin{figure}[H]
