@@ -18,23 +18,22 @@ The \kuka{} is a robot with collaborative features. It has a 14 kg payload and a
 
 \section{Methods}
 \label{methods}
-The first thing that was done was the calibration of the gripper using the application provided by \textit{Kuka} and usable from the \textit{SmartPad}. This application consists of move the sixth and seventh joint with multiple movements and provide a way to calculate the weight, center of mass and inertia matrix of the tool attached on media flange. This operations was made in different configurations (in the most used for this work) for several times and all times gave reasonable values. Finally, the configured tool was loaded as \texttt{ros\_param} and recognized from the stack.
-
-Using \textit{ROS} and the open source stack available on \cite{iiwa-stack-link}, many \texttt{topics} can be used to calculate joint position and velocity, torque on joint, cartesian pose and force on referenced frame. Before the user study some data are collected to understand how the final experiment can be evaluated.
-
-The topic called \texttt{CartesianWrench}, will show the external force measured by the robot according to the used reference frame. In our case, the force is measured on the media flange. To understand if we could consider the force applied on the EE, some experiments were conducted to understand the reliability and responsiveness of the values returned from this topic. This test were conducted using objects of different weight calibrated on a scale with precision to the gram and attached to both of the two jaws on the gripper. Every weighing was performed in three different configuration of the robot and for two times. In table \ref{tab:wrench} the results obtained from the experiment.
+The first thing that was done was the calibration of the gripper using the application provided by \textit{Kuka} and usable from the \textit{SmartPad}. This application consists of move the sixth and seventh joint with multiple movements and provide a way to calculate the weight, center of mass and inertia matrix of the tool attached on media flange. This operations was made in different configurations (in the most used for this work) for several times and all times gave reasonable values. Finally, the configured tool was loaded as \texttt{ros\_param} and recognized from the stack.\\
+In this work \textit{ROS} and the open source stack available on \cite{iiwa-stack-link} were used. This stack provides many \texttt{topics} that can be used to calculate joint position and velocity, torque on joint, cartesian pose and force on referenced frame. Before the user study some data are collected to understand how the final experiment can be evaluated.\\
+The topic called \texttt{CartesianWrench}, will show the external force measured by the robot according to the used reference frame. In our case, the force is measured on the media flange. To understand if we could consider the force applied on the EE, some experiments were conducted to understand the reliability and responsiveness of the values returned from this topic. This test were conducted using objects of different weight calibrated on a scale with precision to the gram and attached to both of the two jaws of the gripper. Every weighing was performed in three different configuration of the robot and for two times. The pose $ p1 $, or home pose, is with the elbow high in start position. The pose $ p2 $ with the mediaflange perpendicular to the pick position used in the experiments, and the pose $ p3 $ for the place position used in the experiment.
+In table \ref{tab:wrench} the results obtained from the experiment.
 
 \begin{table}[H]
 	\centering
 	\begin{tabular}{l||llllll}
 		&\textbf{400 gr}	&\textbf{700 gr}	&\textbf{1000 gr}	&\textbf{1300 gr} &\textbf{1600 gr}\\
 		\hline\hline
-		\textbf{Home pose}	&4,777		&7,566		&10,129		&13,302		&15,926	\\
-		\textbf{Home pose}	&4,702		&7,531		&10,145		&13,332		&16,083	\\
-		\textbf{On pallet} 	&4,475		&7,267		&9,541		&13,696		&16,253	\\
-		\textbf{On pallet} 	&4,477		&7,245		&12,139		&13,641		&16,208	\\
-		\textbf{On buffer} 	&2,349		&6,581		&9,626		&12,254		&15,385	\\
-		\textbf{On buffer} 	&2,895		&6,615		&9,718		&12,330		&16,244 \\
+		\textbf{p1}	&4,777		&7,566		&10,129		&13,302		&15,926	\\
+		\textbf{p1}	&4,702		&7,531		&10,145		&13,332		&16,083	\\
+		\textbf{p2} 	&4,475		&7,267		&9,541		&13,696		&16,253	\\
+		\textbf{p2} 	&4,477		&7,245		&12,139		&13,641		&16,208	\\
+		\textbf{p3} 	&2,349		&6,581		&9,626		&12,254		&15,385	\\
+		\textbf{p3} 	&2,895		&6,615		&9,718		&12,330		&16,244 \\
 		
 		\hline \hline
 		
@@ -44,36 +43,43 @@ The topic called \texttt{CartesianWrench}, will show the external force measured
 	\caption{Results from experiment to evaluate force on EE}
 	\label{tab:wrench}
 \end{table}
-From the test we can understand that the values obtained are reasonable and in line with expectations, even if in the case of robots with elbow in high position (on pallet) the values are underestimated. This test was done in position and impedance control and the results are similar.
-
+From the test we can understand that the values obtained are reasonable and in line with expectations, even if in the case of robots with elbow in high position ($ p3 $) the values are underestimated. This test was done in position and impedance control and the results are similar.\\
 Another test that was made using the force applied on EE analyzes the maximum force that can be applied by the robot on a linear surface before that the collision avoidance feature is activated. This test also helped us to understand the reliability of the read values. It was made using position control in figure \ref{fig:wrench_position} and impedance control in \ref{fig:wrench_impedance}.
 
 \begin{figure}[ht]
-	\centering
-	\includegraphics[scale=0.5]{position_wrench.png}
-	\caption{Force calculated on EE in position control}
-	\label{fig:wrench_position}
+	\begin{subfigure}{1\textwidth}
+		\centering
+		\includegraphics[scale=0.2]{position_wrench.png}
+		\caption{Force calculated on EE in position control}
+		\label{fig:wrench_position}
+	\end{subfigure}%
+	\\
+	\begin{subfigure}{1\textwidth}
+		\centering
+		\includegraphics[scale=0.2]{impedance_wrench.png}
+		\caption{Force calculated on EE in impedance control}
+		\label{fig:wrench_impedance}
+	\end{subfigure}
+	
+	\caption{Difference between force calculated on EE in \\position and impedance control}
+	\label{fig:wrench_test}
 \end{figure}
 
-\begin{figure}[ht]
-	\centering
-	\includegraphics[scale=0.5]{impedance_wrench.png}
-	\caption{Force calculated on EE in impedance control}
-	\label{fig:wrench_impedance}
-\end{figure} 
-In figure \ref{fig:wrench_position} we can observe that using position control the curve of the force applied is exponential and it stops about a $ 14 N$ that is the maximum force that the \kuka{} can impart. Instead, in figure \ref{fig:wrench_impedance} we can immediately spot the difference between impedance and position control. We can see that the maximum force that can be applied before that collision avoidance is activated is no longer $ 14N $ but $ 7N $. This is due to impedance control that is an approach to dynamic control relating force and position. A \textit{spring constant} defines the force output for a compression of the spring, instead a \textit{damping constant} defines the force output for a velocity input. Using impedance control we are controlling the force of resistance to external motions that are imposed by the environment. In fact, in figure \ref{fig:wrench_impedance} we can see the behavior of the spring: it reacts to the force applied on the surface by adapting (the first part of the curve), but when the force is too much and the damping constant too low to perform an adaptive movement it stops and the robot applies the maximum possible force. Since there is the damping constant, the maximum force will therefore be $ 7N$.
+\noindent
+In figure \ref{fig:wrench_position} we can observe that using position control the curve of the force applied is exponential and it stops about a $ 14 N$ that is the maximum force that the \kuka{} can impart. Instead, in figure \ref{fig:wrench_impedance} we can immediately spot the difference between impedance and position control. We can see that the maximum force that can be applied before that collision avoidance is activated is no longer $ 14N $ but $ 7N $. This is due to impedance control that is an approach to dynamic control relating force and position. A \textit{spring constant} defines the force output for a compression of the spring, instead a \textit{damping constant} defines the force output for a velocity input. Using impedance control we are controlling the force of resistance to external motions that are imposed by the environment. In fact, in figure \ref{fig:wrench_impedance} we can see the behavior of the spring: it reacts to the force applied on the surface by adapting (the first part of the curve), but when the force is too much and the damping constant too low to perform an adaptive movement it stops and the robot applies the maximum possible force. Since there is the damping constant, the maximum force will therefore be $ 7N$.\\
+As preliminary action a test of the final experiment explained in chapter \ref{experiment} has been done for test how the experiment can be done by the participants. Especially, during this test all the possible data were collected subscribing to \texttt{topic} as:
 
-As preliminary action a test of the final experiment discussed in section \ref{experiment} has been done for test how the experiment can be done by the participants. Especially, during this test all the possible data were collected subscribing to \texttt{topic} as:
 \begin{itemize}
 	\item \texttt{CartesianPose}: position and orientation of EE,
 	\item \texttt{CartesianWrench}: force applied on EE,
 	\item \texttt{JointPositionVelocity}: position and velocity of all joints,
 	\item \texttt{JointExternalTorque} and \texttt{JointTorque}: torque applied on joints.
 \end{itemize}
-This phase of the test was made by an inexperienced user who had to do the same task for $ N $ times. The value of $ N $ that has been chosen is $ 5 $: a relatively high value that will be reduced in the final experiment. The task consisted to move four Lego blocks from a pick position to a place position. This task was repeated for both the modalities: \kt{} and \te{}.
-The data collected before the final experiment provides a solid basis to be able to perform a preliminary analysis to understand how to perform the final experiment by collecting only the data necessary for the final evaluation.
 
-As represented in figure \ref{fig:diff_kt} we can say that the time necessary to complete the task was similar between the two users, but in the figure \ref{fig:kt_user} the first trial wasn't completed due a mistake by the user. In this case wasn't made to repeat the experiment because this was a test and all the possible problems had to be understood. We can also say that with more attempts the time for complete the task is always minor.
+\noindent
+This phase of the test was made by an inexperienced user who had to do the same task for $ N $ times. The value of $ N $ that has been chosen is $ 5 $: a relatively high value that will be reduced in the final experiment. The task consisted to move four Lego blocks from a pick position to a place position. This task was repeated for both the modalities: \kt{} and \te{} teaching.
+The data collected before the final experiment provides a solid basis to be able to perform a preliminary analysis to understand how to perform the final experiment by collecting only the data necessary for the final evaluation.\\
+In figure \ref{fig:diff_kt} and \ref{fig:diff_teleop}, on $ x $ axis the five repetitions of the users, while on $ y $ axis the time in seconds necessary to complete each repetition. As represented in figure \ref{fig:diff_kt} we can say that the time necessary to complete the task in \kt{} teaching was similar between the two users, but in the figure \ref{fig:kt_user} the first trial wasn't completed due a mistake by the user. In this case wasn't made to repeat the experiment because this was a test and all the possible problems had to be understood. We can also say that with more attempts the time for complete the task is always minor.
 
 \begin{figure}[ht]
 	\begin{subfigure}{.5\textwidth}
@@ -88,36 +94,41 @@ As represented in figure \ref{fig:diff_kt} we can say that the time necessary to
 		\caption{User with experience}
 		\label{fig:kt_me}	
 	\end{subfigure}
-	\caption{Difference between users in \kt}
+	\caption{Difference between users in \kt{} teaching}
 	\label{fig:diff_kt}
 \end{figure}
 
+\noindent
 In figure \ref{fig:diff_teleop} we can say that the times for complete the task in \te{} are high respect to \kt{}. We can also say that user inexperienced is always slower than user with experience. Even in this case the user inexperienced made a mistake (figure \ref{fig:teleop_user}) because made a collision with a Lego block but it was included anyway in the results.
 
 \begin{figure}[ht]
 	\begin{subfigure}{.5\textwidth}
 		\centering
-		\includegraphics[width=1\linewidth]{teleop_user.png}
+		\includegraphics[width=1\linewidth]{tt_user.png}
 		\caption{User inexperienced}
 		\label{fig:teleop_user}
 	\end{subfigure}%
 	\begin{subfigure}{.5\textwidth}
 		\centering
-		\includegraphics[width=1\linewidth]{teleop_me.png}
+		\includegraphics[width=1\linewidth]{tt_me.png}
 		\caption{User with experience}
 		\label{fig:teleop_me}
 	\end{subfigure}
-	\caption{Difference between users in \te}
+	\caption{Difference between users in \te{} teaching}
 	\label{fig:diff_teleop}
 \end{figure}
-From the two failures, it's noticed that the user doesn't know very well the environment and how to use the robot. Before the final experiment an through explanations about \kt{} and \te{} is provided to the user and the failed trails are still counted. Moreover, from this experiment, it's noticed that \rep{} trials are enough to see the learning results. All these tricks are applied to the final experiment well described in \ref{experimental-design}
+
+\noindent
+From the two failures, it's noticed that the user doesn't know very well the environment and how to use the robot. Before the final experiment an through explanations about \kt{} and \te{} is provided to the user and the failed trials are still counted. Moreover, from this experiment, it's noticed that \rep{} trials are enough to 
+see the learning results.
+Everything that has been understood from this experiment has been applied in the final experiment well described in \ref{experimental-design}.
 
 \section{Materials} 
 \label{materials}
 
 From the data collected by the test experiment described in the previous section we decided to use for our experiment new objects for the final one with the users.
 At first, some Lego or boxes are used for the tests, but in the final experiment was decided to use some objects that can make the final scenario more similar to reality.
-Three objects in \ref{fig:shapes} of different shape were created using wood. The figures are about $ 8x8$ $ cm $ and about $ 2 $ $ cm $ high (fig. \ref{fig:task_frontal}). Above them another little cube of $ 3x3x2 $ $ cm $ has been placed for proper grasping. With the gripper available isn't possible to use smaller objects. After that, some tests were conducted with this objects before submitting the final experiment to the sample of users. 
+Three objects in figure \ref{fig:shapes} of different shape were created using wood. The figures are about $ 8x8$ $ cm $ in width and length and about $ 2 $ $ cm $ high (fig. \ref{fig:task_frontal}). Above them another little cube of $ 3x3x2 $ $ cm $ has been placed for proper grasping. With the gripper available isn't possible to use smaller objects without creating special supports to facilitate grasping. After that, some tests were conducted with this objects before submitting the final experiment to the sample of users. 
 
 \begin{figure}[H]
 	\centering
