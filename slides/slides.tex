@@ -1,17 +1,13 @@
 \documentclass[10pt]{beamer}
-
 \usetheme[progressbar=frametitle]{metropolis}
 \usecolortheme{wolf}
 \usepackage{appendixnumberbeamer}
+\usepackage{graphics}
 
-\usepackage{booktabs}
-\usepackage[scale=2]{ccicons}
+\graphicspath{{../thesis/figures/}} 
 
-\usepackage{pgfplots}
-\usepgfplotslibrary{dateplot}
-
-\usepackage{xspace}
-
+% new commands
+\newcommand{\kuka}{\textrm{KUKA LBR IIWA}}
 \newcommand{\kt}{kinesthetic}
 \newcommand{\te}{teleoperation}
 \newcommand{\Kt}{Kinesthetic}
@@ -22,6 +18,7 @@
 \newcommand{\regular}{\textbf{RP}}
 \newcommand{\casual}{\textbf{RP}}
 
+% title and other stuff
 \title{Towards an optimal method for teaching industrial assembly tasks using collaborative robots: teleoperation vs kinesthetic}
 \subtitle{Subtitle}
 \author{Michele Penzo\\VR439232}
@@ -60,7 +57,7 @@
 	\end{frame}
 	
 	\include{sections/introduction}
-%	\include{sections/project}	
+	\include{sections/project}	
 %	\include{sections/materials_methods}
 %	\include{sections/experiment}
 %	\include{sections/results_analysis}

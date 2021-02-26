@@ -10,7 +10,7 @@ This chapter describes the general setup, its components and present a small ove
 
 The \kuka{} is programmed using the KUKA's Sunrise Workbench platform and its Java API's. Also, how it was used in our project, an open source stack compatible with ROS (presented in \cite{ros}) allows the use of the robot in a simple way. A Sunrise project, containing one or more Robotic Application can be synchronized to the robot cabinet and executed from the SmartPad. 
 
-The open source stack, called by developers \textit{iiwa\_stack}, provide a Robotic Application that can be used with the robot. It establishes a point to point connection via ROS to the machine connected via Ethernet to the robot cabinet. The machine, with ROS installed, will be able to send and receive ROS messages to and from the Robotic Application. The messages used in this stack are taken from the messages available in a standard ROS distribution, but there are other custom ones inside the \texttt{iiwa\_msgs} folder. 
+The open source stack, called by developers \textit{iiwa\_stack}, provides a Robotic Application that can be used with the robot. It establishes a point to point connection via ROS to the machine connected via Ethernet to the robot cabinet. The machine, with ROS installed, will be able to send and receive ROS messages to and from the Robotic Application. The messages used in this stack are taken from the messages available in a standard ROS distribution, but there are other custom ones inside the \texttt{iiwa\_msgs} folder. 
 
 With the stack is simple to manipulate the messages received from the robot and send new ones as command to it. This is possible using Python, C++ or console and the ROS functionalities already implemented as \texttt{service}, \texttt{topic} and \texttt{action}.
 
@@ -42,20 +42,20 @@ For further information about \textit{iiwa\_stack} see \cite{iiwa-stack-link} an
 As described in section~\ref{goals}, the main goal of the thesis is to evaluate, with an user study, different modalities to teach quickly and simply assembly tasks in industry. Staring from the goal, two modalities were evaluated:
 \begin{enumerate}
 	\item teach by demonstration.
-	\item remote control od the robot. 
+	\item remote control of the robot. 
 \end{enumerate}
 
-As described in the next sections, for each modality a way to save waypoints and an action on the gripper has been implemented. After that the action were captured by the program and saved in a \texttt{.csv} file. With a dedicated program and that file, all the actions saved into the file can be replicated by the robot. Then the description of the two developed modalities.
+As described in the next sections, for each modality a way to save waypoints and actions on the gripper has been implemented. After that, the action were captured by the program and saved in a \texttt{.csv} file. With a dedicated program and that file, all the actions saved into the file can be replicated by the robot. Then the description of the two developed modalities.
 
 \subsection{Teach by demonstration}
 \label{teach}
 
-As described in section \ref{robot-learning}, teach by demonstration or also called \textit{\kt} is a way to move the robot in gravity compensation. Using the \textit{iiwa\_stack}, the gravity compensation mode was implemented using joint impedance control mode where for every joint in robot configuration a stiffness and damping value is setted. Stiffness value must be grater than $ 0 $ and it is expressed in $ Nm/rad $, instead damping value must be between $ 0 $ and $ 1 $. After changing the control mode to joint impedance, the robot seems falls. A force contrary to the gravity must be carried out to keep it up.
+As described in section \ref{robot-learning}, teach by demonstration or also called \textit{\kt} is a way to move the robot in gravity compensation. Using the \textit{iiwa\_stack}, the gravity compensation mode has been implemented using joint impedance control mode where for every joint in robot configuration a stiffness and damping value has been set. Stiffness value must be grater than $ 0 $ and it is expressed in $ Nm/rad $, instead damping value must be between $ 0 $ and $ 1 $. After changing the control mode to joint impedance, the robot seems falls. A force contrary to the gravity must be carried out to keep it up.
 
 On media flange, the green button ( \circled{3} in figure \ref{media_flange} ) was dedicated for saving commands. When the button is pressed according to the duration of the pressure, an action is recorded:
 \begin{itemize}
 	\item one click for save a waypoint,
-	\item $ 2 $ seconds pressure for save action on the gripper,
+	\item $ 2 $ seconds pressure for save the action on the gripper,
 	\item $ 5 $ seconds pressure to exit from teaching program.
 \end{itemize}
 When an action is performed by the user, the led strip ( \circled{1} in figure \ref{media_flange} ) change color: green for waypoints, blue for gripper's actions. 
