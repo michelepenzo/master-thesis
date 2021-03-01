@@ -44,7 +44,7 @@ For simplicity we summarize by saying that with $ \{t1,t2\} $ is indicated the t
 As described in section \ref{post-experiment-phase}, the questionnaire was divided into two phases: the first part has already been presented in \ref{participants}, while the second part asked some questions which had to be answered with a value between $ 1 $ and $ 10 $. The questions with the most important results that are presented are:
 
 \begin{itemize}
-	\item how much \textbf{physical effort} was required for \te{}/\kt{} teaching?
+	\item How much \textbf{physical effort} was required for \te{}/\kt{} teaching?
 	
 	In figure \ref{fig:physical_effort} we can immediately spot the differences between the two modalities: in \kt{} since the task are performed moving the robot, a force to move it is necessary. The medium value is $ 5 $ which tells us that it's actually not that difficult to move the robot. On the other side, the boxplot relative to \te{} indicates that there's no physical effort for moving the robot.
 	
@@ -57,7 +57,7 @@ As described in section \ref{post-experiment-phase}, the questionnaire was divid
 	
 	% todo newpage
 	\newpage
-	\item how much \textbf{mental effort} was required for \te{}/\kt{} teaching?
+	\item How much \textbf{mental effort} was required for \te{}/\kt{} teaching?
 	
 	In figure \ref{fig:mental_effort} it's possible to immediately spot that the two modalities requires mental effort similar among them, respect to physical effort. We can notice that the medium value for \te{} is higher that the medium one in \kt{}. Obviously in \te{} for moving the robot it's necessary to remember all the buttons and commands that have been taught in teach phase before the experiment, but this values is lowered by the users which have confidence with the pad. %Moreover a greater mental effort is required by the user have to coordinate and understand the reference frame that is used on the robot compared to the one you are used to using.
 	
@@ -156,7 +156,7 @@ From the questionnaire have been collected the data relative to physical and men
 	\label{tab:effort}
 \end{table}
 
-As described in the previous chapters many data were collected during the experiment. One of these is the \texttt{cartesian\_wrench}: it's composed of a vector that represent the force along the three spatial directions $ \{ x,y,z \} $. In figure \ref{fig:plot_wrench} is possible to see the differences between the force applied on EE during the experiment, in \te{} the interaction forces are limited instead in \kt{} the forces are high.  In both figures on $ y $ axis there's the force applied on $ z $ and along $ x $ axis there is the time in seconds to complete the trial. In these figures only one trial of the same user is represented. The same graphs, that are similar, can be calculated on forces applied on $ x $ and $ y $. 
+As described in the previous chapters many data were collected during the experiment. One of these is the \texttt{cartesian\_wrench}: it's composed of a vector that represent the force along the three spatial directions $ \{ x,y,z \} $. In figure \ref{fig:plot_wrench} is possible to see the differences between the force applied on EE during the experiment, in \te{} the interaction forces are limited instead in \kt{} the forces are high.  In both figures on $ y $ axis there's the force applied on $ z $ expressed in $ N $, and along $ x $ axis there is the time in seconds to complete the trial. In these figures only one trial of the same user is represented. The same graphs, that are similar, can be calculated on forces applied on $ x $ and $ y $. 
 
 \begin{figure}[H]
 	\begin{subfigure}{1\textwidth}
@@ -172,7 +172,7 @@ As described in the previous chapters many data were collected during the experi
 		\caption{\Kt{} teaching}
 		\label{fig:wrenck_kt}
 	\end{subfigure}
-	\caption{Difference between wrench on Z \\in \te{} and \kt{}}
+	\caption{Difference between force on $ z $ expressed in $ N $ \\in \te{} and \kt{} teaching}
 	\label{fig:plot_wrench}
 \end{figure}
 
@@ -195,7 +195,7 @@ On $ x $ axis the force applied on EE is represented in $ N $.
 		\caption{\Kt{} teaching}
 		\label{fig:wrench_all_tt}
 	\end{subfigure}
-	\caption{Wrench on $ x,y,z $ of users grouped by physical \\characteristics during \te{} and \kt{} teaching}
+	\caption{Force on $ x,y,z $ of users grouped by physical \\characteristics during \te{} and \kt{} teaching}
 	\label{fig:wrench_all}
 \end{figure}
 
@@ -219,7 +219,7 @@ The minimum number of waypoints to have a task that can be replayed correctly by
 	\label{tab:ratio}
 \end{table}
 
-In figure \ref{fig:waypoints} are shown the waypoints taken during the execution of the task $ t1 $. The red points are referred to \smallusers{} group, instead the blue ones are for \bigusers{} group. On $ x $ and $ y $ axis there is the locations of the points within the space. Each gray figure indicates the position of the shapes, while the $ \square $ mark indicates the position of the cube above each object to facilitate grasping. The red waypoints are relative to \smallusers{}, while the blue ones are for \bigusers{} group. All waypoints aren't centered with the figure because the position saved is the one relative to the center of the media flange mounted on the robot.
+In figure \ref{fig:waypoints} are shown the waypoints taken during the execution of the task $ t1 $. The red points are referred to \smallusers{} group, instead the blue ones are for \bigusers{} group. On $ x $ and $ y $ axis there is the locations of the points within the space. The distance values between the points are expressed in $ cm $. Each gray figure indicates the position of the shapes, while the $ \square $ mark indicates the position of the cube above each object to facilitate grasping. The red waypoints are relative to \smallusers{}, while the blue ones are for \bigusers{} group. All waypoints aren't centered with the figure because the position saved is the one relative to the center of the media flange mounted on the robot.
 % colore pallini
 \begin{figure}[H]
 	\centering
