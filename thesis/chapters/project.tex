@@ -2,16 +2,16 @@
 \chapter{The project}
 \label{project}
 
-This chapter describes the general setup, its components and present a small overview about tools used to develop the project. Finally the project is explained.
+This chapter describes the general setup and its components and present a small overview about tools used to develop the project. Finally, the project is explained.
 
 %----------------------------------------------------------------------------------------
 
 \section{Setup overview}
 The \kuka{} is programmed using the KUKA's Sunrise Workbench platform and its Java API's. The \kuka{} is controlled via the KUKA Robot Controller, also known as the KUKA Sunrise Cabinet. The KRC is responsible for the transmission control inputs as well as reading the data of the integrated sensors.
 The Sunrise Workbench is a tool used to program robot applications in Java, which are loaded and executed by the KRC. It offers the possibility to control the robot with the following strategies: position control, velocity control, joint and cartesian impedance control.
-It can also can execute the commonly motion patterns as: spline, point-to-point or linear motions.
+It can also execute the commonly motion patterns as: spline, point-to-point or linear motions.
 
-Also, an open source stack compatible with ROS (presented in \cite{ros}) allows the use of the robot in a simple way. A Sunrise project, containing one or more Robotic Application can be synchronized to the robot cabinet and executed from the SmartPad.
+Also, an open source stack compatible with ROS (presented in \cite{ros}) allows the use of the robot in a simple way. A Sunrise project, containing one or more Robotic Application, can be synchronized to the robot cabinet and executed from the SmartPad.
 The open source stack, called by developers \textit{iiwa\_stack}, provides a Robotic Application that can be used with the robot that runs over KRC. It establishes a point to point connection via ROS to the machine connected via Ethernet to the robot cabinet. The machine, with ROS installed, will be able to send and receive ROS messages to and from the Robotic Application. The messages used in this stack are taken from the messages available in a standard ROS distribution, but there are other custom ones inside the \texttt{iiwa\_msgs} folder. 
 
 With the stack is simple to manipulate the messages received from the robot and send new ones as command to it. This is possible using Python, C++ or console and the ROS functionalities already implemented as \texttt{service}, \texttt{topic} and \texttt{action}.\\\\
@@ -32,7 +32,7 @@ A correct thing to do before start the using of the robot is to check and modify
 	\item moreover a protected workspace was added. In this case the robot never goes inside the constraint area.  
 \end{itemize}
 
-For further information about \textit{iiwa\_stack} see \cite{iiwa-stack-link} and the related work \cite{iiwa-stack-paper}. Instead for information about Sunrise OS and Sunrise Workbench see \cite{thesis}.
+For further information about \textit{iiwa\_stack} you can see \cite{iiwa-stack-link} and the related work \cite{iiwa-stack-paper}. Instead for information about Sunrise OS and Sunrise Workbench you can see \cite{thesis}.
 	
 \section{Project implementation}
 \label{project-implementation}
@@ -43,20 +43,20 @@ As described in section~\ref{goals}, the main goal of the thesis is to evaluate,
 	\item \te{} teaching. 
 \end{enumerate}
 
-As described in the next sections, for each modality a way to save waypoints and actions on the gripper has been implemented. After that, the action were captured by the program and saved in a \texttt{.csv} file. With a dedicated program and that file, all the actions saved into the file can be replicated by the robot. Then the description of the two developed modalities.
+As described in the next sections, for each modality a way to save waypoints and actions on the gripper has been implemented. After that, the actions were captured by the program and saved in a \texttt{.csv} file. With a dedicated program and that file, all the actions saved into the file can be replicated by the robot. Below there's the description of the two developed modalities.
 
 \subsection{\Kt{} teaching}
 \label{teach}
 
 As described in section \ref{robot-learning}, \kt{} teaching or also called \textit{teach by demonstration} is a way to move the robot in gravity compensation. Using the \textit{iiwa\_stack}, the gravity compensation mode has been implemented using joint impedance control mode where for every joint in robot configuration a stiffness and damping value has been set. Stiffness value must be grater than $ 0 $ and it is expressed in $ Nm/rad $, instead damping value must be between $ 0 $ and $ 1 $. After changing the control mode to joint impedance, the robot seems falls. A force contrary to the gravity must be carried out to keep it up.
 
-On media flange, the green button ( \circled{3} in figure \ref{media_flange} ) was dedicated for saving commands. When the button is pressed according to the duration of the pressure, an action is recorded:
+On media flange, the green button (\circled{3} in figure \ref{media_flange}) was dedicated for saving commands. When the button is pressed according to the duration of the pressure, an action is recorded:
 \begin{itemize}
 	\item one click for save a waypoint,
 	\item two seconds pressure for save the action on the gripper and the actual pose,
 	\item five seconds pressure to close the teaching phase.
 \end{itemize}
-When an action is performed by the user, the led strip ( \circled{1} in figure \ref{media_flange} ) change color: green for waypoints, blue for gripper's actions. 
+When an action is performed by the user, the led strip (\circled{1} in figure \ref{media_flange}) change color: green for waypoints, blue for gripper's actions. 
 In the next figure the media flange mounted on \kuka.
 
 \begin{figure}[H]
@@ -69,11 +69,11 @@ In the next figure the media flange mounted on \kuka.
 \subsection{\Te{} teaching}
 \label{teleoperation-pad}
 
-\Te{}, or \textit{remote control}, indicates the movement of the robot at a distance. In our case, \te{} is intended as control the \kuka{} with a \textbf{PlayStation 4 pad} and it was developed in two ways:
+\Te{}, or \textit{remote control}, indicates the movement of the robot at a distance. In our case, \te{} is intended as control of the \kuka{} with a \textbf{PlayStation 4 pad} and it was developed in two ways:
 
 \begin{itemize}
-	\item \textit{full task space}: in this modality the robot will move respect to the base frame. A movement along $ x $, $ y $ and $ z $ is performed using linear and angular velocity. With linear velocity you will move the pose of the robot in task space, instead with angular velocity you will move the orientation of the EE.
-	\item \textit{reduced joint space}: in this other modality not the all joints are considered. Some joint have been blocked, you can move only the $ 1 $°, $ 2 $° and $ 6 $° joint. It's also possible change the orientation of the EE using angular velocity.
+	\item \textit{full task space}: in this modality the robot moves respect to the base frame. A movement along $ x $, $ y $ and $ z $ is performed using linear and angular velocity. With linear velocity you move the pose of the robot in task space, instead with angular velocity you move the orientation of the EE,
+	\item \textit{reduced joint space}: in this other modality not the all joints are considered. Some joint have been blocked: you can move only the $ 1 $°, $ 2 $° and $ 6 $° joint. It's also possible to change the orientation of the EE using angular velocity.
 \end{itemize}
 
 In both cases, the buttons used are the same:
@@ -83,7 +83,7 @@ In both cases, the buttons used are the same:
 	\item $ \square $: change to control mode from position control to cartesian impedance control, and vice versa.
 \end{itemize}
 
-Using the pad, it's possible to take advantage of the internal vibration. Therefore, when an external force grater than a preset value is detected the pad start vibrating. Based on the control mode that the user is using (impedance or position control), the activation force is different.
+Using the pad, it's possible to take advantage of the internal vibration. Therefore, when an external force greater than a preset value is detected, the pad start vibrating. Based on the control mode that the user is using (impedance or position control), the activation force is different.
 Both of the modalities are performed using \texttt{L1} or \texttt{R1} as deadman buttons with the right or left analog.	
 
 For our experiment only the first modality was used because it was considered simpler. This two modalities of \te{} are inspired from \cite{comparing-teleoperation}.
