@@ -1,85 +1,36 @@
 % Introduction section
 
-\section{Experiment}
-
-% ------------------------------------------
-\subsection{Experimental design}
+\section{Experimental design}
 
 \begin{frame}
-	\frametitle{\subsecname}
-	The experimental design describes the entire flow which is done by every participants of the experiment.\\~\ 
+	\frametitle{\secname}
+	Before the experiment, users were asked to take confidence with both the modalities. Every user perform this phase without seeing other users do the same. \\~\
 	
-	During the experiment some data were collected from ROS\texttt{ topic} with sample rate of $ 10Hz $. Those data are related to cartesian pose, cartesian wrench, joint position and joint velocity.\\~\
+	The experiment consists in two tasks in ascending order of difficulty repeated for three times. These tasks were repeated in \kt{} and \te{} and the users were rated with the data collected.\\~\
 	
-	The experiment has been divided into three stages for convenience:
-	\begin{enumerate}
-		\item pre experiment,
-		\item experiment,
-		\item post experiment.
-	\end{enumerate}
-\end{frame}
-
-\subsection{Pre experiment phase}
-
-\begin{frame}
-	\frametitle{\subsecname}	
-	At this stage users were asked to take confidence with both the modalities.\\~\
-	
-	If the user complete this phase an ascending unique id is assigned to him.\\~\
-	
-	Every user perform the pre-experiment and experiment phase without seeing other users do the same.
-\end{frame}
-
-
-\subsection{Experimental phase}
-
-\begin{frame}
-	\frametitle{\subsecname}
-	The experiment was repeated both for \kt{} and \te.\\~\
-	
-	It consists in two tasks in ascending order of difficulty repeated for three times.	For simplicity the repetitions were called ``trial''. \\~\
-	
-	The figure on the left is a pick and place with a simple interlocking, while the figure on the right is a difficult interlocking.
-	\begin{figure}
-		\includegraphics[scale=0.03]{task2.jpg}
-		\hfill
-		\includegraphics[scale=0.03]{task3.jpg}
-	\end{figure}
+	\begin{center}
+		\includegraphics[scale=0.17]{data.png}
+	\end{center} 
 \end{frame}
 
 \begin{frame}
-	\frametitle{\subsecname}
-	After every trial a \textit{vote} to the work done is given to the user.\\~\
-	
-	After the \textit{first} trail of every task the replay phase based on the waypoints and actions on gripper is shown to the users. In that way the user understands where he can improve.\\~\
-	
-	The starting position of the robot is always the same for all the users to unify the times.\\~\
-	
-	Every trial of the users were considered valid, even if a mistake were made by the user.
+	\frametitle{\secname}
+	In this figure the setup overview: the \kuka{} and on the left the shapes used for the tasks, and on the right the first task.\\~\
+
+	 \begin{center}
+		\includegraphics[scale=0.044]{setup.jpg}
+	\end{center} 
+
 \end{frame}
 
 
-\subsection{Post experiment phase}
-
 \begin{frame}
-	\frametitle{\subsecname}
-	At the end of the experiment an evaluation questionnaire was filled by the users.\\~\
-	
-	It's divided into three phases that asks:
-	\begin{enumerate}
-		\item personal informations as physical characteristics and confidence with pad,
-		\item some questions about mental and physical effort,
-		\item general questions about the experiment.
-	\end{enumerate}
-\end{frame}
+	\frametitle{\secname}
 
-\subsection{Participants}
+	\begin{center}
+		\includegraphics[scale=0.17]{users.png}\\~\
+	\end{center} 
 
-\begin{frame}
-	\frametitle{\subsecname}
-	There were ten participants in the experiment: seven male and three female. All of them are university graduates or students. Their ages are between $ 24 $	and $ 27 $ years old.\\~\
-	
-	Half of them never use a robot as \kuka{}.\\~\
-	
-	To obtain better and diversified results among the participants, the modality in which each user starts with the experiment is diversified. Half of them started with \te{}, the other with \kt{}.
+	To obtain better and diversified results among the participants, half of them started with \te{} teaching, the other with \kt{} teaching.
+
 \end{frame}

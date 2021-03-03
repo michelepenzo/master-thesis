@@ -3,8 +3,9 @@
 \usecolortheme{wolf}
 \usepackage{appendixnumberbeamer}
 \usepackage{graphics}
+\usepackage{multimedia}
 
-\graphicspath{{../thesis/figures/}} 
+\graphicspath{{figures/}} 
 
 % new commands
 \newcommand{\kuka}{\textrm{KUKA LBR IIWA}}
@@ -54,20 +55,11 @@
 	\begin{frame}
 		\titlepage
 	\end{frame} 
-	
-	
-	\begin{frame}{Table of contents}
-		\setbeamertemplate{section in toc}[sections numbered]
-		\tableofcontents[hideallsubsections]
-	\end{frame}
-	
+		
 	\include{sections/introduction}
-%	\include{sections/project}	
-%	\include{sections/materials_methods}
 	\include{sections/experiment}
 	\include{sections/results}
 	\include{sections/conclusion}
-	% todo nelle conclusioni riprendere le domande e rispondere ad ogni domanda una nuova slide
 
 	
 \end{document} 

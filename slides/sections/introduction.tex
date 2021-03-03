@@ -1,62 +1,20 @@
 % Introduction section
 
-\section{Introduction}
-
-% ------------------------------------------
-\subsection{Motivations}
 \begin{frame}
-	\frametitle{\subsecname}
-	Within the industry 4.0, robots are increasingly exploited in production plants.\\~\
-	
-	With the ambition to introduce robots into assembly lines the need to reconfigure the workspace requires faster modalities for robot reprogramming. \\~\
-\end{frame}
-
-\begin{frame}
-	\frametitle{\subsecname}
-	Actually, in automotive industry, welding and painting tasks are already highly automated.\\~\
-	
-	Instead assembly tasks that are mainly performed manually today are absolutely repetitive and they can be constantly changed.\\~\
-	
-	These tasks are mainly:
+	\frametitle{Summary}
 	\begin{itemize}
-		\item pick and place,
-		\item peg into hole.
-	\end{itemize}
-\end{frame}
-
-\begin{frame}
-	\frametitle{\subsecname}
-	To facilitate reprogramming of robots, the new paradigm which is used more frequently is \textit{PbD}: Programming by Demonstration.\\~\
-	
-	\textit{Pbd} is often used with collaborative robots that are installed in industrial environments.\\~\
-	
-	It's a technique for teaching to the robot new behaviors by demonstrating the task through a sequence of commands.
-\end{frame}
-
-
-% ------------------------------------------
-\subsection{Goals}
-
-\begin{frame}
-	\frametitle{\subsecname}
+		\item \textbf{Motivations}: within the industry 4.0, collaborative robot with advanced features, more flexibility and safety, are increasingly exploited in production plants. But their use requires new reprogramming techniques, such as \kt{} and \te{}. \\~\
 		
-	From \textit{PbD} paradigm a comparison between two modalities was made to find the optimal method for teaching industrial assembly tasks.\\~\
-	
-	The two modalities compared were:
-	\begin{itemize}%[<+->]
-		\item \textbf{\kt{} teaching}: the robot is gravity compensated and the user physically guides the robot within his workspace
-		\item \textbf{\te{} teaching}: the user controls the robot with a \textbf{Ps4} pad
+		\item \textbf{Goals}: this work propose a new \te{} mode for teaching assembly tasks. Instead, with an user experiment, it wants to highlight the differences between the two modalities for teaching assembly tasks.
 	\end{itemize}
 \end{frame}
 
 \begin{frame}
 	\frametitle{\subsecname}
+	Some research questions can be done:
 	
-	Before starting the work some research questions can be done:
-	
-	\begin{itemize}%[<+->]
+	\begin{itemize}
 		\item Which mode is preferred for ease of use?
-		%\item Which one required more physical and mental effort?
 		\item The two proposed approaches are said to be intuitive, but how much when they are used for assembly tasks in industry?
 		\item There is a correlation between physical characteristics of the users and \kt{} teaching?
 		\item Users who have familiarity with the pad are better with \te{} teaching?
@@ -64,5 +22,42 @@
 \end{frame}
 
 
+\begin{frame}{Table of contents}
+	\setbeamertemplate{section in toc}[sections numbered]
+	\tableofcontents[hideallsubsections]
+\end{frame}
 
+\section{Introduction}
 
+% ------------------------------------------
+
+\begin{frame}
+	\frametitle{\secname}
+	Actually, in automotive industry, welding and painting tasks are already highly automated.\\~\
+	
+	Instead, assembly tasks in industry are mainly performed manually today.\\~\
+	
+	For those tasks that are performed by robots, the default modality for teaching assembly tasks is \kt{} teaching.\\~\
+	
+	Using a collaborative robot such as \kuka{} and \kt{} teaching doesn't allow us to fully use the collaborative features.
+\end{frame}
+
+\begin{frame}
+	\frametitle{\secname}	
+	For these reasons, and inspired by other works, a new modality for teaching assembly tasks was implemented.\\~\
+	
+	\Te{} teaching, provides a way to control robot using a \textbf{PS4 pad}, that allows us to have more control options.\\~\
+
+	It allows to have a safe remote control of the robot through the use of buttons and analogs. It also have a force feedback features, based on the vibration of the pad.
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{\secname}	
+	This video shows how the pad is used to perform the task.\\~\
+	
+	% todo video finale	
+	\begin{center}
+		\movie[width=8cm, height=4.5cm, repeat, poster, autostart]{}{/home/michele/Desktop/documenti-tesi/video/teleop_cropped.mp4}
+	\end{center}
+\end{frame}
