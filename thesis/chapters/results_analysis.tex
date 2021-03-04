@@ -99,9 +99,9 @@ To better divide users into groups for a possible analysis of these factors as w
 \section{Data analysis}
 \label{data-analysis}
 
-To have groups with better data one user for each group, with an elevate standard deviation calculated for each task over the three trials, have been removed.\\
-In the following tables time and distance to complete each task in both the modalities were represented as difference between the two groups that were created based on physical characteristics. 
-In table \ref{tab:time} the values are described in terms of seconds, instead in table \ref{tab:distance} the values presented are in meters. For both tables the first two columns indicates the groups, while the third one indicates the difference between the \smallusers{} and \bigusers{} groups. In the last column the gain between the performances of the two groups was expressed as percentage. The rows represent which task was performed and in which mode. The positive and negative symbol was kept to indicate which of the two groups resulted faster or which one made less distance.
+To have groups with better data, one user for each group with an elevate standard deviation calculated for each task over the three trials have been removed.\\
+In the following tables time and distance to complete each task in both the modalities were represented. %as difference between the two groups that were created based on physical characteristics. 
+In table \ref{tab:time} the values are described in terms of seconds, while in table \ref{tab:distance} the values presented are in meters. For both tables the first two columns indicates the groups, while the third one indicates the difference between the \smallusers{} and \bigusers{} groups. In the last column the gain between the performances of the two groups is expressed as percentage. The rows represent which task is performed and in which mode. The positive and negative symbol indicates which of the two groups resulted faster or which one made less distance.
 \begin{table}[H]
 	\centering
 	\begin{tabular}{l||cccc}
@@ -130,7 +130,7 @@ In table \ref{tab:time} the values are described in terms of seconds, instead in
 	\label{tab:distance}
 \end{table}
 
-The two figures in \ref{fig:time_and_distance_group_t2} indicate the same values of the previous tables. The figure \ref{fig:time_groups_t2} represents graphically the table \ref{tab:time}, and the values on $ x $ axis are in seconds. Instead in figure \ref{fig:distance_groups_t2.png} there are the data represented in table \ref{tab:distance}, and the values on $ x $ axis are in meters. From these figures is possible to quickly understand the differences between the two groups and the different modalities. Moreover it's possible to understand the correlation between time and distance. Only times and distances for the task $ t1 $ were represented in these figures because the figures for task $ t2 $ are similar but with the values described in the relevant table.
+The two figures in \ref{fig:time_and_distance_group_t2} indicate the same values of the previous tables. The figure \ref{fig:time_groups_t2} represents graphically the table \ref{tab:time}, and the values on $ x $ axis are in seconds. Instead in figure \ref{fig:distance_groups_t2.png} there are the data represented in table \ref{tab:distance}, and the values on $ x $ axis are in meters. From these figures is possible to quickly understand the differences between the two groups and the different modalities. Moreover it's possible to understand the correlation between time and distance. Only times and distances for the task $ t1 $ are represented in these figures because the figures for task $ t2 $ are similar but with the values described in the relevant table.
 
 \begin{figure}[H]
 	\begin{subfigure}{1\textwidth}
@@ -150,7 +150,7 @@ The two figures in \ref{fig:time_and_distance_group_t2} indicate the same values
 	\label{fig:time_and_distance_group_t2}
 \end{figure}
 
-From the questionnaire, the data relative to physical and mental effort have been collected. These data have been manipulated with division into groups based on physical characteristics. In table \ref{tab:effort} there is the average of the values indicated by the users in questionnaire. The value was in scale from $ 1 $ to $ 10 $. As the previous tables, on the first and second column there are the two groups. Instead, on the rows there are the efforts for each modality. The first two rows are relative to mental effort, the first one in \te{} and the second one in \kt{}. The third row is relative to physical effort in \te{} and the last one refers to \kt{}. The overall values without the divisions into groups can be seen in figure \ref{fig:mental_effort} for mental effort, and in figure \ref{fig:physical_effort} for physical effort.
+From the questionnaire, the data relative to physical and mental effort have been collected. These data have been manipulated with division into groups based on physical characteristics. In table \ref{tab:effort} there is the average of the values indicated by the users in questionnaire. The value was in scale from $ 1 $ to $ 10 $. As the previous tables, on the first and second column there are the two groups. Instead, on the rows there are the efforts for each modality. The first two rows are relative to mental effort, the first one in \te{} and the second one in \kt{}. The third row is relative to physical effort in \te{} and the last one refers to \kt{}. The overall values without the divisions into groups can be seen in figure \ref{fig:mental_effort} for mental effort and in figure \ref{fig:physical_effort} for physical effort.
 
 \begin{table}[H]
 	\centering
@@ -166,7 +166,7 @@ From the questionnaire, the data relative to physical and mental effort have bee
 	\label{tab:effort}
 \end{table}
 
-As described in the previous chapter, many data were collected during the experiment. One of these was the \texttt{cartesian\_wrench}: it's composed of a vector that represent the force along the three spatial directions $ \{ x,y,z \} $. In figure \ref{fig:plot_wrench} it's possible to see the differences between the force applied on EE during the experiment: in \te{} the interaction forces are limited instead in \kt{} the forces are high.  In both figures on $ y $ axis there's the force applied on $ z $ expressed in $ N $, and along $ x $ axis there is the time in seconds to complete the trial. In these figures only one trial of the same user was represented. The same graphs, that are similar, can be calculated on forces applied on $ x $ and $ y $. 
+As described in the previous chapter, many data were collected during the experiment. One of these is the \texttt{cartesian\_wrench}: it's composed of a vector that represent the force along the three spatial directions $ \{ x,y,z \} $. In figure \ref{fig:plot_wrench} it's possible to see the differences between the force applied on EE during the experiment: in \te{} the interaction forces are limited instead in \kt{} the forces are high.  In both figures on $ y $ axis there's the force applied on $ z $ expressed in $ N $ and along $ x $ axis there is the time in seconds to complete the trial. In these figures only one trial of the same user is represented. The same graphs, that are similar, can be calculated on forces applied on $ x $ and $ y $ and for all the other users. 
 
 \begin{figure}[H]
 	\begin{subfigure}{1\textwidth}
@@ -209,8 +209,8 @@ On $ x $ axis the force applied on EE is represented in $ N $.
 	\label{fig:wrench_all}
 \end{figure}
 
-The table in figure \ref{tab:ratio} represents the total number of waypoints taken by the groups during all trials for each task in different modalities. It's possible to notice that there are two macro columns for the two groups where each of them contains other three columns. For each macro column, the first column contains the number of trials completed by all users of the group. The second column contains the number of waypoints taken by all users during all the trials and the third column is the ratio between the two first columns (waypoints/trials). Finally, the rows represent the modality and the task that is performed.
-The minimum number of waypoints to have a task that can be replayed correctly by the \kuka{} is $ 16 $: three points for every objects except only two points for the first and last object. Instead the optimal number is $ 18 $: three points for every object to pick and place.
+The table in figure \ref{tab:ratio} represents the total number of waypoints taken by the groups during all trials for each task in different modalities. It's possible to notice that there are two macro columns for the two groups where each of them contains other three columns. For each macro column, the first column contains the number of trials completed by all users of the group, the second column contains the number of waypoints taken by all users during all the trials and the third column is the ratio between the two first columns (waypoints/trials). Finally, the rows represent the modality and the task that is performed.
+The minimum number of waypoints to have a task that can be replayed correctly by the \kuka{} is $ 16 $: three points for every objects except only two waypoints for the first and last object. Instead the optimal number is $ 18 $: three points for every object to pick and place.
 
 \begin{table}[H]
 	\centering
@@ -218,7 +218,7 @@ The minimum number of waypoints to have a task that can be replayed correctly by
 		& \multicolumn{3}{c||}{\smallusers} & \multicolumn{3}{c}{\bigusers} \\
 		\hline \rule{0pt}{2ex}    		
 		& \textbf{trials} & \textbf{waypoints} & \textbf{ratio} & \textbf{trials} & \textbf{waypoints} & \textbf{ratio} \\
-		\hline \hline \rule{0pt}{3ex}
+		\hline \hline %\rule{0pt}{3ex}
 		\textbf{TT - Task1}	& $ 12 $ & $ 191 $ & $ 15,9 $ & $ 12 $ & $ 225 $ & $ 18,8 $\\
 		\textbf{TT - Task2}	& $ 13 $ & $ 225 $ & $ 17,3 $ & $ 13 $ & $ 267 $ & $ 20,5 $\\
 		\textbf{KT - Task1}	& $ 15 $ & $ 256 $ & $ 17 $   & $ 14 $ & $ 294 $ & $ 21 $ \\
@@ -229,7 +229,9 @@ The minimum number of waypoints to have a task that can be replayed correctly by
 	\label{tab:ratio}
 \end{table}
 
-In figure \ref{fig:waypoints} are shown the waypoints taken during the execution of the task $ t1 $. The figures of task $ t2 $ are similar to the figures of the task $ t1 $. The red points were referred to \smallusers{} group, instead the blue ones were for \bigusers{} group. On $ x $ and $ y $ axis there is the locations of the points within the space. The distance values between the points are expressed in $ cm $. Each black figure indicates the position of the shapes, while the $ \square $ mark indicates the position of the cube above each object to facilitate grasping. The red waypoints are relative to \smallusers{}, while the blue ones are for \bigusers{} group. All waypoints aren't centered with the figure because the position saved is the one relative to the center of the media flange mounted on the robot.
+% todo newpage
+\newpage
+In figure \ref{fig:waypoints} are shown the waypoints taken during the execution of the task $ t1 $. The figures of task $ t2 $ are similar to the figures of the task $ t1 $. The red points were referred to \smallusers{} group, instead the blue ones to \bigusers{} group. On $ x $ and $ y $ axis there is the locations of the points within the space. The distance values between the points are expressed in $ cm $. Each black figure indicates the position of the shapes, while the $ \square $ mark indicates the position of the cube above each object to facilitate grasping. The red waypoints are relative to \smallusers{}, while the blue ones to \bigusers{} group. All waypoints aren't centered with the figure because the position saved is the one relative to the center of the media flange mounted on the robot.
 % colore pallini
 \begin{figure}[H]
 	\centering
