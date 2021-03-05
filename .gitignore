@@ -279,3 +279,4 @@ TSWLatexianTemp*
 *.pyc
 scripts/calculate_data.py
 scripts/plot_data_test.py
+appunti.MD
