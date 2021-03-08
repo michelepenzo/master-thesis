@@ -3,13 +3,14 @@
 \chapter{Materials and Methods}
 \label{materials-methods}
 
-This chapter describes the general setup and its components and present a small overview about tools used to develop the project. Finally, the project is explained.
+This chapter described the hardware and software setup: the components of the robot, how the robot can be programmed, the tools used to develop the project and which open source stack is used. Finally, the two proposed teaching modalities are explained.
 
 %----------------------------------------------------------------------------------------
-% todo controllare
+
 \section{Hardware setup}
 \label{about-the-robot}
-The \kuka{} is a robot with collaborative features. It has a 14 kg payload and an action range from $ 800mm $ to $ 820 mm $. It's one of the latest robotic innovation, with the ability to work in a shared workspace with humans. It has built in sensors and soft edges that make it safe for human collaboration and the ability to detect movement and touch all over. Moreover it has a media flange with integrated wiring that makes it possible to easily interchange different tools. When a tool is attached, it is considered in the kinematic chain. In our case, the tool mounted on the media flange is a \textit{Gimatic MPLM3240}. It is a electric parallel gripper with two self-centering jaw and a total gripping force of $ 210 N $. The Gimatic tool and the media flange are highlighted in figure \ref{kuka-gimatic}
+
+The \kuka{} is a robot with collaborative features. It has a 14 kg payload and an action range from $ 800mm $ to $ 820 mm $. It's one of the latest robotic innovation, with the ability to work in a shared workspace with humans. It has built in sensors and soft edges that make it safe for human collaboration and the ability to detect movement and touch all over. Moreover it has a media flange with integrated wiring that makes it possible to easily interchange different tools. When a tool is attached, it is automatically considered in the kinematic chain. In our case, the tool mounted on the media flange is a \textit{Gimatic MPLM3240}. It is a electric parallel gripper with two self-centering jaw and a total gripping force of $ 210 N $. The Gimatic tool and the media flange are highlighted in figure \ref{kuka-gimatic}.\\
 
 \begin{figure}[H]
 	\centering
@@ -17,13 +18,11 @@ The \kuka{} is a robot with collaborative features. It has a 14 kg payload and a
 	\node(a){\includegraphics[scale=0.18]{kuka-gimatic.jpg} };
 	\node at(a.center)[draw, red,line width=2pt,circle, minimum width=80pt, minimum height=10pt,rotate=-28, yshift=12pt, xshift=6pt]{};
 	\end{tikzpicture}   
-	\caption{Gimatic tool mounted on the media flange of the \kuka{}}
+	\caption{Gimatic tool mounted on the media\\ flange of the \kuka{}}
 	\label{kuka-gimatic}
 \end{figure}
 
-
-
-
+\newpage
 \section{Software setup}
 The \kuka{} is programmed using the KUKA's Sunrise Workbench platform and its Java API's. The \kuka{} is controlled via the KUKA Robot Controller, also known as the KUKA Sunrise Cabinet. The KRC is responsible for the control inputs transmission as well as reading the data of the integrated sensors.
 The Sunrise Workbench is a tool used to program robot applications in Java, which are loaded and executed by the KRC. It offers the possibility to control the robot with the following strategies: position control, velocity control, joint and cartesian impedance control.
@@ -102,6 +101,7 @@ In both cases, the buttons used are the same. In figure \ref{pad} we can see the
 Using the pad, it's possible to take advantage of the internal haptic feedback. Therefore, when an external force greater than a preset value is detected, the pad start vibrating. Based on the control mode that the user is using (impedance or position control), the activation force is different.
 Both of the modalities are performed using \texttt{L1} or \texttt{R1} as deadman buttons with the right or left analog. For our experiment only the first modality was used because it was considered simpler.\\
 
+% todo immagine del pad
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.25]{ps4_pad.jpg}

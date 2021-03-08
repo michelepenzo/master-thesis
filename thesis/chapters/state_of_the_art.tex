@@ -20,17 +20,14 @@ The main goal for robots in industry is to combine the advantages of robots, whi
 The main goal of robot learning is to create a way for program robot in a simple way that is suitable to be used by people without specific skills. 
 Two interactions methods considered are: \textit{\kt{}} and \textit{\te{}}. The first one, was considered because it is the default and most used modality for teaching tasks. In this modality the user physically guides the robot. The second one was considered because it offers significant advantages: it permits to have a better and more complete control of the robot, and also to control the robot remotely. It's also used in complex contexts (i.e. handling of toxic substances) where the robot manipulation can only be done remotely.
 
-In \cite{robot-learning}, the authors compare two interaction modes for robot programming: \kt{} and \te{} based on haptic device. They find that \kt{} is faster in terms of giving a single demonstration and the demonstrations are more successful, but this modality doesn't allow to take full advantage of the collaborative functionalities of the robot. In fact, in our work a \te{} modality was developed for have complete access to these functionalities.
+In \cite{robot-learning}, the authors compare two interaction modes for robot programming: \kt{} and \te{} based on haptic device. They find that \kt{} is faster in terms of giving a single demonstration and the demonstrations are more successful, but this modality does not allow to take full advantage of the collaborative functionalities of the robot. In fact, in our work a \te{} modality was developed for have complete access to these functionalities.
 
 Along the lines of the previous one, \cite{know-acquisition} proposes various approaches for gaining knowledge from human demonstrations to perform assembly tasks in an industrial robotic cell. In this work, \kt{} and \te{} based on a wireless joystick are compared for recording point to point movements. 
 Furthermore, the authors perform a user  experiment where three tasks with different aspects have been compared.
 
 In \cite{comparing-teleoperation}, different modalities of \te{} are compared, exploring both the number of dimensions of the control input as well as the most intuitive control spaces. This work propose four methodologies to find the best way to control the robot in \te{} using a wireless pad. The modalities are based on mapping joints or task space. The full joint modality consists to map all the joints of the robot using both the analogs and the directional arrows of the pad. The other modality is based on reducing the joints of the robot: only three joints have been considered and mapped on the pad. The modalities based on the task space consists in moving the robot along the three spatial dimension, for full task space modality, and along only two spatial dimension for reduced task space. In this specific case, since the use case was concrete spraying, the best way to implement \te{} was the reduced task space. However the experiment demonstrates that the best way in other cases was to implement the full task space. Therefore, in our work we consider this \te{} mode, as described in \ref{teleoperation-pad}.
 
-% todo estendere questa parte
-In \cite{robot-learning-industrial}, a framework for robot learning by multiple human demonstrations is introduced. Through the demonstrations, the robot learns the sequence of actions for
-an assembly task without the need of pre-programming. Additionally, the robot learns every path as
-needed for object manipulation. Moreover, the proposed framework copes with changes in the position and orientation of the manipulated objects and also provides obstacle avoidance.
+%In \cite{robot-learning-industrial}, a framework for robot learning by multiple human demonstrations is introduced. Through the demonstrations, the robot learns the sequence of actions for an assembly task without the need of pre-programming. Additionally, the robot learns every path as needed for object manipulation. Moreover, the proposed framework copes with changes in the position and orientation of the manipulated objects and also provides obstacle avoidance.
 
 \section{User study in assembly tasks}
 \label{user-study}
@@ -46,5 +43,5 @@ The work described in \cite{user-study-redundant} does not treat assembly tasks,
 As described in \cite{nist-metrics}, new technologies in the areas of robotic arms have the potential to accelerate the use of robotics for assembly. Additionally, robotic hands are emerging as a next generation of EE, with advanced force control and manipulation capabilities. On this paper a set of performance metrics, test methods and associated artifacts are being developed to progress the application of these technologies. Another important aspect of performance measurement is the multiple repetitions of the task: the users acquire more confidence with multiple repetitions.
 
 % todo se ho tempo??
-\section{Substantial differences}
-\label{differences}
+%\section{Substantial differences}
+%\label{differences}

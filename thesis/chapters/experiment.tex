@@ -3,13 +3,14 @@
 \chapter{Experimental setup}
 \label{experiment}
 
-In this chapter a complete and detailed description of the experiment is provided, starting with the experimental design that was divided into three phases and described in every step. Later the data collected are explained. Finally a overview about the participants (who they are and their peculiarity) is provided. 
+In this chapter how the experiment was prepared and the materials used for the tests are explained. In addition, a complete and detailed description of the experiment is provided in section \ref{experimental-flow}, starting with the experimental design that was divided into three phases and described in every step. Later the data collected are explained. Finally a overview about the participants (who they are and their peculiarity) is provided. 
 
 %----------------------------------------------------------------------------------------
 
 \section{Experimental design} 
 \label{experimental-design}
-% todo come allungare?
+% todo come allungare --> In questa sezione enfatizza che il task è stato progettato per mostrare due consizioni di assemblaggio realistiche, la seconda delle quali con la necessità di effettuare incastro ?
+
 From the data collected by the preliminary experiment described in section \ref{preliminary-experiments}, we decided to use different objects for the final experiment.
 At first, some Lego or boxes were used for the tests, but in the final experiment we decided to use more complex objects that could make the final scenario as similar as possible to a real industrial assembly task.
 In figure \ref{fig:shapes}, there are three objects of different shape created using wood. The figures are about $ 8x8$ $ cm $ in width and length and about $ 2 $ $ cm $ high (fig. \ref{fig:task_frontal}). Above them has been placed another little cube of $ 3x3x2 $ $ cm $ for proper grasping. With the gripper available isn't possible to use smaller objects without creating special supports to facilitate grasping. After that, some tests were conducted with these objects before submitting the final experiment to the users. 
@@ -23,7 +24,7 @@ In figure \ref{fig:shapes}, there are three objects of different shape created u
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.05]{cube_frontal.jpg}
+	\includegraphics[scale=0.07]{cube_frontal.jpg}
 	\caption{Frontal view of the cube above each shape\\ to facilitate grasping}
 	\label{fig:task_frontal}
 \end{figure}
@@ -41,13 +42,7 @@ In this phase all the necessary procedures to correctly conduct the experiment a
 \subsection*{Experimental phase}
 \label{experiment-phase}
 
-%The experiment consists in two tasks in ascending order of difficulty repeated for three times. We call the repetitions \textit{``trial''} and the tasks were done by the pick and place phases. In figure \ref{fig:setup}, where the robot is positioned, it's possible to see the pick position. Specifically, according to the task to be performed (first or second), the final positions differ in two positions:
-%\begin{enumerate}
-%	\item simple interlocking position (fig. \ref{fig:simple_interlocking}),
-%	\item difficult interlocking position (fig. \ref{fig:difficult_interlocking}).
-%\end{enumerate}
-
-The experiment consist in two tasks in ascending order of difficulty, repeated for three times both for \kt{} and \te{}, where the shapes describe in section \ref{experimental-design} must be entered as in figure \ref{fig:simple_interlocking} and figure \ref{fig:difficult_interlocking}. We call the repetitions \textit{``trial''}. The entire setup is shown in figure \ref{fig:setup}.%, while in  the first task and in  the second one.
+From the two modalities proposed in \ref{teleoperation-pad}, the \te{} modality chosen for the executions of the task was the \textit{full task space}. It allows the correct execution of the task in a simple way. The experiment consist in two tasks in ascending order of difficulty, repeated for three times both for \kt{} and \te{}, where the shapes shown in section \ref{fig:shapes} must be entered as in figure \ref{fig:simple_interlocking} and figure \ref{fig:difficult_interlocking}. We call the repetitions \textit{``trial''}. The entire setup is shown in figure \ref{fig:setup}.
 
 \begin{figure}[H]
 	\centering
@@ -76,7 +71,7 @@ After the \textit{first} trial of every task the replay phase based on the waypo
 Some clarifications are provided to unify all users:
 \begin{itemize}
 	\item every trial is considered valid, even if a collision by the user or any other mistake that is made by the user compromises the trial,
-	\item if there is an error that doesn't depend by the user, the trial is repeated,
+	\item if there is an error that does not depend by the user, the trial is repeated,
 	\item the \kuka{} is positioned over the first object that would be manipulated every time that a new trial has to been done by the user.
 \end{itemize}
 
@@ -91,7 +86,7 @@ At the end of the experimental phase the users were asked to fill out the questi
 
 During the experiment some data were collected from the ROS\texttt{ topic} available with sample rate of $ 10 Hz $. All these data have been saved in \texttt{.csv} files. Those files are related to: 
 \begin{itemize}
-	\item \texttt{user\_x.csv} : sequence of actions performed by the users during the experiment
+	\item \texttt{user\_x.csv} : sequence of actions performed by the users during the experiment,
 	\item \texttt{user\_x\_wrench.csv}: cartesian wrench,
 	\item \texttt{user\_x\_pose.csv}: cartesian pose,
 	\item \texttt{user\_x\_joint\_pos\_vel.csv}: joint position and velocity,
