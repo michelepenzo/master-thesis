@@ -1,136 +1,110 @@
-% Materials and methods chapter
+% materials and methods
 
-\chapter{Materials and methods}
+\chapter{Materials and Methods}
 \label{materials-methods}
-This chapter describes, in the first section, how the robot was configured, the preliminary analysis on the robot and how the experiment was conducted. In the second section is described how the experiment was prepared and the materials used for the tests.
+
+This chapter describes the general setup and its components and present a small overview about tools used to develop the project. Finally, the project is explained.
 
 %----------------------------------------------------------------------------------------
+% todo controllare
+\section{Hardware setup}
+\label{about-the-robot}
+The \kuka{} is a robot with collaborative features. It has a 14 kg payload and an action range from $ 800mm $ to $ 820 mm $. It's one of the latest robotic innovation, with the ability to work in a shared workspace with humans. It has built in sensors and soft edges that make it safe for human collaboration and the ability to detect movement and touch all over. Moreover it has a media flange with integrated wiring that makes it possible to easily interchange different tools. When a tool is attached, it is considered in the kinematic chain. In our case, the tool mounted on the media flange is a \textit{Gimatic MPLM3240}. It is a electric parallel gripper with two self-centering jaw and a total gripping force of $ 210 N $. The Gimatic tool and the media flange are highlighted in figure \ref{kuka-gimatic}
 
-\section{Methods}
-\label{methods}
-The first thing that was done was the calibration of the gripper using the application provided by Kuka and usable from the SmartPad. This application consists on moving the sixth and seventh joint with multiple movements and provide a way to calculate the weight, center of mass and inertia matrix of the tool attached on media flange. This operations was made in different configurations for several times and all times gave reasonable values. The chosen configurations were the most used for this work. Finally, the configured tool was loaded as \texttt{ros\_param} and recognized from the stack.
-
-In this work, ROS and the open source stack available on \cite{iiwa-stack-link} were used. This stack provides many \texttt{topics} that can be used to calculate joint position and velocity, torque on joint, cartesian pose and force on referenced frame. Before the user study, some data were collected to understand how the final experiment can be evaluated.
-
-The topic called \texttt{CartesianWrench} shows the external force measured by the robot according to the used reference frame. In our case, the force is measured on the gripper. To understand if we could consider the force applied on the EE, some experiments were conducted to understand the reliability and responsiveness of the values returned from this topic. These tests were conducted using objects of different weight calibrated on a scale with precision to the gram and attached to both of the two jaws of the gripper. Every weighing was performed in three different configuration of the robot and for two times. The pose $ p1 $, or home pose, is with the elbow high in start position, the pose $ p2 $ is with the gripper perpendicular to the pick position used in the experiments and the pose $ p3 $ is the place position used in the experiment.
-In table \ref{tab:wrench} the results obtained from the experiment.
-
-\begin{table}[H]
+\begin{figure}[H]
 	\centering
-	\begin{tabular}{l||llllll}
-		&\textbf{400 gr}	&\textbf{700 gr}	&\textbf{1000 gr}	&\textbf{1300 gr} &\textbf{1600 gr}\\
-		\hline\hline
-		\textbf{p1}	&4,777		&7,566		&10,129		&13,302		&15,926	\\
-		\textbf{p1}	&4,702		&7,531		&10,145		&13,332		&16,083	\\
-		\textbf{p2} 	&4,475		&7,267		&9,541		&13,696		&16,253	\\
-		\textbf{p2} 	&4,477		&7,245		&12,139		&13,641		&16,208	\\
-		\textbf{p3} 	&2,349		&6,581		&9,626		&12,254		&15,385	\\
-		\textbf{p3} 	&2,895		&6,615		&9,718		&12,330		&16,244 \\
-		
-		\hline \hline
-		
-		\textbf{Mean}			&3,946		&7,134		&10,216		&13,093		&16,017	\\
-		\textbf{Std deviation}	&1,046		&0,435		&0,975		&0,640		&0,333	
-	\end{tabular}
-	\caption{Results from experiment to evaluate force on EE}
-	\label{tab:wrench}
-\end{table}
-
-From the tests we can understand that the values obtained are reasonable and in line with expectations, even if sometimes the values are underestimated. This test was done in position and impedance control and the results are similar.
-
-Another test that was made using the force applied on EE analyzes the maximum force that can be applied by the robot on a linear surface before that the collision avoidance feature is activated. This test helped us to understand the reliability of the read values. It was made using position control (figure \ref{fig:wrench_position}) and impedance control (figure \ref{fig:wrench_impedance}).
-
-\begin{figure}[ht]
-	\begin{subfigure}{1\textwidth}
-		\centering
-		\includegraphics[scale=0.2]{position_wrench.png}
-		\caption{Force calculated on EE in position control}
-		\label{fig:wrench_position}
-	\end{subfigure}%
-	\\
-	\begin{subfigure}{1\textwidth}
-		\centering
-		\includegraphics[scale=0.2]{impedance_wrench.png}
-		\caption{Force calculated on EE in impedance control}
-		\label{fig:wrench_impedance}
-	\end{subfigure}
-	
-	\caption{Difference between force calculated on EE in \\position and impedance control}
-	\label{fig:wrench_test}
+	\begin{tikzpicture}
+	\node(a){\includegraphics[scale=0.18]{kuka-gimatic.jpg} };
+	\node at(a.center)[draw, red,line width=2pt,circle, minimum width=80pt, minimum height=10pt,rotate=-28, yshift=12pt, xshift=6pt]{};
+	\end{tikzpicture}   
+	\caption{Gimatic tool mounted on the media flange of the \kuka{}}
+	\label{kuka-gimatic}
 \end{figure}
 
-In figure \ref{fig:wrench_position} we can observe that using position control the curve of the force applied is exponential and it stops about a $ 14 N$ that is the maximum force that the \kuka{} can impart. Instead, in figure \ref{fig:wrench_impedance} we can immediately spot the difference between impedance and position control. We can see that the maximum force that can be applied before that collision avoidance is activated is no longer $ 14N $ but $ 7N $. This is due to impedance control that is an approach to dynamic control relating force and position. A \textit{spring constant} defines the force output for a compression of the spring, instead a \textit{damping constant} defines the force output for a velocity input. Using impedance control, we are controlling the force of resistance to external motions that are imposed by the environment. In fact, in figure \ref{fig:wrench_impedance} we can see the behavior of the spring: it reacts to the force applied on the surface by adapting (the first part of the curve) but, when the force is too much and the damping constant too low to perform an adaptive movement, it stops and the robot applies the maximum possible force. Since there is the damping constant, the maximum force will therefore be $ 7N$.
 
-As preliminary action, a test of the final experiment explained in chapter \ref{experiment} has been done for test how the experiment can be done by the participants. Especially, during this test, all the possible data were collected subscribing to \texttt{topic} as:
 
+
+\section{Software setup}
+The \kuka{} is programmed using the KUKA's Sunrise Workbench platform and its Java API's. The \kuka{} is controlled via the KUKA Robot Controller, also known as the KUKA Sunrise Cabinet. The KRC is responsible for the control inputs transmission as well as reading the data of the integrated sensors.
+The Sunrise Workbench is a tool used to program robot applications in Java, which are loaded and executed by the KRC. It offers the possibility to control the robot with the following strategies: position control, velocity control, joint and cartesian impedance control.
+It can also execute the commonly motion patterns as: spline, point-to-point or linear motions.
+
+An open source stack compatible with ROS (presented in \cite{ros}) allows the use of the robot in a simple way. A Sunrise project, containing one or more Robotic Application, can be synchronized to the robot cabinet and executed from the SmartPad.
+The open source stack, called by developers \textit{iiwa\_stack}, provides a Robotic Application that can be used with the robot that runs over KRC. It establishes a point to point connection via ROS to the machine connected via Ethernet to the robot cabinet. The machine, with ROS installed, will be able to send and receive ROS messages to and from the Robotic Application, as represented in figure \ref{ros_sunire}. The messages used in this stack are taken from the messages available in a standard ROS distribution, but there are other custom ones inside the \texttt{iiwa\_msgs} folder. 
+
+With the stack is simple to manipulate the messages received from the robot and send new ones as command to it. This is possible using Python, C++ or console and the ROS functionalities already implemented as \texttt{service}, \texttt{topic} and \texttt{action}.\\\\
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.2]{ros_sunrise.png}
+	\caption{Scheme of robot control using ROS}
+	\label{ros_sunire}
+\end{figure}
+
+Since we have a gripper mounted on media flange (explained better in \ref{about-the-robot}), there's a task always active in background that provides a method that can be called via \texttt{ros\_service}. This service allows us to open and close the two jaw of the gripper. We also have another background task for the \textit{rgb} led present on media flange.
+
+A correct thing to do before starting the use of the robot is to check and modify the safety configuration loaded by default. In our case:
 \begin{itemize}
-	\item \texttt{CartesianPose}: position and orientation of EE,
-	\item \texttt{CartesianWrench}: force applied on EE,
-	\item \texttt{JointPositionVelocity}: position and velocity of all joints,
-	\item \texttt{JointExternalTorque} and \texttt{JointTorque}: torque applied on joints.
+	\item for each joint in the robot configuration the values have been restricted by $ 2 $ degrees,
+	\item moreover a protected workspace was added. In this case the robot never goes inside the constraint area.  
 \end{itemize}
 
-This phase of the test was made by an inexperienced user who had to do the same task for $ N $ times. The value of $ N $ that has been chosen is $ 5 $: a relatively high value that will be reduced in the final experiment. The task consisted to move four Lego blocks from a pick position to a place position. This task was repeated for both the modalities: \kt{} and \te{} teaching.
-The data collected before the final experiment provides a solid basis to be able to perform a preliminary analysis to understand how to perform the final experiment by collecting only the data necessary for the final evaluation.
+For further information about \textit{iiwa\_stack} you can see \cite{iiwa-stack-link} and the related work \cite{iiwa-stack-paper}. Instead for information about Sunrise OS and Sunrise Workbench you can see \cite{thesis}.
+	
+\section{Proposed teaching modalities}
+\label{project-implementation}
 
-In figure \ref{fig:diff_kt} and \ref{fig:diff_teleop} are represented on $ x $ axis the five repetitions of the users, while on $ y $ axis the time in seconds necessary to complete each repetition. As represented in figure \ref{fig:diff_kt}, it's possible to say that the time necessary to complete the task in \kt{} teaching was similar between the two users, but in figure \ref{fig:kt_user} the first trial wasn't completed due a mistake by the user. In this case, the experiment wasn't repeat because this was a test and all the possible problems had to be understood. We can also say that with more attempts the time for complete the task decrease.
+As described in section~\ref{goals}, the main goal of the thesis is to evaluate, with an user study, different modalities to teach quickly and simply assembly tasks in industry. Staring from the goal, two modalities were evaluated:
+\begin{enumerate}
+	\item \kt{} teaching,
+	\item \te{} teaching. 
+\end{enumerate}
 
-\begin{figure}[ht]
-	\begin{subfigure}{.5\textwidth}
-		\centering
-		\includegraphics[width=1\linewidth]{kt_user.png}
-		\caption{Inexperienced user}
-		\label{fig:kt_user}
-	\end{subfigure}%
-	\begin{subfigure}{.5\textwidth}%		
-		\centering
-		\includegraphics[width=1\linewidth]{kt_me.png}
-		\caption{User with experience}
-		\label{fig:kt_me}	
-	\end{subfigure}
-	\caption{Difference between users in \kt{} teaching}
-	\label{fig:diff_kt}
-\end{figure}
+As described in the next sections, for each modality a way to save waypoints and actions on the gripper has been implemented. After that, the actions were captured by the program and saved in a \texttt{.csv} file. With a dedicated program and that file, all the actions saved into the file can be replicated by the robot. Below there's the description of the two developed modalities.
 
-In figure \ref{fig:diff_teleop} we can say that the times for complete the task in \te{} are high respect to \kt{}. We can also say that the inexperienced user is always slower than the user with experience. Even in this case the inexperienced user made a mistake (figure \ref{fig:teleop_user}) because he made a collision with a Lego block, but this repetition was included anyway in the results.
+\subsection{\Kt{} teaching}
+\label{teach}
 
-\begin{figure}[ht]
-	\begin{subfigure}{.5\textwidth}
-		\centering
-		\includegraphics[width=1\linewidth]{tt_user.png}
-		\caption{Inexperienced user}
-		\label{fig:teleop_user}
-	\end{subfigure}%
-	\begin{subfigure}{.5\textwidth}
-		\centering
-		\includegraphics[width=1\linewidth]{tt_me.png}
-		\caption{User with experience}
-		\label{fig:teleop_me}
-	\end{subfigure}
-	\caption{Difference between users in \te{} teaching}
-	\label{fig:diff_teleop}
-\end{figure}
+As described in section \ref{robot-learning}, \kt{} teaching or also called \textit{teach by demonstration} is a way to move the robot in gravity compensation. Using the \textit{iiwa\_stack}, the gravity compensation mode has been implemented using joint impedance control mode where for every joint in robot configuration a stiffness and damping value has been set. Stiffness value must be grater than $ 0 $ and it's expressed in $ Nm/rad $, instead damping value must be between $ 0 $ and $ 1 $. After changing the control mode to joint impedance, the robot seems fall. A force contrary to the gravity must be carried out to keep it up.
 
-From the two failures, it's noticed that the user doesn't know very well the environment and how to use the robot. Before the final experiment a thorough explanations about \kt{} and \te{} is provided to the user and the failed trials are still counted. Moreover, from this experiment, it's noticed that three trials are enough to see the learning results.
-Everything that has been understood from this experiment has been applied in the final experiment and described in \ref{experimental-design}.
-
-\section{Materials} 
-\label{materials}
-
-From the data collected by the test experiment described in the previous section, we decided to use some new objects for the final experiment.
-At first, some Lego or boxes were used for the tests, but in the final experiment we decided to use some objects that could make the final scenario as similar as possible to reality.
-In figure \ref{fig:shapes}, there are three objects of different shape created using wood. The figures are about $ 8x8$ $ cm $ in width and length and about $ 2 $ $ cm $ high (fig. \ref{fig:task_frontal}). Above them has been placed another little cube of $ 3x3x2 $ $ cm $ for proper grasping. With the gripper available isn't possible to use smaller objects without creating special supports to facilitate grasping. After that, some tests were conducted with these objects before submitting the final experiment to the users. 
+On media flange, the green button (\circled{3} in figure \ref{media_flange}) was dedicated for saving commands. When the button is pressed according to the duration of the pressure, an action is recorded:
+\begin{itemize}
+	\item one click for save a waypoint,
+	\item two seconds pressure for save the action on the gripper and the actual pose,
+	\item five seconds pressure to close the teaching phase.
+\end{itemize}
+When an action is performed by the user, the led strip (\circled{1} in figure \ref{media_flange}) change color: green for waypoints, blue for gripper's actions.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.07]{shapes.jpg}
-	\caption{Shapes for the final task}
-	\label{fig:shapes}
+	\includegraphics[scale=0.6]{media_flange.png}
+	\caption[Media flange mounted on \kuka{}]{Media flange mounted on \kuka{}: \protect\circled{1} led strip, \\\protect\circled{2} enabling switch, \protect\circled{3} application button}
+	\label{media_flange}
 \end{figure}
+
+\subsection{\Te{} teaching}
+\label{teleoperation-pad}
+
+\Te{}, or \textit{remote control}, indicates the movement of the robot at a distance. In our case, \te{} is intended as control of the \kuka{} with a \textbf{PlayStation 4 pad} and it was developed in two ways inspired from \cite{comparing-teleoperation}:
+
+\begin{itemize}
+	\item \textit{full task space}: in this modality the robot moves respect to the base frame. A movement along $ x $, $ y $ and $ z $ is performed using linear and angular velocity. With linear velocity you move the pose of the robot in task space, instead with angular velocity you move the orientation of the EE,
+	\item \textit{reduced joint space}: in this other modality not all the joints are considered. Some joints have been blocked: you can move only the $ 1 $°, $ 2 $° and $ 6 $° joint. It's also possible to change the orientation of the EE using angular velocity.
+\end{itemize}
+
+In both cases, the buttons used are the same. In figure \ref{pad} we can see the structure of the pad, while now the buttons used are presented
+\begin{itemize}
+	\item $ \times $: close or open gripper, therefore this command automatically save the action and the actual pose,
+	\item $ \triangle $: save the actual pose of the robot,
+	\item $ \square $: change the control mode from position control to cartesian impedance control, and vice versa.
+\end{itemize}
+
+Using the pad, it's possible to take advantage of the internal haptic feedback. Therefore, when an external force greater than a preset value is detected, the pad start vibrating. Based on the control mode that the user is using (impedance or position control), the activation force is different.
+Both of the modalities are performed using \texttt{L1} or \texttt{R1} as deadman buttons with the right or left analog. For our experiment only the first modality was used because it was considered simpler.\\
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.05]{cube_frontal.jpg}
-	\caption{Frontal view of the cube above each shape\\ to facilitate grasping}
-	\label{fig:task_frontal}
+	\includegraphics[scale=0.25]{ps4_pad.jpg}
+	\caption{PlayStation 4 pad}
+	\label{pad}
 \end{figure}

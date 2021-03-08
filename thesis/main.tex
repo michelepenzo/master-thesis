@@ -26,6 +26,9 @@ headsepline, % Uncomment to get a line under the header
 \usepackage{hyperref}
 \usepackage{dirtree}
 
+\usepackage{tikz}
+\usetikzlibrary{positioning,shapes}
+
 \addbibresource{references.bib}
 \graphicspath{{figures/}} 
 
@@ -171,10 +174,11 @@ headsepline, % Uncomment to get a line under the header
 	\pagestyle{thesis}
 	
 	\include{chapters/introduction}
-	\include{chapters/literature}	
+	\include{chapters/state_of_the_art}	
 %	\include{chapters/theory}
-	\include{chapters/project}	
+	%\include{chapters/project}	
 	\include{chapters/materials_methods}
+	\include{chapters/preliminary_experiments}
 	\include{chapters/experiment}
 	\include{chapters/results_analysis}
 	\include{chapters/results_discussion}
