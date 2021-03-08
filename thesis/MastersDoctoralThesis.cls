@@ -369,7 +369,8 @@ KOMA-script documentation for details.}]{fancyhdr}
 			{\normalsize\bfseries \@title \par}% Thesis title
 			\bigskip
 			%{\normalsize \authorname \par}% Author name
-			%\bigskip
+			\bigskip
+			\bigskip
 		\end{center}
 	}
 	{

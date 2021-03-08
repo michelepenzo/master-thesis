@@ -3,14 +3,14 @@
 \chapter{Materials and Methods}
 \label{materials-methods}
 
-This chapter described the hardware and software setup: the components of the robot, how the robot can be programmed, the tools used to develop the project and which open source stack is used. Finally, the two proposed teaching modalities are explained.
+This chapter describes the hardware and software setup: the components of the robot, how the robot can be programmed, the tools used to develop the project and which open source stack is used. Finally, the two proposed teaching modalities are explained.
 
 %----------------------------------------------------------------------------------------
 
 \section{Hardware setup}
 \label{about-the-robot}
 
-The \kuka{} is a robot with collaborative features. It has a 14 kg payload and an action range from $ 800mm $ to $ 820 mm $. It's one of the latest robotic innovation, with the ability to work in a shared workspace with humans. It has built in sensors and soft edges that make it safe for human collaboration and the ability to detect movement and touch all over. Moreover it has a media flange with integrated wiring that makes it possible to easily interchange different tools. When a tool is attached, it is automatically considered in the kinematic chain. In our case, the tool mounted on the media flange is a \textit{Gimatic MPLM3240}. It is a electric parallel gripper with two self-centering jaw and a total gripping force of $ 210 N $. The Gimatic tool and the media flange are highlighted in figure \ref{kuka-gimatic}.\\
+The \kuka{} is a robot with collaborative features. It has a 14 kg payload and an action range from $ 800mm $ to $ 820 mm $. It is one of the latest robotic innovation with the ability to work in a shared workspace with humans. It has built in sensors and soft edges that make it safe for human collaboration and the ability to detect movement and touch all over. Moreover it has a media flange with integrated wiring that makes it possible to easily interchange different tools. When a tool is attached, it is automatically considered in the kinematic chain. In our case, in figure \ref{fig:kuka-gimatic} the tool mounted on the media flange is a \textit{Gimatic MPLM3240}. It is a electric parallel gripper with two self-centering jaw and a total gripping force of $ 210 N $. \\
 
 \begin{figure}[H]
 	\centering
@@ -19,7 +19,7 @@ The \kuka{} is a robot with collaborative features. It has a 14 kg payload and a
 	\node at(a.center)[draw, red,line width=2pt,circle, minimum width=80pt, minimum height=10pt,rotate=-28, yshift=12pt, xshift=6pt]{};
 	\end{tikzpicture}   
 	\caption{Gimatic tool mounted on the media\\ flange of the \kuka{}}
-	\label{kuka-gimatic}
+	\label{fig:kuka-gimatic}
 \end{figure}
 
 \newpage
@@ -100,6 +100,7 @@ In both cases, the buttons used are the same. In figure \ref{pad} we can see the
 
 Using the pad, it's possible to take advantage of the internal haptic feedback. Therefore, when an external force greater than a preset value is detected, the pad start vibrating. Based on the control mode that the user is using (impedance or position control), the activation force is different.
 Both of the modalities are performed using \texttt{L1} or \texttt{R1} as deadman buttons with the right or left analog. For our experiment only the first modality was used because it was considered simpler.\\
+% todo Risulta inoltre essenziale aggiungere qualche equazione per spiegare il mapping tra il valore analogico letto dal pad (chiamalo \alpha) e il valore di velocità usato per moficare velocità lineare o angolare
 
 % todo immagine del pad
 \begin{figure}[H]
