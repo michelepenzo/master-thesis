@@ -84,14 +84,22 @@ Before the final experiment, explained in chapter \ref{experiment}, a test has b
 
 A preliminary experiment was made by an inexperienced user who had to do the same task for $ N $ times.The value of $ N $ that was chosen is $ 5 $. This relatively high value that was reduced in the final experiment, was chosen precisely to have as much data as possible to analyze after this preliminary experiment. It was also chosen to understand if the user could improve with multiple repetitions of tasks. The task, in figure \ref{fig:pre-task}, consisted to move four Lego blocks from a pick position to a place position. This task was repeated for both the modalities in section \ref{project-implementation}.
 
-% todo cerchiare con tikz
-
+% todo spiegare i cerchi
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.16]{pre_task.jpg}
+	\begin{tikzpicture}
+	\node(a){\includegraphics[scale=0.16]{pre_task.jpg}};
+	
+	\node at(a.center)[draw, yellow, line width=1pt,circle, minimum width=20pt, minimum height=10pt,rotate=-28, yshift=-28pt, xshift=32pt]{};
+	
+	\node at(a.center)[draw, red,line width=1pt,circle, minimum width=20pt, minimum height=10pt,rotate=-28, yshift=-14pt, xshift=38pt]{};
+	
+	\node at(a.center)[draw, green,line width=1pt,circle, minimum width=28pt, minimum height=10pt,rotate=-28, yshift=-16pt, xshift=89pt]{};
+	\end{tikzpicture}   
 	\caption{Preliminary experiments trials with Lego blocks}
 	\label{fig:pre-task}
 \end{figure}
+
 
 The data collected provides a solid basis to perform a preliminary analysis and understand how to perform the final experiment by collecting only the data for the final evaluation.
 
