@@ -1,17 +1,17 @@
 % experiments
 
-\chapter{Experiment}
+\chapter{Experimental setup}
 \label{experiment}
 
 In this chapter a complete and detailed description of the experiment is provided, starting with the experimental design that was divided into three phases and described in every step. Later the data collected are explained. Finally a overview about the participants (who they are and their peculiarity) is provided. 
 
 %----------------------------------------------------------------------------------------
 
-\section{Experimental setup} 
-\label{experimental-setup}
-
-From the data collected by the test experiment described in the previous section, we decided to use some new objects for the final experiment.
-At first, some Lego or boxes were used for the tests, but in the final experiment we decided to use some objects that could make the final scenario as similar as possible to reality.
+\section{Experimental design} 
+\label{experimental-design}
+% todo come allungare?
+From the data collected by the preliminary experiment described in section \ref{preliminary-experiments}, we decided to use different objects for the final experiment.
+At first, some Lego or boxes were used for the tests, but in the final experiment we decided to use more complex objects that could make the final scenario as similar as possible to a real industrial assembly task.
 In figure \ref{fig:shapes}, there are three objects of different shape created using wood. The figures are about $ 8x8$ $ cm $ in width and length and about $ 2 $ $ cm $ high (fig. \ref{fig:task_frontal}). Above them has been placed another little cube of $ 3x3x2 $ $ cm $ for proper grasping. With the gripper available isn't possible to use smaller objects without creating special supports to facilitate grasping. After that, some tests were conducted with these objects before submitting the final experiment to the users. 
 
 \begin{figure}[H]
@@ -29,24 +29,25 @@ In figure \ref{fig:shapes}, there are three objects of different shape created u
 \end{figure}
 
 
-\section{Experimental design}
-\label{experimental-design}
+\section{Experimental flow}
+\label{experimental-flow}
 The experimental design describes the entire flow which is done by every participants of the experiment. It has been divided into three stages for convenience: the first is the phase before the experiment, the second is the experimental phase and the last one is the final phase after the experiment.
 
 
 \subsection*{Pre-experiment phase}
 \label{pre-experiment-phase}
-In this phase all the necessary procedures to conduct the experiment correctly are explained. First of all a privacy policy for data collection was signed by the users. After that, a teach phase was carried out by all the users in order to understand how they can move the robot (in \kt{} or \te) and which buttons they need to press to perform the actions. At this stage users were asked to move a Lego block from a pick position to a place one performing a $ 90 $° rotation to teach him how to use rotation feature. This simple pick and place was performed by the users in both the modalities. When the user completed this phase an ascending unique id was assigned to him. Moreover, every user perform the pre-experiment and the experimental phase without seeing other users do the same.
+In this phase all the necessary procedures to correctly conduct the experiment are explained. First of all a privacy release form for data collection was signed by the users. After that, a teach phase was carried out by all the users in order to understand how they can move the robot (in \kt{} or \te) and which buttons they need to press to perform the actions. At this stage users were asked to move a Lego block from a pick position to a place one performing a $ 90 $° rotation to teach him how to use rotation feature. This simple pick and place was performed by the users in both the modalities. When the user completed this phase an ascending unique id was assigned to him/her. Moreover, every user perform the pre-experiment and the experimental phase without seeing other users' trials.
 
 \subsection*{Experimental phase}
 \label{experiment-phase}
 
-The experiment consists in two tasks in ascending order of difficulty repeated for three times. We call the repetitions \textit{``trial''} and the tasks were done by the pick and place phases. In figure \ref{fig:setup}, where the robot is positioned, it's possible to see the pick position. Specifically, according to the task to be performed (first or second), the final positions differ in two positions:
-\begin{enumerate}
-	\item simple interlocking position (fig. \ref{fig:simple_interlocking}),
-	\item difficult interlocking position (fig. \ref{fig:difficult_interlocking}).
-\end{enumerate}
+%The experiment consists in two tasks in ascending order of difficulty repeated for three times. We call the repetitions \textit{``trial''} and the tasks were done by the pick and place phases. In figure \ref{fig:setup}, where the robot is positioned, it's possible to see the pick position. Specifically, according to the task to be performed (first or second), the final positions differ in two positions:
+%\begin{enumerate}
+%	\item simple interlocking position (fig. \ref{fig:simple_interlocking}),
+%	\item difficult interlocking position (fig. \ref{fig:difficult_interlocking}).
+%\end{enumerate}
 
+The experiment consist in two tasks in ascending order of difficulty, repeated for three times both for \kt{} and \te{}, where the shapes describe in section \ref{experimental-design} must be entered as in figure \ref{fig:simple_interlocking} and figure \ref{fig:difficult_interlocking}. We call the repetitions \textit{``trial''}. The entire setup is shown in figure \ref{fig:setup}.%, while in  the first task and in  the second one.
 
 \begin{figure}[H]
 	\centering
@@ -69,9 +70,9 @@ The experiment consists in two tasks in ascending order of difficulty repeated f
 	\label{fig:setup}
 \end{figure}
 
-\noindent
-After every trial a \textit{vote} to the work done (based on time, number of waypoints and action on gripper) is given to the user. A generic vote is given instead of reporting the time to complete the experiment to the user. This evaluation metric was chosen because, if the times is given, the user will try to perform the next trials in less time because it competes with itself and he risks to complete the tasks incorrectly. All votes that have been given after each trial were noted. Moreover, some comments about the execution of the tasks have been written and reported in the next sections.
-After the \textit{first} trial of every task the replay phase based on the waypoints and on the actions on gripper was shown to the users. In this way the user understands where he can improve.\\
+% todo se ho tempo una formula
+After every trial a \textit{vote} to the work done (based on time, number of waypoints and action on gripper) is given to the user. A generic vote is given instead of reporting the time to complete the experiment to the user. This evaluation metric was chosen because, if the times is given, the user will try to perform the next trials in less time because it competes with itself and he/she risks to complete the tasks incorrectly. All votes that have been given after each trial were noted. Moreover, some comments about the execution of the tasks have been written and reported in the next sections.
+After the \textit{first} trial of every task the replay phase based on the waypoints and on the actions on gripper was shown to the users. In this way the user understands where and how he/she can improve.\\
 Some clarifications are provided to unify all users:
 \begin{itemize}
 	\item every trial is considered valid, even if a collision by the user or any other mistake that is made by the user compromises the trial,
@@ -83,12 +84,20 @@ Some clarifications are provided to unify all users:
 \subsection*{Post-experiment phase}
 \label{post-experiment-phase}
 
-At the end of the experimental phase the users were asked to fill out a questionnaire. This questionnaire is divided in three parts: the first asks personal informations as name, age, approximate height and weight and other questions to better understand how to divide users for the result analysis. The second part resumes some questions from the questionnaire of \textit{Nasa TLX} described in \cite{nasa-tlx}, and the last part asks general questions or optional comments about the experiment. 
+At the end of the experimental phase the users were asked to fill out the questionnaire available in \cite{questionnaire}. This questionnaire is divided in three parts: the first asks personal informations as name, age, approximate height and weight and other questions to better understand how to divide users for the result analysis. The second part resumes some questions from the questionnaire of \textit{Nasa TLX} described in \cite{nasa-tlx}, and the last part asks general questions or optional comments about the experiment. 
 
 \section{Data collection}
 \label{data-collection}
 
-During the experiment some data were collected from the ROS\texttt{ topic} available with sample rate of $ 10 Hz $. All these data have been saved in \texttt{.csv} files. Those files are related to: sequence of actions performed by the users during the experiment, cartesian pose and wrench, joint position and velocity and finally joint torque and external torque. Moreover, only the waypoints were extracted from the file of the actions ($ user\_x.csv $) and saved into another file.
+During the experiment some data were collected from the ROS\texttt{ topic} available with sample rate of $ 10 Hz $. All these data have been saved in \texttt{.csv} files. Those files are related to: 
+\begin{itemize}
+	\item \texttt{user\_x.csv} : sequence of actions performed by the users during the experiment
+	\item \texttt{user\_x\_wrench.csv}: cartesian wrench,
+	\item \texttt{user\_x\_pose.csv}: cartesian pose,
+	\item \texttt{user\_x\_joint\_pos\_vel.csv}: joint position and velocity,
+	\item \texttt{user\_x\_joint\_ext\_tor.csv}: joint torque and external torque. 
+\end{itemize}
+Moreover, only the waypoints were extracted from the file of the actions (\texttt{user\_x.csv}) and saved into another file (\texttt{user\_x\_waypoints.csv}).
 In figure \ref{fig:collected_data} there is a scheme of the data collected during the experiment. Only the first sub-folder is shown.
 
 \begin{figure}[H]
@@ -125,7 +134,7 @@ In figure \ref{fig:collected_data} there is a scheme of the data collected durin
 \section{Participants}
 \label{participants}
 
-The total number of participants is ten: seven male and three female. All of them are university graduates or students. Their ages are between $ 24 $ and $ 27 $ years old and distributed as in figure \ref{fig:ages}. Half of them never used a robot as \kuka{}. 
+The total number of participants is $ 10 $: seven male and three female. All of them are university graduates or students. Their ages are between $ 24 $ and $ 27 $ years old and distributed as in figure \ref{fig:ages}. Half of them never used a robot as \kuka{}. 
 
 \begin{figure}[H]
 	\centering
@@ -135,7 +144,7 @@ The total number of participants is ten: seven male and three female. All of the
 \end{figure}
 
 \noindent
-In questionnaire data on physical characteristics as weight and height were collected to see if there were correlations between the use of \kt{} teaching and the physical characteristics of each user. In figures \ref{fig:height} and \ref{fig:weight} are represented the percentages of users divided by weight and height. All the other intervals ($ 10cm $ for height and $ 10kg $ for weight) weren't included because no participants were included in them. 
+In questionnaire data on physical characteristics as weight and height were collected to see if there were correlations between the use of \kt{} teaching and the physical characteristics of each user. In figures \ref{fig:height} and \ref{fig:weight} are represented the percentages of users divided by weight and height, grouped into intervals of $ 0.1 m $ for height and $ 10kg $ for weight. 
 
 \begin{figure}[H]
 	\centering
@@ -152,8 +161,8 @@ In questionnaire data on physical characteristics as weight and height were coll
 \end{figure}
 
 \noindent
-To obtain better and diversified results among the participants, the modality in which each user starts with the experiment was diversified. Half of the participants started with \te{}, the others with \kt{}. To understand if users could be divided according to their abilities to use the pad, was asked them how often they use it: in figure \ref{fig:pad} the answers are represented.
-We recognize that we can't assume that these participants describe a representative sample of the population but it's a good sample of data. 
+To obtain better and diversified results among the participants, the modality in which each user starts with the experiment was diversified. Half of the participants started with \te{}, the others with \kt{}. To understand if users could be divided according to their abilities to use the chosen input device, was asked them how often they use it: in figure \ref{fig:pad} the answers are represented.
+%We recognize that we can't assume that these participants describe a representative sample of the population but it's a good sample of data. 
 
 \begin{figure}[H]
 	\centering
