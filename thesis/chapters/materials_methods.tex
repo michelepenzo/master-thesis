@@ -91,13 +91,13 @@ When an action is performed by the user, the led strip (\circled{1} in figure \r
 	\item \textit{reduced joint space}: in this other modality not all the joints are considered. Some joints have been blocked: you can move only the $ 1 $°, $ 2 $° and $ 6 $° joint. It's also possible to change the orientation of the EE using angular velocity.
 \end{itemize}
 
-The values read from the analogs of the pad are between $ -1 $ and $ 1 $. These values, that we called $\{ \alpha \}$ for simplicity, allow us to define the following formulas for controlling the \kuka{}:
+The values obtained from the analogs of the pad are between $ -1 $ and $ 1 $. These values, that we called $\{ \alpha \}$ for simplicity, allow us to define the following formulas for controlling the \kuka{}:
 \begin{itemize}
 	\item $ \alpha*1000 $ : for linear velocity,
 	\item $ \alpha*5 $ : for angular velocity.
 \end{itemize}
 
-The same formula used for linear velocity for the \textit{full task space} mode was applied to move joints in the \textit{reduced joint space} mode. In figure \ref{pad} we can see the structure of the pad and how it was used for control the robot. In both cases, the buttons used are the same:
+The same formula used for linear velocity for the \textit{full task space} mode was applied to move joints in the \textit{reduced joint space} mode. In figure \ref{pad} we can see the structure of the pad and how it was used to control the robot. In both cases, the buttons used are the same:
 
 \begin{itemize}
 	\item $ \times $ : close or open gripper, therefore this command automatically save the action and the actual pose,
