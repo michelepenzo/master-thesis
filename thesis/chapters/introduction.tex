@@ -15,10 +15,9 @@ The entire code of this thesis is freely (AGPL-3.0 license) available on Github:
 
 \section{Motivations}
 \label{motivations}
-% todo controllare ancora questa sezione
 
-Within the Industry 4.0, as described in \cite{industry-4}, robots are increasingly exploited in production plants. Especially collaborative robots, such as \kuka{}, are widely used within flexible production lines. They are essential for the entire automation process of assembly tasks because they provide advanced functionalities, such as impedance control which becomes essential for assembly tasks where greater precision is required. With the ambition to introduce robots into flexible assembly lines, the need to quickly reconfigure the workspace requires faster modalities for robot reprogramming. 
-The simplification of robot programming is becoming more significant then ever and this process involves a higher degree of automation. For example, welding (figure \ref{fig:welding}) and painting are already highly automated in the automotive industry, while demanding assembly tasks which are mainly pick and place or peg into hole tasks (figure \ref{fig:assembly}) are mostly performed manually today. However, many of these tasks are repetitive, require high forces and can be constantly changed. To facilitate reprogramming of robots, the new paradigm which is used more frequently is PBD (Programming By Demonstration) and is often used with assistive and collaborative robots that are installed in industrial environments. \\
+Within the Industry 4.0, as described in \cite{industry-4}, robots are increasingly exploited in production plants. Especially collaborative robots, such as \kuka{}, are widely used within flexible production lines. They are essential for the entire automation process of assembly tasks because they provide advanced functionalities, such as impedance control which becomes essential for assembly tasks where a big precision for the interlocking is required. With the ambition to introduce robots into flexible assembly lines, the need to quickly reconfigure the workspace requires faster modalities for robot reprogramming. 
+The simplification of robot programming is becoming more significant then ever and this process involves a higher degree of automation. For example, welding (figure \ref{fig:welding}) and painting are already highly automated in the automotive industry, while demanding assembly tasks which are mainly pick and place or peg into hole tasks (figure \ref{fig:assembly}) are mostly performed manually today. However, many of these tasks are repetitive, require high forces and can be constantly changed. To facilitate reprogramming of robots, the new paradigm which is used more frequently is \textit{PbD} (Programming By Demonstration) and is often used with assistive and collaborative robots that are installed in industrial environments. \\
 
 \begin{figure}[H]
 	\begin{subfigure}{.5\textwidth}
@@ -41,13 +40,13 @@ The simplification of robot programming is becoming more significant then ever a
 \section{Goals}
 \label{goals}
 
-To fully exploit the potential of cobots, a new methodology for teaching assembly tasks is needed. This work propose a new \te{} methodology for teaching assembly tasks using a remote control like a common joypad for console. In addition, a comparison between \kt{} and \te{} was made to evaluate the performances of the new modality and to find the optimal method for teaching and reprogramming robots for industrial assembly tasks. Before starting the work, we formulate some preliminary questions and hypothesis. Therefore we define some research questions to better focus the goal of this thesis:
+To fully exploit the potential of cobots, a new methodology for teaching assembly tasks is needed. This work propose a new \te{} methodology for teaching assembly tasks using a remote control like a common joypad for console. In addition, a comparison between \kt{} and \te{} teaching was made to evaluate the performances of the new modality and to find the optimal method for teaching and reprogramming robots for industrial assembly tasks. Before starting the work, we formulate some preliminary questions and hypothesis. Therefore we define some research questions to better focus the goal of this thesis:
 \begin{itemize}
 	\item Which mode between \kt{} and \te{}, described in \ref{teach} and \ref{teleoperation-pad}, is easier to use?
 	\item Which one requires more physical and mental effort?
 	\item The two proposed approaches are said to be intuitive, but how much when they are applicable for industrial assembly task programming?
 	\item Are the physical characteristics of the users impacting on \kt{} teaching?
-	\item People who have a lot of familiarity with joypad are better with \te{}?
+	\item Are users who are familiar with joypad better at \te{} than the other users?
 \end{itemize}
 
 The experiments conducted in this work aim to answer these questions by explaining the reasons for favoring one or the other.

@@ -97,7 +97,7 @@ The values read from the analogs of the pad, now called $\{ \alpha \}$, are betw
 	\item $ \alpha*5 $: for angular velocity.
 \end{itemize}
 
-The same formula for linear velocity was applied to move the joints. In both cases, the buttons used are the same. In figure \ref{pad} we can see the structure of the pad, while now the buttons used are presented
+The same formula for linear velocity was applied to move the joints. In figure \ref{pad} we can see the structure of the pad and how it was used for control the robot. In both cases, the buttons used are the same:
 
 \begin{itemize}
 	\item $ \times $: close or open gripper, therefore this command automatically save the action and the actual pose,
@@ -108,10 +108,10 @@ The same formula for linear velocity was applied to move the joints. In both cas
 Using the pad, it's possible to take advantage of the internal haptic feedback. Therefore, when an external force greater than a preset value is detected, the pad start vibrating. Based on the control mode that the user is using (impedance or position control), the activation force is different.
 Both of the modalities are performed using \texttt{L1} or \texttt{R1} as deadman buttons with the right or left analog.\\
 
-% todo immagine del pad
+
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.28]{ps4_pad.jpg}
-	\caption{PlayStation 4 pad}
+	\includegraphics[scale=0.2]{ps4_pad_lines.png}
+	\caption[PlayStation 4 pad]{The scheme of the full task space modality \\mapped on the PlayStation 4 pad}
 	\label{pad}
 \end{figure}
