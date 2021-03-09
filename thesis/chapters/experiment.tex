@@ -9,26 +9,55 @@ In this chapter how the experiment was prepared and the materials used for the t
 
 \section{Experimental design} 
 \label{experimental-design}
-% todo come allungare --> In questa sezione enfatizza che il task è stato progettato per mostrare due consizioni di assemblaggio realistiche, la seconda delle quali con la necessità di effettuare incastro ?
 
 From the data collected by the preliminary experiment described in section \ref{preliminary-experiments}, we decided to use different objects for the final experiment.
 At first, some Lego or boxes were used for the tests, but in the final experiment we decided to use more complex objects that could make the final scenario as similar as possible to a real industrial assembly task.
-In figure \ref{fig:shapes}, there are three objects of different shape created using wood. The figures are about $ 8x8$ $ cm $ in width and length and about $ 2 $ $ cm $ high (fig. \ref{fig:task_frontal}). Above them has been placed another little cube of $ 3x3x2 $ $ cm $ for proper grasping. With the gripper available isn't possible to use smaller objects without creating special supports to facilitate grasping. After that, some tests were conducted with these objects before submitting the final experiment to the users. 
+In figure \ref{fig:shapes}, there are three objects of different shape created using wood. The figures are about $ 8x8$ $ cm $ in width and length and about $ 2 $ $ cm $ high. Above them has been placed another little cube of $ 3x3x2 $ $ cm $ for proper grasping (fig. \ref{fig:task_frontal}). With the gripper available isn't possible to use smaller objects without creating special supports to facilitate grasping. After that, some tests were conducted with these objects before submitting the final experiment to the users. 
+The task was considered as a realistic assembly condition, where a pick and place task with large margins (figure \ref{fig:simple_interlocking}) was used as a simple task, while the task in figure \ref{fig:difficult_interlocking} was used to simulate a difficult assembly task with interlocking.
+The entire setup is shown in figure \ref{fig:setup} and a complete description of the experiment is provided in section \ref{experimental-flow}.\\
 
 \begin{figure}[H]
-	\centering
-	\includegraphics[scale=0.07]{shapes.jpg}
-	\caption{Shapes for the final task}
-	\label{fig:shapes}
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[scale=0.05]{shapes.jpg}
+		\caption{Shapes for the final task}
+		\label{fig:shapes}
+	\end{subfigure}%
+	\hfill
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[scale=0.05]{cube_frontal.jpg}
+		\caption{Frontal view of the cube above each shape\\ to facilitate grasping}
+		\label{fig:task_frontal}
+	\end{subfigure}
+	\caption{Shapes used for the tasks}
+	\label{fig:entire_shapes}
+\end{figure}
+
+\begin{figure}[H]
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[scale=0.045]{task2.jpg}
+		\caption{Simple interlocking}
+		\label{fig:simple_interlocking}
+	\end{subfigure}%
+	\hfill
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[scale=0.045]{task3.jpg}
+		\caption{Difficult interlocking}
+		\label{fig:difficult_interlocking}
+	\end{subfigure}
+	\caption{The first and second task}
+	\label{fig:complete_task}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.07]{cube_frontal.jpg}
-	\caption{Frontal view of the cube above each shape\\ to facilitate grasping}
-	\label{fig:task_frontal}
+	\includegraphics[scale=0.07]{setup.jpg}
+	\caption{Setup overview}
+	\label{fig:setup}
 \end{figure}
-
 
 \section{Experimental flow}
 \label{experimental-flow}
@@ -42,31 +71,11 @@ In this phase all the necessary procedures to correctly conduct the experiment a
 \subsection*{Experimental phase}
 \label{experiment-phase}
 
-From the two modalities proposed in \ref{teleoperation-pad}, the \te{} modality chosen for the executions of the task was the \textit{full task space}. It allows the correct execution of the task in a simple way. The experiment consists in two tasks in ascending order of difficulty, repeated for three times both for \kt{} and \te{}, where the shapes shown in section \ref{fig:shapes} must be entered as in figure \ref{fig:simple_interlocking} and figure \ref{fig:difficult_interlocking}. We call the repetitions \textit{``trial''}. The entire setup is shown in figure \ref{fig:setup}.
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[scale=0.06]{task2.jpg}
-	\caption{Simple interlocking}
-	\label{fig:simple_interlocking}
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[scale=0.06]{task3.jpg}
-	\caption{Difficult interlocking}
-	\label{fig:difficult_interlocking}
-\end{figure}
-
-\begin{figure}[ht]
-	\centering
-	\includegraphics[scale=0.07]{setup.jpg}
-	\caption{Setup overview}
-	\label{fig:setup}
-\end{figure}
-
-% todo se ho tempo una formula
-After every trial a \textit{vote} to the work done (based on time, number of waypoints and action on gripper) is given to the user. A generic vote is given instead of reporting the time to complete the experiment to the user. This evaluation metric was chosen because, if the times is given, the user will try to perform the next trials in less time because it competes with itself and he/she risks to complete the tasks incorrectly. All votes that have been given after each trial were noted. Moreover, some comments about the execution of the tasks have been written and reported in the next sections.
+From the two modalities proposed in \ref{teleoperation-pad}, the \te{} modality chosen for the executions of the task was the \textit{full task space}. It allows the correct execution of the task in a simple way. The experiment consists in two tasks in ascending order of difficulty, repeated for \textit{three} times both for \kt{} and \te{}, where the shapes shown in section \ref{fig:shapes} must be entered as in figure \ref{fig:simple_interlocking} and figure \ref{fig:difficult_interlocking}. We call the repetitions \textit{``trial''}. After every trial a \textit{vote} to the work done (based on time, number of waypoints and action on gripper) is given to the user. The formula for calculating the vote was:
+\begin{center}
+	$ (sample*0,1/60) * (opt\_wp/\#wp) * (opt\_act/\#act)$
+\end{center}
+where the first term of the formula calculate the time in seconds, the second term calculates the ratio between the number of optimal waypoints and the number of waypoints taken by the user. Finally, the third term calculates the ration between the number of optimal actions on gripper and the actions taken by the user. A generic vote is given instead of reporting the time to complete the experiment to the user. This evaluation metric was chosen because, if the times is given, the user will try to perform the next trials in less time because it competes with itself and he/she risks to complete the tasks incorrectly. All votes that have been given after each trial were noted. Moreover, some comments about the execution of the tasks have been written and reported in the next sections.
 After the \textit{first} trial of every task the replay phase based on the waypoints and on the actions on gripper was shown to the users. In this way the user understands where and how he/she can improve.\\
 Some clarifications are provided to unify all users:
 \begin{itemize}
