@@ -91,7 +91,14 @@ When an action is performed by the user, the led strip (\circled{1} in figure \r
 	\item \textit{reduced joint space}: in this other modality not all the joints are considered. Some joints have been blocked: you can move only the $ 1 $°, $ 2 $° and $ 6 $° joint. It's also possible to change the orientation of the EE using angular velocity.
 \end{itemize}
 
-In both cases, the buttons used are the same. In figure \ref{pad} we can see the structure of the pad, while now the buttons used are presented
+The values read from the analogs of the pad, now called $\{ \alpha \}$, are between $ -1 $ and $ 1 $. The following formulas permits to transform the values in the correct form for the \kuka{}:
+\begin{itemize}
+	\item $ \alpha*1000 $: for linear velocity,
+	\item $ \alpha*5 $: for angular velocity.
+\end{itemize}
+
+The same formula for linear velocity was applied to move the joints. In both cases, the buttons used are the same. In figure \ref{pad} we can see the structure of the pad, while now the buttons used are presented
+
 \begin{itemize}
 	\item $ \times $: close or open gripper, therefore this command automatically save the action and the actual pose,
 	\item $ \triangle $: save the actual pose of the robot,
@@ -99,13 +106,12 @@ In both cases, the buttons used are the same. In figure \ref{pad} we can see the
 \end{itemize}
 
 Using the pad, it's possible to take advantage of the internal haptic feedback. Therefore, when an external force greater than a preset value is detected, the pad start vibrating. Based on the control mode that the user is using (impedance or position control), the activation force is different.
-Both of the modalities are performed using \texttt{L1} or \texttt{R1} as deadman buttons with the right or left analog. For our experiment only the first modality was used because it was considered simpler.\\
-% todo Risulta inoltre essenziale aggiungere qualche equazione per spiegare il mapping tra il valore analogico letto dal pad (chiamalo \alpha) e il valore di velocità usato per moficare velocità lineare o angolare
+Both of the modalities are performed using \texttt{L1} or \texttt{R1} as deadman buttons with the right or left analog.\\
 
 % todo immagine del pad
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.25]{ps4_pad.jpg}
+	\includegraphics[scale=0.28]{ps4_pad.jpg}
 	\caption{PlayStation 4 pad}
 	\label{pad}
 \end{figure}

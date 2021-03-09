@@ -16,8 +16,35 @@ In this work, ROS and the open source stack available in \cite{iiwa-stack-link} 
 \section{Evaluation of force estimation}
 \label{evaluation-force}
 
-The topic called \texttt{CartesianWrench} shows the external wrench measured by the robot according to the used reference frame. The wrench is composed of a vector that represents the force along the three spatial dimension: from this vector only the force along $ z $ was extracted. In our case, the force is measured on the gripper. To understand if we could consider the force applied on the EE, some experiments were conducted to understand the reliability and responsiveness of the values returned from this topic. These tests were conducted using objects of different weight calibrated on a scale with precision to the gram and attached to both of the two jaws of the gripper. Every weighing was performed in three different configuration of the robot and for two times. The pose $ p1 $, or home pose, is with the elbow high in start position, the pose $ p2 $ is with the gripper perpendicular to the pick position used in the experiments and the pose $ p3 $ is the place position used in the experiment. In table \ref{tab:wrench} the columns indicate the values, expressed in $ N $, of the force calculated and extracted from the cartesian wrench for each weights. The penultimate and the last rows indicate the mean and the standard deviations, while the third last row indicates the expected value: $ weight*9.81 $.
-% todo foto con le 3 configurazioni
+The topic called \texttt{CartesianWrench} shows the external wrench measured by the robot according to the used reference frame. The wrench is composed of a vector that represents the force along the three spatial dimension: from this vector only the force along $ z $ was extracted. In our case, the force is measured on the gripper. To understand if we could consider the force applied on the EE, some experiments were conducted to understand the reliability and responsiveness of the values returned from this topic. These tests were conducted using objects of different weight calibrated on a scale with precision to the gram and attached to both of the two jaws of the gripper. Every weighing was performed in three different configuration of the robot and for two times. The home pose, identified with pose $ p1 $ in figure \ref{fig:p1}, is with the elbow high in start position, the pose $ p2 $ in figure \ref{fig:p2} is with the gripper perpendicular to the pick position used in the experiments and the pose $ p3 $ in figure \ref{fig:p3} is the place position used in the experiment.
+
+In table \ref{tab:wrench} the columns indicate the values, expressed in $ N $, of the force calculated and extracted from the cartesian wrench for each weights. The penultimate and the last rows indicate the mean and the standard deviations, while the third last row indicates the expected value: $ weight*9.81 $.
+
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}{.3\textwidth}
+		\centering
+		\includegraphics[scale=0.2]{pose_p1.png}
+		\caption{Pose p1}
+		\label{fig:p1}
+	\end{subfigure}%
+	\hfill
+	\begin{subfigure}{.3\textwidth}
+		\centering
+		\includegraphics[scale=0.2]{pose_p2.png}
+		\caption{Pose p2}
+		\label{fig:p2}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}{.3\textwidth}
+		\centering
+		\includegraphics[scale=0.2]{pose_p3.png}
+		\caption{Pose p2}
+		\label{fig:p3}
+	\end{subfigure}
+	\caption{Different configurations for evaluation of force estimation}
+	\label{fig:poses}
+\end{figure}
 
 \begin{table}[H]
 	\centering
@@ -82,19 +109,18 @@ Before the final experiment, explained in chapter \ref{experiment}, a test has b
 	\item \texttt{JointExternalTorque} and \texttt{JointTorque}: torque applied on joints.
 \end{itemize}
 
-A preliminary experiment was made by an inexperienced user who had to do the same task for $ N $ times.The value of $ N $ that was chosen is $ 5 $. This relatively high value that was reduced in the final experiment, was chosen precisely to have as much data as possible to analyze after this preliminary experiment. It was also chosen to understand if the user could improve with multiple repetitions of tasks. The task, in figure \ref{fig:pre-task}, consisted to move four Lego blocks from a pick position to a place position. This task was repeated for both the modalities in section \ref{project-implementation}.
+A preliminary experiment was made by an inexperienced user who had to do the same task for $ N $ times. The value of $ N $ that was chosen is $ 5 $. This relatively high value that was reduced in the final experiment, was chosen precisely to have as much data as possible to analyze after this preliminary experiment. It was also chosen to understand if the user could improve the time and the number of waypoints with multiple repetitions of tasks. The task, in figure \ref{fig:pre-task}, consisted to move four Lego blocks (one of them circled in red) from a pick position (circled in green) to a place position (circled in yellow). This task was repeated for both the modalities in section \ref{project-implementation}.
 
-% todo spiegare i cerchi
 \begin{figure}[H]
 	\centering
 	\begin{tikzpicture}
-	\node(a){\includegraphics[scale=0.16]{pre_task.jpg}};
-	
-	\node at(a.center)[draw, yellow, line width=1pt,circle, minimum width=20pt, minimum height=10pt,rotate=-28, yshift=-28pt, xshift=32pt]{};
-	
-	\node at(a.center)[draw, red,line width=1pt,circle, minimum width=20pt, minimum height=10pt,rotate=-28, yshift=-14pt, xshift=38pt]{};
-	
-	\node at(a.center)[draw, green,line width=1pt,circle, minimum width=28pt, minimum height=10pt,rotate=-28, yshift=-16pt, xshift=89pt]{};
+		\node(a){\includegraphics[scale=0.16]{pre_task.jpg}};
+		
+		\node at(a.center)[draw, yellow, line width=1pt,circle, minimum width=20pt, minimum height=10pt,rotate=-28, yshift=-28pt, xshift=32pt]{};
+		
+		\node at(a.center)[draw, red,line width=1pt,circle, minimum width=20pt, minimum height=10pt,rotate=-28, yshift=-14pt, xshift=38pt]{};
+		
+		\node at(a.center)[draw, green,line width=1pt,circle, minimum width=28pt, minimum height=10pt,rotate=-28, yshift=-16pt, xshift=89pt]{};
 	\end{tikzpicture}   
 	\caption{Preliminary experiments trials with Lego blocks}
 	\label{fig:pre-task}
