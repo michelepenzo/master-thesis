@@ -10,7 +10,7 @@ This chapter describes the hardware and software setup: the components of the ro
 \section{Hardware setup}
 \label{about-the-robot}
 
-The \kuka{} is a robot with collaborative features. It has a 14 kg payload and an action range from $ 800mm $ to $ 820 mm $. It is one of the latest robotic innovation with the ability to work in a shared workspace with humans. It has built in sensors and soft edges that make it safe for human collaboration and the ability to detect movement and touch all over. Moreover it has a media flange with integrated wiring that makes it possible to easily interchange different tools. When a tool is attached, it is automatically considered in the kinematic chain. In our case, in figure \ref{fig:kuka-gimatic} the tool mounted on the media flange is a \textit{Gimatic MPLM3240}. It is a electric parallel gripper with two self-centering jaw and a total gripping force of $ 210 N $. \\
+The \kuka{} is a robot with collaborative features. It has a 14 kg payload and an action range from $ 800mm $ to $ 820 mm $. It is one of the latest robotic innovation with the ability to work in a shared workspace with humans. It has built in sensors and soft edges that make it safe for human collaboration and the ability to detect movement and touch all over. Moreover it has a media flange with integrated wiring that makes it possible to easily interchange different tools. When a tool is attached, it is automatically considered in the kinematic chain. In our case, circled in figure \ref{fig:kuka-gimatic}, the tool mounted on the media flange is a \textit{Gimatic MPLM3240}. It is a electric parallel gripper with two self-centering jaw and a total gripping force of $ 210 N $. \\
 
 \begin{figure}[H]
 	\centering
@@ -31,7 +31,7 @@ It can also execute the commonly motion patterns as: spline, point-to-point or l
 An open source stack compatible with ROS (presented in \cite{ros}) allows the use of the robot in a simple way. A Sunrise project, containing one or more Robotic Application, can be synchronized to the robot cabinet and executed from the SmartPad.
 The open source stack, called by developers \textit{iiwa\_stack}, provides a Robotic Application that can be used with the robot that runs over KRC. It establishes a point to point connection via ROS to the machine connected via Ethernet to the robot cabinet. The machine, with ROS installed, will be able to send and receive ROS messages to and from the Robotic Application, as represented in figure \ref{ros_sunire}. The messages used in this stack are taken from the messages available in a standard ROS distribution, but there are other custom ones inside the \texttt{iiwa\_msgs} folder. 
 
-With the stack is simple to manipulate the messages received from the robot and send new ones as command to it. This is possible using Python, C++ or console and the ROS functionalities already implemented as \texttt{service}, \texttt{topic} and \texttt{action}.\\\\
+With the stack is simple to manipulate the messages received from the robot and send new ones as command to it. This is possible using Python, C++ or console and the ROS functionalities already implemented as \texttt{service}, \texttt{topic} and \texttt{action}.\\
 
 \begin{figure}[H]
 	\centering
@@ -40,7 +40,7 @@ With the stack is simple to manipulate the messages received from the robot and 
 	\label{ros_sunire}
 \end{figure}
 
-Since we have a gripper mounted on media flange (explained better in \ref{about-the-robot}), there's a task always active in background that provides a method that can be called via \texttt{ros\_service}. This service allows us to open and close the two jaw of the gripper. We also have another background task for the \textit{rgb} led present on media flange.
+Since we have a gripper mounted on media flange (as explained in \ref{about-the-robot}), there's a task always active in background that provides a method that can be called via \texttt{ros\_service}. This service allows us to open and close the two jaw of the gripper. We also have another background task for the \textit{rgb} led present on media flange.
 
 A correct thing to do before starting the use of the robot is to check and modify the safety configuration loaded by default. In our case:
 \begin{itemize}
@@ -91,18 +91,18 @@ When an action is performed by the user, the led strip (\circled{1} in figure \r
 	\item \textit{reduced joint space}: in this other modality not all the joints are considered. Some joints have been blocked: you can move only the $ 1 $°, $ 2 $° and $ 6 $° joint. It's also possible to change the orientation of the EE using angular velocity.
 \end{itemize}
 
-The values read from the analogs of the pad, now called $\{ \alpha \}$, are between $ -1 $ and $ 1 $. The following formulas permits to transform the values in the correct form for the \kuka{}:
+The values read from the analogs of the pad are between $ -1 $ and $ 1 $. These values, that we called $\{ \alpha \}$ for simplicity, allow us to define the following formulas for controlling the \kuka{}:
 \begin{itemize}
-	\item $ \alpha*1000 $: for linear velocity,
-	\item $ \alpha*5 $: for angular velocity.
+	\item $ \alpha*1000 $ : for linear velocity,
+	\item $ \alpha*5 $ : for angular velocity.
 \end{itemize}
 
-The same formula for linear velocity was applied to move the joints. In figure \ref{pad} we can see the structure of the pad and how it was used for control the robot. In both cases, the buttons used are the same:
+The same formula used for linear velocity for the \textit{full task space} mode was applied to move joints in the \textit{reduced joint space} mode. In figure \ref{pad} we can see the structure of the pad and how it was used for control the robot. In both cases, the buttons used are the same:
 
 \begin{itemize}
-	\item $ \times $: close or open gripper, therefore this command automatically save the action and the actual pose,
-	\item $ \triangle $: save the actual pose of the robot,
-	\item $ \square $: change the control mode from position control to cartesian impedance control, and vice versa.
+	\item $ \times $ : close or open gripper, therefore this command automatically save the action and the actual pose,
+	\item $ \triangle $ : save the actual pose of the robot,
+	\item $ \square $ : change the control mode from position control to cartesian impedance control, and vice versa.
 \end{itemize}
 
 Using the pad, it's possible to take advantage of the internal haptic feedback. Therefore, when an external force greater than a preset value is detected, the pad start vibrating. Based on the control mode that the user is using (impedance or position control), the activation force is different.

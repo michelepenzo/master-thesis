@@ -3,43 +3,43 @@
 \chapter{Preliminary experiments}
 \label{preliminary-experiments}
 
-This chapter describes the preliminary hardware setup done before all the tests. Moreover, in section \ref{evaluation-force} and \ref{preliminary-trials} the preliminary analysis on the robot are explained.
+This chapter describes the preliminary hardware setup done before all the tests. Moreover, in the next section, the preliminary analysis made on the robot before the final experiment are explained.
  
 %----------------------------------------------------------------------------------------
 
 \section{Preliminary hardware setup}
 \label{preliminary-hw-sw}
 
-The first thing that was done was the calibration of the gripper using the application provided by Kuka and usable from the SmartPad. This application consists on moving the sixth and seventh joint with multiple circular and predefined movements around each selected axis. This calibration provides a way to calculate the weight, center of mass and inertia matrix of the tool attached on media flange. These operations were repeated in different configurations to provide more robust estimations. The chosen configurations were the pick and place positions: they were the principal and the most used during the experiment. Finally, the configured tool was loaded as \texttt{ros\_param} and recognized from the stack.
+The first thing that was done was the calibration of the gripper using the application provided by Kuka and usable from the SmartPad. This application consists on moving the sixth and seventh joint with multiple circular and predefined movements around each one of the selected axis. This calibration provides a way to calculate the weight, center of mass and inertia matrix of the tool attached on media flange. These operations were repeated in different configurations to provide more robust estimations. The chosen configurations were the pick and place positions: they were the principal and the most used during the experiment. Finally, the configured tool was loaded as \texttt{ros\_param} and recognized from the stack.
 In this work, ROS and the open source stack available in \cite{iiwa-stack-link} were used. This stack provides many \texttt{topics} that can be used to calculate joint position and velocity, torque on joint, cartesian pose and force on referenced frame. Before the user study, some data were collected to understand how the final experiment can be evaluated.
 
 \section{Evaluation of force estimation}
 \label{evaluation-force}
 
-The topic called \texttt{CartesianWrench} shows the external wrench measured by the robot according to the used reference frame. The wrench is composed of a vector that represents the force along the three spatial dimension: from this vector only the force along $ z $ was extracted. In our case, the force is measured on the gripper. To understand if we could consider the force applied on the EE, some experiments were conducted to understand the reliability and responsiveness of the values returned from this topic. These tests were conducted using objects of different weight calibrated on a scale with precision to the gram and attached to both of the two jaws of the gripper. Every weighing was performed in three different configuration of the robot and for two times. The home pose, identified with pose $ p1 $ in figure \ref{fig:p1}, is with the elbow high in start position, the pose $ p2 $ in figure \ref{fig:p2} is with the gripper perpendicular to the pick position used in the experiments and the pose $ p3 $ in figure \ref{fig:p3} is the place position used in the experiment.
+The topic called \texttt{CartesianWrench} shows the external wrench measured by the robot according to the used reference frame. The wrench is composed of a vector that represents the force along the three spatial dimension: from this vector only the force along $ z $ was extracted. In our case, the force was measured on the gripper. To understand if we could consider the force applied on the EE, some experiments were conducted to understand the reliability and responsiveness of the values returned from this topic. These tests were conducted using objects of different weight calibrated on a scale with precision to the gram and attached to both of the two jaws of the gripper. Every weighing was performed in three different configuration of the robot and for two times. The home pose (figure \ref{fig:p1}), identified with $ \{p1\} $, is with the elbow high in start position, the pose $ \{p2\} $ (figure \ref{fig:p2}) is with the gripper perpendicular to the pick position used in the experiments and the pose $ \{p3\} $ (figure \ref{fig:p3}) is the place position used in the experiment.
 
-In table \ref{tab:wrench} the columns indicate the values, expressed in $ N $, of the force calculated and extracted from the cartesian wrench for each weights. The penultimate and the last rows indicate the mean and the standard deviations, while the third last row indicates the expected value: $ weight*9.81 $.
+In table \ref{tab:wrench} the columns indicate the values, expressed in $ N $, of the force calculated and extracted from the cartesian wrench for each weights. The penultimate and the last rows indicate the mean and the standard deviation of the six values, while the third last row is the expected value: $ weight * 9,81 $.
 
 \begin{figure}[H]
 	\centering
 	\begin{subfigure}{.3\textwidth}
 		\centering
 		\includegraphics[scale=0.2]{pose_p1.png}
-		\caption{Pose p1}
+		\caption{Pose $ p1 $}
 		\label{fig:p1}
 	\end{subfigure}%
 	\hfill
 	\begin{subfigure}{.3\textwidth}
 		\centering
 		\includegraphics[scale=0.2]{pose_p2.png}
-		\caption{Pose p2}
+		\caption{Pose $ p2 $}
 		\label{fig:p2}
 	\end{subfigure}
 	\hfill
 	\begin{subfigure}{.3\textwidth}
 		\centering
 		\includegraphics[scale=0.2]{pose_p3.png}
-		\caption{Pose p2}
+		\caption{Pose $ p2 $}
 		\label{fig:p3}
 	\end{subfigure}
 	\caption{Different configurations for evaluation of force estimation}
@@ -94,22 +94,23 @@ Another test that was made using the force applied on EE analyzes the maximum fo
 \end{figure}
 
 In figure \ref{fig:wrench_position} we can observe that using position control the curve of the force applied is exponential and it stops approximately at $ 14 N$ that is the maximum force that the \kuka{} can impart. Instead, in figure \ref{fig:wrench_impedance} we can immediately spot the difference between impedance and position control. We can see that the maximum force that can be applied before that collision avoidance is activated is $ 7N $ instead of $ 14N $.
-As described in \cite{impedance}, impedance control imposes a desired dynamic behavior to the interaction between the robot EE and environment. The desired performance is specified through a complete set of mass-spring-damper equations and a model describes how the reaction force are generated in association with the environment deformation.
-Using impedance control, we are controlling the forces that oppose to external motions that are imposed by the environment. In fact, in figure \ref{fig:wrench_impedance} we can see the behavior of a spring: it reacts to the external force by adapting (the first part of the curve) but, when the force is too high and the damping constant too low to perform an adaptive movement, it stops and the robot applies the maximum possible force. Since there is the damping constant, the maximum force will be $ 7N$.
+As described in \cite{impedance}, impedance control imposes a desired dynamic behavior to the interaction between the robot EE and environment. The desired performance is specified through an set of equation of mass-spring-damper, each one for all the directions of the cartesian space. A model that describes how the reaction forces are generated in association with the environment deformation is not explicitly required, in fact there is no way to regulate the contact force with position control.
+In figure \ref{fig:wrench_impedance} we can see the behavior of a spring: it reacts to the external force by adapting (the first part of the curve) but, when the force is too high and the damping constant too low to perform an adaptive movement, it stops and the robot applies the maximum possible force. Since there is the damping constant, the maximum force will be $ 7N$.
 
 \section{Preliminary experimental trials}
 \label{preliminary-trials}
 
-Before the final experiment, explained in chapter \ref{experiment}, a test has been done to understand how the experiment can be carried out by the participants. In particular, the following data were collected subscribing to \texttt{topic} as:
+Before the final experiment explained in chapter \ref{experiment}, a test has been done to understand how the experiment can be carried out by the participants. In particular, the following data were collected subscribing to \texttt{topic} as:
 
 \begin{itemize}
-	\item \texttt{CartesianPose}: position and orientation of EE,
-	\item \texttt{CartesianWrench}: force applied on EE,
-	\item \texttt{JointPositionVelocity}: position and velocity of all joints,
-	\item \texttt{JointExternalTorque} and \texttt{JointTorque}: torque applied on joints.
+	\item \texttt{CartesianPose} : position and orientation of EE,
+	\item \texttt{CartesianWrench} : force applied on EE,
+	\item \texttt{JointPositionVelocity} : position and velocity of all joints,
+	\item \texttt{JointExternalTorque} and \texttt{JointTorque} : torque applied on joints.
 \end{itemize}
 
-A preliminary experiment was made by an inexperienced user who had to do the same task for $ N $ times. The value of $ N $ that was chosen is $ 5 $. This relatively high value that was reduced in the final experiment, was chosen precisely to have as much data as possible to analyze after this preliminary experiment. It was also chosen to understand if the user could improve the time and the number of waypoints with multiple repetitions of tasks. The task, in figure \ref{fig:pre-task}, consisted to move four Lego blocks (one of them circled in red) from a pick position (circled in green) to a place position (circled in yellow). This task was repeated for both the modalities in section \ref{project-implementation}.
+This preliminary experimental phase was made by an inexperienced user who had to do the same task for $ n $ times. The value of $ n $ that was chosen is $ 5 $. This relatively high value that was reduced in the final experiment, was chosen precisely to have as much data as possible to analyze after this preliminary experiment. It was also chosen to understand if the user could improve the time and the number of waypoints with multiple repetitions of the same tasks. The task, in figure \ref{fig:pre-task}, consisted to move four Lego blocks (one of them circled in red) from a pick position (circled in green) to a place position (circled in yellow). This task was repeated for both the modalities in section \ref{project-implementation}. The data collected provides a solid basis to perform a preliminary analysis and understand how to perform the final experiment by collecting only the data for the final evaluation.
+
 
 \begin{figure}[H]
 	\centering
@@ -125,9 +126,6 @@ A preliminary experiment was made by an inexperienced user who had to do the sam
 	\caption{Preliminary experiments trials with Lego blocks}
 	\label{fig:pre-task}
 \end{figure}
-
-
-The data collected provides a solid basis to perform a preliminary analysis and understand how to perform the final experiment by collecting only the data for the final evaluation.
 
 In figure \ref{fig:diff_kt} and \ref{fig:diff_teleop} are represented on $ x $ axis the five repetitions of the users, while on $ y $ axis the time in seconds necessary to complete each repetition. As represented in figure \ref{fig:diff_kt}, it's possible to say that the time necessary to complete the task in \kt{} teaching was similar between the two users, but in figure \ref{fig:kt_user} the first trial wasn't completed due a mistake by the user. In this case, the experiment wasn't repeat because this was a test and all the possible problems had to be understood. We can also say that with more attempts the time for completing the task decrease.
 
@@ -168,5 +166,5 @@ In figure \ref{fig:diff_teleop} we can say that the times for complete the task 
 \end{figure}
 
 From the two failures, we noticed that the user does not know very well the environment and how to use the robot. 
-Therefore, in the final experiment, a thorough explanations about \kt{} and \te{} is provided to the user before starting the experiment; but the failed trials are still considered. Moreover, from this experiment, it's noticed that three trials are enough to see the learning results.
+Therefore, in the final experiment, a thorough explanations about \kt{} and \te{} is provided to the user before starting the experiment, but the failed trials are still considered. Moreover, from this experiment, it's noticed that three trials are enough to see the learning results.
 All the knowledge acquired from this experiment has been applied in the experimental design as described in \ref{experimental-design}.
