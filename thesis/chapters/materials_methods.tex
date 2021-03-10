@@ -29,7 +29,7 @@ The Sunrise Workbench is a tool used to program robot applications in Java, whic
 It can also execute the commonly motion patterns as: spline, point-to-point or linear motions.
 
 An open source stack compatible with ROS (presented in \cite{ros}) allows the use of the robot in a simple way. A Sunrise project, containing one or more Robotic Application, can be synchronized to the robot cabinet and executed from the SmartPad.
-The open source stack, called by developers \textit{iiwa\_stack}, provides a Robotic Application that can be used with the robot that runs over KRC. It establishes a point to point connection via ROS to the machine connected via Ethernet to the robot cabinet. The machine, with ROS installed, will be able to send and receive ROS messages to and from the Robotic Application, as represented in figure \ref{ros_sunire}. The messages used in this stack are taken from the messages available in a standard ROS distribution, but there are other custom ones inside the \texttt{iiwa\_msgs} folder. 
+The open source stack, called by developers \textit{iiwa\_stack}, provides a Robotic Application that can be used with the robot that runs over KRC. It establishes a point to point connection via ROS to the machine connected via Ethernet to the robot cabinet. The machine, with ROS installed, will be able to send and receive ROS messages to and from the Robotic Application, as represented in figure \ref{fig:ros_sunrise}. The messages used in this stack are taken from the messages available in a standard ROS distribution, but there are other custom ones inside the \texttt{iiwa\_msgs} folder. 
 
 With the stack is simple to manipulate the messages received from the robot and send new ones as command to it. This is possible using Python, C++ or console and the ROS functionalities already implemented as \texttt{service}, \texttt{topic} and \texttt{action}.\\
 
@@ -37,7 +37,7 @@ With the stack is simple to manipulate the messages received from the robot and 
 	\centering
 	\includegraphics[scale=0.2]{ros_sunrise.png}
 	\caption{Scheme of robot control using ROS}
-	\label{ros_sunire}
+	\label{fig:ros_sunrise}
 \end{figure}
 
 Since we have a gripper mounted on media flange (as explained in \ref{about-the-robot}), there's a task always active in background that provides a method that can be called via \texttt{ros\_service}. This service allows us to open and close the two jaw of the gripper. We also have another background task for the \textit{rgb} led present on media flange.
@@ -66,19 +66,19 @@ As described in the next sections, for each modality a way to save waypoints and
 
 As described in section \ref{robot-learning}, \kt{} teaching or also called \textit{teach by demonstration} is a way to move the robot in gravity compensation. Using the \textit{iiwa\_stack}, the gravity compensation mode has been implemented using joint impedance control mode where for every joint in robot configuration a stiffness and damping value has been set. Stiffness value must be grater than $ 0 $ and it's expressed in $ Nm/rad $, instead damping value must be between $ 0 $ and $ 1 $. After changing the control mode to joint impedance, the robot seems fall. A force contrary to the gravity must be carried out to keep it up.
 
-On media flange, the green button (\circled{3} in figure \ref{media_flange}) was dedicated for saving commands. When the button is pressed according to the duration of the pressure, an action is recorded:
+On media flange, the green button (\circled{3} in figure \ref{fig:media_flange}) was dedicated for saving commands. When the button is pressed according to the duration of the pressure, an action is recorded:
 \begin{itemize}
 	\item one click for save a waypoint,
 	\item two seconds pressure for save the action on the gripper and the actual pose,
 	\item five seconds pressure to close the teaching phase.
 \end{itemize}
-When an action is performed by the user, the led strip (\circled{1} in figure \ref{media_flange}) change color: green for waypoints, blue for gripper's actions.
+When an action is performed by the user, the led strip (\circled{1} in figure \ref{fig:media_flange}) change color: green for waypoints, blue for gripper's actions.\\
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.6]{media_flange.png}
 	\caption[Media flange mounted on \kuka{}]{Media flange mounted on \kuka{}: \protect\circled{1} led strip, \\\protect\circled{2} enabling switch, \protect\circled{3} application button}
-	\label{media_flange}
+	\label{fig:media_flange}
 \end{figure}
 
 \subsection{\Te{} teaching}
@@ -97,7 +97,7 @@ The values obtained from the analogs of the pad are between $ -1 $ and $ 1 $. Th
 	\item $ \alpha*5 $ : for angular velocity.
 \end{itemize}
 
-The same formula used for linear velocity for the \textit{full task space} mode was applied to move joints in the \textit{reduced joint space} mode. In figure \ref{pad} we can see the structure of the pad and how it was used to control the robot. In both cases, the buttons used are the same:
+The same formula used for linear velocity for the \textit{full task space} mode was applied to move joints in the \textit{reduced joint space} mode. In figure \ref{fig:pad_lines} we can see the structure of the pad and how it was used to control the robot. In both cases, the buttons used are the same:
 
 \begin{itemize}
 	\item $ \times $ : close or open gripper, therefore this command automatically save the action and the actual pose,
@@ -113,5 +113,5 @@ Both of the modalities are performed using \texttt{L1} or \texttt{R1} as deadman
 	\centering
 	\includegraphics[scale=0.2]{ps4_pad_lines.png}
 	\caption[PlayStation 4 pad]{The scheme of the full task space modality \\mapped on the PlayStation 4 pad}
-	\label{pad}
+	\label{fig:pad_lines}
 \end{figure}
