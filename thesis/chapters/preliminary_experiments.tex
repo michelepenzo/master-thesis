@@ -16,7 +16,7 @@ In this work, ROS and the open source stack available in \cite{iiwa-stack-link} 
 \section{Evaluation of force estimation}
 \label{evaluation-force}
 
-The topic called \texttt{CartesianWrench} shows the external wrench measured by the robot according to the used reference frame. The wrench is composed of a vector that represents the force along the three spatial dimension: from this vector only the force along $ z $ was extracted. In our case, the force was measured on the gripper. To understand if we could consider the force applied on the EE, some experiments were conducted to understand the reliability and responsiveness of the values returned from this topic. These tests were conducted using objects of different weight calibrated on a scale with precision to the gram and attached to both of the two jaws of the gripper. Every weighing was performed in three different configuration of the robot and for two times. The home pose (figure \ref{fig:p1}), identified with $ \{p1\} $, is with the elbow high in start position, the pose $ \{p2\} $ (figure \ref{fig:p2}) is with the gripper perpendicular to the pick position used in the experiments and the pose $ \{p3\} $ (figure \ref{fig:p3}) is the place position used in the experiment.
+The topic called \texttt{CartesianWrench} shows the external wrench measured by the robot according to the used reference frame. The wrench is composed of a vector that represents the force along the three spatial dimension: from this vector only the force along $ z $ was extracted. In our case, the force was measured on the gripper. To understand if we could consider the force applied on the EE, some experiments were conducted to understand the reliability and responsiveness of the values returned from this topic. These tests were conducted using objects of different weight calibrated on a scale with precision to the gram and attached to both of the two jaws of the gripper. Every weighing was performed in three different configuration of the robot and for two times. The home pose (figure \ref{fig:p1}), identified with $ \{p1\} $, is with the elbow high in start position, the pose $ \{p2\} $ (figure \ref{fig:p2}) is with the gripper perpendicular to the pick position used in the experiment and the pose $ \{p3\} $ (figure \ref{fig:p3}) is the place position used in the experiment.
 
 In table \ref{tab:wrench} the columns indicate the values, expressed in $ N $, of the force calculated and extracted from the cartesian wrench for each weights. The penultimate and the last rows indicate the mean and the standard deviation of the six values, while the third last row is the expected value: $ weight * 9,81 $.
 
@@ -109,7 +109,7 @@ Before the final experiment explained in chapter \ref{experiment}, a test has be
 	\item \texttt{JointExternalTorque} and \texttt{JointTorque} : torque applied on joints.
 \end{itemize}
 
-This preliminary experimental phase was made by an inexperienced user who had to do the same task for $ n $ times. The value of $ n $ that was chosen is $ 5 $. This relatively high value that was reduced in the final experiment, was chosen precisely to have as much data as possible to analyze after this preliminary experiment. It was also chosen to understand if the user could improve the time and the number of waypoints with multiple repetitions of the same tasks. The task, in figure \ref{fig:pre_task}, consisted to move four Lego blocks (one of them circled in red) from a pick position (circled in green) to a place position (circled in yellow). This task was repeated for both the modalities in section \ref{project-implementation}. The data collected provide a solid basis to perform a preliminary analysis and understand how to perform the final experiment by collecting only the data for the final evaluation.
+This preliminary experimental phase was made by an inexperienced user who had to do the same task for $ n $ times. The value of $ n $ that was chosen is $ 5 $. This relatively high value, that was reduced in the final experiment, was chosen precisely to have as much data as possible to analyze after this preliminary experiment. It was also chosen to understand if the user could improve the time and the number of waypoints with multiple repetitions of the same tasks. The task, in figure \ref{fig:pre_task}, consisted to move four Lego blocks (one of them circled in red) from a pick position (circled in green) to a place position (circled in yellow). This task was repeated for both the modalities in section \ref{project-implementation}. The data collected provide a solid basis to perform a preliminary analysis and understand how to perform the final experiment by collecting only the data for the final evaluation.
 
 
 \begin{figure}[H]
@@ -127,7 +127,7 @@ This preliminary experimental phase was made by an inexperienced user who had to
 	\label{fig:pre_task}
 \end{figure}
 
-In figure \ref{fig:diff_kt} and \ref{fig:diff_teleop} are represented on $ x $ axis the five repetitions of the users, while on $ y $ axis the time in seconds necessary to complete each repetition. As represented in figure \ref{fig:diff_kt}, it's possible to say that the time necessary to complete the task in \kt{} teaching was similar between the two users, but in figure \ref{fig:kt_user} the first trial wasn't completed due a mistake by the user. In this case, the experiment wasn't repeat because this was a test and all the possible problems had to be understood. We can also say that with more attempts the time for completing the task decrease.
+In figure \ref{fig:diff_kt} and \ref{fig:diff_teleop} are represented on $ x $ axis the five repetitions of the users, while on $ y $ axis the time in seconds necessary to complete each repetition. As represented in figure \ref{fig:diff_kt}, it is possible to say that the time necessary to complete the task in \kt{} teaching was similar between the two users, but in figure \ref{fig:kt_user} the first trial was not completed due a mistake by the user. In this case, the experiment was not repeat because this was a test and all the possible problems had to be understood. We can also say that with more attempts the time for completing the task decrease.
 
 \begin{figure}[ht]
 	\begin{subfigure}{.5\textwidth}
@@ -142,11 +142,11 @@ In figure \ref{fig:diff_kt} and \ref{fig:diff_teleop} are represented on $ x $ a
 		\caption{User with experience}
 		\label{fig:kt_me}	
 	\end{subfigure}
-	\caption{Difference between users in \kt{} teaching}
+	\caption{Difference between users in \textit{KT}}
 	\label{fig:diff_kt}
 \end{figure}
 
-In figure \ref{fig:diff_teleop} we can say that the times for complete the task in \te{} are higher with respect to \kt{}. We can also observe that the inexperienced user is always slower than the user with experience. Even in this case the inexperienced user made a mistake (figure \ref{fig:teleop_user}) because he made a collision with a Lego block, but this repetition was included anyway in the results.
+In figure \ref{fig:diff_teleop} we can say that the times to complete the task in \te{} are higher with respect to \kt{}. We can also observe that the inexperienced user was always slower than the user with experience. Even in this case the inexperienced user made a mistake (figure \ref{fig:teleop_user}) because he made a collision with a Lego block, but this repetition was included anyway in the results.
 
 \begin{figure}[ht]
 	\begin{subfigure}{.5\textwidth}
@@ -161,10 +161,10 @@ In figure \ref{fig:diff_teleop} we can say that the times for complete the task 
 		\caption{User with experience}
 		\label{fig:teleop_me}
 	\end{subfigure}
-	\caption{Difference between users in \te{} teaching}
+	\caption{Difference between users in \textit{TT}}
 	\label{fig:diff_teleop}
 \end{figure}
 
-From the two failures, we noticed that the user does not know very well the environment and how to use the robot. 
-Therefore, in the final experiment, a thorough explanations about \kt{} and \te{} is provided to the user before starting the experiment, but the failed trials are still considered. Moreover, from this experiment, it's noticed that three trials are enough to see the learning results.
+From the two failures, we noticed that the user did not know very well the environment and how to use the robot. 
+Therefore, in the final experiment, a thorough explanations about \kt{} and \te{} was provided to the user before starting the experiment, but the failed trials were still considered. Moreover, from this experiment, it is noticed that three trials are enough to see the learning results.
 All the knowledge acquired from this experiment has been applied in the experimental design as described in \ref{experimental-design}.

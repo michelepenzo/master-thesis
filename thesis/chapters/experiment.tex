@@ -12,7 +12,7 @@ In this chapter how the experiment was prepared and the materials used for the t
 
 From the data collected by the preliminary experiment described in section \ref{preliminary-experiments}, we decided to use different objects for the final experiment.
 At first, some Lego or boxes were used for the tests, but in the final experiment we decided to use more complex objects that could make the final scenario as similar as possible to a real industrial assembly task.
-In figure \ref{fig:shapes}, there are three objects of different shape created using wood. The figures are about $ 8x8$ $ cm $ in width and length and about $ 2 $ $ cm $ high. Above them has been placed another little cube of $ 3x3x2 $ $ cm $ for proper grasping (fig. \ref{fig:task_frontal}). With the gripper available isn't possible to use smaller objects without creating special supports to facilitate grasping. After that, some tests were conducted with these objects before submitting the final experiment to the users. 
+In figure \ref{fig:shapes}, there are three objects of different shape created using wood. The figures are about $ 8x8$ $ cm $ in width and length and about $ 2 $ $ cm $ high. Above them has been placed another little cube of $ 3x3x2 $ $ cm $ for proper grasping (fig. \ref{fig:task_frontal}). With the gripper available is not possible to use smaller objects without creating special supports to facilitate grasping. After that, some tests were conducted with these objects before submitting the final experiment to the users. 
 The task was considered as a realistic assembly condition, where a pick and place task with large margins (figure \ref{fig:simple_interlocking}) was used as a simple task, while the task in figure \ref{fig:difficult_interlocking} was used to simulate a difficult assembly task with interlocking.
 The entire setup is shown in figure \ref{fig:setup} and a complete description of the experiment is provided in section \ref{experimental-flow}.\\
 
@@ -66,7 +66,7 @@ This section describes the entire flow which is done by every participants of th
 
 \subsection{Pre-experiment phase}
 \label{pre-experiment-phase}
-In this phase all the necessary procedures to correctly conduct the experiment are explained. First of all a privacy release form for data collection was signed by the users. After that, a teach phase was carried out by all the users in order to understand how they can move the robot (in \kt{} or \te) and which buttons they need to press to perform the actions. At this stage users were asked to move a Lego block from a pick position to a place one performing a $ 90 $° rotation to teach him how to use rotation feature. This simple pick and place was performed by the users in both the modalities. When the user completed this phase an ascending unique id was assigned to him/her. Moreover, every user perform the pre-experiment and the experimental phase without seeing other users' trials.
+In this phase all the necessary procedures to correctly conduct the experiment are explained. First of all a privacy release form for data collection was signed by the users. After that, a teach phase was carried out by all the users in order to understand how they can move the robot (in \kt{} or \te) and which buttons they need to press to perform the actions. At this stage users were asked to move a Lego block from a pick position to a place one performing a $ 90 $° rotation to teach him how to use rotation feature. This simple pick and place was performed by the users in both the modalities. When the user completed this phase an ascending unique id was assigned to him/her. Moreover, every user performs the pre-experiment and the experimental phase without seeing other users' trials.
 
 \subsection{Experimental phase}
 \label{experiment-phase}
@@ -75,8 +75,8 @@ From the two modalities proposed in \ref{teleoperation-pad}, the \te{} modality 
 \begin{center}
 	$ (sample*0,1/60) * (opt\_wp/\#wp) * (opt\_act/\#act)$
 \end{center}
-where the first term of the formula calculates the time in seconds, the second term calculates the ratio between the number of optimal waypoints and the number of waypoints taken by the user. Finally, the third term calculates the ration between the number of optimal actions on gripper and the actions taken by the user. A generic vote is given instead of reporting the time to complete the experiment to the user. This evaluation metric was chosen because, if the times is given, the user will try to perform the next trials in less time because it competes with itself and he/she risks to complete the tasks incorrectly. All votes that have been given after each trial were noted. Moreover, some comments about the execution of the tasks have been written and reported in the next sections.
-After the \textit{first} trial of every task the replay phase based on the waypoints and on the actions on gripper was shown to the users. In this way the user understands where and how he/she can improve.\\
+where the first term of the formula calculates the time in seconds, the second term calculates the ratio between the number of optimal waypoints and the number of waypoints taken by the user. Finally, the third term calculates the ration between the number of optimal actions on gripper and the actions taken by the user. A generic vote is given to the user instead of reporting the time to complete the experiment. This evaluation metric was chosen because, if the times is given, the user will try to perform the next trials in less time because it competes with itself and he/she risks to complete the tasks incorrectly. All votes that have been given after each trial were noted. Moreover, some comments about the execution of the tasks have been written and reported in the next sections.
+After the \textit{first} trial of every task, the replay phase based on the waypoints and on the actions on gripper was shown to the users. In this way the user understands where and how he/she can improve.\\
 Some clarifications are provided to unify all users:
 \begin{itemize}
 	\item every trial is considered valid, even if a collision by the user or any other mistake that is made by the user compromises the trial,
@@ -88,12 +88,12 @@ Some clarifications are provided to unify all users:
 \subsection{Post-experiment phase}
 \label{post-experiment-phase}
 
-At the end of the experimental phase the users were asked to fill out the questionnaire available in \cite{questionnaire}. This questionnaire is divided in three parts: the first asks personal informations as name, age, approximate height and weight and other questions to better understand how to divide users for the result analysis. The second part resumes some questions from the questionnaire of \textit{Nasa TLX} described in \cite{nasa-tlx}, and the last part asks general questions or optional comments about the experiment. 
+At the end of the experimental phase the users were asked to fill out the questionnaire available in \cite{questionnaire}. This questionnaire is divided in three parts: the first part asks personal informations as name, age, approximate height and weight and other questions to better understand how to divide users for the result analysis. The second part resumes some questions from the questionnaire of \textit{Nasa TLX} described in \cite{nasa-tlx}, and the last part asks general questions or optional comments about the experiment. 
 
 \section{Data collection}
 \label{data-collection}
 
-During the experiment some data were collected from the ROS\texttt{ topic} available with sample rate of $ 10 Hz $. All these data have been saved in \texttt{.csv} files. Those files are related to: 
+During the experiment some data were collected from the ROS\texttt{ topic} available with sample rate of $ 10 Hz $. All these data have been saved in \texttt{.csv} files. These files are related to: 
 \begin{itemize}
 	\item \texttt{user\_x.csv} : sequence of actions performed by the users during the experiment,
 	\item \texttt{user\_x\_wrench.csv} : force applied on EE,
@@ -147,7 +147,7 @@ The total number of participants is $ 10 $: seven male and three female. All of 
 	\label{fig:ages}
 \end{figure}
 
-In questionnaire data on physical characteristics as weight and height were collected to see if there were correlations between the use of \kt{} teaching and the physical characteristics of each user. In figures \ref{fig:weight} and \ref{fig:height} are represented the percentages of users divided by weight and height, grouped into intervals of $ 10kg $ for weight and of $ 0,1 m $ for height. \\
+In questionnaire, data on physical characteristics as weight and height were collected to see if there were correlations between the use of \kt{} teaching and the physical characteristics of each user. In figures \ref{fig:weight} and \ref{fig:height} are represented the percentages of users divided by weight and height, grouped into intervals of $ 10kg $ for weight and of $ 0,1 m $ for height. \\
 
 \begin{figure}[H]
 	\begin{subfigure}{.5\textwidth}
