@@ -6,19 +6,41 @@
 
 \begin{frame}
 	\frametitle{\secname}	
-	For the analysis the users were divided into groups and their characteristics were analyzed.\\~\
-	% faccio comparire RP CP oppure metto la tabellina 
-	% all'interno dei gruppi segnalo che ci 
+	For the analysis the users were divided into groups using \textit{BMI}.\\~\
 
+	% dico che sono divisi in base al BMI, quindi anche la soglia --> questionario peso e altezza
+	% all'interno dei gruppi segnalo che ci sono n rp
 	\begin{center}
-		\includegraphics[scale=0.17]{users_by_group.png}
+		\includegraphics[scale=0.17]{users_by_group.png}\\~\
+	
+		\begin{table}[]
+			\begin{tabular}{c||l}
+				\textbf{Abbreviation} & \textbf{Extended form}\\
+				\hline \hline
+				\textbf{LBU} & \textbf{L}ow \textbf{B}MI \textbf{U}sers\\
+				\textbf{HBU} & \textbf{H}igh \textbf{B}MI \textbf{U}sers\\
+				\textbf{RP}  & \textbf{R}egular \textbf{P}layers\\
+				\textbf{CP}  & \textbf{C}asual \textbf{P}layers
+			\end{tabular}
+		\end{table}
+	
 	\end{center}
 
-	For reasons of time, in this presentation only two of the research questions are demonstrated through data. For a more complete and in-depth explanation, you can refer to the thesis.
 \end{frame}
 
-% slide di transizioni
-% riprendo slide 3, metto grigie le domande che non mi interessano --> solo 2 che reputo più interessanti in termini di risultati conseguiti
+\begin{frame}
+	\frametitle{\secname}
+	For reasons of time, in this presentation only two questions are shown as they are interesting in terms of results achieved.\\~\
+
+	\begin{itemize}
+		\color{gray}
+		\item Which mode is preferred for easy of use?
+		\item The two proposed approaches are said to be intuitive, but how much when they are applicable for industrial assembly task programming?
+		\color{black}
+		\item Are the physical characteristics of the users impacting on \kt{} teaching?
+		\item Are users who are familiar with the pad better in \te{} than the other users?
+	\end{itemize}
+\end{frame}
 
 \begin{frame}
 	\frametitle{\secname}
@@ -33,11 +55,19 @@
 
 \begin{frame}
 	\frametitle{\secname}
-	% riprendo img e ci metto gli assi --> di fianco al plot
 	This figure shows the difference of the forces applied by the groups while they were performing the tasks in \kt{} teaching. The force is in $ N $.
-	\begin{center}
-		\includegraphics[scale=0.15]{wrench_all_kt.png}
-	\end{center}
+	\begin{figure}
+		\centering
+		\begin{tikzpicture}
+			\node(a){\includegraphics[scale=0.15]{wrench_all_kt.png}};
+			\draw[red, thick, ->] (4,-1) -- (5.2,-1);
+			\draw[blue, thick, ->] (4,-1) -- (4,0.2);
+			\draw[green, thick, ->] (4,-1) -- (5,0);
+			\node[] at (5.5, -1) {x};
+			\node[] at (4, 0.5) {z};			
+			\node[] at (5.25, 0.25) {y};
+		\end{tikzpicture}   
+	\end{figure}
 \end{frame}
 
 \begin{frame}
@@ -63,16 +93,30 @@
 	\frametitle{\secname}
 	Only the times (in $ seconds $) about task $ t1 $ are shown, for task $ t2 $ the values are	similar.
 	
-	\begin{center}
+	\begin{figure}
+		\centering
 		\includegraphics[scale=0.15]{time_groups_t2.png}
-	\end{center}
-%\note{test}
+	\end{figure}
 \end{frame}
 
 \begin{frame}
 	\frametitle{\secname}
-	The concept of time and distance to complete the task is also related with the concept of ratio and precision of waypoints.\\~\
-	% immagine dei puntini 
+	% distanza -> tempo -> dimestichezza
+	% waypoints e ratio
+	
+	\begin{figure}
+		\centering
+		\begin{tikzpicture}
+			\node(a) {\includegraphics[scale=0.13]{waypoints_tt_t1.png}};
+			\node[] at (4, 0) {LBU};
+			\node[] at (4, -0.5) {HBU};
+			\node at (4.5, 0) [circle, red, fill,inner sep=1.5pt]{};
+			\node at (4.5, -0.5) [circle, blue, fill,inner sep=1.5pt]{};
+		\end{tikzpicture}   
+	\end{figure}
+	
+	%The concept of time and distance to complete the task is also related with the concept of ratio and precision of waypoints.\\~\
+	
 	The mental efforts in \te{} teaching are: $ 5,6 $ for \smallusers{} and $ 6 $ for \bigusers{}. Also, the data show us how users confident with the pad are better in \te{}.\\~\
 	
 	Furthermore, from the previous figure it's possible to notice how \te{} teaching is always slower than \kt{} teaching.

@@ -6,7 +6,8 @@
 		\item \textbf{Motivations}: within the Industry 4.0, collaborative robots with advanced features, more flexibility and safety are increasingly exploited in production plants. Cobot requires new reprogramming techniques, such as \kt{} and \te{}. \\~\
 		% introduzione schema teleop specificatamente per assemblaggio
 		% tramite user test voglio trovare risposta
-		\item \textbf{Goals}: this work proposes a new \te{} modality using a common pad for console for teaching assembly tasks. Therefore, with an user experiment, the work wants to highlight the differences between the two modalities.
+		
+		\item \textbf{Goals}: this work proposes a new \te{} scheme for teaching assembly tasks. Therefore, with an user experiment, the work wants to highlight the differences between the two modalities and to find the optimal method for teaching assembly tasks.
 	\end{itemize}
 \end{frame}
 
@@ -48,20 +49,30 @@
 	% img del pad con mapping dei comandi + foto del kuka
 	% proponiamo .. setup con kuka IIwa, collaborativo, best robot, disponibile in ICE, grazie al robot
 	% uso robot kuka iiwa e pad
-	For these reasons and inspired by other works, a new modality for teaching assembly tasks was implemented.\\~\
 	
-	\Te{} teaching provides a way to control robot using a \textbf{PS4 pad} that allows us to have more control options.\\~\
+	%For these reasons and inspired by other works, a new modality for teaching assembly tasks was implemented.\\~\
+	
+	%\Te{} teaching provides a way to control robot using a \textbf{PS4 pad} that allows us to have more control options.\\~\
 
-	It allows to have a safe remote control of the robot through the use of buttons and analogs. It also have a force feedback feature.
+	%It allows to have a safe remote control of the robot through the use of buttons and analogs. It also have a force feedback feature.
 
+	\begin{columns}
+		\begin{column}{0.48\textwidth}
+			\includegraphics[scale=0.08]{kuka.jpg}
+		\end{column}
+		\begin{column}{0.48\textwidth}
+			\includegraphics[scale=0.08]{ps4_pad_lines.png}
+		\end{column}
+	\end{columns}
 \end{frame}
 
 \begin{frame}
 	\frametitle{\secname}	
-%	This video shows how \te{} teaching is used to perform the task.\\~\
-	% 1x
-	% normal speed --> per dire che il robot è a velocità normale
+	
 	\begin{center}
+		\begin{flushright}
+			Playback speed: 1x (normal)
+		\end{flushright}
 		\movie[width=10.6cm, height=6cm, repeat, poster, autostart]{}{./video/pic_in_pic.mp4}
 	\end{center}
 \end{frame}
