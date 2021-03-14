@@ -2,33 +2,39 @@
 
 \section{Experimental design}
 
-
-\subsection{Participants}
 \begin{frame}
-	\frametitle{\subsecname}
-	
+	\frametitle{\secname}
+	% chi sono gli utenti, laureati, meta no robot, età
+	% come sono stati divisi -> metà teleop metà kt
+	% per ottenere dati diverisificati
 	\begin{figure}
 		\centering
 		\includegraphics<1>[scale=0.17]{users_1.png}
-		\includegraphics<2>[scale=0.17]{users_2.png}
-		\includegraphics<3>[scale=0.17]{users_3.png}
+		%\includegraphics<2>[scale=0.17]{users_2.png}
+		\includegraphics<2>[scale=0.17]{users_3.png}
 	\end{figure} 
 \end{frame}
 
-%\begin{frame}
-%	\frametitle{\secname}
-%	% 1) parlo dei task ---> immagine dei due task --> evidenzio che l'incastro è largo e stretto (img dall'alto --> righetta)
-%	
-%\end{frame}
-
-
-\subsection{Experimental flow}
 \begin{frame}
-	\frametitle{\subsecname}
+	\frametitle{\secname}
+	% 1) parlo dei task ---> immagine dei due task --> evidenzio che l'incastro è largo e stretto (img dall'alto --> righetta)
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[scale=0.038]{task2.jpg}
+		\hfill
+		\includegraphics[scale=0.038]{task3.jpg}
+	\end{figure}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{\secname}
 
 	% fase di warm up con privacy polici, nessun utente vede gli altri utenti fare lo stesso
 	% due task sin ordine crescente di difficoltà ripetuti per 3 volte in kt e tt
-	% viene fatto compilare un questionario alla fine nasa tlx
+	% dopo ogni fase viene mostrata la fase di replay
+	% viene fatto compilare un questionario alla fine nasa tlx, con anche dati su caratteristiche fisiche 
 	\begin{figure}
 		\centering
 		\includegraphics<1>[scale=0.17]{experiment_1.png}
@@ -38,9 +44,8 @@
 	\end{figure} 
 \end{frame}
 	
-\subsection{Data collection}
 \begin{frame}
-	\frametitle{\subsecname}
+	\frametitle{\secname}
 
 	% parlo dati raccolti, cosa sono e a cosa servono
 	% parlo dello stack ros open source
@@ -64,3 +69,15 @@
 %	\end{center} 
 %
 %\end{frame}
+
+
+\begin{frame}
+	\frametitle{\secname}	
+	% video incastro tramite teleop di un utente
+	\begin{center}
+		\begin{flushright}
+			Playback speed: 1x (normal)
+		\end{flushright}
+		\movie[width=10.6cm, height=6cm, repeat, poster, autostart]{}{./video/play.mp4}
+	\end{center}
+\end{frame}
