@@ -1,27 +1,27 @@
-% Results discussion section
+	% Results discussion section
 
 \section{Results discussion}
 
 % ------------------------------------------
 
 \begin{frame}
-	\frametitle{\secname}	
-	For the analysis the users were divided into groups using \textit{BMI}.\\~\
+	\frametitle{\secname: groups}	
+	For the analysis the users were divided into groups using Body Mass Index (\textit{BMI}).\\~\
 
 	% dico che sono divisi in base al BMI, quindi anche la soglia --> questionario peso e altezza
-	% all'interno dei gruppi segnalo che ci sono n rp
+	% dico che ogni utente è stato classificato come rp 
 	\begin{center}
 		\includegraphics[scale=0.17]{users_by_group.png}\\~\
 	
 		\begin{table}[]
-			\begin{tabular}{c||l}
-				\textbf{Abbreviation} & \textbf{Extended form}\\
+			\begin{tabular}{c||c||c}
+				\textbf{Abbreviation} & \textbf{Extended form} & \textbf{Criteria}\\
 				\hline \hline
-				\textbf{LBU} & \textbf{L}ow \textbf{B}MI \textbf{U}sers\\
-				\textbf{HBU} & \textbf{H}igh \textbf{B}MI \textbf{U}sers\\
+				\textbf{LBU} & \textbf{L}ow \textbf{B}MI \textbf{U}sers & $ BMI \leq 21,5 $\\
+				\textbf{HBU} & \textbf{H}igh \textbf{B}MI \textbf{U}sers & $ BMI > 21,5 $\\
 				\hline
-				\textbf{RP}  & \textbf{R}egular \textbf{P}layers\\
-				\textbf{CP}  & \textbf{C}asual \textbf{P}layers
+				\textbf{RP}  & \textbf{R}egular \textbf{P}layers & frequently \\
+				\textbf{CP}  & \textbf{C}asual \textbf{P}layers & rarely
 			\end{tabular}
 		\end{table}
 	
@@ -30,7 +30,7 @@
 \end{frame}
 
 \begin{frame}
-	\frametitle{\secname}
+	\frametitle{\secname: research questions}
 	For reasons of time, in this presentation only two questions are shown as they are interesting in terms of results achieved.\\~\
 
 	\begin{itemize}
@@ -44,7 +44,7 @@
 \end{frame}
 
 \begin{frame}
-	\frametitle{\secname}
+	\frametitle{\secname: analysis of physical characteristics}
 	\textbf{Are the physical characteristics of the users impacting on \kt{} teaching?} \\~\
 
 	\begin{itemize}
@@ -56,7 +56,7 @@
 \end{frame}
 
 \begin{frame}
-	\frametitle{\secname}
+	\frametitle{\secname: analysis of physical characteristics}
 	This figure shows the difference of the forces applied by the groups while they were performing the tasks in \kt{} teaching. The force is in $ N $.
 	\begin{figure}
 		\centering
@@ -73,16 +73,16 @@
 \end{frame}
 
 \begin{frame}
-	\frametitle{\secname}
+	\frametitle{\secname: analysis of physical characteristics}
 	Therefore, the previous concept is supported by the answers in the questionnaire.\\~\
 	
 	The averages of the physical effort of the users are: $ 5,4 $ for \smallusers{} group and $ 3,8 $ for \bigusers{} group.\\~\
 	
-	Both personal opinions and scientific data show us that there is a correlation between \kt{} teaching and physical characteristics.
+	Both personal opinions and scientific data confirm us that there is a correlation between \kt{} teaching and physical characteristics.
 \end{frame}
 
 \begin{frame}
-	\frametitle{\secname}
+	\frametitle{\secname: analysis of confidence with the pad}
 	\textbf{Are users who are familiar with the pad better in \te{} than the other users?}\\~\
 	
 	\begin{itemize}
@@ -93,33 +93,39 @@
 \end{frame}
 
 \begin{frame}
-	\frametitle{\secname}
+	\frametitle{\secname: analysis of confidence with the pad}
+	% distanza -> tempo -> dimestichezza
 	Only the times (in $ seconds $) about task $ t1 $ are shown, for task $ t2 $ the values are	similar.
-	
+		
 	\begin{figure}
 		\centering
 		\includegraphics[scale=0.15]{time_groups_t2.png}
 	\end{figure}
 \end{frame}
 
+
 \begin{frame}
-	\frametitle{\secname}
-	% distanza -> tempo -> dimestichezza
+	\frametitle{\secname: analysis of confidence with the pad}
+	This figure shows the precision of the waypoints of the task $ t1 $ taken by the two groups.
 	% waypoints e ratio
 	
 	\begin{figure}
 		\centering
 		\begin{tikzpicture}
-			\node(a) {\includegraphics[scale=0.13]{waypoints_tt_t1.png}};
-			\node[] at (4, 0) {LBU};
-			\node[] at (4, -0.5) {HBU};
-			\node at (4.5, 0) [circle, red, fill,inner sep=1.5pt]{};
-			\node at (4.5, -0.5) [circle, blue, fill,inner sep=1.5pt]{};
+		\node(a) {\includegraphics[scale=0.15]{waypoints_tt_t1.png}};
+		\node[] at (4, 0) {LBU};
+		\node[] at (4, -0.5) {HBU};
+		\node at (4.5, 0) [circle, red, fill,inner sep=1.5pt]{};
+		\node at (4.5, -0.5) [circle, blue, fill,inner sep=1.5pt]{};
 		\end{tikzpicture}   
 	\end{figure}
 	
+\end{frame}
+
+\begin{frame}
+	\frametitle{\secname: analysis of confidence with the pad}
 	
-	The mental efforts in \te{} teaching are: $ 5,6 $ for \smallusers{} and $ 6 $ for \bigusers{}. Also, the data show us how users confident with the pad are better in \te{}.\\~\
+	The mental efforts in \te{} teaching are: $ 5,6 $ for \smallusers{} and $ 6 $ for \bigusers{}. Also, the data confirm us how users confident with the pad are better in \te{}.\\~\
 	
-	Furthermore, from the previous figure it's possible to notice how \te{} teaching is always slower than \kt{} teaching.
+	Furthermore, from the figure relative to times it's possible to notice how \te{} is always slower than \kt{}.
 \end{frame}

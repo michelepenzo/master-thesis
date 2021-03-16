@@ -35,28 +35,40 @@
 
 \begin{frame}
 	\frametitle{\secname}
+	% spruzzaggio e saldatura
+	% task di assemblaggio fatti a mano
+	% quei pochi fatti con robot sono insegnati con kt
+	
 	In automotive industry welding and painting tasks are already highly automated, while assembly tasks in industry are mainly performed manually today.\\~\
-	
-	For those tasks that are performed by robot, the default modality for teaching assembly tasks is \kt{} teaching.\\~\
-	
+
 	The use of a collaborative robot and \kt{} teaching doesn't allow us to fully use the collaborative features.
-	% img dove robot sono già utilizzati
-	% ur che carica/scarica torni
-	% uno di assemblaggio
+		
+	\begin{center}
+		\begin{tabular}{cc}
+			\includegraphics[width=50mm]{welding.jpg}
+			&
+			\includegraphics[width=50mm]{assembly.jpg}
+			\\                                                     
+			{\footnotesize Welding task}  & {\footnotesize Assembly task}
+		\end{tabular}
+	\end{center}
 \end{frame}
 
 \begin{frame}
 	\frametitle{\secname}
 	% proponiamo .. setup con kuka iiwa, collaborativo, best robot, disponibile in ICE
 	
-	For these reasons and inspired by other works, a new \te{} modality for teaching assembly tasks was implemented using the \kuka{} and a \textbf{PS4 pad}.\\~\\~\\~\
-
-
-	\begin{figure}
-		\centering
-		\includegraphics[scale=0.12]{ps4_pad_lines.png}
-	\end{figure}
-
+	For these reasons and inspired by other works, a new \te{} modality for teaching assembly tasks was implemented using the \kuka{} and a \textbf{PS4 pad}.\\~\
+	
+	\begin{center}
+		\begin{tabular}{cc}
+			\includegraphics[width=30mm]{kuka.jpg}
+			&
+			\includegraphics[width=60mm]{ps4_pad_lines.png}
+			\\                                                     
+			{\footnotesize \kuka{}}  & {\footnotesize PS4 pad}
+		\end{tabular}
+	\end{center}
 
 \end{frame}
 
@@ -65,7 +77,7 @@
 	
 	\begin{center}
 		\begin{flushright}
-			Playback speed: 1x (normal)
+			{\footnotesize 	Playback speed: 1x (normal)}
 		\end{flushright}
 		\movie[width=10.6cm, height=6cm, repeat, poster, autostart]{}{./video/pic_in_pic.mp4}
 	\end{center}

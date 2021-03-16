@@ -3,33 +3,34 @@
 \section{Experimental design}
 
 \begin{frame}
-	\frametitle{Participants}
+	\frametitle{\secname: participants}
 	% chi sono gli utenti, laureati, meta no robot, età
 	% come sono stati divisi -> metà teleop metà kt
-	% per ottenere dati diverisificati
+	% sono stati fatti partire in ordine casuale per ottenere dati diversificati
 	\begin{figure}
 		\centering
 		\includegraphics<1>[scale=0.17]{users_1.png}
-		%\includegraphics<2>[scale=0.17]{users_2.png}
-		\includegraphics<2>[scale=0.17]{users_3.png}
+		\includegraphics<2>[scale=0.17]{users_2.png}
 	\end{figure} 
 \end{frame}
 
 \begin{frame}
-	\frametitle{Tasks}
-	% 1) parlo dei task ---> immagine dei due task --> evidenzio che l'incastro è largo e stretto (img dall'alto --> righetta)
-	
-	\begin{figure}[H]
-		\centering
-		\includegraphics[scale=0.038]{task2.jpg}
-		\hfill
-		\includegraphics[scale=0.038]{task3.jpg}
-	\end{figure}
+	\frametitle{\secname: tasks}
+	% parlo dei task, parlo del'incastro molto velocemente
 
+	\begin{center}
+		\begin{tabular}{cc}
+			\includegraphics[scale=0.038]{task2.jpg}
+			&
+			\includegraphics[scale=0.038]{task3.jpg}
+			\\                                                     
+			{\footnotesize Task $ t1 $} & {\footnotesize Task $ t2 $}
+		\end{tabular}
+	\end{center}
 \end{frame}
 
 \begin{frame}
-	\frametitle{Experimental flow}
+	\frametitle{\secname: experimental flow}
 
 	% fase di warm up con privacy polici, nessun utente vede gli altri utenti fare lo stesso
 	% due task sin ordine crescente di difficoltà ripetuti per 3 volte in kt e tt
@@ -45,7 +46,7 @@
 \end{frame}
 	
 \begin{frame}
-	\frametitle{Data collection}
+	\frametitle{\secname: data collection}
 
 	% parlo dati raccolti, cosa sono e a cosa servono
 	% parlo dello stack ros open source
@@ -53,30 +54,15 @@
 		\centering
 		\includegraphics[scale=0.18]{ros_sunrise.png}
 	\end{figure} 
-
-
 \end{frame}
-
-%
-%\begin{frame}
-%	\frametitle{\secname}
-%	% img task1  + video del replay
-%	% video dell'incastro --> replay tramite teleop
-%	In this figure the setup overview is shown: the \kuka{} and the shapes used for the task.\\~\
-%
-%	 \begin{center}
-%		\includegraphics[scale=0.044]{setup.jpg}
-%	\end{center} 
-%
-%\end{frame}
 
 
 \begin{frame}
-	\frametitle{Replay phase}	
-	% video incastro tramite teleop di un utente
+	\frametitle{\secname: replay phase}	
+	% video incastro tramite teleop di un utente in base ai waypoints
 	\begin{center}
 		\begin{flushright}
-			Playback speed: 1x (normal)
+			{\footnotesize 	Playback speed: 1x (normal)}
 		\end{flushright}
 		\movie[width=10.6cm, height=6cm, repeat, poster, autostart]{}{./video/play.mp4}
 	\end{center}
